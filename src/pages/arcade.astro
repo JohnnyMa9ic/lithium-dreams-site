@@ -26,10 +26,11 @@ import CRTFrame from '../components/CRTFrame.astro';
           <span class="cabinet-name">// PROJECT PENDING</span>
           <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
         </div>
-        <div class="cabinet-placeholder">
+        <div class="cabinet-placeholder cabinet-joust">
           <span class="cabinet-label mono">CABINET 02</span>
-          <span class="cabinet-name">// PROJECT PENDING</span>
+          <span class="cabinet-name">JERSEY DEVIL JOUST</span>
           <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
+          <a href="/workshop" class="ghost-signal" aria-label="Signal detected" tabindex="-1"></a>
         </div>
         <div class="cabinet-placeholder">
           <span class="cabinet-label mono">CABINET 03</span>
@@ -87,6 +88,18 @@ import CRTFrame from '../components/CRTFrame.astro';
     color: rgba(77, 184, 212, 0.5);
     text-transform: uppercase;
   }
+  .cabinet-joust { position: relative; }
+  .ghost-signal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 28%;
+    display: block;
+    cursor: default;
+    text-decoration: none;
+  }
+  .ghost-signal:hover { cursor: crosshair; }
   .cabinet-name {
     font-family: var(--font-display);
     font-size: 1.1rem;
