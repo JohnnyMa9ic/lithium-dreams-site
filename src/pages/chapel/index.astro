@@ -3,6 +3,7 @@ import Layout from '../../components/Layout.astro';
 import MuseumPlaque from '../../components/MuseumPlaque.astro';
 import MaintenanceTag from '../../components/MaintenanceTag.astro';
 import EmployeeNotice from '../../components/EmployeeNotice.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 ---
 
 <Layout title="Wedding Chapel — Lithium Dreams Industries" activePage="/chapel">
@@ -11,7 +12,11 @@ import EmployeeNotice from '../../components/EmployeeNotice.astro';
   </div>
   <div class="district-page">
     <div class="district-header">
-      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: 'Wedding Chapel' },
+      ]} />
       <MaintenanceTag status="BY APPOINTMENT" size="md" />
     </div>
 
@@ -26,7 +31,7 @@ import EmployeeNotice from '../../components/EmployeeNotice.astro';
 
       <div class="chapel-notice mono text-dim">
         <p>// Appointments available Tuesdays and Fridays</p>
-        <p>// Please do not ask about the back room</p>
+        <p>// Please do not ask about <a href="/chapel/back-room" class="backroom-link">the back room</a></p>
         <p>// Rice provided. Cleanup is your responsibility.</p>
       </div>
     </div>
@@ -82,6 +87,17 @@ import EmployeeNotice from '../../components/EmployeeNotice.astro';
     gap: 0.3rem;
     padding: var(--space-md);
     border-left: 2px solid rgba(255,255,255,0.08);
+  }
+  /* Subtle deniable link to the Cathedral of Glitch */
+  .backroom-link {
+    color: rgba(232, 222, 200, 0.35);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 222, 200, 0.1);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .backroom-link:hover {
+    color: rgba(232, 222, 200, 0.7);
+    border-color: rgba(232, 222, 200, 0.3);
   }
   @media (max-width: 600px) {
     .district-page { padding: var(--space-md); }

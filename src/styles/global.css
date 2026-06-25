@@ -170,6 +170,71 @@ h1, h2, h3, h4, h5 {
 .text-teal  { color: var(--warden-teal); }
 .text-dim   { color: rgba(232, 222, 200, 0.45); }
 
+/* ─── Skip link ──────────────────────────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--neon-amber);
+  color: var(--ldi-black);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-link:focus { top: 0; }
+
+/* ─── Focus ───────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--neon-amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Nav end wrapper / hamburger ─────────────────────────────────────────── */
+
+.nav-end {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--paper);
+  border-radius: 1px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  transform-origin: center;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translate(3px, 4px);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translate(3px, -4px);
+}
+
 /* ─── Responsive ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
@@ -182,7 +247,28 @@ h1, h2, h3, h4, h5 {
 }
 
 @media (max-width: 540px) {
+  .nav-hamburger {
+    display: flex;
+  }
   .nav-links {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0;
+    background: rgba(10, 10, 12, 0.97);
+    border-bottom: var(--border-faint);
+    z-index: 200;
+  }
+  .nav-links--open {
+    display: flex;
+  }
+  .nav-links--open a {
+    padding: 0.75rem var(--space-lg);
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 }

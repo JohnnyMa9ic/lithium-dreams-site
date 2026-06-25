@@ -2,6 +2,7 @@
 import Layout from '../components/Layout.astro';
 import MaintenanceTag from '../components/MaintenanceTag.astro';
 import CRTFrame from '../components/CRTFrame.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 
 <Layout title="Ghost's Workshop — Lithium Dreams Industries" activePage="/workshop">
@@ -10,7 +11,11 @@ import CRTFrame from '../components/CRTFrame.astro';
   </div>
   <div class="district-page">
     <div class="district-header">
-      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: "Ghost's Workshop" },
+      ]} />
       <MaintenanceTag status="STAFF ONLY" size="md" />
     </div>
 

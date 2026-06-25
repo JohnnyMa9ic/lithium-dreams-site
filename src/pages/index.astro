@@ -32,24 +32,15 @@ import TicketButton from '../components/TicketButton.astro';
       <div class="gate-fog" aria-hidden="true"></div>
     </div>
 
-    <!-- Sign hotspots — interactive areas over the hero image signs -->
-    <div class="gate-hotspots" aria-label="Attraction signs">
-
-      <!-- Main marquee: THE LAST ROADSIDE ATTRACTION -->
-      <a href="/attraction" class="gate-hotspot gate-hotspot--main" aria-label="Enter the attraction">
-        <span class="hotspot-tooltip">Enter the Attraction</span>
-      </a>
-
-      <!-- RAIN IS NORMAL. WONDER IS FREE. sandwich board (lower right) -->
-      <a href="/museum" class="gate-hotspot gate-hotspot--board" aria-label="Museum">
-        <span class="hotspot-tooltip">Museum</span>
-      </a>
-
-      <!-- LDI 1957 emblem (top center of image) -->
-      <a href="/" class="gate-hotspot gate-hotspot--badge" aria-label="Lithium Dreams Industries home">
-        <span class="hotspot-tooltip">LDI</span>
-      </a>
-
+    <!-- District card hotspots — bottom strip of new homepage hero -->
+    <div class="gate-hotspots" aria-label="District shortcuts">
+      <a href="/gift-shop"  class="gate-hotspot gate-hotspot--card gate-hotspot--giftshop"    aria-label="Gift Shop"><span class="hotspot-tooltip">Gift Shop</span></a>
+      <a href="/arcade"     class="gate-hotspot gate-hotspot--card gate-hotspot--arcade"       aria-label="Arcade"><span class="hotspot-tooltip">Arcade</span></a>
+      <a href="/museum"     class="gate-hotspot gate-hotspot--card gate-hotspot--museum"       aria-label="Museum"><span class="hotspot-tooltip">Museum</span></a>
+      <a href="/fortune"    class="gate-hotspot gate-hotspot--card gate-hotspot--fortune"      aria-label="Bob's Fortune Emporium"><span class="hotspot-tooltip">Fortune</span></a>
+      <a href="/chapel"     class="gate-hotspot gate-hotspot--card gate-hotspot--chapel"       aria-label="Wedding Chapel"><span class="hotspot-tooltip">Wedding Chapel</span></a>
+      <a href="/workshop"   class="gate-hotspot gate-hotspot--card gate-hotspot--employees"    aria-label="Employees Only"><span class="hotspot-tooltip">Employees Only</span></a>
+      <a href="#"           class="gate-hotspot gate-hotspot--card gate-hotspot--lostandfound" aria-label="Lost &amp; Found — coming soon"><span class="hotspot-tooltip">Lost &amp; Found</span></a>
     </div>
 
     <!-- Left overlay panel -->
@@ -103,9 +94,9 @@ import TicketButton from '../components/TicketButton.astro';
   .gate-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/hero-front-gate.jpg');
+    background-image: url('/homepage-hero.png');
     background-size: cover;
-    background-position: center top;
+    background-position: center bottom;
   }
 
   /* Rain canvas overlay */
@@ -127,14 +118,14 @@ import TicketButton from '../components/TicketButton.astro';
     display: none;
   }
 
-  /* Ground fog */
+  /* Ground fog — kept thin so it doesn't obscure bottom card strip */
   .gate-fog {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 200px;
-    background: linear-gradient(transparent, rgba(4, 7, 14, 0.85));
+    height: 50px;
+    background: linear-gradient(transparent, rgba(4, 7, 14, 0.7));
     z-index: 2;
     pointer-events: none;
   }
@@ -165,29 +156,20 @@ import TicketButton from '../components/TicketButton.astro';
     border-color: rgba(232, 164, 32, 0.22);
   }
 
-  /* Main marquee — THE LAST ROADSIDE ATTRACTION */
-  .gate-hotspot--main {
-    left: 33%;
-    top: 8%;
-    width: 56%;
-    height: 57%;
+  /* District card strip — 7 cards anchored to bottom of homepage hero */
+  .gate-hotspot--card {
+    bottom: 42px;
+    height: 20%;
+    width: 14.28%;
   }
 
-  /* RAIN IS NORMAL. WONDER IS FREE. board — lower right */
-  .gate-hotspot--board {
-    left: 71%;
-    top: 55%;
-    width: 18%;
-    height: 27%;
-  }
-
-  /* LDI 1957 badge — top center */
-  .gate-hotspot--badge {
-    left: 43%;
-    top: 3%;
-    width: 13%;
-    height: 16%;
-  }
+  .gate-hotspot--giftshop    { left: 0; }
+  .gate-hotspot--arcade      { left: 14.28%; }
+  .gate-hotspot--museum      { left: 28.57%; }
+  .gate-hotspot--fortune     { left: 42.85%; }
+  .gate-hotspot--chapel      { left: 57.14%; }
+  .gate-hotspot--employees   { left: 71.42%; }
+  .gate-hotspot--lostandfound { left: 85.71%; width: 14.29%; }
 
   /* Tooltip label — appears on hover */
   .hotspot-tooltip {

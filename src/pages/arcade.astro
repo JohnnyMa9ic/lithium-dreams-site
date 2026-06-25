@@ -3,12 +3,22 @@ import Layout from '../components/Layout.astro';
 import MuseumPlaque from '../components/MuseumPlaque.astro';
 import MaintenanceTag from '../components/MaintenanceTag.astro';
 import CRTFrame from '../components/CRTFrame.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 
 <Layout title="Arcade — Lithium Dreams Industries" activePage="/arcade">
+  <div class="page-hero" style="background-image: url('/arcade-hero.png')">
+    <!-- NOIZE RAZE neon sign Easter egg — upper-right of arcade image -->
+    <a href="/workshop" class="noize-raze-signal" aria-label="Signal detected" tabindex="-1"></a>
+    <div class="page-hero-fade"></div>
+  </div>
   <div class="district-page">
     <div class="district-header">
-      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: 'Arcade' },
+      ]} />
       <MaintenanceTag status="FLICKERING" size="md" />
     </div>
 
@@ -43,6 +53,39 @@ import CRTFrame from '../components/CRTFrame.astro';
 </Layout>
 
 <style>
+  .page-hero {
+    width: 100%;
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .page-hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom, transparent, var(--ldi-black));
+  }
+  /* NOIZE RAZE neon sign — upper-right of arcade hero image */
+  .noize-raze-signal {
+    position: absolute;
+    left: 64%;
+    top: 7%;
+    width: 15%;
+    height: 17%;
+    display: block;
+    text-decoration: none;
+    cursor: default;
+    z-index: 2;
+  }
+  .noize-raze-signal:hover {
+    cursor: crosshair;
+    background: rgba(77, 184, 212, 0.07);
+    box-shadow: inset 0 0 18px rgba(77, 184, 212, 0.05);
+  }
+
   .district-page {
     max-width: 800px;
     margin: 0 auto;

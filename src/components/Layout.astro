@@ -40,12 +40,13 @@ const navLinks = [
     <title>{title}</title>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="site-nav">
       <a href="/" class="nav-logo">
         <span class="nav-logo-name">Lithium Dreams</span>
         <span class="nav-logo-sub">Industries</span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         {navLinks.map(link => (
           <a
             href={link.href}
@@ -55,10 +56,23 @@ const navLinks = [
           </a>
         ))}
       </div>
-      <a href="/work" class="nav-badge" title="Lithium Dreams Industries — Work with us">LDI</a>
+      <div class="nav-end">
+        <a href="/work" class="nav-badge" title="Lithium Dreams Industries — Work with us">LDI</a>
+        <button
+          class="nav-hamburger"
+          id="nav-hamburger"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
 
-    <main class="page-content">
+    <main class="page-content" id="main-content">
       <slot />
     </main>
 
@@ -112,3 +126,21 @@ const navLinks = [
     font-size: 0.7rem;
   }
 </style>
+
+<script>
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    navLinks?.classList.toggle('nav-links--open');
+  });
+
+  navLinks?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('nav-links--open');
+    });
+  });
+</script>
