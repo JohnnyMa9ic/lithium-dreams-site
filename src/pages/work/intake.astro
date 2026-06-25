@@ -1,0 +1,593 @@
+---
+import WorkLayout from '../../components/WorkLayout.astro';
+---
+
+<WorkLayout title="Mission Intake — LDI" activePage="/work/intake">
+  <section class="intake-page">
+    <div class="intake-header">
+      <div class="intake-eyebrow mono">Mission Intake</div>
+      <h1 class="intake-headline">Start a Mission Brief.</h1>
+      <p class="intake-sub">A structured interview that replaces the vague discovery call. Select a track, fill the brief, and generate a structured payload. Takes about 10 minutes.</p>
+    </div>
+
+    <!-- Track selector -->
+    <div class="track-bar" role="tablist" aria-label="Track selector">
+      <button class="track-btn active" data-track="research" role="tab" aria-selected="true">
+        <span class="track-btn-label">Research OS</span>
+      </button>
+      <button class="track-btn" data-track="content" role="tab" aria-selected="false">
+        <span class="track-btn-label">Content Engine</span>
+      </button>
+      <button class="track-btn" data-track="localbiz" role="tab" aria-selected="false">
+        <span class="track-btn-label">Local Business Ops</span>
+      </button>
+      <button class="track-btn" data-track="exec" role="tab" aria-selected="false">
+        <span class="track-btn-label">Executive Assistant</span>
+      </button>
+      <button class="track-btn" data-track="technical" role="tab" aria-selected="false">
+        <span class="track-btn-label">Technical Advisory</span>
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form id="intakeForm" class="intake-form" novalidate>
+      <div class="form-section">
+        <div class="form-section-label mono">Core Profile</div>
+        <div class="fields" id="coreFields"></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-label mono" id="trackHeading">Track Prompts</div>
+        <div class="fields" id="trackFields"></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-label mono">Offer Shaping</div>
+        <div class="fields" id="offerFields"></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-label mono">Mission Meta</div>
+        <div class="fields" id="metaFields"></div>
+      </div>
+
+      <!-- Webhook field -->
+      <div class="form-section">
+        <div class="form-section-label mono">Delivery</div>
+        <div class="fields">
+          <div class="field full">
+            <label for="webhookUrl" class="field-label mono">Webhook URL <span class="field-optional">(optional)</span></label>
+            <input id="webhookUrl" name="webhookUrl" type="url" class="field-input"
+              placeholder="https://your-endpoint/webhook/intake" />
+            <div class="field-helper mono">Leave blank to use local download only. POST sends <code>Content-Type: application/json</code> with the full payload.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button class="btn-primary mono" type="button" id="generateJson">Generate Brief</button>
+        <button class="btn-secondary mono" type="button" id="downloadJson">Download JSON</button>
+        <button class="btn-secondary mono" type="button" id="copyJson">Copy JSON</button>
+        <button class="btn-ghost mono" type="button" id="sendWebhook">Send to Webhook</button>
+        <button class="btn-ghost mono" type="button" id="resetForm">Reset</button>
+      </div>
+    </form>
+
+    <!-- Output -->
+    <div class="output-section" id="outputSection" aria-live="polite">
+      <div class="output-header mono">Mission Brief Output</div>
+      <pre class="output-box" id="jsonOutput">Generate brief to see output.</pre>
+    </div>
+
+    <!-- Confirmation -->
+    <div class="confirmation" id="confirmation" hidden>
+      <div class="confirmation-inner">
+        <div class="conf-label mono">MISSION RECEIVED</div>
+        <div class="conf-status mono text-dim">Operator Review Pending</div>
+        <div class="conf-ref mono" id="confRef"></div>
+        <button class="btn-ghost mono" type="button" id="confReset">Submit Another</button>
+      </div>
+    </div>
+  </section>
+</WorkLayout>
+
+<style>
+  .intake-page {
+    padding: var(--space-xl) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    max-width: 860px;
+  }
+
+  /* ── Header ── */
+  .intake-header { display: flex; flex-direction: column; gap: var(--space-md); }
+  .intake-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .intake-headline {
+    font-family: var(--font-sub);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--paper);
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  .intake-sub {
+    font-size: 0.9rem;
+    color: rgba(232, 222, 200, 0.55);
+    max-width: 58ch;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Track bar ── */
+  .track-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  .track-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--rain-slate);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .track-btn-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(232, 222, 200, 0.4);
+    pointer-events: none;
+  }
+  .track-btn:hover .track-btn-label { color: var(--paper); }
+  .track-btn:hover { border-color: rgba(232, 222, 200, 0.3); }
+  .track-btn.active {
+    border-color: var(--ghost-blue);
+    background: rgba(77, 184, 212, 0.06);
+  }
+  .track-btn.active .track-btn-label { color: var(--ghost-blue); }
+
+  /* ── Form ── */
+  .intake-form { display: flex; flex-direction: column; gap: var(--space-lg); }
+
+  .form-section {
+    padding: var(--space-lg);
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .form-section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--rain-slate);
+  }
+
+  .fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field.full { grid-column: 1 / -1; }
+
+  .field-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.6);
+    text-transform: uppercase;
+  }
+  .field-optional {
+    color: rgba(232, 222, 200, 0.3);
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+  }
+  .field-input,
+  .field-select,
+  .field-textarea {
+    background: var(--ldi-black);
+    border: 1px solid var(--rain-slate);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    padding: 0.65rem 0.85rem;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .field-input:focus,
+  .field-select:focus,
+  .field-textarea:focus {
+    border-color: var(--ghost-blue);
+  }
+  .field-textarea { min-height: 100px; resize: vertical; }
+  .field-select { cursor: pointer; appearance: none; }
+  .field-helper {
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    color: rgba(232, 222, 200, 0.3);
+    line-height: 1.5;
+  }
+  code {
+    font-family: var(--font-mono);
+    color: var(--ghost-blue);
+    font-size: inherit;
+  }
+
+  /* ── Actions ── */
+  .form-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .btn-primary {
+    padding: 0.7rem 1.5rem;
+    background: var(--ghost-blue);
+    border: none;
+    color: var(--ldi-black);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary:hover {
+    background: #6ccde6;
+    box-shadow: 0 0 16px rgba(77, 184, 212, 0.2);
+  }
+  .btn-secondary {
+    padding: 0.7rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--ghost-blue);
+    color: var(--ghost-blue);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-secondary:hover { background: rgba(77, 184, 212, 0.08); }
+  .btn-ghost {
+    padding: 0.7rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--rain-slate);
+    color: rgba(232, 222, 200, 0.35);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(232, 222, 200, 0.4);
+    color: rgba(232, 222, 200, 0.7);
+  }
+
+  /* ── Output ── */
+  .output-section {
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+    overflow: hidden;
+  }
+  .output-header {
+    padding: 0.5rem 1rem;
+    background: rgba(77, 184, 212, 0.05);
+    border-bottom: 1px solid var(--rain-slate);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .output-box {
+    padding: var(--space-lg);
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: rgba(77, 184, 212, 0.8);
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 200px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  /* ── Confirmation ── */
+  .confirmation {
+    border: 1px solid var(--ghost-blue);
+    background: rgba(77, 184, 212, 0.04);
+    padding: var(--space-xl);
+  }
+  .confirmation-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+  .conf-label {
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .conf-status {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .conf-ref {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(232, 222, 200, 0.3);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .intake-page { padding: var(--space-lg) 0; }
+    .fields { grid-template-columns: 1fr; }
+    .field.full { grid-column: 1; }
+    .form-section { padding: var(--space-md); }
+    .form-actions { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-secondary, .btn-ghost { text-align: center; }
+  }
+</style>
+
+<script>
+  const coreFieldsDef = [
+    { key: 'clientName', label: 'Client or company name', type: 'text' },
+    { key: 'contactName', label: 'Primary contact', type: 'text' },
+    { key: 'email', label: 'Email', type: 'email' },
+    { key: 'businessType', label: 'Business type', type: 'text' },
+    { key: 'teamSize', label: 'Team size', type: 'text' },
+    { key: 'currentTools', label: 'Current tools and systems', type: 'textarea', full: true },
+    { key: 'biggestPain', label: 'Biggest pain point', type: 'textarea', full: true },
+    { key: 'whyNow', label: 'Why solve this now?', type: 'textarea', full: true },
+  ];
+
+  const offerFieldsDef = [
+    { key: 'successMetric', label: 'What result would make this clearly worth paying for?', type: 'textarea', full: true },
+    { key: 'budgetRange', label: 'Budget comfort range', type: 'select', options: ['Not sure yet', 'Under $200/mo', '$200–500/mo', '$500–1,000/mo', '$1,000+ / project-based'] },
+    { key: 'timeline', label: 'Desired timeline', type: 'select', options: ['ASAP', 'Within 30 days', '1–3 months', 'Exploring only'] },
+    { key: 'pilotScope', label: 'Smallest useful pilot', type: 'textarea', full: true },
+    { key: 'followUp', label: 'Follow-up action', type: 'textarea', full: true },
+  ];
+
+  const metaFieldsDef = [
+    { key: 'captureMode', label: 'Capture mode', type: 'select', options: ['async-form', 'live-call', 'email', 'in-person'] },
+    { key: 'source', label: 'Source', type: 'text' },
+    { key: 'leadScore', label: 'Lead score (0–10)', type: 'number' },
+    { key: 'tags', label: 'Tags (comma-separated)', type: 'text', full: true },
+  ];
+
+  const tracks: Record<string, { heading: string; fields: any[] }> = {
+    research: {
+      heading: 'Research OS Prompts',
+      fields: [
+        { key: 'topics', label: 'What topics or entities need monitoring?', type: 'textarea', full: true },
+        { key: 'cadence', label: 'How often are updates needed?', type: 'select', options: ['Daily', 'Weekly', 'Biweekly', 'Monthly', 'Event-driven only'] },
+        { key: 'decisionUse', label: 'How are the findings used?', type: 'textarea', full: true },
+        { key: 'sources', label: 'Which sources matter most?', type: 'textarea', full: true },
+        { key: 'currentMethod', label: 'How is this done now?', type: 'textarea', full: true },
+        { key: 'missCost', label: 'What happens when something gets missed?', type: 'textarea', full: true },
+      ],
+    },
+    content: {
+      heading: 'Content Engine Prompts',
+      fields: [
+        { key: 'contentInputs', label: 'What content already exists?', type: 'textarea', full: true },
+        { key: 'channels', label: 'Where should content be distributed?', type: 'textarea', full: true },
+        { key: 'volume', label: 'Preferred monthly output', type: 'select', options: ['4–8 assets', '10–20 assets', '20–40 assets', 'Not sure'] },
+        { key: 'voice', label: 'Brand voice or style notes', type: 'textarea', full: true },
+        { key: 'bottleneck', label: 'Where does the process break?', type: 'textarea', full: true },
+        { key: 'approval', label: 'Who approves final content?', type: 'text' },
+      ],
+    },
+    localbiz: {
+      heading: 'Local Business Ops Prompts',
+      fields: [
+        { key: 'leadSources', label: 'Where do leads come from today?', type: 'textarea', full: true },
+        { key: 'dropPoint', label: 'Where are leads being lost?', type: 'textarea', full: true },
+        { key: 'responseTime', label: 'Typical response time', type: 'select', options: ['Under 10 minutes', 'Same day', '1–2 days', 'Inconsistent / unclear'] },
+        { key: 'bookingFlow', label: 'How are quotes or bookings handled?', type: 'textarea', full: true },
+        { key: 'customerData', label: 'What customer details must be captured?', type: 'textarea', full: true },
+        { key: 'repeatWork', label: 'Any repeat service opportunity?', type: 'textarea', full: true },
+      ],
+    },
+    exec: {
+      heading: 'Executive Assistant Prompts',
+      fields: [
+        { key: 'emailLoad', label: 'Rough email and meeting volume', type: 'textarea', full: true },
+        { key: 'delegateTasks', label: 'What tasks should be delegated?', type: 'textarea', full: true },
+        { key: 'calendarFriction', label: 'Main scheduling friction', type: 'textarea', full: true },
+        { key: 'meetingPrep', label: 'What prep would help before meetings?', type: 'textarea', full: true },
+        { key: 'privacyNeeds', label: 'Privacy or approval boundaries', type: 'textarea', full: true },
+        { key: 'decisionStyle', label: 'Preferred summary style', type: 'textarea', full: true },
+      ],
+    },
+    technical: {
+      heading: 'Technical Advisory Prompts',
+      fields: [
+        { key: 'stack', label: 'Current stack and environment', type: 'textarea', full: true },
+        { key: 'constraints', label: 'Hard constraints', type: 'textarea', full: true },
+        { key: 'agentGoals', label: 'What should the system do autonomously?', type: 'textarea', full: true },
+        { key: 'humanLoop', label: 'Where should humans stay in the loop?', type: 'textarea', full: true },
+        { key: 'integrationNeeds', label: 'What tools or APIs must connect?', type: 'textarea', full: true },
+        { key: 'successWindow', label: 'How quickly should proof of value appear?', type: 'select', options: ['Within a week', 'Within 30 days', 'Within 90 days', 'Longer strategic build'] },
+      ],
+    },
+  };
+
+  let currentTrack = 'research';
+
+  function makeField(field: any): HTMLElement {
+    const wrap = document.createElement('div');
+    wrap.className = `field${field.full ? ' full' : ''}`;
+
+    const label = document.createElement('label');
+    label.setAttribute('for', field.key);
+    label.className = 'field-label mono';
+    label.textContent = field.label;
+
+    let el: HTMLElement;
+    if (field.type === 'textarea') {
+      el = document.createElement('textarea');
+      (el as HTMLTextAreaElement).rows = 3;
+      el.className = 'field-textarea';
+    } else if (field.type === 'select') {
+      el = document.createElement('select');
+      el.className = 'field-select';
+      (field.options as string[]).forEach((opt) => {
+        const o = document.createElement('option');
+        o.value = opt;
+        o.textContent = opt;
+        el.appendChild(o);
+      });
+    } else {
+      el = document.createElement('input');
+      (el as HTMLInputElement).type = field.type;
+      el.className = 'field-input';
+    }
+    el.id = field.key;
+    (el as HTMLInputElement).name = field.key;
+    wrap.append(label, el);
+    return wrap;
+  }
+
+  function renderFields(container: HTMLElement, defs: any[]) {
+    container.innerHTML = '';
+    defs.forEach((def) => container.appendChild(makeField(def)));
+  }
+
+  function renderTrack(track: string) {
+    currentTrack = track;
+    renderFields(document.getElementById('coreFields')!, coreFieldsDef);
+    renderFields(document.getElementById('trackFields')!, tracks[track].fields);
+    renderFields(document.getElementById('offerFields')!, offerFieldsDef);
+    renderFields(document.getElementById('metaFields')!, metaFieldsDef);
+    document.getElementById('trackHeading')!.textContent = tracks[track].heading;
+    document.querySelectorAll('.track-btn').forEach((btn) => {
+      const b = btn as HTMLButtonElement;
+      const active = b.dataset.track === track;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    document.getElementById('jsonOutput')!.textContent = 'Generate brief to see output.';
+
+    const src = document.getElementById('source') as HTMLInputElement | null;
+    const mode = document.getElementById('captureMode') as HTMLSelectElement | null;
+    if (src) src.value = 'ldi-intake-form';
+    if (mode) mode.value = 'async-form';
+  }
+
+  function val(id: string): string {
+    const el = document.getElementById(id) as HTMLInputElement | null;
+    return el ? el.value : '';
+  }
+
+  function buildJson() {
+    const payload: any = {
+      track: currentTrack,
+      coreProfile: {},
+      trackSpecific: {},
+      offerShaping: {},
+      meta: { capturedAt: new Date().toISOString() },
+    };
+    coreFieldsDef.forEach((f) => (payload.coreProfile[f.key] = val(f.key)));
+    tracks[currentTrack].fields.forEach((f) => (payload.trackSpecific[f.key] = val(f.key)));
+    offerFieldsDef.forEach((f) => (payload.offerShaping[f.key] = val(f.key)));
+    metaFieldsDef.forEach((f) => (payload.meta[f.key] = val(f.key)));
+    payload.meta.leadScore = payload.meta.leadScore ? Number(payload.meta.leadScore) : 0;
+    payload.meta.tags = payload.meta.tags
+      ? (payload.meta.tags as string).split(',').map((x: string) => x.trim()).filter(Boolean)
+      : [];
+    return payload;
+  }
+
+  document.querySelectorAll('.track-btn').forEach((btn) => {
+    btn.addEventListener('click', () => renderTrack((btn as HTMLButtonElement).dataset.track!));
+  });
+
+  document.getElementById('generateJson')!.addEventListener('click', () => {
+    const json = JSON.stringify(buildJson(), null, 2);
+    document.getElementById('jsonOutput')!.textContent = json;
+  });
+
+  function currentJsonText(): string {
+    const out = document.getElementById('jsonOutput')!.textContent || '';
+    return out.startsWith('{') ? out : JSON.stringify(buildJson(), null, 2);
+  }
+
+  document.getElementById('copyJson')!.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(currentJsonText());
+      const btn = document.getElementById('copyJson')!;
+      const prev = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(() => (btn.textContent = prev), 1200);
+    } catch {
+      alert('Clipboard copy was blocked.');
+    }
+  });
+
+  document.getElementById('downloadJson')!.addEventListener('click', () => {
+    const blob = new Blob([currentJsonText()], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `ldi-mission-${currentTrack}-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+    document.body.appendChild(a);
+    a.click();
+    URL.revokeObjectURL(a.href);
+    a.remove();
+  });
+
+  document.getElementById('sendWebhook')!.addEventListener('click', async () => {
+    const webhookUrl = (document.getElementById('webhookUrl') as HTMLInputElement).value.trim();
+    if (!webhookUrl) {
+      alert('Add a webhook URL first.');
+      return;
+    }
+    const payload = buildJson();
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      showConfirmation(payload.meta.capturedAt);
+    } catch (err: any) {
+      alert(`Webhook failed: ${err.message}`);
+    }
+  });
+
+  document.getElementById('resetForm')!.addEventListener('click', () => renderTrack(currentTrack));
+
+  document.getElementById('confReset')!.addEventListener('click', () => {
+    document.getElementById('confirmation')!.hidden = true;
+    renderTrack('research');
+  });
+
+  function showConfirmation(ts: string) {
+    const ref = `LDI-${ts.replace(/[:.TZ-]/g, '').slice(0, 14)}`;
+    document.getElementById('confRef')!.textContent = `Reference: ${ref}`;
+    document.getElementById('confirmation')!.hidden = false;
+    document.getElementById('confirmation')!.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  renderTrack('research');
+</script>

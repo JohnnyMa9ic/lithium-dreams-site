@@ -1,0 +1,357 @@
+---
+import WorkLayout from '../../components/WorkLayout.astro';
+---
+
+<WorkLayout title="LDI — Operational Systems Design" activePage="/work">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow mono">Operating Systems Design Company</div>
+    <h1 class="hero-headline">Operational Systems for Modern Organizations</h1>
+    <p class="hero-sub">We design systems that remove friction between people and meaningful work. AI is one of our tools — not our product.</p>
+    <div class="hero-actions">
+      <a href="/work/intake" class="btn-primary mono">Start a Mission</a>
+      <a href="/work/case-files" class="btn-ghost mono">Case Files</a>
+    </div>
+    <p class="hero-note mono text-dim">Automation begins only after understanding.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- How We Think -->
+  <section class="section">
+    <div class="section-label mono">How We Think</div>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="step-num mono">01</span>
+        <h3>Understand</h3>
+        <p>Every organization already has an operating system. It lives in spreadsheets, in one employee's head, or as tribal knowledge. We uncover it before we touch anything.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num mono">02</span>
+        <h3>Design</h3>
+        <p>We improve it, document it, and map the gaps. Structure before tools. Clarity before complexity.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num mono">03</span>
+        <h3>Build</h3>
+        <p>Then we build the infrastructure that allows it to scale. Maintainable systems. Human-centered automation. Work that outlives the people who started it.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Offer Lanes -->
+  <section class="section">
+    <div class="section-label mono">Operational Systems</div>
+    <h2 class="section-headline">What We Build</h2>
+    <div class="offer-grid">
+      <article class="offer-card">
+        <div class="offer-track mono">Research OS</div>
+        <h3>Knowledge Systems</h3>
+        <p>Ongoing monitoring, synthesis, and brief generation. Second brains, documentation, search, and institutional memory.</p>
+        <div class="offer-tag mono">Recurring</div>
+      </article>
+      <article class="offer-card">
+        <div class="offer-track mono">Content Engine</div>
+        <h3>Creative Systems</h3>
+        <p>Brand knowledge infrastructure, content pipelines, and long-form to short-form repurposing. Less manual work, more signal.</p>
+        <div class="offer-tag mono">Recurring</div>
+      </article>
+      <article class="offer-card">
+        <div class="offer-track mono">Local Business Ops</div>
+        <h3>Automation Systems</h3>
+        <p>Lead capture, response workflows, qualification, scheduling, and follow-up. AI where it earns its place.</p>
+        <div class="offer-tag mono">Retainer</div>
+      </article>
+      <article class="offer-card">
+        <div class="offer-track mono">Executive Assistant OS</div>
+        <h3>Operator Systems</h3>
+        <p>Inbox, calendar, summaries, meeting prep. Dashboards, mission control, and metrics for the solo operator.</p>
+        <div class="offer-tag mono">Retainer</div>
+      </article>
+      <article class="offer-card offer-card--wide">
+        <div class="offer-track mono">Technical Advisory</div>
+        <h3>Architecture & Implementation</h3>
+        <p>Stack assessment, agent design, integration mapping, and implementation guidance for organizations building serious operational infrastructure.</p>
+        <div class="offer-tag mono">Project</div>
+      </article>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Principles -->
+  <section class="section section--principles">
+    <div class="section-label mono">Design Principles</div>
+    <ul class="principles-list">
+      <li class="mono">Clarity over complexity</li>
+      <li class="mono">Systems over tools</li>
+      <li class="mono">Infrastructure over gimmicks</li>
+      <li class="mono">Knowledge should outlive employees</li>
+      <li class="mono">AI should reduce friction — not create it</li>
+      <li class="mono">Beautiful systems encourage adoption</li>
+    </ul>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="section section--cta">
+    <div class="cta-block">
+      <div class="cta-label mono">Ready to begin</div>
+      <h2>Start with a Mission Brief.</h2>
+      <p>A structured intake that replaces the vague discovery call. Takes 10 minutes. Gives us everything needed to scope a pilot and get started.</p>
+      <a href="/work/intake" class="btn-primary mono">Open Mission Intake →</a>
+    </div>
+  </section>
+</WorkLayout>
+
+<style>
+  /* ── Hero ── */
+  .hero {
+    padding: var(--space-xl) 0 var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 720px;
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .hero-headline {
+    font-family: var(--font-sub);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    color: var(--paper);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(232, 222, 200, 0.65);
+    max-width: 56ch;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+  }
+  .hero-note {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: rgba(232, 222, 200, 0.25);
+    margin: 0;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--ghost-blue);
+    color: var(--ldi-black);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover {
+    background: #6ccde6;
+    box-shadow: 0 0 20px rgba(77, 184, 212, 0.25);
+  }
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid var(--rain-slate);
+    color: rgba(232, 222, 200, 0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(232, 222, 200, 0.4);
+    color: var(--paper);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--rain-slate);
+    margin: var(--space-xl) 0;
+  }
+
+  /* ── Sections ── */
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .section-headline {
+    font-family: var(--font-sub);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--paper);
+    letter-spacing: 0.02em;
+    margin: 0;
+    margin-top: calc(-1 * var(--space-sm));
+  }
+
+  /* ── Process ── */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+  .process-step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+  }
+  .step-num {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--ghost-blue);
+  }
+  .process-step h3 {
+    font-family: var(--font-sub);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--paper);
+    margin: 0;
+    letter-spacing: 0.05em;
+  }
+  .process-step p {
+    font-size: 0.85rem;
+    color: rgba(232, 222, 200, 0.55);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Offer grid ── */
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  .offer-card {
+    padding: var(--space-lg);
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    transition: border-color 0.15s ease;
+  }
+  .offer-card:hover {
+    border-color: rgba(77, 184, 212, 0.3);
+  }
+  .offer-card--wide {
+    grid-column: 1 / -1;
+  }
+  .offer-track {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .offer-card h3 {
+    font-family: var(--font-sub);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--paper);
+    margin: 0;
+    letter-spacing: 0.04em;
+  }
+  .offer-card p {
+    font-size: 0.85rem;
+    color: rgba(232, 222, 200, 0.55);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+  .offer-tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--warden-teal);
+    text-transform: uppercase;
+    margin-top: var(--space-sm);
+  }
+
+  /* ── Principles ── */
+  .section--principles { gap: var(--space-md); }
+  .principles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .principles-list li {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: rgba(232, 222, 200, 0.5);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--rain-slate);
+  }
+  .principles-list li:last-child { border-bottom: none; }
+
+  /* ── CTA ── */
+  .section--cta { margin-bottom: var(--space-xl); }
+  .cta-block {
+    padding: var(--space-xl);
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .cta-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .cta-block h2 {
+    font-family: var(--font-sub);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 600;
+    color: var(--paper);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+  .cta-block p {
+    font-size: 0.9rem;
+    color: rgba(232, 222, 200, 0.55);
+    max-width: 52ch;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: var(--space-lg) 0; }
+    .process-grid { grid-template-columns: 1fr; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .offer-card--wide { grid-column: 1; }
+    .cta-block { padding: var(--space-lg); }
+  }
+</style>

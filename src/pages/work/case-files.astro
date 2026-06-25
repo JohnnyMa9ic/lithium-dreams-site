@@ -1,0 +1,103 @@
+---
+import WorkLayout from '../../components/WorkLayout.astro';
+import MaintenanceTag from '../../components/MaintenanceTag.astro';
+---
+
+<WorkLayout title="Case Files — LDI" activePage="/work/case-files">
+  <section class="page-section">
+    <div class="page-header">
+      <div class="page-eyebrow mono">Case Files</div>
+      <MaintenanceTag status="COMING SOON" size="md" />
+    </div>
+    <h1 class="page-headline">Deployment Stories</h1>
+    <p class="page-sub">We document real engagements as structured case files — not testimonials. Each file follows the same format: Challenge, Investigation, Design, Deployment, Outcome.</p>
+
+    <div class="placeholder-grid">
+      <div class="case-placeholder">
+        <span class="case-num mono">FILE — 001</span>
+        <span class="case-status mono text-dim">CASE PENDING CLASSIFICATION</span>
+      </div>
+      <div class="case-placeholder">
+        <span class="case-num mono">FILE — 002</span>
+        <span class="case-status mono text-dim">CASE PENDING CLASSIFICATION</span>
+      </div>
+      <div class="case-placeholder">
+        <span class="case-num mono">FILE — 003</span>
+        <span class="case-status mono text-dim">CASE PENDING CLASSIFICATION</span>
+      </div>
+    </div>
+
+    <p class="footer-note mono text-dim">First deployments in progress. Check back.</p>
+  </section>
+</WorkLayout>
+
+<style>
+  .page-section {
+    padding: var(--space-xl) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+  .page-headline {
+    font-family: var(--font-sub);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    color: var(--paper);
+    letter-spacing: 0.02em;
+    margin: 0;
+    margin-top: calc(-1 * var(--space-sm));
+  }
+  .page-sub {
+    font-size: 0.95rem;
+    color: rgba(232, 222, 200, 0.55);
+    max-width: 60ch;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .placeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+  .case-placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-xl) var(--space-lg);
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+    min-height: 160px;
+    justify-content: center;
+  }
+  .case-num {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(77, 184, 212, 0.4);
+    text-transform: uppercase;
+  }
+  .case-status {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .footer-note {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+  @media (max-width: 768px) {
+    .placeholder-grid { grid-template-columns: 1fr; }
+    .page-section { padding: var(--space-lg) 0; }
+  }
+</style>

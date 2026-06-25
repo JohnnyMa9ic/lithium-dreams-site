@@ -55,7 +55,7 @@ const navLinks = [
           </a>
         ))}
       </div>
-      <div class="nav-badge" aria-hidden="true">LDI</div>
+      <a href="/work" class="nav-badge" title="Lithium Dreams Industries — Work with us">LDI</a>
     </nav>
 
     <main class="page-content">
@@ -98,6 +98,12 @@ const navLinks = [
     border: 1px solid var(--rain-slate);
     padding: 0.2rem 0.5rem;
     line-height: 1;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-badge:hover {
+    color: var(--ghost-blue);
+    border-color: var(--ghost-blue);
   }
   .site-footer {
     padding: var(--space-lg);

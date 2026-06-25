@@ -1,0 +1,184 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  activePage?: string;
+}
+
+const {
+  title = 'Lithium Dreams Industries',
+  description = 'Operating Systems Design Company. We design systems that remove friction between people and meaningful work.',
+  activePage = '',
+} = Astro.props;
+
+const navLinks = [
+  { href: '/work', label: 'Overview' },
+  { href: '/work/intake', label: 'Mission Intake' },
+  { href: '/work/case-files', label: 'Case Files' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Oswald:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="work-body">
+    <nav class="work-nav">
+      <a href="/work" class="work-logo" aria-label="LDI Work">
+        <span class="work-logo-mark mono">LDI</span>
+        <span class="work-logo-name">Lithium Dreams Industries</span>
+      </a>
+      <div class="work-nav-links">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={activePage === link.href ? 'active' : ''}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <a href="/attraction" class="work-nav-escape mono">← The Attraction</a>
+    </nav>
+
+    <main class="work-content">
+      <slot />
+    </main>
+
+    <footer class="work-footer">
+      <div class="work-footer-inner">
+        <span class="mono">Lithium Dreams Industries</span>
+        <span class="text-dim">Operating Systems Design Company</span>
+        <a href="/attraction" class="mono text-dim work-footer-link">Visit the Attraction →</a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .work-body {
+    background: var(--ldi-black);
+    color: var(--paper);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Nav ── */
+  .work-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-md) var(--space-xl);
+    border-bottom: 1px solid var(--rain-slate);
+    position: sticky;
+    top: 0;
+    background: var(--ldi-black);
+    z-index: 10;
+  }
+
+  .work-logo {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    text-decoration: none;
+  }
+  .work-logo-mark {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--ghost-blue);
+    font-weight: 600;
+  }
+  .work-logo-name {
+    font-family: var(--font-sub);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: rgba(232, 222, 200, 0.5);
+    text-transform: uppercase;
+  }
+
+  .work-nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    margin-left: var(--space-lg);
+  }
+  .work-nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232, 222, 200, 0.45);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .work-nav-links a:hover,
+  .work-nav-links a.active {
+    color: var(--paper);
+  }
+  .work-nav-links a.active {
+    color: var(--ghost-blue);
+  }
+
+  .work-nav-escape {
+    margin-left: auto;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.25);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .work-nav-escape:hover { color: rgba(232, 222, 200, 0.6); }
+
+  /* ── Content ── */
+  .work-content {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── Footer ── */
+  .work-footer {
+    border-top: 1px solid var(--rain-slate);
+    padding: var(--space-lg) var(--space-xl);
+  }
+  .work-footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+  .work-footer-link {
+    margin-left: auto;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .work-footer-link:hover { color: var(--paper); }
+
+  @media (max-width: 768px) {
+    .work-nav { padding: var(--space-md); flex-wrap: wrap; gap: var(--space-sm); }
+    .work-nav-links { margin-left: 0; }
+    .work-nav-escape { display: none; }
+    .work-content { padding: var(--space-md); }
+    .work-footer { padding: var(--space-md); }
+  }
+</style>
