@@ -97,10 +97,22 @@ const navLinks = [
     text-decoration: none;
   }
   .work-logo-mark {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    color: var(--ghost-blue);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brass);
+    color: var(--ldi-black);
+    font-family: var(--font-sub);
+    font-size: 0.7rem;
     font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 0.35em 0.55em;
+    line-height: 1;
+    text-decoration: none;
+    transition: background var(--transition-fast);
+  }
+  .work-logo:hover .work-logo-mark {
+    background: #c9a050;
   }
   .work-logo-name {
     font-family: var(--font-sub);
@@ -129,7 +141,7 @@ const navLinks = [
     color: var(--paper);
   }
   .work-nav-links a.active {
-    color: var(--ghost-blue);
+    color: var(--brass);
   }
 
   .work-nav-escape {
