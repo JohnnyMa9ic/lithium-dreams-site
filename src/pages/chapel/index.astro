@@ -1,0 +1,70 @@
+---
+import Layout from '../../components/Layout.astro';
+import MuseumPlaque from '../../components/MuseumPlaque.astro';
+import MaintenanceTag from '../../components/MaintenanceTag.astro';
+import EmployeeNotice from '../../components/EmployeeNotice.astro';
+---
+
+<Layout title="Wedding Chapel — Lithium Dreams Industries" activePage="/chapel">
+  <div class="district-page">
+    <div class="district-header">
+      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <MaintenanceTag status="BY APPOINTMENT" size="md" />
+    </div>
+
+    <MuseumPlaque accession="CHPL-001" title="Roadside Wedding Chapel" subtitle="Open Tuesdays and Fridays. Do not ask about the back room." />
+
+    <div class="chapel-content">
+      <EmployeeNotice heading="Ceremony Packages" variant="info">
+        <p>Standard: $12 — includes ceremony, witness signature (one cryptid), and a laminated certificate.</p>
+        <p>Deluxe: $18 — includes above, plus use of the plastic flowers and two folding chairs.</p>
+        <p>The organ plays by itself. This is normal.</p>
+      </EmployeeNotice>
+
+      <div class="chapel-notice mono text-dim">
+        <p>// Appointments available Tuesdays and Fridays</p>
+        <p>// Please do not ask about the back room</p>
+        <p>// Rice provided. Cleanup is your responsibility.</p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .district-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .district-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.4);
+  }
+  .back-link:hover { color: var(--paper); }
+  .chapel-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .chapel-notice {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: var(--space-md);
+    border-left: 2px solid rgba(255,255,255,0.08);
+  }
+  @media (max-width: 600px) {
+    .district-page { padding: var(--space-md); }
+  }
+</style>

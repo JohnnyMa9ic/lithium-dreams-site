@@ -1,0 +1,65 @@
+---
+import Layout from '../components/Layout.astro';
+import MuseumPlaque from '../components/MuseumPlaque.astro';
+import MaintenanceTag from '../components/MaintenanceTag.astro';
+import EmployeeNotice from '../components/EmployeeNotice.astro';
+---
+
+<Layout title="Gift Shop — Lithium Dreams Industries" activePage="/gift-shop">
+  <div class="district-page">
+    <div class="district-header">
+      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <MaintenanceTag status="OPEN" size="md" />
+    </div>
+
+    <MuseumPlaque accession="GS-001" title="Gift Shop" subtitle="Souvenirs, field notes, stickers, and objects we are legally allowed to sell." />
+
+    <div class="district-content">
+      <EmployeeNotice heading="Notice to Visitors">
+        <p>The gift shop is open. The register is staffed by someone who has been here a very long time.</p>
+        <p>Please do not ask about the clearance bin in the back.</p>
+      </EmployeeNotice>
+
+      <div class="placeholder-shelf">
+        <p class="mono text-dim">// merchandise coming soon</p>
+        <p class="mono text-dim">// field notes · stickers · patches · realm records</p>
+        <p class="mono text-dim">// no refunds after portal exposure</p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .district-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .district-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.4);
+  }
+  .back-link:hover { color: var(--paper); }
+  .district-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .placeholder-shelf {
+    padding: var(--space-lg);
+    border: 1px dashed rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+  }
+</style>

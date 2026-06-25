@@ -1,0 +1,215 @@
+---
+import CRTFrame from '../../components/CRTFrame.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <title>— Cathedral of Glitch —</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; }
+
+      body {
+        background: #050810;
+        color: rgba(77, 184, 212, 0.7);
+        font-family: 'IBM Plex Mono', monospace;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Scanlines over everything */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          transparent 0px,
+          transparent 3px,
+          rgba(0,0,0,0.2) 3px,
+          rgba(0,0,0,0.2) 4px
+        );
+        pointer-events: none;
+        z-index: 100;
+      }
+
+      /* Containment tape */
+      .tape-h {
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 28px;
+        background: repeating-linear-gradient(
+          -45deg,
+          rgba(194, 59, 34, 0.4) 0px,
+          rgba(194, 59, 34, 0.4) 10px,
+          rgba(0,0,0,0.5) 10px,
+          rgba(0,0,0,0.5) 20px
+        );
+        border-top: 1px solid rgba(194,59,34,0.5);
+        border-bottom: 1px solid rgba(194,59,34,0.5);
+        z-index: 50;
+      }
+      .tape-top { top: 0; }
+      .tape-bottom { bottom: 0; }
+
+      .cathedral-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 4rem 2rem;
+        max-width: 580px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .cath-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.4em;
+        color: rgba(194, 59, 34, 0.7);
+        text-transform: uppercase;
+        border: 1px solid rgba(194,59,34,0.3);
+        padding: 0.3em 0.8em;
+      }
+
+      .cath-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        color: rgba(77, 184, 212, 0.25);
+        letter-spacing: 0.08em;
+        line-height: 1;
+        /* Glitch layers */
+        position: relative;
+      }
+
+      .cath-title::before,
+      .cath-title::after {
+        content: attr(data-text);
+        position: absolute;
+        inset: 0;
+        font-family: inherit;
+        font-size: inherit;
+        letter-spacing: inherit;
+      }
+      .cath-title::before {
+        color: rgba(194, 59, 34, 0.3);
+        animation: glitch-a 3s infinite;
+      }
+      .cath-title::after {
+        color: rgba(77, 184, 212, 0.2);
+        animation: glitch-b 4s infinite;
+      }
+
+      @keyframes glitch-a {
+        0%, 90%, 100% { transform: translate(0); clip-path: none; }
+        92% { transform: translate(-2px, 1px); clip-path: inset(10% 0 80% 0); }
+        94% { transform: translate(2px, -1px); clip-path: inset(60% 0 20% 0); }
+        96% { transform: translate(-1px, 0); clip-path: inset(40% 0 50% 0); }
+      }
+
+      @keyframes glitch-b {
+        0%, 85%, 100% { transform: translate(0); clip-path: none; }
+        87% { transform: translate(3px, -1px); clip-path: inset(30% 0 60% 0); }
+        89% { transform: translate(-2px, 1px); clip-path: inset(70% 0 10% 0); }
+      }
+
+      .cath-desc {
+        font-size: 0.82rem;
+        line-height: 1.8;
+        color: rgba(77, 184, 212, 0.45);
+        max-width: 420px;
+      }
+
+      .cath-exit {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        color: rgba(77, 184, 212, 0.25);
+        text-decoration: none;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(77, 184, 212, 0.15);
+        padding-bottom: 2px;
+        transition: color 0.15s, border-color 0.15s;
+      }
+      .cath-exit:hover {
+        color: rgba(77, 184, 212, 0.7);
+        border-color: rgba(77, 184, 212, 0.4);
+      }
+
+      /* Floating shards */
+      .shards {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 5;
+        overflow: hidden;
+      }
+      .shard {
+        position: absolute;
+        width: 1px;
+        background: rgba(77, 184, 212, 0.15);
+        transform-origin: top;
+        animation: shard-fall linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tape-h tape-top" aria-hidden="true"></div>
+    <div class="tape-h tape-bottom" aria-hidden="true"></div>
+    <div class="shards" id="shards" aria-hidden="true"></div>
+
+    <div class="cathedral-content">
+      <span class="cath-label">CONTAINMENT AREA — DO NOT ENTER</span>
+
+      <h1 class="cath-title" data-text="Cathedral of Glitch">Cathedral of Glitch</h1>
+
+      <CRTFrame label="ARCHIVED SIGNAL">
+        <p>This is where it went when it became too much of itself.</p>
+        <p>&nbsp;</p>
+        <p>Beautiful. Fractured. Dense. Cold. Abandoned.</p>
+        <p>&nbsp;</p>
+        <p>The Pantheon left because creativity needs breathing room.</p>
+        <p>The Crossroads exists because of what happened here.</p>
+        <p>&nbsp;</p>
+        <p>This record is sealed.</p>
+      </CRTFrame>
+
+      <a href="/chapel" class="cath-exit">← Return to the chapel</a>
+    </div>
+
+    <script>
+      // Generate floating glass-shard lines
+      const container = document.getElementById('shards');
+      if (container) {
+        for (let i = 0; i < 18; i++) {
+          const el = document.createElement('div');
+          el.className = 'shard';
+          el.style.left = `${Math.random() * 100}%`;
+          el.style.top = `${Math.random() * 100}%`;
+          el.style.height = `${30 + Math.random() * 80}px`;
+          el.style.opacity = String(0.1 + Math.random() * 0.3);
+          el.style.transform = `rotate(${-20 + Math.random() * 40}deg)`;
+          el.style.animationDuration = `${8 + Math.random() * 15}s`;
+          el.style.animationDelay = `${Math.random() * -10}s`;
+          container.appendChild(el);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+---
+import MaintenanceTag from './MaintenanceTag.astro';
+import type { District } from '../data/districts';
+
+interface Props {
+  district: District;
+}
+const { district } = Astro.props;
+const isLocked = district.status === 'RESTRICTED' || district.href === '#';
+---
+
+<a
+  href={isLocked ? undefined : district.href}
+  class:list={['district-card', { 'district-card--locked': isLocked }]}
+  role={isLocked ? 'presentation' : undefined}
+  tabindex={isLocked ? -1 : 0}
+>
+  <div class="card-header">
+    <span class="card-icon" aria-hidden="true">{district.icon}</span>
+    <span class="card-title">{district.title}</span>
+    <MaintenanceTag status={district.status} />
+  </div>
+  <div class="card-body">
+    <p class="card-desc">{district.description}</p>
+    <p class="card-micro">{district.microcopy}</p>
+  </div>
+</a>
+
+<style>
+  .district-card {
+    display: block;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-mid), box-shadow var(--transition-mid);
+    cursor: pointer;
+  }
+
+  .district-card:hover:not(.district-card--locked) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 0 1px rgba(232,164,32,0.3);
+  }
+
+  .district-card--locked {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--road-asphalt);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .card-icon {
+    font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    flex: 1;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+    background: var(--paper);
+    /* Ruled paper lines */
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 23px,
+      var(--paper-line) 23px,
+      var(--paper-line) 24px
+    );
+    line-height: 24px;
+  }
+
+  .card-desc {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: #2a2010;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-micro {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: rgba(60, 40, 10, 0.55);
+    font-style: italic;
+  }
+</style>

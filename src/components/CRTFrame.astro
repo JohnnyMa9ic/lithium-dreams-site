@@ -1,0 +1,115 @@
+---
+interface Props {
+  label?: string;
+  standby?: boolean;
+}
+const { label = 'TERMINAL', standby = false } = Astro.props;
+---
+
+<div class:list={['crt-frame', { 'crt-standby': standby }]}>
+  <div class="crt-header">
+    <span class="crt-label">{label}</span>
+    <span class="crt-dots">
+      <span></span><span></span><span></span>
+    </span>
+  </div>
+  <div class="crt-screen">
+    {standby && (
+      <div class="crt-standby-text">
+        <span>PLEASE STAND BY</span>
+        <span>PLEASE STAND BY</span>
+        <span>PLEASE STAND BY</span>
+      </div>
+    )}
+    <slot />
+    <div class="crt-scanline" aria-hidden="true"></div>
+  </div>
+</div>
+
+<style>
+  .crt-frame {
+    border: 1px solid rgba(77, 184, 212, 0.3);
+    background: #030508;
+    font-family: var(--font-mono);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.75rem;
+    background: rgba(77, 184, 212, 0.08);
+    border-bottom: 1px solid rgba(77, 184, 212, 0.2);
+  }
+
+  .crt-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--ghost-blue);
+    text-transform: uppercase;
+  }
+
+  .crt-dots {
+    display: flex;
+    gap: 4px;
+  }
+  .crt-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(77, 184, 212, 0.4);
+  }
+
+  .crt-screen {
+    padding: var(--space-md);
+    position: relative;
+    color: var(--ghost-blue);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .crt-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .crt-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(
+      transparent,
+      rgba(77, 184, 212, 0.04),
+      transparent
+    );
+    animation: crt-scan 4s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes crt-scan {
+    0%   { top: -40px; }
+    100% { top: 100%; }
+  }
+
+  .crt-standby-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    opacity: 0.4;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+  }
+</style>

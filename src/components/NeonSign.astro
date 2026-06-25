@@ -1,0 +1,61 @@
+---
+interface Props {
+  text: string;
+  color?: 'amber' | 'blue' | 'teal' | 'red';
+  flicker?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+const { text, color = 'amber', flicker = true, size = 'md' } = Astro.props;
+---
+
+<span class:list={['neon-sign', `neon-${color}`, `neon-${size}`, { 'neon-flicker': flicker }]}>
+  {text}
+</span>
+
+<style>
+  .neon-sign {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+
+  .neon-sm { font-size: 0.85rem; }
+  .neon-md { font-size: 1.5rem; }
+  .neon-lg { font-size: 3rem; }
+
+  .neon-amber {
+    color: var(--neon-amber);
+    text-shadow: 0 0 7px var(--neon-amber), 0 0 14px rgba(232, 164, 32, 0.5);
+  }
+  .neon-blue {
+    color: var(--ghost-blue);
+    text-shadow: 0 0 7px var(--ghost-blue), 0 0 14px rgba(77, 184, 212, 0.5);
+  }
+  .neon-teal {
+    color: var(--warden-teal);
+    text-shadow: 0 0 7px var(--warden-teal), 0 0 14px rgba(46, 139, 110, 0.5);
+  }
+  .neon-red {
+    color: var(--warning-red);
+    text-shadow: 0 0 7px var(--warning-red), 0 0 14px rgba(194, 59, 34, 0.5);
+  }
+
+  .neon-flicker.neon-amber {
+    animation: neon-flicker 8s infinite;
+  }
+
+  @keyframes neon-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      opacity: 1;
+      text-shadow: 0 0 7px var(--neon-amber),
+                   0 0 14px var(--neon-amber),
+                   0 0 30px rgba(232, 164, 32, 0.6);
+    }
+    20%, 24%, 55% {
+      opacity: 0.3;
+      text-shadow: none;
+    }
+  }
+</style>

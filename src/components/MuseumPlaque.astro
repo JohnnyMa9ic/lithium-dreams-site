@@ -1,0 +1,46 @@
+---
+interface Props {
+  accession?: string;
+  title: string;
+  subtitle?: string;
+}
+const { accession, title, subtitle } = Astro.props;
+---
+
+<div class="museum-plaque">
+  {accession && <span class="plaque-accession">ACC. {accession}</span>}
+  <h3 class="plaque-title">{title}</h3>
+  {subtitle && <p class="plaque-subtitle">{subtitle}</p>}
+  <slot />
+</div>
+
+<style>
+  .museum-plaque {
+    background: var(--road-asphalt);
+    border: 1px solid rgba(181, 137, 62, 0.3);
+    border-left: 3px solid var(--brass);
+    padding: var(--space-md) var(--space-lg);
+    position: relative;
+  }
+  .plaque-accession {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--brass);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .plaque-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--paper);
+    margin-bottom: 0.25rem;
+  }
+  .plaque-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: rgba(232, 222, 200, 0.55);
+    font-style: italic;
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import Layout from '../components/Layout.astro';
+import MaintenanceTag from '../components/MaintenanceTag.astro';
+import FortuneCard from '../components/FortuneCard.astro';
+import EmployeeNotice from '../components/EmployeeNotice.astro';
+
+const fortunes = [
+  "The answer is already on its way. It is traveling slowly, by choice.",
+  "You will make a decision. It will be the right one. It is also the wrong one. Congratulations.",
+  "Something you lost is not lost. It is waiting for you to stop looking.",
+  "The fog is not hiding anything. The fog is just the fog. You can relax.",
+  "Bob says this is probably fine.",
+  "Your next idea is better than your last one. Your last one was not bad. This is meant as encouragement.",
+];
+
+const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+---
+
+<Layout title="Bob's Fortune Emporium — Lithium Dreams Industries" activePage="/fortune">
+  <div class="district-page">
+    <div class="district-header">
+      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <MaintenanceTag status="UNSTABLE" size="md" />
+    </div>
+
+    <div class="emporium-header">
+      <h1 class="emporium-title">Bob's Fortune<br/>Emporium</h1>
+      <p class="emporium-sub mono text-dim">Temporarily sentient. Results vary. Bob is not liable.</p>
+    </div>
+
+    <EmployeeNotice heading="Machine Status" variant="caution">
+      <p>The cabinet is operational. The cabinet is also having a moment. Please insert your question and pull the lever.</p>
+      <p>Bob says this is probably fine.</p>
+    </EmployeeNotice>
+
+    <div class="fortune-display">
+      <FortuneCard fortune={randomFortune} number={String(Math.floor(Math.random() * 99) + 1).padStart(2, '0')} />
+    </div>
+
+    <p class="fortune-footer mono text-dim">
+      — Lever mechanism under maintenance. Fortune dispensed automatically. —
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .district-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: flex-start;
+  }
+  .district-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .back-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.4);
+  }
+  .back-link:hover { color: var(--paper); }
+  .emporium-header { display: flex; flex-direction: column; gap: 0.4rem; }
+  .emporium-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--neon-amber);
+    line-height: 1;
+  }
+  .emporium-sub { font-size: 0.75rem; letter-spacing: 0.12em; }
+  .fortune-display {
+    align-self: center;
+  }
+  .fortune-footer {
+    font-size: 0.65rem;
+    align-self: center;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+  @media (max-width: 600px) {
+    .district-page { padding: var(--space-md); }
+    .fortune-display { align-self: stretch; }
+  }
+</style>

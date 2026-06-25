@@ -1,0 +1,104 @@
+---
+import Layout from '../components/Layout.astro';
+import MuseumPlaque from '../components/MuseumPlaque.astro';
+import MaintenanceTag from '../components/MaintenanceTag.astro';
+import CRTFrame from '../components/CRTFrame.astro';
+---
+
+<Layout title="Arcade — Lithium Dreams Industries" activePage="/arcade">
+  <div class="district-page">
+    <div class="district-header">
+      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <MaintenanceTag status="FLICKERING" size="md" />
+    </div>
+
+    <MuseumPlaque accession="ARC-001" title="Arcade" subtitle="Project cabinets, experimental builds, and things that almost work." />
+
+    <div class="district-content">
+      <CRTFrame label="ARCADE DIRECTORY" standby={true}>
+        <p>Loading cabinet index...</p>
+        <p>Please do not unplug the cabinet in the corner.</p>
+      </CRTFrame>
+
+      <div class="cabinet-row">
+        <div class="cabinet-placeholder">
+          <span class="cabinet-label mono">CABINET 01</span>
+          <span class="cabinet-name">// PROJECT PENDING</span>
+          <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
+        </div>
+        <div class="cabinet-placeholder">
+          <span class="cabinet-label mono">CABINET 02</span>
+          <span class="cabinet-name">// PROJECT PENDING</span>
+          <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
+        </div>
+        <div class="cabinet-placeholder">
+          <span class="cabinet-label mono">CABINET 03</span>
+          <span class="cabinet-name">// PROJECT PENDING</span>
+          <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .district-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .district-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.4);
+  }
+  .back-link:hover { color: var(--paper); }
+  .district-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .cabinet-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+  .cabinet-placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: var(--space-lg) var(--space-md);
+    border: 1px solid rgba(255,255,255,0.07);
+    background: var(--road-asphalt);
+    min-height: 150px;
+    justify-content: center;
+  }
+  .cabinet-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(77, 184, 212, 0.5);
+    text-transform: uppercase;
+  }
+  .cabinet-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: rgba(232, 222, 200, 0.25);
+  }
+  .cabinet-status {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 600px) {
+    .cabinet-row { grid-template-columns: 1fr; }
+    .district-page { padding: var(--space-md); }
+  }
+</style>

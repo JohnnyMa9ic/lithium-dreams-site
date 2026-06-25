@@ -1,0 +1,83 @@
+---
+import Layout from '../components/Layout.astro';
+import MaintenanceTag from '../components/MaintenanceTag.astro';
+import MuseumPlaque from '../components/MuseumPlaque.astro';
+import EmployeeNotice from '../components/EmployeeNotice.astro';
+---
+
+<Layout title="The Crossroads — Lithium Dreams Industries" activePage="/crossroads">
+  <div class="crossroads-page">
+    <div class="crossroads-header">
+      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <MaintenanceTag status="COMING SOON" size="md" />
+    </div>
+
+    <div class="crossroads-intro">
+      <h1 class="crossroads-title">The Crossroads</h1>
+      <p class="crossroads-sub mono text-dim">
+        Where everything connects. Quiet, by design.
+      </p>
+    </div>
+
+    <MuseumPlaque
+      accession="LDI-DEEP-001"
+      title="The Crossroads"
+      subtitle="Deeper Lore Hub — Access Pending"
+    >
+      <p>This is the space that came after the Cathedral.</p>
+      <p>Breathing room. Roots instead of recursion.</p>
+      <p>&nbsp;</p>
+      <p>The Pantheon chose this place deliberately.</p>
+      <p>Creativity needs somewhere it can put its hands in the dirt.</p>
+    </MuseumPlaque>
+
+    <EmployeeNotice variant="info">
+      <strong>Status: Not yet open to the public.</strong><br />
+      The Crossroads is being prepared. Signage is going up.
+      The fog machine is calibrated. The groundskeeper has been briefed.<br />
+      <span class="mono text-dim" style="font-size: 0.75rem; display: block; margin-top: 0.5em;">
+        Do not attempt to access the Crossroads by walking directly through the back wall of the Arcade. This has not worked for anyone.
+      </span>
+    </EmployeeNotice>
+  </div>
+</Layout>
+
+<style>
+  .crossroads-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .crossroads-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.4);
+  }
+  .back-link:hover { color: var(--paper); }
+  .crossroads-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .crossroads-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--warden-teal);
+    line-height: 1;
+  }
+  .crossroads-sub {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+  @media (max-width: 600px) {
+    .crossroads-page { padding: var(--space-md); }
+  }
+</style>

@@ -1,0 +1,45 @@
+:root {
+  /* Core palette */
+  --ldi-black: #0A0A0C;
+  --road-asphalt: #1A1C1F;
+  --rain-slate: #2C3038;
+  --neon-amber: #E8A420;
+  --ghost-blue: #4DB8D4;
+  --warden-teal: #2E8B6E;
+  --moss-green: #4A6741;
+  --brass: #B5893E;
+  --paper: #E8DEC8;
+  --warning-red: #C23B22;
+
+  /* Derived */
+  --amber-dim: #9A6B10;
+  --amber-glow: rgba(232, 164, 32, 0.25);
+  --paper-dark: #C8B898;
+  --paper-line: rgba(0, 0, 0, 0.12);
+
+  /* Typography */
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-sub: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Borders */
+  --border-faint: 1px solid rgba(255, 255, 255, 0.08);
+  --border-amber: 1px solid var(--amber-dim);
+  --border-paper: 1px solid var(--paper-dark);
+
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-neon-amber: 0 0 8px var(--neon-amber), 0 0 20px var(--amber-glow);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-mid: 0.25s ease;
+}

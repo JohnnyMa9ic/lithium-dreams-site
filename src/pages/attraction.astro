@@ -1,0 +1,218 @@
+---
+import Layout from '../components/Layout.astro';
+import DistrictCard from '../components/DistrictCard.astro';
+import { districts } from '../data/districts';
+
+const midwayDistricts = districts;
+---
+
+<Layout title="Main Midway — Lithium Dreams Industries" activePage="/attraction">
+
+  <!-- Panoramic Midway scene — each sign is a hotspot link -->
+  <section class="midway-panorama" aria-label="Midway district map">
+    <div class="panorama-wrap">
+      <img
+        src="/images/midway-panorama.jpg"
+        alt="The Midway — a rain-slicked courtyard at night surrounded by neon signs for each district"
+        class="panorama-img"
+        width="1200"
+        height="630"
+      />
+
+      <!-- Hotspot links over each sign, percentage-positioned -->
+      <!-- GIFT SHOP — left panel -->
+      <a href="/gift-shop" class="hotspot" style="left:2.5%; top:8%; width:16%; height:65%;" aria-label="Gift Shop">
+        <span class="hotspot-label">Gift Shop</span>
+      </a>
+
+      <!-- BOB'S FORTUNE EMPORIUM -->
+      <a href="/fortune" class="hotspot" style="left:20%; top:8%; width:15%; height:58%;" aria-label="Bob's Fortune Emporium">
+        <span class="hotspot-label">Fortune Emporium</span>
+      </a>
+
+      <!-- ARCADE — center marquee -->
+      <a href="/arcade" class="hotspot" style="left:36%; top:3%; width:22%; height:65%;" aria-label="Arcade">
+        <span class="hotspot-label">Arcade</span>
+      </a>
+
+      <!-- MUSEUM -->
+      <a href="/museum" class="hotspot" style="left:59%; top:8%; width:14%; height:58%;" aria-label="Museum">
+        <span class="hotspot-label">Museum</span>
+      </a>
+
+      <!-- SNACK COUNTER -->
+      <a href="#" class="hotspot hotspot--locked" style="left:72%; top:5%; width:14%; height:52%;" aria-label="Snack Counter — coming soon">
+        <span class="hotspot-label">Snack Counter</span>
+      </a>
+
+      <!-- LDI 1957 badge — top right -->
+      <a href="/" class="hotspot" style="right:1%; top:2%; width:8%; height:20%;" aria-label="LDI — Home">
+        <span class="hotspot-label">Home</span>
+      </a>
+
+      <!-- LOST & LOST & FOUND — lower left -->
+      <a href="#" class="hotspot hotspot--locked" style="left:1.5%; top:60%; width:14%; height:32%;" aria-label="Lost & Found — coming soon">
+        <span class="hotspot-label">Lost &amp; Found</span>
+      </a>
+
+      <!-- WEDDING CHAPEL — lower center-right -->
+      <a href="/chapel" class="hotspot" style="left:57%; top:58%; width:18%; height:36%;" aria-label="Wedding Chapel">
+        <span class="hotspot-label">Wedding Chapel</span>
+      </a>
+
+      <!-- EMPLOYEES ONLY — far right -->
+      <a href="/employees-only" class="hotspot" style="left:76%; top:38%; width:14%; height:42%;" aria-label="Employees Only">
+        <span class="hotspot-label">Employees Only</span>
+      </a>
+
+      <!-- YOU ARE HERE floor mosaic — cosmetic, no link -->
+      <div class="you-are-here" aria-hidden="true">YOU ARE HERE</div>
+    </div>
+
+    <div class="panorama-fade" aria-hidden="true"></div>
+  </section>
+
+  <!-- District grid -->
+  <section class="midway-grid-section">
+    <p class="midway-eyebrow mono">District Directory</p>
+    <div class="midway-grid">
+      {midwayDistricts.map(district => (
+        <DistrictCard district={district} />
+      ))}
+    </div>
+    <p class="midway-footer mono text-dim">
+      Additional districts are indicated by the arrows. The arrows are correct. Probably.
+    </p>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Panorama section ── */
+  .midway-panorama {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .panorama-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .panorama-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Hotspot transparent overlay links */
+  .hotspot {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 4%;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: background 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .hotspot:hover {
+    background: rgba(232, 164, 32, 0.08);
+    border-color: rgba(232, 164, 32, 0.35);
+  }
+
+  .hotspot--locked:hover {
+    background: rgba(44, 48, 56, 0.2);
+    border-color: rgba(232, 222, 200, 0.15);
+    cursor: not-allowed;
+  }
+
+  .hotspot-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(232, 164, 32, 0);  /* invisible by default */
+    background: rgba(4, 7, 14, 0.7);
+    padding: 2px 6px;
+    border-radius: 1px;
+    white-space: nowrap;
+    transition: color 0.15s;
+    pointer-events: none;
+  }
+
+  .hotspot:hover .hotspot-label {
+    color: var(--neon-amber);
+  }
+
+  .hotspot--locked:hover .hotspot-label {
+    color: rgba(232, 222, 200, 0.4);
+  }
+
+  /* YOU ARE HERE floor text */
+  .you-are-here {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: clamp(0.5rem, 1vw, 0.75rem);
+    letter-spacing: 0.4em;
+    color: rgba(232, 164, 32, 0.25);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* Gradient fade into page background */
+  .panorama-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    background: linear-gradient(transparent, var(--ldi-black));
+    pointer-events: none;
+  }
+
+  /* ── Grid section ── */
+  .midway-grid-section {
+    padding: var(--space-xl);
+    padding-top: var(--space-lg);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .midway-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--neon-amber);
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+  }
+
+  .midway-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .midway-footer {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .midway-grid-section { padding: var(--space-md); }
+    .midway-grid { grid-template-columns: 1fr; }
+    /* On mobile, panorama is short — hotspot labels always visible */
+    .hotspot-label { color: rgba(232, 164, 32, 0.4); }
+  }
+</style>

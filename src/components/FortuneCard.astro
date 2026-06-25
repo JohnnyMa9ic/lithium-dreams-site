@@ -1,0 +1,82 @@
+---
+interface Props {
+  fortune?: string;
+  number?: string;
+}
+const {
+  fortune = 'The answer is already on its way. It is traveling slowly, by choice.',
+  number = '??',
+} = Astro.props;
+---
+
+<div class="fortune-card">
+  <div class="fortune-header">
+    <span class="fortune-label">FORTUNE</span>
+    <span class="fortune-number">#{number}</span>
+  </div>
+  <div class="fortune-body">
+    <p class="fortune-text">{fortune}</p>
+  </div>
+  <div class="fortune-footer">
+    <span class="mono text-dim" style="font-size:0.6rem;">BOB'S FORTUNE EMPORIUM — EST. PROBABLY</span>
+  </div>
+</div>
+
+<style>
+  .fortune-card {
+    max-width: 320px;
+    background: var(--paper);
+    border: 1px solid var(--paper-dark);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    font-family: var(--font-body);
+    position: relative;
+  }
+  .fortune-card::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 1px dashed var(--brass);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .fortune-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.75rem;
+    background: var(--brass);
+    border-bottom: 1px solid var(--paper-dark);
+  }
+  .fortune-label {
+    font-family: var(--font-sub);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--ldi-black);
+    text-transform: uppercase;
+  }
+  .fortune-number {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(10,10,12,0.6);
+  }
+  .fortune-body {
+    padding: 1rem 0.75rem;
+  }
+  .fortune-text {
+    font-size: 0.9rem;
+    color: #2a1e08;
+    line-height: 1.6;
+    font-style: italic;
+    text-align: center;
+  }
+  .fortune-footer {
+    padding: 0.4rem 0.75rem;
+    border-top: 1px dashed var(--paper-dark);
+    text-align: center;
+    background: rgba(181, 137, 62, 0.1);
+  }
+</style>

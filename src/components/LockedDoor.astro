@@ -1,0 +1,66 @@
+---
+interface Props {
+  message?: string;
+  badgeText?: string;
+}
+const {
+  message = 'Authorized personnel and authorized cryptids only.',
+  badgeText = 'STAFF ONLY',
+} = Astro.props;
+---
+
+<div class="locked-door">
+  <div class="door-badge">{badgeText}</div>
+  <div class="door-icon" aria-hidden="true">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="12" y="20" width="24" height="20" rx="1" stroke="currentColor" stroke-width="2"/>
+      <path d="M17 20V15a7 7 0 0 1 14 0v5" stroke="currentColor" stroke-width="2"/>
+      <circle cx="24" cy="31" r="2.5" fill="currentColor"/>
+    </svg>
+  </div>
+  <p class="door-msg">{message}</p>
+  <a href="/" class="door-back">← Return to Midway</a>
+</div>
+
+<style>
+  .locked-door {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    max-width: 400px;
+    margin: var(--space-xl) auto;
+    text-align: center;
+  }
+  .door-badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--warning-red);
+    border: 1px solid var(--warning-red);
+    padding: 0.3em 0.8em;
+    text-transform: uppercase;
+  }
+  .door-icon {
+    color: rgba(232, 222, 200, 0.2);
+    margin: var(--space-md) 0;
+  }
+  .door-msg {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: rgba(232, 222, 200, 0.5);
+    font-style: italic;
+  }
+  .door-back {
+    font-family: var(--font-sub);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 164, 32, 0.6);
+    margin-top: var(--space-md);
+  }
+  .door-back:hover {
+    color: var(--neon-amber);
+  }
+</style>

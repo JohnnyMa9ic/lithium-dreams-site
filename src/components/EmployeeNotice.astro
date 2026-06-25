@@ -1,0 +1,76 @@
+---
+interface Props {
+  heading?: string;
+  variant?: 'caution' | 'info' | 'danger';
+}
+const { heading = 'ATTENTION', variant = 'caution' } = Astro.props;
+---
+
+<div class:list={['employee-notice', `notice--${variant}`]}>
+  <div class="notice-header">
+    <span class="notice-heading">{heading}</span>
+    <span class="notice-stripe" aria-hidden="true"></span>
+  </div>
+  <div class="notice-body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .employee-notice {
+    max-width: 480px;
+    border: 2px solid;
+    font-family: var(--font-body);
+  }
+
+  .notice--caution {
+    border-color: var(--neon-amber);
+  }
+  .notice--info {
+    border-color: var(--ghost-blue);
+  }
+  .notice--danger {
+    border-color: var(--warning-red);
+  }
+
+  .notice-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.5rem 0.75rem;
+  }
+  .notice--caution .notice-header { background: var(--neon-amber); }
+  .notice--info    .notice-header { background: var(--ghost-blue); }
+  .notice--danger  .notice-header { background: var(--warning-red); }
+
+  .notice-heading {
+    font-family: var(--font-sub);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--ldi-black);
+    text-transform: uppercase;
+    flex: 1;
+  }
+
+  .notice-stripe {
+    width: 60px;
+    height: 12px;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--ldi-black) 0px,
+      var(--ldi-black) 3px,
+      transparent 3px,
+      transparent 6px
+    );
+    opacity: 0.3;
+  }
+
+  .notice-body {
+    padding: 0.75rem;
+    background: var(--road-asphalt);
+    font-size: 0.85rem;
+    color: rgba(232, 222, 200, 0.8);
+    line-height: 1.6;
+  }
+</style>

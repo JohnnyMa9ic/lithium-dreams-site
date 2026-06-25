@@ -1,0 +1,53 @@
+---
+import type { StatusTag } from '../data/districts';
+
+interface Props {
+  status: StatusTag;
+  size?: 'sm' | 'md';
+}
+const { status, size = 'sm' } = Astro.props;
+
+const statusClass: Record<StatusTag, string> = {
+  'OPEN':           'tag--open',
+  'FLICKERING':     'tag--flickering',
+  'STAFF ONLY':     'tag--staff',
+  'UNDER REPAIR':   'tag--repair',
+  'BY APPOINTMENT': 'tag--appt',
+  'RESTRICTED':     'tag--restricted',
+  'COMING SOON':    'tag--soon',
+  'ARCHIVED':       'tag--archived',
+  'UNSTABLE':       'tag--unstable',
+};
+---
+
+<span class:list={['maintenance-tag', statusClass[status], `tag-size--${size}`]}>
+  {status}
+</span>
+
+<style>
+  .maintenance-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2em 0.5em;
+    border-radius: 0;
+    white-space: nowrap;
+  }
+  .tag-size--md {
+    font-size: 0.75rem;
+    padding: 0.3em 0.75em;
+  }
+
+  .tag--open       { background: var(--warden-teal);  color: var(--ldi-black); }
+  .tag--flickering { background: var(--neon-amber);   color: var(--ldi-black); }
+  .tag--staff      { background: var(--rain-slate);   color: var(--paper); border: 1px solid rgba(255,255,255,0.2); }
+  .tag--repair     { background: var(--warning-red);  color: var(--paper); }
+  .tag--appt       { background: var(--brass);        color: var(--ldi-black); }
+  .tag--restricted { background: var(--ldi-black);    color: var(--warning-red); border: 1px solid var(--warning-red); }
+  .tag--soon       { background: var(--rain-slate);   color: rgba(232, 222, 200, 0.5); border: 1px solid rgba(255,255,255,0.1); }
+  .tag--archived   { background: var(--road-asphalt); color: rgba(232, 222, 200, 0.4); }
+  .tag--unstable   { background: var(--ghost-blue);   color: var(--ldi-black); }
+</style>

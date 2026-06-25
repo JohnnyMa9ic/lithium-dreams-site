@@ -1,0 +1,396 @@
+---
+import Layout from '../components/Layout.astro';
+import TicketButton from '../components/TicketButton.astro';
+---
+
+<Layout title="Lithium Dreams Industries — The Last Roadside Attraction" activePage="/">
+  <section class="front-gate">
+
+    <!-- Full-bleed background: swap for AI-generated hero-front-gate.jpg when ready -->
+    <div class="gate-bg" aria-hidden="true">
+      <canvas id="rain-canvas"></canvas>
+      <!-- Placeholder sign scene — replaced by hero image -->
+      <div class="gate-sign-placeholder">
+        <span class="sign-sub">The Last</span>
+        <span class="sign-main">Roadside</span>
+        <span class="sign-main">Attraction</span>
+        <div class="sign-marquee">
+          <span>Cryptids &middot; Arcade &middot; Gift Shop</span>
+          <span>Weddings Tues &amp; Fri</span>
+        </div>
+      </div>
+      <!-- Ambient right-side billboards (text only placeholders) -->
+      <div class="billboard billboard--left" aria-hidden="true">
+        <span>BIGFOOT</span>
+        <span>NEXT EXIT →</span>
+      </div>
+      <div class="billboard billboard--right" aria-hidden="true">
+        <span>SEE</span>
+        <span>MOTHMAN</span>
+        <span>museum</span>
+      </div>
+      <div class="gate-fog" aria-hidden="true"></div>
+    </div>
+
+    <!-- Left overlay panel -->
+    <div class="gate-panel">
+      <div class="panel-brand">
+        <p class="brand-name">Lithium Dreams<br/>Industries</p>
+        <p class="brand-sub">The Last Roadside Attraction</p>
+      </div>
+
+      <ul class="panel-districts" aria-label="Districts">
+        <li>Cryptids.</li>
+        <li>Arcade.</li>
+        <li>Gift Shop.</li>
+        <li>Weddings Tuesdays &amp; Fridays.</li>
+      </ul>
+
+      <hr class="panel-rule" />
+
+      <p class="panel-tagline">
+        Words is welcome.<br/>
+        Curiosity is required.<br/>
+        Coffee is terrible.
+      </p>
+
+      <div class="panel-cta">
+        <TicketButton href="/attraction" label="Enter the Attraction" />
+      </div>
+
+      <p class="panel-micro">Mind the puddles.</p>
+    </div>
+
+    <!-- Bottom status strip -->
+    <div class="gate-statusbar" aria-hidden="true">
+      <span>Maintenance has already been notified.</span>
+      <span>Extraterrestrial parking has moved behind the chapel.</span>
+      <span>Please remain on the path.</span>
+    </div>
+
+  </section>
+</Layout>
+
+<style>
+  /* ─── Gate section fills viewport ─────────────────────────────── */
+  .front-gate {
+    position: relative;
+    min-height: calc(100vh - 56px);
+    overflow: hidden;
+  }
+
+  /* ─── Background scene ─────────────────────────────────────────── */
+  .gate-bg {
+    position: absolute;
+    inset: 0;
+    /*
+      When hero-front-gate.jpg is ready, replace the gradient with:
+      background-image: url('/images/hero-front-gate.jpg');
+      background-size: cover;
+      background-position: center;
+    */
+    background:
+      radial-gradient(ellipse at 55% 45%, rgba(232, 164, 32, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 70%, rgba(180, 120, 20, 0.07) 0%, transparent 40%),
+      radial-gradient(ellipse at 30% 20%, rgba(20, 30, 50, 0.5) 0%, transparent 50%),
+      linear-gradient(175deg, #04070e 0%, #080d16 35%, #0c1018 65%, #0a0c10 100%);
+  }
+
+  /* Rain canvas overlay */
+  #rain-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.7;
+  }
+
+  /* CSS sign placeholder — hidden once hero image is available */
+  .gate-sign-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .sign-sub {
+    font-family: var(--font-sub);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    color: rgba(232, 164, 32, 0.6);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .sign-main {
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem, 9vw, 9rem);
+    color: var(--neon-amber);
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    text-shadow:
+      0 0 30px rgba(232, 164, 32, 0.6),
+      0 0 80px rgba(232, 164, 32, 0.2),
+      3px 3px 0 rgba(0,0,0,0.9);
+  }
+
+  .sign-marquee {
+    margin-top: 0.75rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(232, 164, 32, 0.35);
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+  }
+
+  .sign-marquee span {
+    font-family: var(--font-sub);
+    font-size: clamp(0.65rem, 1vw, 0.9rem);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(232, 222, 200, 0.65);
+    text-transform: uppercase;
+  }
+
+  /* Billboard placeholders */
+  .billboard {
+    position: absolute;
+    z-index: 2;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    border: 2px solid rgba(255,255,255,0.12);
+    padding: 0.5rem 0.75rem;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .billboard--left {
+    left: 8%;
+    transform: rotate(-2deg);
+  }
+
+  .billboard--right {
+    right: 5%;
+    transform: rotate(1.5deg);
+  }
+
+  .billboard span {
+    font-family: var(--font-display);
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.5);
+    text-transform: uppercase;
+  }
+
+  /* Ground fog */
+  .gate-fog {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(transparent, rgba(4, 7, 14, 0.85));
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ─── Left panel ─────────────────────────────────────────────────── */
+  .gate-panel {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 56px - 40px);
+    width: min(380px, 38vw);
+    padding: var(--space-xl) var(--space-xl) var(--space-lg);
+    background: linear-gradient(
+      to right,
+      rgba(4, 7, 14, 0.96) 0%,
+      rgba(4, 7, 14, 0.88) 70%,
+      rgba(4, 7, 14, 0.0) 100%
+    );
+    gap: var(--space-lg);
+  }
+
+  .panel-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: var(--paper);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-sub {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--neon-amber);
+    text-transform: uppercase;
+  }
+
+  .panel-districts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .panel-districts li {
+    font-family: var(--font-sub);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(232, 222, 200, 0.45);
+    text-transform: uppercase;
+  }
+
+  .panel-rule {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 0;
+  }
+
+  .panel-tagline {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: rgba(232, 222, 200, 0.7);
+    line-height: 1.7;
+  }
+
+  .panel-cta {
+    display: flex;
+  }
+
+  .panel-micro {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(232, 222, 200, 0.25);
+    letter-spacing: 0.1em;
+    margin-top: calc(-1 * var(--space-sm));
+  }
+
+  /* ─── Status bar ─────────────────────────────────────────────────── */
+  .gate-statusbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-lg);
+    background: rgba(4, 7, 14, 0.85);
+    border-top: var(--border-faint);
+    overflow: hidden;
+  }
+
+  .gate-statusbar span {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(232, 222, 200, 0.25);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ─── Responsive ─────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .gate-panel {
+      width: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(4, 7, 14, 0.0) 0%,
+        rgba(4, 7, 14, 0.97) 40%,
+        rgba(4, 7, 14, 1) 100%
+      );
+      justify-content: flex-end;
+      padding: var(--space-lg);
+      min-height: 0;
+    }
+
+    .front-gate {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gate-bg {
+      position: relative;
+      height: 60vw;
+      min-height: 280px;
+    }
+
+    .gate-sign-placeholder {
+      top: 45%;
+      left: 50%;
+    }
+
+    .billboard { display: none; }
+    .gate-statusbar span:not(:first-child) { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .brand-name { font-size: 2rem; }
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('rain-canvas') as HTMLCanvasElement | null;
+  if (canvas) {
+    const ctx = canvas.getContext('2d')!;
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const drops = Array.from({ length: 160 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      len: 8 + Math.random() * 20,
+      speed: 5 + Math.random() * 9,
+      opacity: 0.12 + Math.random() * 0.38,
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drops.forEach(d => {
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x - d.len * 0.1, d.y + d.len);
+        ctx.strokeStyle = `rgba(100, 140, 200, ${d.opacity})`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+        d.y += d.speed;
+        d.x -= d.speed * 0.08;
+        if (d.y > canvas.height || d.x < 0) {
+          d.y = -d.len;
+          d.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+</script>

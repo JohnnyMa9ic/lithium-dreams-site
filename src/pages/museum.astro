@@ -1,0 +1,84 @@
+---
+import Layout from '../components/Layout.astro';
+import MuseumPlaque from '../components/MuseumPlaque.astro';
+import MaintenanceTag from '../components/MaintenanceTag.astro';
+---
+
+<Layout title="Museum — Lithium Dreams Industries" activePage="/museum">
+  <div class="district-page">
+    <div class="district-header">
+      <a href="/attraction" class="back-link mono">← Back to Midway</a>
+      <MaintenanceTag status="OPEN" size="md" />
+    </div>
+
+    <MuseumPlaque accession="MUS-001" title="Museum of Ongoing Events" subtitle="Curated case files, lore fragments, and a timeline we are still reconstructing." />
+
+    <div class="velvet-rope-notice mono text-dim">
+      — Please do not tap the glass. The glass is aware of you. —
+    </div>
+
+    <div class="exhibit-grid">
+      <div class="exhibit-case">
+        <MuseumPlaque accession="MUS-002" title="Case File: Origin" subtitle="Circumstances of founding — incomplete." />
+        <div class="case-status mono text-dim">// exhibit being prepared</div>
+      </div>
+      <div class="exhibit-case">
+        <MuseumPlaque accession="MUS-003" title="The Crossroads Incident" subtitle="A record of what was left behind and why." />
+        <div class="case-status mono text-dim">// access pending</div>
+      </div>
+      <div class="exhibit-case">
+        <MuseumPlaque accession="MUS-004" title="Field Reports" subtitle="Ongoing documentation from active operatives." />
+        <div class="case-status mono text-dim">// exhibits rotating</div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .district-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .district-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.4);
+  }
+  .back-link:hover { color: var(--paper); }
+  .velvet-rope-notice {
+    font-size: 0.7rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    padding: var(--space-sm) 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .exhibit-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .exhibit-case {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .case-status {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    padding-left: var(--space-md);
+    text-transform: uppercase;
+  }
+  @media (max-width: 600px) {
+    .district-page { padding: var(--space-md); }
+  }
+</style>
