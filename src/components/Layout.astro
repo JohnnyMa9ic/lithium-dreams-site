@@ -108,16 +108,19 @@ const navLinks = [
     font-family: var(--font-display);
     font-size: 1.1rem;
     letter-spacing: 0.12em;
-    color: var(--rain-slate);
-    border: 1px solid var(--rain-slate);
+    color: var(--neon-amber);
+    border: 1px solid var(--neon-amber);
     padding: 0.2rem 0.5rem;
     line-height: 1;
     text-decoration: none;
-    transition: color 0.2s, border-color 0.2s;
+    box-shadow: 0 0 6px var(--amber-glow);
+    transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
   }
   .nav-badge:hover {
-    color: var(--ghost-blue);
-    border-color: var(--ghost-blue);
+    background: var(--neon-amber);
+    color: var(--ldi-black);
+    border-color: var(--neon-amber);
+    box-shadow: 0 0 14px var(--amber-glow);
   }
   .site-footer {
     padding: var(--space-lg);
