@@ -21,7 +21,10 @@ import CRTFrame from '../../components/CRTFrame.astro';
       html, body { height: 100%; }
 
       body {
-        background: #050810;
+        background-color: #050810;
+        background-image: url('/cathedral-hero.png');
+        background-size: cover;
+        background-position: center;
         color: rgba(77, 184, 212, 0.7);
         font-family: 'IBM Plex Mono', monospace;
         min-height: 100vh;
@@ -31,6 +34,14 @@ import CRTFrame from '../../components/CRTFrame.astro';
         justify-content: center;
         position: relative;
         overflow: hidden;
+      }
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 8, 16, 0.82);
+        pointer-events: none;
+        z-index: 1;
       }
 
       /* Scanlines over everything */

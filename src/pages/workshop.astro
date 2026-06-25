@@ -5,6 +5,9 @@ import CRTFrame from '../components/CRTFrame.astro';
 ---
 
 <Layout title="Ghost's Workshop — Lithium Dreams Industries" activePage="/workshop">
+  <div class="page-hero" style="background-image: url('/workshop-hero.png')">
+    <div class="page-hero-fade"></div>
+  </div>
   <div class="district-page">
     <div class="district-header">
       <a href="/attraction" class="back-link mono">← Back to Midway</a>
@@ -49,6 +52,22 @@ import CRTFrame from '../components/CRTFrame.astro';
 </Layout>
 
 <style>
+  .page-hero {
+    width: 100%;
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .page-hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom, transparent, var(--ldi-black));
+  }
+
   .district-page {
     max-width: 800px;
     margin: 0 auto;
