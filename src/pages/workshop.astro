@@ -2,7 +2,6 @@
 import Layout from '../components/Layout.astro';
 import MaintenanceTag from '../components/MaintenanceTag.astro';
 import CRTFrame from '../components/CRTFrame.astro';
-import LockedDoor from '../components/LockedDoor.astro';
 ---
 
 <Layout title="Ghost's Workshop — Lithium Dreams Industries" activePage="/workshop">
@@ -16,20 +15,36 @@ import LockedDoor from '../components/LockedDoor.astro';
     <p class="workshop-sub mono text-dim">Operational infrastructure. Precision. Routing. Not decorative.</p>
 
     <CRTFrame label="SYSTEM STATUS">
-      <p>Ghost's Workshop is the real engine.</p>
+      <p>Hermes gateway — <span class="status-green">active</span></p>
+      <p>Signal routing — <span class="status-green">active</span></p>
+      <p>BrainLab infrastructure — <span class="status-green">active</span></p>
+      <p>Bob engine — <span class="status-green">active</span></p>
       <p>&nbsp;</p>
-      <p>Hermes gateway — active.</p>
-      <p>Signal routing — active.</p>
-      <p>BrainLab infrastructure — active.</p>
-      <p>&nbsp;</p>
-      <p>This area is for operational staff only.</p>
-      <p>The cold coffee on the rack is Ghost's. Do not touch it.</p>
+      <p class="text-dim">The cold coffee on the rack is Ghost's. Do not touch it.</p>
     </CRTFrame>
 
-    <LockedDoor
-      message="This section requires operational credentials. Ghost is aware of your visit."
-      badgeText="STAFF ONLY"
-    />
+    <!-- Access terminal -->
+    <div class="access-terminal">
+      <div class="terminal-header mono">
+        <span class="terminal-label">BADGE READER — SECTOR 7</span>
+        <span class="terminal-dot terminal-dot--green"></span>
+      </div>
+
+      <div class="terminal-body">
+        <p class="terminal-line mono">Authorized personnel only beyond this point.</p>
+        <p class="terminal-line mono text-dim">Credential verification required. Ghost is watching.</p>
+
+        <a href="https://cc.lithium-dreams.com/app/" class="enter-btn" id="enter-btn">
+          <span class="enter-btn-label">ENTER WORKSHOP</span>
+          <span class="enter-btn-arrow">→</span>
+        </a>
+
+        <p class="terminal-footer mono text-dim">
+          Access is logged. Unauthorized entry triggers the Warden.
+        </p>
+      </div>
+    </div>
+
   </div>
 </Layout>
 
@@ -42,28 +57,125 @@ import LockedDoor from '../components/LockedDoor.astro';
     flex-direction: column;
     gap: var(--space-lg);
   }
+
   .district-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+
   .back-link {
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     color: rgba(232, 222, 200, 0.4);
+    text-decoration: none;
   }
   .back-link:hover { color: var(--paper); }
+
   .workshop-title {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 5vw, 4rem);
     color: var(--ghost-blue);
     line-height: 1;
   }
+
   .workshop-sub {
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     margin-top: calc(-1 * var(--space-sm));
   }
+
+  .status-green { color: #4ade80; }
+
+  /* ── Access terminal ── */
+  .access-terminal {
+    border: 1px solid rgba(100, 180, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: rgba(100, 180, 255, 0.06);
+    border-bottom: 1px solid rgba(100, 180, 255, 0.15);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--ghost-blue);
+  }
+
+  .terminal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .terminal-dot--green {
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+  }
+
+  .terminal-body {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .terminal-line {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: rgba(232, 222, 200, 0.6);
+    margin: 0;
+  }
+
+  /* Enter button */
+  .enter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--ghost-blue);
+    border-radius: 2px;
+    text-decoration: none;
+    background: transparent;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    align-self: flex-start;
+    margin-top: var(--space-sm);
+  }
+
+  .enter-btn:hover {
+    background: rgba(100, 180, 255, 0.08);
+    border-color: rgba(100, 180, 255, 0.7);
+    box-shadow: 0 0 16px rgba(100, 180, 255, 0.15);
+  }
+
+  .enter-btn-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ghost-blue);
+  }
+
+  .enter-btn-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--ghost-blue);
+    transition: transform 0.2s;
+  }
+
+  .enter-btn:hover .enter-btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .terminal-footer {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.2);
+    margin: 0;
+  }
+
   @media (max-width: 600px) {
     .district-page { padding: var(--space-md); }
   }
