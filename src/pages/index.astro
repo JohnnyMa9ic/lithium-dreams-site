@@ -83,17 +83,9 @@ import TicketButton from '../components/TicketButton.astro';
   .gate-bg {
     position: absolute;
     inset: 0;
-    /*
-      When hero-front-gate.jpg is ready, replace the gradient with:
-      background-image: url('/images/hero-front-gate.jpg');
-      background-size: cover;
-      background-position: center;
-    */
-    background:
-      radial-gradient(ellipse at 55% 45%, rgba(232, 164, 32, 0.12) 0%, transparent 55%),
-      radial-gradient(ellipse at 75% 70%, rgba(180, 120, 20, 0.07) 0%, transparent 40%),
-      radial-gradient(ellipse at 30% 20%, rgba(20, 30, 50, 0.5) 0%, transparent 50%),
-      linear-gradient(175deg, #04070e 0%, #080d16 35%, #0c1018 65%, #0a0c10 100%);
+    background-image: url('/images/hero-front-gate.jpg');
+    background-size: cover;
+    background-position: center top;
   }
 
   /* Rain canvas overlay */
@@ -107,91 +99,12 @@ import TicketButton from '../components/TicketButton.astro';
     opacity: 0.7;
   }
 
-  /* CSS sign placeholder — hidden once hero image is available */
-  .gate-sign-placeholder {
-    position: absolute;
-    top: 50%;
-    left: 52%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
-  }
-
-  .sign-sub {
-    font-family: var(--font-sub);
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
-    font-weight: 600;
-    letter-spacing: 0.4em;
-    color: rgba(232, 164, 32, 0.6);
-    text-transform: uppercase;
-    margin-bottom: 0.3rem;
-  }
-
-  .sign-main {
-    font-family: var(--font-display);
-    font-size: clamp(4.5rem, 9vw, 9rem);
-    color: var(--neon-amber);
-    letter-spacing: 0.04em;
-    line-height: 0.9;
-    text-shadow:
-      0 0 30px rgba(232, 164, 32, 0.6),
-      0 0 80px rgba(232, 164, 32, 0.2),
-      3px 3px 0 rgba(0,0,0,0.9);
-  }
-
-  .sign-marquee {
-    margin-top: 0.75rem;
-    padding: 0.4rem 1rem;
-    border: 1px solid rgba(232, 164, 32, 0.35);
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem;
-  }
-
-  .sign-marquee span {
-    font-family: var(--font-sub);
-    font-size: clamp(0.65rem, 1vw, 0.9rem);
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    color: rgba(232, 222, 200, 0.65);
-    text-transform: uppercase;
-  }
-
-  /* Billboard placeholders */
-  .billboard {
-    position: absolute;
-    z-index: 2;
-    top: 25%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    border: 2px solid rgba(255,255,255,0.12);
-    padding: 0.5rem 0.75rem;
-    background: rgba(0,0,0,0.4);
-  }
-
-  .billboard--left {
-    left: 8%;
-    transform: rotate(-2deg);
-  }
-
+  /* CSS placeholders — hero image provides the scene */
+  .gate-sign-placeholder,
+  .billboard,
+  .billboard--left,
   .billboard--right {
-    right: 5%;
-    transform: rotate(1.5deg);
-  }
-
-  .billboard span {
-    font-family: var(--font-display);
-    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
-    letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.5);
-    text-transform: uppercase;
+    display: none;
   }
 
   /* Ground fog */
