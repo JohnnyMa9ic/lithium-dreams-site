@@ -24,9 +24,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
       <div class="section-mark mono">01 — The Operator</div>
       <div class="bio-card">
         <div class="bio-portrait">
-          <div class="portrait-placeholder">
-            <span class="portrait-initial">J</span>
-          </div>
+          <img src="/about-portrait.png" alt="The Operator — hands writing in a notebook" class="portrait-img" />
           <div class="portrait-meta">
             <span class="meta-name">J. Burroughs</span>
             <span class="meta-role mono text-dim">Founder / Operator</span>
@@ -224,20 +222,13 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     align-items: center;
     gap: var(--space-sm);
   }
-  .portrait-placeholder {
-    width: 120px;
-    height: 120px;
+  .portrait-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center top;
     border: 1px solid rgba(232,164,32,0.15);
-    background: rgba(232,164,32,0.04);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .portrait-initial {
-    font-family: var(--font-display);
-    font-size: 3.5rem;
-    color: rgba(232,164,32,0.25);
-    line-height: 1;
+    display: block;
   }
   .portrait-meta {
     display: flex;
