@@ -6,9 +6,6 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 
   <div class="intake-env">
 
-    <!-- Foreground depth: photographic plant corner -->
-    <img class="plant-corner-left" src="/plant-foreground-left.png" alt="" aria-hidden="true">
-
     <!-- Page header -->
     <div class="intake-header">
       <div class="intake-eyebrow">Mission Intake</div>
@@ -451,20 +448,6 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   .intake-env {
     position: relative;
     padding-bottom: 90px;
-  }
-
-  /* ── Foreground plant corner ── */
-  .plant-corner-left {
-    position: fixed;
-    bottom: 0;
-    left: -24px;
-    width: 280px;
-    height: auto;
-    pointer-events: none;
-    z-index: 40;
-    opacity: 0.92;
-    filter: blur(1.5px);
-    mix-blend-mode: multiply;
   }
 
   /* ── Page header ── */

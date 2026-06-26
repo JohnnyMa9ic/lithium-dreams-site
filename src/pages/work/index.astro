@@ -4,12 +4,8 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 
 <GlasshouseLayout title="LDI — Glasshouse Systems Studio" activePage="/work">
 
-  <!-- Foreground depth: photographic plant corner -->
-  <img class="plant-corner-left" src="/plant-foreground-left.png" alt="" aria-hidden="true">
-
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg"></div>
     <div class="hero-glass">
       <div class="hero-eyebrow">Glasshouse Systems Studio</div>
       <h1 class="hero-headline">Operational systems for people who need clarity.</h1>
@@ -171,57 +167,28 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 </GlasshouseLayout>
 
 <style>
-  /* ── Foreground plant corner ── */
-  .plant-corner-left {
-    position: fixed;
-    bottom: 0;
-    left: -24px;
-    width: 280px;
-    height: auto;
-    pointer-events: none;
-    z-index: 40;
-    opacity: 0.92;
-    filter: blur(1.5px);
-    mix-blend-mode: multiply;
-  }
-
   /* ── Hero ── */
   .hero {
     position: relative;
-    border-radius: var(--gh-radius);
-    overflow: hidden;
     margin-bottom: 4rem;
     min-height: 480px;
     display: flex;
     align-items: center;
   }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('/glasshouse-studio.png');
-    background-size: cover;
-    background-position: center 30%;
-  }
-  .hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(238, 241, 236, 0.95) 0%,
-      rgba(238, 241, 236, 0.85) 40%,
-      rgba(238, 241, 236, 0.4) 75%,
-      transparent 100%
-    );
-  }
   .hero-glass {
     position: relative;
     z-index: 1;
-    padding: 4rem;
+    padding: 3.5rem 4rem;
     max-width: 600px;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--gh-radius);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
   }
   .hero-eyebrow {
     font-size: 0.65rem;
