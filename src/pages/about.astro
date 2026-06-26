@@ -181,9 +181,9 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 
   /* ── Page layout ── */
   .about-page {
-    max-width: 1100px;
+    max-width: var(--content-max);
     margin: 0 auto;
-    padding: var(--space-xl);
+    padding: var(--space-xl) var(--content-pad);
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);

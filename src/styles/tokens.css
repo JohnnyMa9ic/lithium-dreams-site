@@ -30,6 +30,10 @@
   --space-lg: 2rem;
   --space-xl: 4rem;
 
+  /* Layout */
+  --content-max: 1200px;
+  --content-pad: 2.5rem;
+
   /* Borders */
   --border-faint: 1px solid rgba(255, 255, 255, 0.08);
   --border-amber: 1px solid var(--amber-dim);
