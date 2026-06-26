@@ -2,14 +2,19 @@
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
   activePage?: string;
 }
 
 const {
-  title = 'LDI — Glasshouse Systems Studio',
-  description = 'Lithium Dreams Industries designs practical operational systems for people and businesses who need clarity.',
+  title = 'LDI Glasshouse — Operational Systems Design',
+  description = 'Lithium Dreams Industries designs practical operational systems for people and organizations who need clarity without complexity.',
+  ogImage = '/studio-hero.png',
   activePage = '',
 } = Astro.props;
+
+const siteURL = 'https://lithium-dreams.com';
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
 
 const navLinks = [
   { href: '/work', label: 'Overview' },
@@ -25,7 +30,23 @@ const navLinks = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.toString()} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteURL}${ogImage}`} />
+    <meta property="og:site_name" content="Lithium Dreams Industries" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteURL}${ogImage}`} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,6 +54,15 @@ const navLinks = [
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lithium Dreams Industries",
+      "url": siteURL,
+      "logo": `${siteURL}/favicon.svg`,
+      "description": "Operational systems design studio. Practical infrastructure for people and organizations who need clarity without complexity.",
+    })} />
   </head>
   <body class="gh-body">
     <nav class="gh-nav">
