@@ -21,6 +21,9 @@ const PAGES = [
   { name: 'gift-shop', path: '/gift-shop' },
   { name: 'crossroads', path: '/crossroads' },
   { name: 'employees-only', path: '/employees-only' },
+  { name: 'work', path: '/work' },
+  { name: 'work-intake', path: '/work/intake' },
+  { name: 'work-case-files', path: '/work/case-files' },
 ];
 
 test.beforeAll(() => {

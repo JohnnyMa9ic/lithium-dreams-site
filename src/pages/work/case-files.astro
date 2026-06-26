@@ -1,103 +1,333 @@
 ---
-import WorkLayout from '../../components/WorkLayout.astro';
-import MaintenanceTag from '../../components/MaintenanceTag.astro';
+import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 ---
 
-<WorkLayout title="Case Files — LDI" activePage="/work/case-files">
-  <section class="page-section">
-    <div class="page-header">
-      <div class="page-eyebrow mono">Case Files</div>
-      <MaintenanceTag status="COMING SOON" size="md" />
-    </div>
-    <h1 class="page-headline">Deployment Stories</h1>
-    <p class="page-sub">We document real engagements as structured case files — not testimonials. Each file follows the same format: Challenge, Investigation, Design, Deployment, Outcome.</p>
+<GlasshouseLayout title="Case Files — LDI" activePage="/work/case-files">
 
-    <div class="placeholder-grid">
-      <div class="case-placeholder">
-        <span class="case-num mono">FILE — 001</span>
-        <span class="case-status mono text-dim">CASE PENDING CLASSIFICATION</span>
-      </div>
-      <div class="case-placeholder">
-        <span class="case-num mono">FILE — 002</span>
-        <span class="case-status mono text-dim">CASE PENDING CLASSIFICATION</span>
-      </div>
-      <div class="case-placeholder">
-        <span class="case-num mono">FILE — 003</span>
-        <span class="case-status mono text-dim">CASE PENDING CLASSIFICATION</span>
-      </div>
-    </div>
+  <div class="page-header">
+    <div class="page-eyebrow">Case Files</div>
+    <h1 class="page-headline">Internal deployments first.</h1>
+    <p class="page-sub">We don't pitch client work we haven't run ourselves. These are LDI's live internal deployments — each one is a real system operating under real conditions. Client engagements come after the internal proof of concept holds up.</p>
+  </div>
 
-    <p class="footer-note mono text-dim">First deployments in progress. Check back.</p>
-  </section>
-</WorkLayout>
+  <div class="case-grid">
+
+    <article class="case-card case-card--featured">
+      <div class="case-meta">
+        <span class="case-status case-status--operational">Operational</span>
+        <span class="case-id">FILE — 001</span>
+      </div>
+      <h2 class="case-title">LDI Website</h2>
+      <div class="case-track">Creative Systems · Content Engine</div>
+      <p class="case-body">The site you're on. Astro 7 + Cloudflare Pages. Full design system with dark attraction aesthetic and light Glasshouse corporate identity running as two distinct modes under a single build. Deployed continuously via GitHub → Cloudflare. Sub-second TTFB globally.</p>
+      <div class="case-outcomes">
+        <div class="case-outcome">
+          <span class="outcome-label">Architecture</span>
+          <span class="outcome-val">Astro + Cloudflare Pages</span>
+        </div>
+        <div class="case-outcome">
+          <span class="outcome-label">Status</span>
+          <span class="outcome-val">Live — this session</span>
+        </div>
+        <div class="case-outcome">
+          <span class="outcome-label">Key result</span>
+          <span class="outcome-val">Two visual identities, one coherent build</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card">
+      <div class="case-meta">
+        <span class="case-status case-status--operational">Operational</span>
+        <span class="case-id">FILE — 002</span>
+      </div>
+      <h2 class="case-title">Mission Intake Pipeline</h2>
+      <div class="case-track">Automation Systems · Research OS</div>
+      <p class="case-body">The intake wizard on this page feeds a structured JSON pipeline. 6-step guided brief replaces the vague discovery call. JSON output with copy/download. Webhook delivery to structured intake queue in active development.</p>
+      <div class="case-outcomes">
+        <div class="case-outcome">
+          <span class="outcome-label">Architecture</span>
+          <span class="outcome-val">Vanilla JS wizard + JSON pipeline</span>
+        </div>
+        <div class="case-outcome">
+          <span class="outcome-label">Status</span>
+          <span class="outcome-val">Form live — webhook in dev</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card">
+      <div class="case-meta">
+        <span class="case-status case-status--operational">Operational</span>
+        <span class="case-id">FILE — 003</span>
+      </div>
+      <h2 class="case-title">Bob's Fortune Emporium</h2>
+      <div class="case-track">Executive Assistant OS · Operator Dashboards</div>
+      <p class="case-body">Autonomous agent system running the fortune oracle and ambient character layer of the Attraction. Bob is the orchestrator: multi-model routing, async handoff bus, cron-scheduled operations, and real-time response. Built on the BRAINLab agent platform (Hermes gateway).</p>
+      <div class="case-outcomes">
+        <div class="case-outcome">
+          <span class="outcome-label">Architecture</span>
+          <span class="outcome-val">Hermes gateway · Mac Mini orchestrator</span>
+        </div>
+        <div class="case-outcome">
+          <span class="outcome-label">Status</span>
+          <span class="outcome-val">Running — nightly cron + live dispatch</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card">
+      <div class="case-meta">
+        <span class="case-status case-status--pilot">Pilot Ready</span>
+        <span class="case-id">FILE — 004</span>
+      </div>
+      <h2 class="case-title">Ghost's Workshop</h2>
+      <div class="case-track">Creative Systems · Content Engine</div>
+      <p class="case-body">Creative systems and content pipeline powering the Workshop district of the Attraction. AI-assisted generation with human curation and lore consistency enforcement. Acts as internal proof-of-concept for content engine client engagements.</p>
+      <div class="case-outcomes">
+        <div class="case-outcome">
+          <span class="outcome-label">Architecture</span>
+          <span class="outcome-val">Multi-agent creative pipeline</span>
+        </div>
+        <div class="case-outcome">
+          <span class="outcome-label">Status</span>
+          <span class="outcome-val">Pilot — not yet client-ready</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card case-card--featured-2">
+      <div class="case-meta">
+        <span class="case-status case-status--dev">In Development</span>
+        <span class="case-id">FILE — 005</span>
+      </div>
+      <h2 class="case-title">Signal Engine / Research OS</h2>
+      <div class="case-track">Research OS · Knowledge Systems</div>
+      <p class="case-body">Multi-source research synthesis, monitoring, and structured brief generation. BRAINLab's internal Research OS — ongoing monitoring across sources, AI-assisted synthesis, and scheduled brief delivery. The first Research OS track we plan to offer to external clients. Internal version running on the BRAINLab platform with Perplexity + Claude routing.</p>
+      <div class="case-outcomes">
+        <div class="case-outcome">
+          <span class="outcome-label">Architecture</span>
+          <span class="outcome-val">Hermes · Perplexity · Claude · cron delivery</span>
+        </div>
+        <div class="case-outcome">
+          <span class="outcome-label">Status</span>
+          <span class="outcome-val">Internal — client release TBD</span>
+        </div>
+        <div class="case-outcome">
+          <span class="outcome-label">Priority</span>
+          <span class="outcome-val">First external track to ship</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-strip-copy">
+      <div class="cta-eyebrow">Ready to start?</div>
+      <p>Every client engagement begins with a mission brief. It takes 10 minutes and replaces the vague discovery call.</p>
+    </div>
+    <a href="/work/intake" class="btn-cta">Start a Mission Brief →</a>
+  </div>
+
+</GlasshouseLayout>
 
 <style>
-  .page-section {
-    padding: var(--space-xl) 0;
+  /* ── Page header ── */
+  .page-header {
+    margin-bottom: 2.5rem;
+    max-width: 640px;
+  }
+  .page-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gh-brass);
+    font-family: var(--gh-mono);
+    margin-bottom: 0.75rem;
+  }
+  .page-headline {
+    font-family: var(--gh-serif);
+    font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--gh-text);
+    letter-spacing: -0.01em;
+    line-height: 1.12;
+    margin-bottom: 0.875rem;
+  }
+  .page-sub {
+    font-size: 0.9rem;
+    color: var(--gh-muted);
+    line-height: 1.65;
+  }
+
+  /* ── Case grid ── */
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .case-card {
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--gh-border);
+    border-radius: var(--gh-radius);
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: 0.875rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
   }
-  .page-header {
+  .case-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+    transform: translateY(-2px);
+  }
+  .case-card--featured { border-color: rgba(201,157,76,0.25); }
+  .case-card--featured-2 { grid-column: 1 / -1; }
+
+  /* Meta row */
+  .case-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .page-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 0.25em;
-    color: var(--ghost-blue);
+  .case-status {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+    font-family: var(--gh-mono);
+    padding: 0.22em 0.7em;
+    border-radius: 100px;
   }
-  .page-headline {
-    font-family: var(--font-sub);
-    font-size: clamp(2rem, 4vw, 3.5rem);
+  .case-status--operational {
+    background: rgba(76, 175, 110, 0.12);
+    color: #2e7d4f;
+  }
+  .case-status--pilot {
+    background: rgba(61, 127, 189, 0.12);
+    color: #2a5f96;
+  }
+  .case-status--dev {
+    background: rgba(201, 157, 76, 0.12);
+    color: #8a6620;
+  }
+  .case-id {
+    font-size: 0.58rem;
     font-weight: 600;
-    color: var(--paper);
-    letter-spacing: 0.02em;
-    margin: 0;
-    margin-top: calc(-1 * var(--space-sm));
+    letter-spacing: 0.14em;
+    color: var(--gh-faint);
+    font-family: var(--gh-mono);
   }
-  .page-sub {
-    font-size: 0.95rem;
-    color: rgba(232, 222, 200, 0.55);
-    max-width: 60ch;
-    line-height: 1.6;
-    margin: 0;
+
+  /* Card body */
+  .case-title {
+    font-family: var(--gh-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--gh-text);
+    line-height: 1.2;
   }
-  .placeholder-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
-    margin-top: var(--space-sm);
+  .case-track {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--gh-brass);
+    font-family: var(--gh-mono);
   }
-  .case-placeholder {
+  .case-body {
+    font-size: 0.875rem;
+    color: var(--gh-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  /* Outcomes */
+  .case-outcomes {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    padding: var(--space-xl) var(--space-lg);
-    border: 1px solid var(--rain-slate);
-    background: var(--road-asphalt);
-    min-height: 160px;
-    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--gh-border);
+    margin-top: auto;
   }
-  .case-num {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    color: rgba(77, 184, 212, 0.4);
+  .case-outcome {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+  .outcome-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    color: var(--gh-faint);
+    font-family: var(--gh-mono);
+    min-width: 80px;
+    flex-shrink: 0;
   }
-  .case-status {
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
+  .outcome-val {
+    font-size: 0.78rem;
+    color: var(--gh-muted);
+  }
+
+  /* ── CTA strip ── */
+  .cta-strip {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--gh-border);
+    border-radius: var(--gh-radius);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .cta-strip-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  .cta-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
+    color: var(--gh-brass);
+    font-family: var(--gh-mono);
   }
-  .footer-note {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
+  .cta-strip-copy p {
+    font-size: 0.9rem;
+    color: var(--gh-muted);
+    line-height: 1.6;
+    max-width: 50ch;
   }
+  .btn-cta {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: var(--gh-blue);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: background 0.15s, box-shadow 0.15s;
+    flex-shrink: 0;
+  }
+  .btn-cta:hover {
+    background: #3270aa;
+    box-shadow: 0 4px 16px rgba(61,127,189,0.3);
+  }
+
   @media (max-width: 768px) {
-    .placeholder-grid { grid-template-columns: 1fr; }
-    .page-section { padding: var(--space-lg) 0; }
+    .case-grid { grid-template-columns: 1fr; }
+    .case-card--featured-2 { grid-column: 1; }
+    .cta-strip { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+    .btn-cta { width: 100%; text-align: center; }
   }
 </style>

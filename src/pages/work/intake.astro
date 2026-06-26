@@ -1,874 +1,877 @@
 ---
-import WorkLayout from '../../components/WorkLayout.astro';
+import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 ---
 
-<WorkLayout title="Mission Intake — LDI" activePage="/work/intake">
-  <section class="intake-page">
+<GlasshouseLayout title="Mission Intake — LDI" activePage="/work/intake">
 
-    <!-- Left sidebar -->
-    <aside class="intake-sidebar">
-      <div class="sidebar-inner">
+  <div class="intake-header">
+    <div class="intake-eyebrow">Mission Intake</div>
+    <h1 class="intake-headline">Brief an operator — not a chatbot.</h1>
+    <p class="intake-sub">A structured 6-step intake that replaces the vague discovery call. Takes about 10 minutes. Gives us everything needed to scope a pilot and get started.</p>
+  </div>
 
-        <div class="sidebar-hero">
-          <div class="sidebar-eyebrow mono">Operational Systems Design</div>
-          <h1 class="sidebar-headline">Every great system starts with a clear mission.</h1>
-          <p class="sidebar-sub">Tell us what you're building, what's breaking, or where you're stuck. We'll route the right system to it.</p>
-        </div>
+  <div class="wizard-shell">
 
-        <div class="sidebar-steps">
-          <div class="sidebar-step">
-            <div class="step-marker mono">01</div>
-            <div class="step-body">
-              <div class="step-name">Understand</div>
-              <div class="step-desc">Map the current state before adding anything new.</div>
-            </div>
-          </div>
-          <div class="sidebar-step">
-            <div class="step-marker mono">02</div>
-            <div class="step-body">
-              <div class="step-name">Design</div>
-              <div class="step-desc">Structure before tools. Clarity before complexity.</div>
-            </div>
-          </div>
-          <div class="sidebar-step">
-            <div class="step-marker mono">03</div>
-            <div class="step-body">
-              <div class="step-name">Build</div>
-              <div class="step-desc">Infrastructure that outlives the people who started it.</div>
-            </div>
-          </div>
-          <div class="sidebar-step">
-            <div class="step-marker mono">04</div>
-            <div class="step-body">
-              <div class="step-name">Deliver</div>
-              <div class="step-desc">Operational handoff with documentation and ongoing support.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sidebar-footer">
-          <p class="sidebar-tagline">Clarity is our foundation.<br>Systems are our craft.<br>Impact is our purpose.</p>
-          <div class="sidebar-stats">
-            <div class="stat">
-              <span class="stat-num">2037</span>
-              <span class="stat-label mono">Missions Scoped</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num">500+</span>
-              <span class="stat-label mono">Systems Built</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num">97%</span>
-              <span class="stat-label mono">Client Retention</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num">24/7</span>
-              <span class="stat-label mono">Async Support</span>
-            </div>
-          </div>
-        </div>
-
+    <!-- Step tabs -->
+    <nav class="step-tabs" role="tablist">
+      <button class="step-tab active" data-step="0" role="tab" aria-selected="true">
+        <span class="tab-num">01</span>
+        <span class="tab-label">Track</span>
+      </button>
+      <button class="step-tab" data-step="1" role="tab" aria-selected="false">
+        <span class="tab-num">02</span>
+        <span class="tab-label">Situation</span>
+      </button>
+      <button class="step-tab" data-step="2" role="tab" aria-selected="false">
+        <span class="tab-num">03</span>
+        <span class="tab-label">Outcome</span>
+      </button>
+      <button class="step-tab" data-step="3" role="tab" aria-selected="false">
+        <span class="tab-num">04</span>
+        <span class="tab-label">Systems</span>
+      </button>
+      <button class="step-tab" data-step="4" role="tab" aria-selected="false">
+        <span class="tab-num">05</span>
+        <span class="tab-label">Scope</span>
+      </button>
+      <button class="step-tab" data-step="5" role="tab" aria-selected="false">
+        <span class="tab-num">06</span>
+        <span class="tab-label">Review</span>
+      </button>
+      <div class="step-progress">
+        <div class="step-progress-fill"></div>
+        <span class="step-progress-pct" id="progressPercent">17%</span>
       </div>
-    </aside>
+    </nav>
 
-    <!-- Right form panel -->
-    <main class="intake-main">
+    <!-- Wizard body: form + preview -->
+    <div class="wizard-body">
 
-      <div class="intake-form-header">
-        <div class="form-header-title mono">Mission Intake Form</div>
-        <p class="form-header-sub">A structured brief that replaces the vague discovery call. Select a track and fill in what you know — takes about 10 minutes.</p>
-      </div>
+      <form id="missionForm" class="wizard-form" novalidate>
 
-      <!-- Track selector -->
-      <div class="track-bar" role="tablist" aria-label="Track selector">
-        <button class="track-btn active" data-track="research" role="tab" aria-selected="true">
-          <span class="track-btn-label">Research OS</span>
-        </button>
-        <button class="track-btn" data-track="content" role="tab" aria-selected="false">
-          <span class="track-btn-label">Content Engine</span>
-        </button>
-        <button class="track-btn" data-track="localbiz" role="tab" aria-selected="false">
-          <span class="track-btn-label">Local Business Ops</span>
-        </button>
-        <button class="track-btn" data-track="exec" role="tab" aria-selected="false">
-          <span class="track-btn-label">Executive Assistant</span>
-        </button>
-        <button class="track-btn" data-track="technical" role="tab" aria-selected="false">
-          <span class="track-btn-label">Technical Advisory</span>
-        </button>
-      </div>
-
-      <!-- Form -->
-      <form id="intakeForm" class="intake-form" novalidate>
-        <div class="form-section">
-          <div class="form-section-label mono">Core Profile</div>
-          <div class="fields" id="coreFields"></div>
+        <!-- Step 0: Choose Track -->
+        <div class="wizard-step active" data-step="0">
+          <div class="step-title">Choose your track</div>
+          <div class="step-hint">Select the closest match — you can clarify in the brief.</div>
+          <div class="choice-cards">
+            <label class="choice-card selected">
+              <input type="radio" name="track" value="Research OS" checked />
+              <div class="choice-card-name">Research OS</div>
+              <div class="choice-card-desc">Monitoring, synthesis, and knowledge systems.</div>
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="track" value="Content Engine" />
+              <div class="choice-card-name">Content Engine</div>
+              <div class="choice-card-desc">Plan, create, repurpose, and publish consistently.</div>
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="track" value="Local Business Ops" />
+              <div class="choice-card-name">Local Business Ops</div>
+              <div class="choice-card-desc">Streamline operations, client experience, and growth.</div>
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="track" value="Executive Assistant OS" />
+              <div class="choice-card-name">Executive Assistant OS</div>
+              <div class="choice-card-desc">Delegate with confidence. Stay ahead proactively.</div>
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="track" value="Technical Advisory" />
+              <div class="choice-card-name">Technical Advisory</div>
+              <div class="choice-card-desc">Solve technical challenges and build what matters.</div>
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="track" value="Not Sure Yet" />
+              <div class="choice-card-name">Not Sure Yet</div>
+              <div class="choice-card-desc">Use the brief to identify the highest-value start.</div>
+            </label>
+          </div>
         </div>
 
-        <div class="form-section">
-          <div class="form-section-label mono" id="trackHeading">Track Prompts</div>
-          <div class="fields" id="trackFields"></div>
-        </div>
-
-        <div class="form-section">
-          <div class="form-section-label mono">Offer Shaping</div>
-          <div class="fields" id="offerFields"></div>
-        </div>
-
-        <div class="form-section">
-          <div class="form-section-label mono">Mission Meta</div>
-          <div class="fields" id="metaFields"></div>
-        </div>
-
-        <!-- Webhook field -->
-        <div class="form-section">
-          <div class="form-section-label mono">Delivery</div>
-          <div class="fields">
-            <div class="field full">
-              <label for="webhookUrl" class="field-label mono">Webhook URL <span class="field-optional">(optional)</span></label>
-              <input id="webhookUrl" name="webhookUrl" type="url" class="field-input"
-                placeholder="https://your-endpoint/webhook/intake" />
-              <div class="field-helper mono">Leave blank to use local download only. POST sends <code>Content-Type: application/json</code> with the full payload.</div>
+        <!-- Step 1: Situation -->
+        <div class="wizard-step" data-step="1">
+          <div class="step-title">Current situation</div>
+          <div class="step-hint">Tell us about the work that's currently costing you the most time or clarity.</div>
+          <div class="field-stack">
+            <div class="field-group">
+              <label class="field-label" for="manualWork">What are you doing manually right now?</label>
+              <textarea id="manualWork" name="manualWork" class="field-textarea" rows="3" placeholder="Describe the repetitive or high-effort tasks that eat your time..."></textarea>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="stuckPoint">Where does work get stuck?</label>
+              <textarea id="stuckPoint" name="stuckPoint" class="field-textarea" rows="3" placeholder="Handoffs, approvals, missing information, context switching..."></textarea>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="tools">What tools are currently involved?</label>
+              <input id="tools" name="tools" type="text" class="field-input" placeholder="e.g. Google Sheets, Notion, Slack, email, pen and paper..." />
             </div>
           </div>
         </div>
 
-        <!-- Actions -->
-        <div class="form-actions">
-          <button class="btn-submit mono" type="button" id="generateJson">Submit Mission</button>
-          <div class="form-actions-secondary">
-            <button class="btn-secondary mono" type="button" id="downloadJson">Download JSON</button>
-            <button class="btn-secondary mono" type="button" id="copyJson">Copy JSON</button>
-            <button class="btn-ghost mono" type="button" id="sendWebhook">Send to Webhook</button>
-            <button class="btn-ghost mono" type="button" id="resetForm">Reset</button>
+        <!-- Step 2: Outcome -->
+        <div class="wizard-step" data-step="2">
+          <div class="step-title">Desired outcome</div>
+          <div class="step-hint">Define what success looks like before we talk about solutions.</div>
+          <div class="field-stack">
+            <div class="field-group">
+              <label class="field-label" for="desiredOutcome">What would make this worth paying for?</label>
+              <textarea id="desiredOutcome" name="desiredOutcome" class="field-textarea" rows="3" placeholder="What result or state would make you consider this a clear win?"></textarea>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="disappear">What should disappear from your workload?</label>
+              <textarea id="disappear" name="disappear" class="field-textarea" rows="3" placeholder="Specific tasks, decisions, or friction points you want gone..."></textarea>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="success30">What would success look like in 30 days?</label>
+              <textarea id="success30" name="success30" class="field-textarea" rows="3" placeholder="Concrete, observable changes — what would you see or stop doing?"></textarea>
+            </div>
           </div>
         </div>
+
+        <!-- Step 3: Systems & Comfort -->
+        <div class="wizard-step" data-step="3">
+          <div class="step-title">Systems & comfort</div>
+          <div class="step-hint">Help us understand your organization and your relationship with AI tools.</div>
+          <div class="field-stack">
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label" for="organization">Organization name</label>
+                <input id="organization" name="organization" type="text" class="field-input" placeholder="Company or team name" />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="contact">Primary contact</label>
+                <input id="contact" name="contact" type="text" class="field-input" placeholder="Your name" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="email">Email</label>
+              <input id="email" name="email" type="email" class="field-input" placeholder="you@organization.com" />
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label" for="businessType">Business type</label>
+                <input id="businessType" name="businessType" type="text" class="field-input" placeholder="e.g. Consulting, SaaS, Healthcare, Retail..." />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="teamSize">Team size</label>
+                <select id="teamSize" name="teamSize" class="field-select">
+                  <option value="">Select...</option>
+                  <option value="Solo / 1">Solo / 1</option>
+                  <option value="2–5">2–5</option>
+                  <option value="6–15">6–15</option>
+                  <option value="16–50">16–50</option>
+                  <option value="50+">50+</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="aiComfort">AI comfort level</label>
+              <select id="aiComfort" name="aiComfort" class="field-select">
+                <option value="">Select...</option>
+                <option value="New — just starting to explore">New — just starting to explore</option>
+                <option value="Some experience — tried a few tools">Some experience — tried a few tools</option>
+                <option value="Comfortable — using AI regularly">Comfortable — using AI regularly</option>
+                <option value="Advanced — building with AI internally">Advanced — building with AI internally</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Scope -->
+        <div class="wizard-step" data-step="4">
+          <div class="step-title">Scope</div>
+          <div class="step-hint">Help us understand constraints, pace, and what a first engagement could look like.</div>
+          <div class="field-stack">
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label" for="timeline">Desired timeline</label>
+                <select id="timeline" name="timeline" class="field-select">
+                  <option value="">Select...</option>
+                  <option value="ASAP">ASAP</option>
+                  <option value="Within 30 days">Within 30 days</option>
+                  <option value="1–3 months">1–3 months</option>
+                  <option value="Exploring only">Exploring only</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="budget">Budget comfort</label>
+                <select id="budget" name="budget" class="field-select">
+                  <option value="">Select...</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                  <option value="Under $200/mo">Under $200/mo</option>
+                  <option value="$200–500/mo">$200–500/mo</option>
+                  <option value="$500–1,000/mo">$500–1,000/mo</option>
+                  <option value="$1,000+ / project-based">$1,000+ / project-based</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="pilot">What's the smallest useful pilot?</label>
+              <textarea id="pilot" name="pilot" class="field-textarea" rows="3" placeholder="What's the minimum scope that would still prove real value?"></textarea>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="followUp">Preferred follow-up</label>
+              <select id="followUp" name="followUp" class="field-select">
+                <option value="">Select...</option>
+                <option value="Async email">Async email</option>
+                <option value="Short video call">Short video call</option>
+                <option value="Written proposal first">Written proposal first</option>
+                <option value="No follow-up — just sending the brief">No follow-up — just sending the brief</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Review -->
+        <div class="wizard-step" data-step="5">
+          <div class="step-title">Review your mission brief</div>
+          <div class="step-hint">Your brief is ready. Copy, download, or submit it below.</div>
+          <div class="submit-notice hidden" id="submitNotice">
+            <div class="submit-notice-icon">✓</div>
+            <div class="submit-notice-text">
+              <strong>Mission brief received.</strong>
+              <span>We'll be in touch based on your preferred follow-up method.</span>
+            </div>
+          </div>
+          <div class="review-actions">
+            <button type="button" id="copyJsonBtn" class="btn-action">Copy JSON</button>
+            <button type="button" id="downloadJsonBtn" class="btn-action">Download JSON</button>
+            <button type="button" id="resetBtn" class="btn-action btn-action--ghost">Reset Brief</button>
+          </div>
+        </div>
+
       </form>
 
-      <!-- Output -->
-      <div class="output-section" id="outputSection" aria-live="polite">
-        <div class="output-header mono">Mission Brief Output</div>
-        <pre class="output-box" id="jsonOutput">Generate brief to see output.</pre>
-      </div>
-
-      <!-- Confirmation -->
-      <div class="confirmation" id="confirmation" hidden>
-        <div class="confirmation-inner">
-          <div class="conf-label mono">MISSION RECEIVED</div>
-          <div class="conf-status mono text-dim">Operator Review Pending</div>
-          <div class="conf-ref mono" id="confRef"></div>
-          <button class="btn-ghost mono" type="button" id="confReset">Submit Another</button>
+      <!-- Live Preview panel -->
+      <aside class="wizard-preview">
+        <div class="preview-card">
+          <div class="preview-header">
+            <div class="preview-label">Live Brief Preview</div>
+            <div class="preview-track-badge" id="previewTrack">Track not selected</div>
+          </div>
+          <div class="preview-summary" id="previewSummary">Choose a track to begin shaping the mission.</div>
+          <div class="preview-fields">
+            <div class="preview-field">
+              <div class="preview-field-label">Situation</div>
+              <div class="preview-field-value" id="previewSituation">Not provided yet</div>
+            </div>
+            <div class="preview-field">
+              <div class="preview-field-label">Outcome</div>
+              <div class="preview-field-value" id="previewOutcome">Not provided yet</div>
+            </div>
+            <div class="preview-field">
+              <div class="preview-field-label">Systems</div>
+              <div class="preview-field-value" id="previewSystems">Not provided yet</div>
+            </div>
+            <div class="preview-field">
+              <div class="preview-field-label">Scope</div>
+              <div class="preview-field-value" id="previewScope">Not provided yet</div>
+            </div>
+          </div>
+          <div class="json-output-block">
+            <div class="json-output-label">JSON Output</div>
+            <pre class="json-output" id="jsonOutput">{}</pre>
+          </div>
         </div>
-      </div>
+      </aside>
 
-    </main>
-  </section>
-</WorkLayout>
+    </div><!-- /wizard-body -->
+
+    <!-- Nav buttons -->
+    <div class="wizard-nav">
+      <button type="button" id="backBtn" class="btn-nav btn-nav--back" disabled>← Back</button>
+      <button type="button" id="nextBtn" class="btn-nav btn-nav--next">Next →</button>
+      <button type="submit" form="missionForm" id="submitBtn" class="btn-nav btn-nav--submit hidden">Submit Mission</button>
+    </div>
+
+  </div><!-- /wizard-shell -->
+
+</GlasshouseLayout>
 
 <style>
-  /* ── Two-column layout ── */
-  .intake-page {
-    display: grid;
-    grid-template-columns: 360px 1fr;
-    min-height: calc(100vh - 3.75rem);
-    margin: calc(-1 * var(--space-xl)) calc(-1 * var(--space-xl)) 0;
-    background-image: url('/work-hero.png');
-    background-size: cover;
-    background-position: center 30%;
-    position: relative;
+  /* ── Page header ── */
+  .intake-header {
+    margin-bottom: 2.5rem;
+    max-width: 600px;
   }
-
-  .intake-page::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 10, 12, 0.8);
-    pointer-events: none;
-  }
-
-  /* ── Sidebar ── */
-  .intake-sidebar {
-    position: relative;
-    z-index: 1;
-    padding: var(--space-xl) var(--space-lg);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sidebar-inner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
-    height: 100%;
-  }
-
-  .sidebar-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 0.25em;
-    color: var(--brass);
-    text-transform: uppercase;
-    margin-bottom: var(--space-sm);
-  }
-
-  .sidebar-headline {
-    font-family: var(--font-sub);
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
+  .intake-eyebrow {
+    font-size: 0.62rem;
     font-weight: 600;
-    color: var(--paper);
-    letter-spacing: 0.02em;
-    line-height: 1.15;
-    margin: 0;
-  }
-
-  .sidebar-sub {
-    font-size: 0.85rem;
-    color: rgba(232, 222, 200, 0.5);
-    line-height: 1.7;
-    margin: var(--space-sm) 0 0;
-  }
-
-  /* ── Process steps ── */
-  .sidebar-steps {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .sidebar-step {
-    display: flex;
-    gap: var(--space-md);
-    align-items: flex-start;
-  }
-
-  .step-marker {
-    width: 2.1rem;
-    height: 2.1rem;
-    border: 1px solid rgba(181, 137, 62, 0.45);
-    color: var(--brass);
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    background: rgba(181, 137, 62, 0.04);
-  }
-
-  .step-name {
-    font-family: var(--font-sub);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    color: var(--paper);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
+    color: var(--gh-brass);
+    font-family: var(--gh-mono);
+    margin-bottom: 0.75rem;
   }
-
-  .step-desc {
-    font-size: 0.78rem;
-    color: rgba(232, 222, 200, 0.45);
-    margin-top: 0.25rem;
-    line-height: 1.55;
-  }
-
-  /* ── Sidebar footer ── */
-  .sidebar-footer {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-    padding-top: var(--space-xl);
-    border-top: 1px solid rgba(181, 137, 62, 0.12);
-  }
-
-  .sidebar-tagline {
-    font-size: 0.78rem;
-    color: rgba(232, 222, 200, 0.35);
-    line-height: 2;
-    font-style: italic;
-    margin: 0;
-  }
-
-  .sidebar-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-sm);
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .stat-num {
-    font-family: var(--font-sub);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--brass);
-    letter-spacing: 0.02em;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.5rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(232, 222, 200, 0.35);
-    line-height: 1.4;
-  }
-
-  /* ── Main form panel ── */
-  .intake-main {
-    position: relative;
-    z-index: 1;
-    background: rgba(10, 10, 12, 0.94);
-    border-left: 1px solid rgba(181, 137, 62, 0.1);
-    padding: var(--space-xl);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
-  }
-
-  /* ── Form header ── */
-  .intake-form-header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    padding-bottom: var(--space-lg);
-    border-bottom: 1px solid var(--rain-slate);
-  }
-
-  .form-header-title {
-    font-size: 0.6rem;
-    letter-spacing: 0.25em;
-    color: var(--brass);
-    text-transform: uppercase;
-  }
-
-  .form-header-sub {
-    font-size: 0.85rem;
-    color: rgba(232, 222, 200, 0.5);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 58ch;
-  }
-
-  /* ── Track bar ── */
-  .track-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-  }
-
-  .track-btn {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--rain-slate);
-    background: transparent;
-    cursor: pointer;
-    transition: border-color 0.15s, color 0.15s, background 0.15s;
-  }
-
-  .track-btn-label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(232, 222, 200, 0.4);
-    pointer-events: none;
-  }
-
-  .track-btn:hover .track-btn-label { color: var(--paper); }
-  .track-btn:hover { border-color: rgba(232, 222, 200, 0.3); }
-  .track-btn.active {
-    border-color: var(--brass);
-    background: rgba(181, 137, 62, 0.06);
-  }
-  .track-btn.active .track-btn-label { color: var(--brass); }
-
-  /* ── Form ── */
-  .intake-form { display: flex; flex-direction: column; gap: var(--space-lg); }
-
-  .form-section {
-    padding: var(--space-lg);
-    border: 1px solid var(--rain-slate);
-    background: rgba(26, 28, 31, 0.5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .form-section-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    color: var(--brass);
-    text-transform: uppercase;
-    padding-bottom: var(--space-sm);
-    border-bottom: 1px solid var(--rain-slate);
-  }
-
-  .fields {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-  }
-
-  .field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .field.full { grid-column: 1 / -1; }
-
-  .field-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.6);
-    text-transform: uppercase;
-  }
-
-  .field-optional {
-    color: rgba(232, 222, 200, 0.3);
-    text-transform: none;
-    letter-spacing: 0;
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-  }
-
-  .field-input,
-  .field-select,
-  .field-textarea {
-    background: var(--ldi-black);
-    border: 1px solid var(--rain-slate);
-    color: var(--paper);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    padding: 0.65rem 0.85rem;
-    outline: none;
-    transition: border-color 0.15s;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .field-input:focus,
-  .field-select:focus,
-  .field-textarea:focus { border-color: var(--brass); }
-
-  .field-textarea { min-height: 100px; resize: vertical; }
-  .field-select { cursor: pointer; appearance: none; }
-
-  .field-helper {
-    font-size: 0.6rem;
-    letter-spacing: 0.05em;
-    color: rgba(232, 222, 200, 0.3);
-    line-height: 1.5;
-  }
-
-  code {
-    font-family: var(--font-mono);
-    color: var(--brass);
-    font-size: inherit;
-  }
-
-  /* ── Actions ── */
-  .form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-
-  .btn-submit {
-    width: 100%;
-    padding: 1rem 2rem;
-    background: var(--brass);
-    border: none;
-    color: var(--ldi-black);
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s, box-shadow 0.15s;
+  .intake-headline {
+    font-family: var(--gh-serif);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 700;
+    color: var(--gh-text);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.875rem;
+  }
+  .intake-sub {
+    font-size: 0.9rem;
+    color: var(--gh-muted);
+    line-height: 1.65;
   }
 
-  .btn-submit:hover {
-    background: #c9a050;
-    box-shadow: 0 0 24px rgba(181, 137, 62, 0.25);
-  }
-
-  .form-actions-secondary {
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-  }
-
-  .btn-secondary {
-    padding: 0.6rem 1.1rem;
-    background: transparent;
-    border: 1px solid var(--brass);
-    color: var(--brass);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .btn-secondary:hover { background: rgba(181, 137, 62, 0.08); }
-
-  .btn-ghost {
-    padding: 0.6rem 1.1rem;
-    background: transparent;
-    border: 1px solid var(--rain-slate);
-    color: rgba(232, 222, 200, 0.35);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .btn-ghost:hover {
-    border-color: rgba(232, 222, 200, 0.4);
-    color: rgba(232, 222, 200, 0.7);
-  }
-
-  /* ── Output ── */
-  .output-section {
-    border: 1px solid var(--rain-slate);
-    background: rgba(26, 28, 31, 0.5);
+  /* ── Wizard shell ── */
+  .wizard-shell {
+    background: var(--gh-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--gh-border);
+    border-radius: var(--gh-radius);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
     overflow: hidden;
   }
 
-  .output-header {
-    padding: 0.5rem 1rem;
-    background: rgba(181, 137, 62, 0.05);
-    border-bottom: 1px solid var(--rain-slate);
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    color: var(--brass);
-    text-transform: uppercase;
+  /* ── Step tabs ── */
+  .step-tabs {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--gh-border);
+    background: rgba(255,255,255,0.5);
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-
-  .output-box {
-    padding: var(--space-lg);
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    line-height: 1.6;
-    color: rgba(181, 137, 62, 0.8);
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 200px;
-    max-height: 500px;
-    overflow-y: auto;
-  }
-
-  /* ── Confirmation ── */
-  .confirmation {
-    border: 1px solid var(--brass);
-    background: rgba(181, 137, 62, 0.04);
-    padding: var(--space-xl);
-  }
-
-  .confirmation-inner {
+  .step-tabs::-webkit-scrollbar { display: none; }
+  .step-tab {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-    align-items: flex-start;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.875rem 1.25rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
   }
-
-  .conf-label {
-    font-size: 1.5rem;
-    letter-spacing: 0.3em;
-    color: var(--brass);
-    text-transform: uppercase;
+  .step-tab:hover { background: rgba(255,255,255,0.6); }
+  .step-tab.active {
+    border-bottom-color: var(--gh-blue);
+    background: rgba(255,255,255,0.8);
   }
-
-  .conf-status {
+  .tab-num {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--gh-faint);
+    font-family: var(--gh-mono);
+  }
+  .step-tab.active .tab-num { color: var(--gh-blue); }
+  .tab-label {
     font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--gh-muted);
+  }
+  .step-tab.active .tab-label { color: var(--gh-text); font-weight: 600; }
+  .step-progress {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    flex-shrink: 0;
+  }
+  .step-progress-fill {
+    width: 80px;
+    height: 4px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-progress-fill::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--progress, 17%);
+    background: var(--gh-blue);
+    border-radius: 100px;
+    transition: width 0.3s ease;
+  }
+  .step-progress-pct {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--gh-blue);
+    font-family: var(--gh-mono);
+    letter-spacing: 0.04em;
   }
 
-  .conf-ref {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: rgba(232, 222, 200, 0.3);
-    text-transform: uppercase;
+  /* ── Wizard body ── */
+  .wizard-body {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    min-height: 480px;
   }
+
+  /* ── Wizard form ── */
+  .wizard-form {
+    padding: 2.5rem;
+    border-right: 1px solid var(--gh-border);
+  }
+  .wizard-step { display: none; }
+  .wizard-step.active { display: block; }
+  .step-title {
+    font-family: var(--gh-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gh-text);
+    margin-bottom: 0.5rem;
+  }
+  .step-hint {
+    font-size: 0.85rem;
+    color: var(--gh-muted);
+    margin-bottom: 2rem;
+    line-height: 1.55;
+  }
+
+  /* Choice cards (track step) */
+  .choice-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+  .choice-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.5);
+    border: 1.5px solid var(--gh-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    position: relative;
+  }
+  .choice-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .choice-card:hover {
+    border-color: rgba(61,127,189,0.4);
+    background: rgba(255,255,255,0.75);
+  }
+  .choice-card.selected {
+    border-color: var(--gh-blue);
+    background: rgba(61,127,189,0.06);
+    box-shadow: 0 0 0 3px rgba(61,127,189,0.12);
+  }
+  .choice-card-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gh-text);
+  }
+  .choice-card.selected .choice-card-name { color: var(--gh-blue); }
+  .choice-card-desc {
+    font-size: 0.75rem;
+    color: var(--gh-muted);
+    line-height: 1.5;
+  }
+
+  /* Fields */
+  .field-stack { display: flex; flex-direction: column; gap: 1.25rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gh-text);
+    letter-spacing: 0.01em;
+  }
+  .field-input,
+  .field-select,
+  .field-textarea {
+    background: rgba(255,255,255,0.8);
+    border: 1.5px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    color: var(--gh-text);
+    font-family: var(--gh-sans);
+    font-size: 0.875rem;
+    padding: 0.65rem 0.875rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+  }
+  .field-input:focus,
+  .field-select:focus,
+  .field-textarea:focus {
+    border-color: var(--gh-blue);
+    box-shadow: 0 0 0 3px rgba(61,127,189,0.12);
+  }
+  .field-textarea { min-height: 90px; resize: vertical; }
+  .field-select { cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5f58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    padding-right: 2.25rem;
+  }
+
+  /* Submit / Review step */
+  .submit-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(76,175,110,0.08);
+    border: 1px solid rgba(76,175,110,0.25);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .submit-notice.hidden { display: none; }
+  .submit-notice-icon {
+    width: 28px;
+    height: 28px;
+    background: rgba(76,175,110,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #2e7d4f;
+    flex-shrink: 0;
+  }
+  .submit-notice-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.875rem;
+    color: var(--gh-text);
+  }
+  .submit-notice-text span { color: var(--gh-muted); }
+  .review-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .btn-action {
+    padding: 0.6rem 1.25rem;
+    background: rgba(255,255,255,0.8);
+    border: 1.5px solid rgba(0,0,0,0.12);
+    border-radius: 8px;
+    color: var(--gh-text);
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .btn-action:hover { background: rgba(255,255,255,0.95); border-color: rgba(0,0,0,0.2); }
+  .btn-action--ghost { color: var(--gh-faint); border-color: rgba(0,0,0,0.07); }
+
+  /* ── Preview panel ── */
+  .wizard-preview {
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .preview-card {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--gh-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex: 1;
+    overflow: hidden;
+  }
+  .preview-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .preview-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gh-faint);
+    font-family: var(--gh-mono);
+  }
+  .preview-track-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gh-blue);
+    background: rgba(61,127,189,0.08);
+    border-radius: 6px;
+    padding: 0.25em 0.65em;
+    display: inline-block;
+    width: fit-content;
+  }
+  .preview-summary {
+    font-size: 0.8rem;
+    color: var(--gh-muted);
+    line-height: 1.6;
+    font-style: italic;
+    border-bottom: 1px solid var(--gh-border);
+    padding-bottom: 1rem;
+  }
+  .preview-fields { display: flex; flex-direction: column; gap: 0.875rem; }
+  .preview-field { display: flex; flex-direction: column; gap: 0.25rem; }
+  .preview-field-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gh-brass);
+    font-family: var(--gh-mono);
+  }
+  .preview-field-value {
+    font-size: 0.78rem;
+    color: var(--gh-text);
+    line-height: 1.5;
+  }
+  .json-output-block {
+    margin-top: auto;
+    border: 1px solid var(--gh-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .json-output-label {
+    padding: 0.4rem 0.75rem;
+    background: rgba(0,0,0,0.04);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--gh-faint);
+    font-family: var(--gh-mono);
+    border-bottom: 1px solid var(--gh-border);
+  }
+  .json-output {
+    padding: 0.875rem;
+    font-family: var(--gh-mono);
+    font-size: 0.65rem;
+    line-height: 1.5;
+    color: var(--gh-muted);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+    background: transparent;
+  }
+
+  /* ── Wizard nav ── */
+  .wizard-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    border-top: 1px solid var(--gh-border);
+    background: rgba(255,255,255,0.4);
+  }
+  .btn-nav {
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s, opacity 0.15s;
+    border: none;
+  }
+  .btn-nav--back {
+    background: rgba(255,255,255,0.7);
+    border: 1.5px solid rgba(0,0,0,0.12);
+    color: var(--gh-muted);
+  }
+  .btn-nav--back:hover:not(:disabled) { background: rgba(255,255,255,0.9); }
+  .btn-nav--back:disabled { opacity: 0.35; cursor: not-allowed; }
+  .btn-nav--next {
+    background: var(--gh-blue);
+    color: #fff;
+    margin-left: auto;
+  }
+  .btn-nav--next:hover { background: #3270aa; box-shadow: 0 4px 16px rgba(61,127,189,0.3); }
+  .btn-nav--submit {
+    background: var(--gh-green, #9cad8d);
+    color: #fff;
+    margin-left: auto;
+    background: #2e7d4f;
+  }
+  .btn-nav--submit:hover { background: #256640; box-shadow: 0 4px 16px rgba(46,125,79,0.3); }
+  .hidden { display: none !important; }
 
   /* ── Responsive ── */
-  @media (max-width: 960px) {
-    .intake-page {
-      grid-template-columns: 1fr;
-    }
-    .intake-sidebar {
-      min-height: unset;
-      padding-bottom: var(--space-lg);
-      border-bottom: 1px solid rgba(181, 137, 62, 0.1);
-    }
-    .sidebar-footer {
-      margin-top: var(--space-xl);
-    }
-    .sidebar-stats {
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .intake-main {
-      border-left: none;
-      border-top: none;
-    }
+  @media (max-width: 980px) {
+    .wizard-body { grid-template-columns: 1fr; }
+    .wizard-form { border-right: none; border-bottom: 1px solid var(--gh-border); }
+    .wizard-preview { padding: 1.5rem; }
+    .choice-cards { grid-template-columns: repeat(2, 1fr); }
   }
-
-  @media (max-width: 768px) {
-    .intake-page {
-      margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) 0;
-    }
-    .intake-sidebar { padding: var(--space-lg) var(--space-md); }
-    .intake-main { padding: var(--space-lg) var(--space-md); }
-    .sidebar-stats { grid-template-columns: repeat(2, 1fr); }
-    .fields { grid-template-columns: 1fr; }
-    .field.full { grid-column: 1; }
-    .form-section { padding: var(--space-md); }
-    .form-actions-secondary { flex-direction: column; }
-    .btn-secondary, .btn-ghost { text-align: center; }
+  @media (max-width: 680px) {
+    .wizard-form { padding: 1.75rem 1.25rem; }
+    .wizard-nav { padding: 1rem 1.25rem; }
+    .choice-cards { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+    .step-tabs { gap: 0; }
+    .step-tab { padding: 0.75rem 0.875rem; }
+    .tab-label { display: none; }
   }
 </style>
 
 <script>
-  const coreFieldsDef = [
-    { key: 'clientName', label: 'Client or company name', type: 'text' },
-    { key: 'contactName', label: 'Primary contact', type: 'text' },
-    { key: 'email', label: 'Email', type: 'email' },
-    { key: 'businessType', label: 'Business type', type: 'text' },
-    { key: 'teamSize', label: 'Team size', type: 'text' },
-    { key: 'currentTools', label: 'Current tools and systems', type: 'textarea', full: true },
-    { key: 'biggestPain', label: 'Biggest pain point', type: 'textarea', full: true },
-    { key: 'whyNow', label: 'Why solve this now?', type: 'textarea', full: true },
-  ];
+  const steps = Array.from(document.querySelectorAll('.wizard-step'));
+  const tabs = Array.from(document.querySelectorAll('.step-tab'));
+  const backBtn = document.getElementById('backBtn') as HTMLButtonElement;
+  const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+  const form = document.getElementById('missionForm') as HTMLFormElement;
+  const jsonOutput = document.getElementById('jsonOutput') as HTMLPreElement;
+  const progressPercent = document.getElementById('progressPercent') as HTMLSpanElement;
+  const previewTrack = document.getElementById('previewTrack') as HTMLElement;
+  const previewSummary = document.getElementById('previewSummary') as HTMLElement;
+  const previewSituation = document.getElementById('previewSituation') as HTMLElement;
+  const previewOutcome = document.getElementById('previewOutcome') as HTMLElement;
+  const previewSystems = document.getElementById('previewSystems') as HTMLElement;
+  const previewScope = document.getElementById('previewScope') as HTMLElement;
+  const submitNotice = document.getElementById('submitNotice') as HTMLElement;
 
-  const offerFieldsDef = [
-    { key: 'successMetric', label: 'What result would make this clearly worth paying for?', type: 'textarea', full: true },
-    { key: 'budgetRange', label: 'Budget comfort range', type: 'select', options: ['Not sure yet', 'Under $200/mo', '$200–500/mo', '$500–1,000/mo', '$1,000+ / project-based'] },
-    { key: 'timeline', label: 'Desired timeline', type: 'select', options: ['ASAP', 'Within 30 days', '1–3 months', 'Exploring only'] },
-    { key: 'pilotScope', label: 'Smallest useful pilot', type: 'textarea', full: true },
-    { key: 'followUp', label: 'Follow-up action', type: 'textarea', full: true },
-  ];
+  let currentStep = 0;
 
-  const metaFieldsDef = [
-    { key: 'captureMode', label: 'Capture mode', type: 'select', options: ['async-form', 'live-call', 'email', 'in-person'] },
-    { key: 'source', label: 'Source', type: 'text' },
-    { key: 'leadScore', label: 'Lead score (0–10)', type: 'number' },
-    { key: 'tags', label: 'Tags (comma-separated)', type: 'text', full: true },
-  ];
-
-  const tracks: Record<string, { heading: string; fields: any[] }> = {
-    research: {
-      heading: 'Research OS Prompts',
-      fields: [
-        { key: 'topics', label: 'What topics or entities need monitoring?', type: 'textarea', full: true },
-        { key: 'cadence', label: 'How often are updates needed?', type: 'select', options: ['Daily', 'Weekly', 'Biweekly', 'Monthly', 'Event-driven only'] },
-        { key: 'decisionUse', label: 'How are the findings used?', type: 'textarea', full: true },
-        { key: 'sources', label: 'Which sources matter most?', type: 'textarea', full: true },
-        { key: 'currentMethod', label: 'How is this done now?', type: 'textarea', full: true },
-        { key: 'missCost', label: 'What happens when something gets missed?', type: 'textarea', full: true },
-      ],
-    },
-    content: {
-      heading: 'Content Engine Prompts',
-      fields: [
-        { key: 'contentInputs', label: 'What content already exists?', type: 'textarea', full: true },
-        { key: 'channels', label: 'Where should content be distributed?', type: 'textarea', full: true },
-        { key: 'volume', label: 'Preferred monthly output', type: 'select', options: ['4–8 assets', '10–20 assets', '20–40 assets', 'Not sure'] },
-        { key: 'voice', label: 'Brand voice or style notes', type: 'textarea', full: true },
-        { key: 'bottleneck', label: 'Where does the process break?', type: 'textarea', full: true },
-        { key: 'approval', label: 'Who approves final content?', type: 'text' },
-      ],
-    },
-    localbiz: {
-      heading: 'Local Business Ops Prompts',
-      fields: [
-        { key: 'leadSources', label: 'Where do leads come from today?', type: 'textarea', full: true },
-        { key: 'dropPoint', label: 'Where are leads being lost?', type: 'textarea', full: true },
-        { key: 'responseTime', label: 'Typical response time', type: 'select', options: ['Under 10 minutes', 'Same day', '1–2 days', 'Inconsistent / unclear'] },
-        { key: 'bookingFlow', label: 'How are quotes or bookings handled?', type: 'textarea', full: true },
-        { key: 'customerData', label: 'What customer details must be captured?', type: 'textarea', full: true },
-        { key: 'repeatWork', label: 'Any repeat service opportunity?', type: 'textarea', full: true },
-      ],
-    },
-    exec: {
-      heading: 'Executive Assistant Prompts',
-      fields: [
-        { key: 'emailLoad', label: 'Rough email and meeting volume', type: 'textarea', full: true },
-        { key: 'delegateTasks', label: 'What tasks should be delegated?', type: 'textarea', full: true },
-        { key: 'calendarFriction', label: 'Main scheduling friction', type: 'textarea', full: true },
-        { key: 'meetingPrep', label: 'What prep would help before meetings?', type: 'textarea', full: true },
-        { key: 'privacyNeeds', label: 'Privacy or approval boundaries', type: 'textarea', full: true },
-        { key: 'decisionStyle', label: 'Preferred summary style', type: 'textarea', full: true },
-      ],
-    },
-    technical: {
-      heading: 'Technical Advisory Prompts',
-      fields: [
-        { key: 'stack', label: 'Current stack and environment', type: 'textarea', full: true },
-        { key: 'constraints', label: 'Hard constraints', type: 'textarea', full: true },
-        { key: 'agentGoals', label: 'What should the system do autonomously?', type: 'textarea', full: true },
-        { key: 'humanLoop', label: 'Where should humans stay in the loop?', type: 'textarea', full: true },
-        { key: 'integrationNeeds', label: 'What tools or APIs must connect?', type: 'textarea', full: true },
-        { key: 'successWindow', label: 'How quickly should proof of value appear?', type: 'select', options: ['Within a week', 'Within 30 days', 'Within 90 days', 'Longer strategic build'] },
-      ],
-    },
+  const trackDescriptions: Record<string, string> = {
+    'Research OS': 'Turn research, synthesis, and insights into repeatable clarity and decisions.',
+    'Content Engine': 'Plan, create, repurpose, and publish high-value content with consistency and ease.',
+    'Local Business Ops': 'Streamline day-to-day operations, client experience, and growth systems.',
+    'Executive Assistant OS': 'Delegate with confidence and stay ahead with proactive support.',
+    'Technical Advisory': 'Solve technical challenges, evaluate options, and build what matters.',
+    'Not Sure Yet': 'Use the brief to identify the highest-value starting point.',
   };
 
-  let currentTrack = 'research';
-
-  function makeField(field: any): HTMLElement {
-    const wrap = document.createElement('div');
-    wrap.className = `field${field.full ? ' full' : ''}`;
-
-    const label = document.createElement('label');
-    label.setAttribute('for', field.key);
-    label.className = 'field-label mono';
-    label.textContent = field.label;
-
-    let el: HTMLElement;
-    if (field.type === 'textarea') {
-      el = document.createElement('textarea');
-      (el as HTMLTextAreaElement).rows = 3;
-      el.className = 'field-textarea';
-    } else if (field.type === 'select') {
-      el = document.createElement('select');
-      el.className = 'field-select';
-      (field.options as string[]).forEach((opt) => {
-        const o = document.createElement('option');
-        o.value = opt;
-        o.textContent = opt;
-        el.appendChild(o);
-      });
-    } else {
-      el = document.createElement('input');
-      (el as HTMLInputElement).type = field.type;
-      el.className = 'field-input';
-    }
-    el.id = field.key;
-    (el as HTMLInputElement).name = field.key;
-    wrap.append(label, el);
-    return wrap;
+  function formData(): Record<string, string> {
+    const data: Record<string, string> = {};
+    new FormData(form).forEach((v, k) => { data[k] = v as string; });
+    return data;
   }
 
-  function renderFields(container: HTMLElement, defs: any[]) {
-    container.innerHTML = '';
-    defs.forEach((def) => container.appendChild(makeField(def)));
-  }
-
-  function renderTrack(track: string) {
-    currentTrack = track;
-    renderFields(document.getElementById('coreFields')!, coreFieldsDef);
-    renderFields(document.getElementById('trackFields')!, tracks[track].fields);
-    renderFields(document.getElementById('offerFields')!, offerFieldsDef);
-    renderFields(document.getElementById('metaFields')!, metaFieldsDef);
-    document.getElementById('trackHeading')!.textContent = tracks[track].heading;
-    document.querySelectorAll('.track-btn').forEach((btn) => {
-      const b = btn as HTMLButtonElement;
-      const active = b.dataset.track === track;
-      b.classList.toggle('active', active);
-      b.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-    document.getElementById('jsonOutput')!.textContent = 'Generate brief to see output.';
-
-    const src = document.getElementById('source') as HTMLInputElement | null;
-    const mode = document.getElementById('captureMode') as HTMLSelectElement | null;
-    if (src) src.value = 'ldi-intake-form';
-    if (mode) mode.value = 'async-form';
-  }
-
-  function val(id: string): string {
-    const el = document.getElementById(id) as HTMLInputElement | null;
-    return el ? el.value : '';
-  }
-
-  function buildJson() {
-    const payload: any = {
-      track: currentTrack,
-      coreProfile: {},
-      trackSpecific: {},
-      offerShaping: {},
-      meta: { capturedAt: new Date().toISOString() },
+  function buildBrief() {
+    const data = formData();
+    return {
+      reference: `LDI-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9999)).padStart(4, '0')}`,
+      track: data.track || 'Not selected',
+      organization: data.organization || '',
+      contact: data.contact || '',
+      email: data.email || '',
+      situation: {
+        manualWork: data.manualWork || '',
+        stuckPoint: data.stuckPoint || '',
+        tools: data.tools || '',
+      },
+      desiredOutcome: {
+        outcome: data.desiredOutcome || '',
+        removeFromWorkload: data.disappear || '',
+        success30Days: data.success30 || '',
+      },
+      systems: {
+        businessType: data.businessType || '',
+        teamSize: data.teamSize || '',
+        aiComfort: data.aiComfort || '',
+      },
+      scope: {
+        timeline: data.timeline || '',
+        budget: data.budget || '',
+        pilot: data.pilot || '',
+        followUp: data.followUp || '',
+      },
+      generatedAt: new Date().toISOString(),
+      source: 'LDI Mission Intake',
+      status: 'Mission Brief Draft',
     };
-    coreFieldsDef.forEach((f) => (payload.coreProfile[f.key] = val(f.key)));
-    tracks[currentTrack].fields.forEach((f) => (payload.trackSpecific[f.key] = val(f.key)));
-    offerFieldsDef.forEach((f) => (payload.offerShaping[f.key] = val(f.key)));
-    metaFieldsDef.forEach((f) => (payload.meta[f.key] = val(f.key)));
-    payload.meta.leadScore = payload.meta.leadScore ? Number(payload.meta.leadScore) : 0;
-    payload.meta.tags = payload.meta.tags
-      ? (payload.meta.tags as string).split(',').map((x: string) => x.trim()).filter(Boolean)
-      : [];
-    return payload;
   }
 
-  document.querySelectorAll('.track-btn').forEach((btn) => {
-    btn.addEventListener('click', () => renderTrack((btn as HTMLButtonElement).dataset.track!));
-  });
+  function updatePreview() {
+    const data = formData();
+    const percent = Math.round(((currentStep + 1) / steps.length) * 100);
+    document.documentElement.style.setProperty('--progress', `${percent}%`);
+    progressPercent.textContent = `${percent}%`;
 
-  document.getElementById('generateJson')!.addEventListener('click', () => {
-    const json = JSON.stringify(buildJson(), null, 2);
-    document.getElementById('jsonOutput')!.textContent = json;
-  });
-
-  function currentJsonText(): string {
-    const out = document.getElementById('jsonOutput')!.textContent || '';
-    return out.startsWith('{') ? out : JSON.stringify(buildJson(), null, 2);
+    previewTrack.textContent = data.track || 'Track not selected';
+    previewSummary.textContent = trackDescriptions[data.track] || 'Choose a track to begin shaping the mission.';
+    previewSituation.textContent = data.stuckPoint || data.manualWork || 'Not provided yet';
+    previewOutcome.textContent = data.desiredOutcome || data.success30 || 'Not provided yet';
+    previewSystems.textContent = [data.tools, data.aiComfort, data.teamSize].filter(Boolean).join(' · ') || 'Not provided yet';
+    previewScope.textContent = [data.timeline, data.budget, data.pilot].filter(Boolean).join(' · ') || 'Not provided yet';
+    jsonOutput.textContent = JSON.stringify(buildBrief(), null, 2);
   }
 
-  document.getElementById('copyJson')!.addEventListener('click', async () => {
+  function setStep(next: number) {
+    currentStep = Math.max(0, Math.min(steps.length - 1, next));
+    steps.forEach((s, i) => s.classList.toggle('active', i === currentStep));
+    tabs.forEach((t, i) => {
+      t.classList.toggle('active', i === currentStep);
+      t.setAttribute('aria-selected', i === currentStep ? 'true' : 'false');
+    });
+    backBtn.disabled = currentStep === 0;
+    nextBtn.classList.toggle('hidden', currentStep === steps.length - 1);
+    submitBtn.classList.toggle('hidden', currentStep !== steps.length - 1);
+    updatePreview();
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => setStep(Number((tab as HTMLElement).dataset.step)));
+  });
+  nextBtn.addEventListener('click', () => setStep(currentStep + 1));
+  backBtn.addEventListener('click', () => setStep(currentStep - 1));
+
+  document.querySelectorAll('.choice-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const radio = card.querySelector('input') as HTMLInputElement;
+      radio.checked = true;
+      updatePreview();
+    });
+  });
+
+  form.addEventListener('input', updatePreview);
+  form.addEventListener('change', updatePreview);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    updatePreview();
+    submitNotice.classList.remove('hidden');
+    submitNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  document.getElementById('copyJsonBtn')!.addEventListener('click', async () => {
+    updatePreview();
     try {
-      await navigator.clipboard.writeText(currentJsonText());
-      const btn = document.getElementById('copyJson')!;
+      await navigator.clipboard.writeText(jsonOutput.textContent || '');
+      const btn = document.getElementById('copyJsonBtn')!;
       const prev = btn.textContent;
-      btn.textContent = 'Copied';
-      setTimeout(() => (btn.textContent = prev), 1200);
+      btn.textContent = 'Copied!';
+      setTimeout(() => (btn.textContent = prev), 1400);
     } catch {
-      alert('Clipboard copy was blocked.');
+      alert('Clipboard copy blocked.');
     }
   });
 
-  document.getElementById('downloadJson')!.addEventListener('click', () => {
-    const blob = new Blob([currentJsonText()], { type: 'application/json' });
+  document.getElementById('downloadJsonBtn')!.addEventListener('click', () => {
+    updatePreview();
+    const blob = new Blob([jsonOutput.textContent || ''], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `ldi-mission-${currentTrack}-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
-    document.body.appendChild(a);
+    a.href = url;
+    a.download = 'ldi-mission-brief.json';
     a.click();
-    URL.revokeObjectURL(a.href);
-    a.remove();
+    URL.revokeObjectURL(url);
   });
 
-  document.getElementById('sendWebhook')!.addEventListener('click', async () => {
-    const webhookUrl = (document.getElementById('webhookUrl') as HTMLInputElement).value.trim();
-    if (!webhookUrl) {
-      alert('Add a webhook URL first.');
-      return;
-    }
-    const payload = buildJson();
-    try {
-      const res = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      showConfirmation(payload.meta.capturedAt);
-    } catch (err: any) {
-      alert(`Webhook failed: ${err.message}`);
-    }
+  document.getElementById('resetBtn')!.addEventListener('click', () => {
+    form.reset();
+    document.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+    (document.querySelector('.choice-card') as HTMLElement).classList.add('selected');
+    (document.querySelector('input[name="track"]') as HTMLInputElement).checked = true;
+    submitNotice.classList.add('hidden');
+    setStep(0);
   });
 
-  document.getElementById('resetForm')!.addEventListener('click', () => renderTrack(currentTrack));
-
-  document.getElementById('confReset')!.addEventListener('click', () => {
-    document.getElementById('confirmation')!.hidden = true;
-    renderTrack('research');
-  });
-
-  function showConfirmation(ts: string) {
-    const ref = `LDI-${ts.replace(/[:.TZ-]/g, '').slice(0, 14)}`;
-    document.getElementById('confRef')!.textContent = `Reference: ${ref}`;
-    document.getElementById('confirmation')!.hidden = false;
-    document.getElementById('confirmation')!.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  renderTrack('research');
+  setStep(0);
 </script>
