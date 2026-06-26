@@ -3,13 +3,15 @@ import Layout from '../components/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 
-<Layout title="About — Lithium Dreams Industries" activePage="/about">
+<Layout title="About — Lithium Dreams Industries" activePage="/about" ogImage="/about-portrait.png" description="J. Burroughs builds operational systems for complex environments — AI agent infrastructure, workflow design, and physical fabrication from the LDI studio.">
   <div class="about-hero">
-    <div class="hero-texture"></div>
     <div class="hero-content">
       <p class="hero-eyebrow mono">Est. Year 1</p>
       <h1 class="hero-title">About LDI</h1>
-      <p class="hero-sub">The studio. The people. The operating agents. The inexplicable back lot.</p>
+      <p class="hero-sub">Operational systems. Multi-agent infrastructure. Physical fabrication. One operator.</p>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual-fade"></div>
     </div>
   </div>
 
@@ -31,9 +33,10 @@ import Breadcrumb from '../components/Breadcrumb.astro';
           </div>
         </div>
         <div class="bio-body">
-          <p class="bio-text">Lithium Dreams Industries is a one-person studio at the intersection of operational systems, creative work, and whatever the cryptids are doing in the back lot.</p>
-          <p class="bio-text">The work here falls into two registers: the lore-forward attraction on this side of the site, and the practical operating systems design on the Glasshouse side. Both are real. Both are necessary. The road between them is maintained by agents.</p>
-          <p class="bio-text">The studio builds things that think — dispatching tasks, routing signals, integrating context across machines and timezones. The attraction is where that infrastructure gets a face, a name, and a history it probably didn't earn.</p>
+          <p class="bio-text">LDI is the operational practice of J. Burroughs — a systems designer with extensive experience running complex, multi-vendor environments at the institutional scale. The background is healthcare supply chain and procurement: high-stakes coordination, real constraints, the specific discipline of keeping systems functional under conditions they weren't designed for.</p>
+          <p class="bio-text">That work produced a methodology. Build for clarity first. Automate second. Keep the human in the loop always. LDI applies that methodology beyond its institutional origin — to any environment where the infrastructure has gotten ahead of the ability to see it clearly.</p>
+          <p class="bio-text">The current LDI stack runs a three-agent AI orchestration system (BRAINLab) across three machines. Bob handles dispatch and mission routing. Ghost maintains signal path integrity. The Warden monitors the perimeter. The Operator watches all three and tries to distinguish working systems from very confident noise.</p>
+          <p class="bio-text">The Object Lab produces physical work from the same infrastructure: 3D-printed structures, cast collectibles, numbered editions made here. The Glasshouse Studio applies the same methodology to client work — operational clarity for people who need an enterprise-grade system without an enterprise department to run it.</p>
           <div class="bio-cta">
             <a href="/work" class="cta-link cta--light">Work with LDI →</a>
             <a href="/studio" class="cta-link cta--dim">Read the full studio story →</a>
@@ -91,7 +94,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
           <span class="agent-role mono">Infrastructure / Signal Routing</span>
           <p class="agent-desc">Keeps the pipes clean. Handles gateway maintenance, signal path integrity, and the cold coffee situation in the Workshop. Ghost does not explain himself. He doesn't need to.</p>
           <div class="agent-footer">
-            <span class="agent-loc mono text-dim">Workshop — operational</span>
+            <a href="/workshop" class="agent-loc mono text-dim">Workshop — operational</a>
           </div>
         </div>
         <div class="agent-card">
@@ -127,39 +130,33 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 <style>
   /* ── Hero ── */
   .about-hero {
-    position: relative;
-    min-height: 45vh;
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 38%;
+    min-height: 52vh;
+    overflow: hidden;
     background: var(--road-asphalt);
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--space-xs);
+    padding: var(--space-xl);
+    background: var(--road-asphalt);
+  }
+  .hero-visual {
+    position: relative;
+    background-image: url('/about-portrait.png');
+    background-size: cover;
+    background-position: center top;
     overflow: hidden;
   }
-  .hero-texture {
+  .hero-visual-fade {
     position: absolute;
     inset: 0;
     background:
-      repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.015) 0px,
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px,
-        transparent 60px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.015) 0px,
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px,
-        transparent 60px
-      );
-  }
-  .hero-content {
-    position: relative;
-    padding: var(--space-xl);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-    max-width: 900px;
+      linear-gradient(to right, var(--road-asphalt) 0%, transparent 28%),
+      linear-gradient(to top, var(--road-asphalt) 0%, transparent 35%);
   }
   .hero-eyebrow {
     font-size: 0.6rem;
@@ -379,7 +376,8 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     flex: 1;
   }
   .agent-footer { border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-sm); }
-  .agent-loc { font-size: 0.58rem; letter-spacing: 0.1em; }
+  .agent-loc { font-size: 0.58rem; letter-spacing: 0.1em; text-decoration: none; }
+  a.agent-loc:hover { color: var(--ghost-blue); }
 
   /* ── Attraction section ── */
   .about-section--terminal {
@@ -420,6 +418,8 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 
   /* ── Responsive ── */
   @media (max-width: 800px) {
+    .about-hero { grid-template-columns: 1fr; }
+    .hero-visual { min-height: 40vw; }
     .bio-card { grid-template-columns: 1fr; }
     .bio-portrait { flex-direction: row; align-items: center; justify-content: flex-start; }
     .portrait-meta { text-align: left; }
