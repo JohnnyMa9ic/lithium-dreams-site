@@ -4,6 +4,25 @@ import MuseumPlaque from '../components/MuseumPlaque.astro';
 import MaintenanceTag from '../components/MaintenanceTag.astro';
 import CRTFrame from '../components/CRTFrame.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+
+const cabinets = [
+  { id: '01', name: 'Cosmic Selector', status: 'active', label: 'active', copy: 'Insert coin. Save the world. Choose your destiny.' },
+  { id: '02', name: 'Gopher Guts', status: 'flickering', label: 'flickering', copy: 'Absolutely required. Lore integrity depends on it.' },
+  { id: '03', name: 'Jersey Devil Joust', status: 'out-of-order', label: 'out of order / still running', copy: 'Two cryptids enter. One leaves confused.' },
+  { id: '04', name: 'Mothman Signal', status: 'active', label: 'active', copy: 'Every warning is also a broadcast.' },
+  { id: '05', name: 'Alien Abduction', status: 'beta', label: 'beta', copy: 'No refunds for missing time.' },
+  { id: '06', name: 'No-Clip Racing', status: 'unstable', label: 'unstable', copy: 'Reality optional. Seatbelt recommended.' },
+  { id: '07', name: 'Bigfoot Brawl', status: 'maintenance', label: 'maintenance', copy: 'Temporarily offline. Bigfoot is consulting legal.' },
+  { id: '08', name: 'Cryptid Crush', status: 'coming-soon', label: 'coming soon', copy: 'Hearts in pixel art. Pre-registration now open.' },
+];
+
+const leaderboard = [
+  { rank: '01', handle: 'WARDEN', score: '9,847,200', cabinet: 'Mothman Signal' },
+  { rank: '02', handle: 'GHOST', score: '7,102,400', cabinet: 'No-Clip Racing' },
+  { rank: '03', handle: 'B0B', score: '6,330,050', cabinet: 'Gopher Guts' },
+  { rank: '04', handle: '???', score: '4,999,999', cabinet: 'Cosmic Selector' },
+  { rank: '05', handle: 'VISITOR', score: '112', cabinet: 'Jersey Devil Joust' },
+];
 ---
 
 <Layout title="Arcade — Lithium Dreams Industries" activePage="/arcade">
@@ -24,30 +43,53 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 
     <MuseumPlaque accession="ARC-001" title="Arcade" subtitle="Project cabinets, experimental builds, and things that almost work." />
 
-    <div class="district-content">
-      <CRTFrame label="ARCADE DIRECTORY" standby={true}>
-        <p>Loading cabinet index...</p>
-        <p>Please do not unplug the cabinet in the corner.</p>
-      </CRTFrame>
+    <CRTFrame label="ARCADE DIRECTORY" standby={false}>
+      <p class="crt-line">Cabinet index loaded. 8 units registered.</p>
+      <p class="crt-line">Please do not unplug the cabinet in the corner.</p>
+      <p class="crt-line">Jersey Devil Joust is out of order. It is also still running. Management is aware.</p>
+    </CRTFrame>
 
-      <div class="cabinet-row">
-        <div class="cabinet-placeholder">
-          <span class="cabinet-label mono">CABINET 01</span>
-          <span class="cabinet-name">// PROJECT PENDING</span>
-          <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
+    <div class="cabinet-grid">
+      {cabinets.map(c => (
+        <div class={`cabinet-card cabinet--${c.status}`}>
+          <div class="cabinet-top">
+            <span class="cabinet-num mono">{c.id}</span>
+            <span class={`cabinet-status-dot dot--${c.status}`}></span>
+          </div>
+          <h3 class="cabinet-name">{c.name}</h3>
+          <p class="cabinet-copy">{c.copy}</p>
+          <span class="cabinet-label mono">{c.label}</span>
+          {c.id === '03' && (
+            <a href="/workshop" class="ghost-signal" aria-label="Signal detected" tabindex="-1"></a>
+          )}
         </div>
-        <div class="cabinet-placeholder cabinet-joust">
-          <span class="cabinet-label mono">CABINET 02</span>
-          <span class="cabinet-name">JERSEY DEVIL JOUST</span>
-          <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
-          <a href="/workshop" class="ghost-signal" aria-label="Signal detected" tabindex="-1"></a>
-        </div>
-        <div class="cabinet-placeholder">
-          <span class="cabinet-label mono">CABINET 03</span>
-          <span class="cabinet-name">// PROJECT PENDING</span>
-          <span class="cabinet-status mono text-dim">OUT OF ORDER / STILL RUNNING</span>
-        </div>
-      </div>
+      ))}
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="leaderboard">
+      <p class="lb-eyebrow mono">All-Time High Scores</p>
+      <p class="lb-note text-dim">Scores are estimated. The machine remembers differently than management.</p>
+      <table class="lb-table">
+        <thead>
+          <tr>
+            <th class="mono">Rank</th>
+            <th class="mono">Handle</th>
+            <th class="mono">Score</th>
+            <th class="mono">Cabinet</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leaderboard.map(row => (
+            <tr>
+              <td class="mono lb-rank">{row.rank}</td>
+              <td class="mono lb-handle">{row.handle}</td>
+              <td class="mono lb-score">{row.score}</td>
+              <td class="mono lb-cabinet text-dim">{row.cabinet}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </div>
 </Layout>
@@ -62,13 +104,10 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   }
   .page-hero-fade {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     height: 55%;
     background: linear-gradient(to bottom, transparent, var(--ldi-black));
   }
-  /* NOIZE RAZE neon sign — upper-right of arcade hero image */
   .noize-raze-signal {
     position: absolute;
     left: 64%;
@@ -87,7 +126,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   }
 
   .district-page {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: var(--space-xl);
     display: flex;
@@ -99,62 +138,171 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     align-items: center;
     justify-content: space-between;
   }
-  .back-link {
+
+  .crt-line {
+    font-family: var(--font-mono);
     font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.4);
+    color: rgba(77, 184, 212, 0.7);
+    line-height: 1.8;
+    letter-spacing: 0.04em;
   }
-  .back-link:hover { color: var(--paper); }
-  .district-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-  }
-  .cabinet-row {
+  .crt-line::before { content: '> '; opacity: 0.4; }
+
+  /* Cabinet grid */
+  .cabinet-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-md);
   }
-  .cabinet-placeholder {
+  .cabinet-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    padding: var(--space-lg) var(--space-md);
+    gap: 0.5rem;
+    padding: var(--space-md);
     border: 1px solid rgba(255,255,255,0.07);
     background: var(--road-asphalt);
-    min-height: 150px;
-    justify-content: center;
+    min-height: 160px;
+    transition: border-color 0.2s;
   }
-  .cabinet-label {
-    font-size: 0.6rem;
+  .cabinet-card:hover { border-color: rgba(255,255,255,0.14); }
+  .cabinet--active { border-color: rgba(46, 139, 110, 0.25); }
+  .cabinet--active:hover { border-color: rgba(46, 139, 110, 0.5); }
+  .cabinet--flickering { border-color: rgba(232, 164, 32, 0.2); }
+  .cabinet--out-of-order { border-color: rgba(194, 59, 34, 0.2); }
+  .cabinet--beta { border-color: rgba(77, 184, 212, 0.2); }
+  .cabinet--unstable { border-color: rgba(232, 164, 32, 0.15); }
+  .cabinet--maintenance { border-color: rgba(255,255,255,0.05); }
+  .cabinet--coming-soon { border-color: rgba(77, 184, 212, 0.1); opacity: 0.6; }
+
+  .cabinet-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cabinet-num {
+    font-size: 0.55rem;
     letter-spacing: 0.2em;
-    color: rgba(77, 184, 212, 0.5);
+    color: rgba(232,222,200,0.2);
     text-transform: uppercase;
   }
-  .cabinet-joust { position: relative; }
+
+  /* Status dot */
+  .cabinet-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot--active { background: var(--warden-teal); box-shadow: 0 0 4px var(--warden-teal); }
+  .dot--flickering {
+    background: var(--neon-amber);
+    animation: flicker 1.8s infinite;
+  }
+  .dot--out-of-order { background: var(--warning-red); }
+  .dot--beta { background: var(--ghost-blue); }
+  .dot--unstable {
+    background: var(--neon-amber);
+    animation: flicker 0.7s infinite;
+  }
+  .dot--maintenance { background: rgba(255,255,255,0.15); }
+  .dot--coming-soon { background: rgba(77,184,212,0.3); }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    45% { opacity: 0.2; }
+    55% { opacity: 0.9; }
+    70% { opacity: 0.1; }
+  }
+
+  .cabinet-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--paper);
+    line-height: 1.1;
+    flex: 1;
+  }
+  .cabinet-copy {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(232,222,200,0.4);
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+  .cabinet-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+  .cabinet--active .cabinet-label { color: rgba(46,139,110,0.7); }
+  .cabinet--flickering .cabinet-label { color: rgba(232,164,32,0.6); }
+  .cabinet--out-of-order .cabinet-label { color: rgba(194,59,34,0.7); }
+  .cabinet--beta .cabinet-label { color: rgba(77,184,212,0.7); }
+  .cabinet--unstable .cabinet-label { color: rgba(232,164,32,0.5); }
+  .cabinet--maintenance .cabinet-label { color: rgba(232,222,200,0.2); }
+  .cabinet--coming-soon .cabinet-label { color: rgba(77,184,212,0.4); }
+
   .ghost-signal {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 28%;
     display: block;
     cursor: default;
     text-decoration: none;
   }
   .ghost-signal:hover { cursor: crosshair; }
-  .cabinet-name {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: rgba(232, 222, 200, 0.25);
+
+  /* Leaderboard */
+  .leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: var(--space-lg);
   }
-  .cabinet-status {
+  .lb-eyebrow {
     font-size: 0.6rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.3);
     text-transform: uppercase;
   }
-  @media (max-width: 600px) {
-    .cabinet-row { grid-template-columns: 1fr; }
+  .lb-note {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+  }
+  .lb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
+  .lb-table th {
+    text-align: left;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    color: rgba(232,222,200,0.2);
+    text-transform: uppercase;
+    padding: 0.3rem var(--space-sm) 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .lb-table td {
+    padding: 0.5rem var(--space-sm) 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+  }
+  .lb-rank { color: rgba(232,222,200,0.25); width: 3rem; }
+  .lb-handle { color: var(--paper); letter-spacing: 0.1em; }
+  .lb-score { color: var(--neon-amber); }
+  .lb-cabinet { font-size: 0.6rem; letter-spacing: 0.06em; }
+
+  @media (max-width: 700px) {
+    .cabinet-grid { grid-template-columns: repeat(2, 1fr); }
     .district-page { padding: var(--space-md); }
+  }
+  @media (max-width: 420px) {
+    .cabinet-grid { grid-template-columns: 1fr; }
   }
 </style>

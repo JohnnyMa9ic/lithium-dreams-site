@@ -1,0 +1,380 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import StudioNav from '../../components/StudioNav.astro';
+
+const symbols = [
+  {
+    category: 'Observation',
+    entries: [
+      {
+        id: 'open-signal',
+        name: 'Open Signal',
+        code: 'OS',
+        meaning: 'Event logged. Status unresolved. Awaiting classification or follow-up.',
+        svg: `<circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="20" r="3.5" fill="currentColor"/>`,
+      },
+      {
+        id: 'closed-signal',
+        name: 'Closed Signal',
+        code: 'CS',
+        meaning: 'Event resolved. Filed. No further action required unless re-triggered.',
+        svg: `<circle cx="20" cy="20" r="13" fill="currentColor"/>`,
+      },
+      {
+        id: 'dormant',
+        name: 'Dormant',
+        code: 'DR',
+        meaning: 'Signal present but inactive. Monitoring continues at reduced frequency.',
+        svg: `<circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 3"/>`,
+      },
+    ],
+  },
+  {
+    category: 'Dynamic',
+    entries: [
+      {
+        id: 'elevated',
+        name: 'Elevated',
+        code: 'EL',
+        meaning: 'Activity above baseline. Not anomalous — pattern recognized, intensity increased.',
+        svg: `<polygon points="20,5 35,35 5,35" fill="currentColor"/>`,
+      },
+      {
+        id: 'ambient',
+        name: 'Ambient',
+        code: 'AM',
+        meaning: 'Persistent background condition. Not an event — an environment. Log once, review periodically.',
+        svg: `<path d="M4,20 Q9,9 14,20 Q19,31 24,20 Q29,9 34,20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`,
+      },
+      {
+        id: 'loop',
+        name: 'Loop',
+        code: 'LP',
+        meaning: 'Recursive or cyclical behavior detected. May resolve naturally. Monitor for runaway state.',
+        svg: `<path d="M20,7 A13,13 0 1 1 8,27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><polygon points="6,22 10,30 14,23" fill="currentColor"/>`,
+      },
+    ],
+  },
+  {
+    category: 'Classification',
+    entries: [
+      {
+        id: 'convergence',
+        name: 'Convergence',
+        code: 'CV',
+        meaning: 'Two or more independent signals overlapping. May be coincidence. May not be.',
+        svg: `<circle cx="15" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="25" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+      },
+      {
+        id: 'null',
+        name: 'Null',
+        code: 'NL',
+        meaning: 'Expected signal absent. The absence is the signal. Investigate what should be present.',
+        svg: `<circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="20" x2="31" y2="20" stroke="currentColor" stroke-width="1.5"/>`,
+      },
+      {
+        id: 'threshold',
+        name: 'Threshold',
+        code: 'TH',
+        meaning: 'Boundary condition reached. Proceed with awareness. This is the edge of the known map.',
+        svg: `<polygon points="20,5 35,35 5,35" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="20" y1="17" x2="20" y2="27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="20" cy="30.5" r="1.5" fill="currentColor"/>`,
+      },
+    ],
+  },
+  {
+    category: 'Caution',
+    entries: [
+      {
+        id: 'anomaly',
+        name: 'Anomaly',
+        code: 'AN',
+        meaning: 'Deviation outside expected range. Not necessarily dangerous — but it requires a name before it gets one.',
+        svg: `<line x1="20" y1="4" x2="20" y2="36" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="1.5"/><line x1="8.5" y1="8.5" x2="31.5" y2="31.5" stroke="currentColor" stroke-width="1.5"/><line x1="31.5" y1="8.5" x2="8.5" y2="31.5" stroke="currentColor" stroke-width="1.5"/>`,
+      },
+      {
+        id: 'bifurcation',
+        name: 'Bifurcation',
+        code: 'BF',
+        meaning: 'Multiple valid interpretations. Both branches are logged. Resolution pending additional observation.',
+        svg: `<line x1="20" y1="5" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="20" y1="20" x2="8" y2="35" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="20" y1="20" x2="32" y2="35" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>`,
+      },
+      {
+        id: 'redacted',
+        name: 'Redacted',
+        code: 'RD',
+        meaning: 'Entry exists. Content classified or removed from active record. The Warden has the full log.',
+        svg: `<rect x="5" y="5" width="30" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="10" x2="30" y2="30" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="10" x2="10" y2="30" stroke="currentColor" stroke-width="1.5"/>`,
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Field Notes — LDI Studio" activePage="/about">
+  <div class="fn-hero">
+    <div class="fn-hero-grid"></div>
+    <div class="fn-hero-inner">
+      <p class="fn-eyebrow mono">LDI Studio · Signal Taxonomy</p>
+      <h1 class="fn-title">Field Notes</h1>
+      <p class="fn-sub">The observation system. Twelve symbols, four categories. Used to classify signals before they become something else.</p>
+    </div>
+  </div>
+
+  <StudioNav active="field-notes" />
+
+  <div class="fn-page">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about' },
+      { label: 'Studio', href: '/studio' },
+      { label: 'Field Notes' },
+    ]} />
+
+    <div class="fn-intro">
+      <p>Field notes are how the Operator tracks signals — observations that don't fit an existing category, events that need to be held somewhere before they can be understood. The symbols below are the full taxonomy. They appear in the physical notebooks, in system logs, and in the margins of things that are still being figured out.</p>
+      <p>Each symbol is a compression of a question: what kind of thing is this, and what does it require of me right now?</p>
+    </div>
+
+    <div class="symbol-section">
+      {symbols.map(group => (
+        <div class="symbol-group">
+          <div class="group-header">
+            <span class="group-label mono">{group.category}</span>
+            <div class="group-rule"></div>
+          </div>
+          <div class="symbol-grid">
+            {group.entries.map(entry => (
+              <div class="symbol-card" id={entry.id}>
+                <div class="symbol-glyph" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" set:html={entry.svg} />
+                </div>
+                <div class="symbol-body">
+                  <div class="symbol-name-row">
+                    <span class="symbol-name">{entry.name}</span>
+                    <span class="symbol-code mono">{entry.code}</span>
+                  </div>
+                  <p class="symbol-meaning">{entry.meaning}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="fn-notes">
+      <div class="note-block">
+        <p class="note-eyebrow mono">Usage</p>
+        <p class="note-body">Symbols are applied at first classification and updated as new information arrives. A signal that opens as OS may close as CS, or reclassify as AN depending on subsequent observations. RD entries are not modified after classification — the Warden maintains the full record separately.</p>
+      </div>
+      <div class="note-block">
+        <p class="note-eyebrow mono">On the back lot</p>
+        <p class="note-body">The back lot has generated entries in every category. The two open incidents from Y07 are currently logged as BF — both interpretations remain active. The Warden has additional context. The Warden is not sharing it at this time.</p>
+      </div>
+    </div>
+
+    <div class="fn-footer-nav">
+      <a href="/studio" class="fn-nav-link mono">← The Story</a>
+      <a href="/studio/infrastructure" class="fn-nav-link mono">Infrastructure →</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .fn-hero {
+    position: relative;
+    min-height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--ldi-black);
+  }
+  .fn-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232,222,200,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,222,200,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .fn-hero-inner {
+    position: relative;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    max-width: 700px;
+  }
+  .fn-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    color: rgba(232,164,32,0.45);
+    text-transform: uppercase;
+  }
+  .fn-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--paper);
+    line-height: 0.92;
+  }
+  .fn-sub {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: rgba(232,222,200,0.3);
+    max-width: 420px;
+    line-height: 1.65;
+  }
+
+  .fn-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .fn-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: 640px;
+    padding-top: var(--space-sm);
+  }
+  .fn-intro p {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.85;
+    color: rgba(232,222,200,0.5);
+    letter-spacing: 0.02em;
+  }
+
+  /* Symbol section */
+  .symbol-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+  .symbol-group { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .group-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    color: rgba(232,164,32,0.4);
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .group-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .symbol-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+  .symbol-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    border: 1px solid rgba(255,255,255,0.05);
+    background: var(--road-asphalt);
+    transition: border-color 0.15s;
+  }
+  .symbol-card:hover { border-color: rgba(255,255,255,0.1); }
+
+  .symbol-glyph {
+    width: 48px;
+    height: 48px;
+    color: rgba(232,222,200,0.25);
+    transition: color 0.15s;
+  }
+  .symbol-card:hover .symbol-glyph { color: rgba(232,164,32,0.55); }
+  .symbol-glyph svg { width: 100%; height: 100%; }
+
+  .symbol-body { display: flex; flex-direction: column; gap: 0.4rem; }
+  .symbol-name-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+  .symbol-name {
+    font-family: var(--font-sub);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--paper);
+    text-transform: uppercase;
+  }
+  .symbol-code {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    color: rgba(232,164,32,0.35);
+    flex-shrink: 0;
+  }
+  .symbol-meaning {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    line-height: 1.65;
+    color: rgba(232,222,200,0.4);
+    letter-spacing: 0.03em;
+  }
+
+  /* Notes */
+  .fn-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .note-block { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .note-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,164,32,0.35);
+    text-transform: uppercase;
+  }
+  .note-body {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: rgba(232,222,200,0.4);
+  }
+
+  .fn-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .fn-nav-link {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232,222,200,0.25);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .fn-nav-link:hover { color: rgba(232,222,200,0.6); }
+
+  @media (max-width: 700px) {
+    .fn-page { padding: var(--space-md); }
+    .symbol-grid { grid-template-columns: 1fr 1fr; }
+    .fn-notes { grid-template-columns: 1fr; gap: var(--space-lg); }
+  }
+  @media (max-width: 450px) {
+    .symbol-grid { grid-template-columns: 1fr; }
+  }
+</style>

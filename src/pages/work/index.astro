@@ -171,9 +171,20 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   .hero {
     position: relative;
     margin-bottom: 4rem;
-    min-height: 480px;
+    min-height: 62vh;
     display: flex;
     align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    background: url('/glasshouse-studio.png') center / cover no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(10,14,10,0.58) 0%, rgba(10,14,10,0.28) 100%);
+    border-radius: inherit;
+    pointer-events: none;
   }
   .hero-glass {
     position: relative;
@@ -183,12 +194,13 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    background: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: var(--gh-radius);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.14);
+    margin: 3.5rem;
   }
   .hero-eyebrow {
     font-size: 0.65rem;
@@ -285,20 +297,19 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   .btn-secondary {
     display: inline-block;
     padding: 0.75rem 1.75rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.85);
     color: var(--gh-text);
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.02em;
     text-decoration: none;
     border-radius: 8px;
-    border: 1px solid var(--gh-border);
-    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0,0,0,0.14);
     transition: background 0.15s, border-color 0.15s;
   }
   .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: rgba(0, 0, 0, 0.18);
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.22);
   }
 
   /* ── Sections ── */
@@ -339,8 +350,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     gap: 1.25rem;
   }
   .system-card {
-    background: var(--gh-glass);
-    backdrop-filter: blur(12px);
+    background: #ffffff;
     border: 1px solid var(--gh-border);
     border-radius: var(--gh-radius);
     padding: 2rem;
@@ -494,7 +504,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     gap: 0;
   }
   .process-step {
-    background: var(--gh-glass);
+    background: #ffffff;
     border: 1px solid var(--gh-border);
     border-radius: var(--gh-radius);
     padding: 1.75rem;
@@ -537,7 +547,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     margin-bottom: 1.5rem;
   }
   .deployment-card {
-    background: var(--gh-glass);
+    background: #ffffff;
     border: 1px solid var(--gh-border);
     border-radius: 14px;
     padding: 1.5rem;
@@ -594,16 +604,15 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   /* ── About ── */
   .section--about .section-headline { margin-bottom: 0; }
   .about-glass {
-    background: var(--gh-glass);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--gh-border);
+    background: #ffffff;
+    border: 1px solid rgba(156, 173, 141, 0.35);
     border-radius: var(--gh-radius);
     padding: 3rem;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 3rem;
     align-items: center;
-    box-shadow: var(--gh-shadow);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08), 0 0 0 4px rgba(156,173,141,0.08);
   }
   .about-copy {
     display: flex;
@@ -655,7 +664,8 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     .about-glass { grid-template-columns: 1fr; gap: 2rem; }
   }
   @media (max-width: 680px) {
-    .hero-glass { padding: 2.5rem 1.75rem; }
+    .hero { min-height: 80vw; border-radius: 14px; }
+    .hero-glass { padding: 2rem 1.5rem; margin: 1.5rem; max-width: 100%; }
     .hero-headline { font-size: 1.75rem; }
     .systems-grid { grid-template-columns: 1fr; }
     .materials-grid { grid-template-columns: 1fr; }

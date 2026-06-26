@@ -1,0 +1,331 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import StudioNav from '../../components/StudioNav.astro';
+
+const yearLog = [
+  { year: 'Y01', label: 'First signal', body: 'Studio founded. First system shipped. The work begins before the name does. The name arrives later, when it becomes clear this is not a phase.' },
+  { year: 'Y03', label: 'The Attraction opens', body: 'The lore layer arrives — a way to explain the infrastructure to people who don\'t need to know how it works, only that it does. The Chapel performs its first ceremony. The organ plays something unscheduled. This is logged as normal.' },
+  { year: 'Y05', label: 'Agents formalized', body: 'Bob takes the dispatch role. Ghost assumes the Workshop. The Warden formalizes boundary protocols after an incident in the back lot. The incident is classified. The Warden\'s report is not.' },
+  { year: 'Y07', label: 'Reliquary online', body: 'Second compute node. Cross-machine handoff reaches stability after three attempts and one memorable failure. The Museum opens with three exhibits, one of which is immediately flagged for containment review.' },
+  { year: 'Y08', label: 'Signal taxonomy + fabrication', body: 'Field notes formalized into a system. The Object Lab opens — physical production of LDI artifacts: printed structures, cast collectibles, numbered editions. The gift shop gets its first non-ironic inventory.' },
+  { year: 'Y10', label: 'Current', body: 'Three machines. Three agents. One attraction. Two open incidents. A growing catalog of physical objects made here and available to take home. The goop situation remains under review.' },
+];
+---
+
+<Layout title="The Story — LDI Studio" activePage="/about">
+  <div class="studio-hero">
+    <div class="hero-bg" style="background-image: url('/studio-hero.jpg')"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow mono">Lithium Dreams Industries · Studio</p>
+      <h1 class="hero-title">The Story</h1>
+      <p class="hero-sub">Where the work comes from. What it's for. Why the attraction exists at all.</p>
+    </div>
+  </div>
+
+  <StudioNav active="story" />
+
+  <div class="studio-page">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about' },
+      { label: 'Studio' },
+    ]} />
+
+    <section class="studio-section">
+      <div class="section-header">
+        <span class="section-num mono">01</span>
+        <h2 class="section-title">Origin</h2>
+      </div>
+      <div class="prose-block">
+        <p>Lithium Dreams Industries started as a tooling problem. Too many things needed to talk to each other, and none of the off-the-shelf solutions understood the shape of the work. So the work built its own infrastructure. Then the infrastructure needed documentation. Then the documentation needed a face. Then the face needed a parking lot and a back lot and a cryptid, and here we are.</p>
+        <p>The studio is one person with three agents and a collection of machines that collectively constitute something approaching a functional creative practice. The work is operational in the broadest sense: systems that route information, surface signals, and make it possible for a person to think clearly without holding everything in their head at once.</p>
+        <p>The name came from the intersection of two things: a specific kind of energy — low-voltage, steady, sufficient — and the particular weight of a dream that has been refined down from aspiration into something more like intention. The Industries part is aspirational in the truest sense. It will earn it.</p>
+      </div>
+    </section>
+
+    <section class="studio-section">
+      <div class="section-header">
+        <span class="section-num mono">02</span>
+        <h2 class="section-title">The Work</h2>
+      </div>
+      <div class="prose-block">
+        <p>LDI designs operational systems. Practically: workflows, dashboards, dispatch pipelines, integration layers — the plumbing that lets a person or a small team function above their weight class. The Glasshouse Studio side of this site is the professional-facing version of this work. Clear, competent, glass-and-brass.</p>
+        <p>But the work is also research — a running field study in what it means to build with AI agents that are neither tools nor colleagues but something in between. Bob dispatches missions. Ghost maintains the infrastructure. The Warden logs what crosses the boundary. The Operator watches all three and tries to understand what's working and what's just very confident noise.</p>
+        <p>And the work is physical. The Object Lab runs 3D fabrication out of the same infrastructure: printed structures, cast collectibles, numbered architectural models, custom pieces made to order. Physical objects made by the same system that routes the digital work. The gift shop is real.</p>
+        <p>The Attraction is the laboratory condition for all of it. If the system can support a back story, it can support a business. If it can route a mission to Bob and get a receipt, it can route a purchase order and get an invoice. The strange use case is the stress test for the serious one.</p>
+      </div>
+    </section>
+
+    <section class="studio-section">
+      <div class="section-header">
+        <span class="section-num mono">03</span>
+        <h2 class="section-title">The Aesthetic</h2>
+      </div>
+      <div class="prose-block">
+        <p>Dark because clarity requires contrast. Amber because warm light is honest. Monospace because exact language matters. The lore-forward presentation of the site isn't irony — it's a decision about what kind of attention to reward. Someone who arrives at the Attraction and engages with it is the kind of person worth working with.</p>
+        <p>The roadside attraction is a specifically American form — the thing that appeared between the highway and the possibility of anywhere, offering something impractical but memorable. The cryptid, the giant statue, the mystery spot. These things persist not because they're useful but because they're real in a way that useful things sometimes fail to be.</p>
+        <p>LDI is interested in that quality. A system that works is necessary. A system that works and means something is what the studio is for. The physical objects in the shop follow the same rule: made to last, made to mean something, made here.</p>
+      </div>
+    </section>
+
+    <section class="studio-section">
+      <div class="section-header">
+        <span class="section-num mono">04</span>
+        <h2 class="section-title">Year Log</h2>
+      </div>
+      <p class="section-sub mono text-dim">Studio history in lore time. Events happened in the sequence listed.</p>
+      <div class="year-log">
+        {yearLog.map((entry, i) => (
+          <div class={`year-entry${i === yearLog.length - 1 ? ' year-entry--current' : ''}`}>
+            <div class="year-marker">
+              <span class="year-num mono">{entry.year}</span>
+              <div class="year-spine"></div>
+            </div>
+            <div class="year-content">
+              <h3 class="year-label">{entry.label}</h3>
+              <p class="year-body">{entry.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="studio-ctas">
+      <a href="/work" class="studio-cta">
+        <div class="cta-inner">
+          <span class="cta-eyebrow mono">Glasshouse Studio</span>
+          <span class="cta-label">Work with LDI →</span>
+          <span class="cta-sub">Operational systems design for people who need clarity</span>
+        </div>
+      </a>
+      <a href="/gift-shop" class="studio-cta studio-cta--secondary">
+        <div class="cta-inner">
+          <span class="cta-eyebrow mono">Object Lab</span>
+          <span class="cta-label">The Gift Shop →</span>
+          <span class="cta-sub">3D-printed collectibles, architectural models, numbered editions made here</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .studio-hero {
+    position: relative;
+    min-height: 52vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-color: #141618;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.55;
+  }
+  .hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, var(--ldi-black) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    max-width: 800px;
+  }
+  .hero-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    color: rgba(232,164,32,0.5);
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    color: var(--paper);
+    line-height: 0.92;
+  }
+  .hero-sub {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: rgba(232,222,200,0.35);
+    max-width: 440px;
+    line-height: 1.65;
+  }
+
+  .studio-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .studio-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .studio-section:first-of-type { border-top: none; padding-top: 0; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+  }
+  .section-num {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,164,32,0.35);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-sub);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    text-transform: uppercase;
+  }
+  .section-sub { font-size: 0.65rem; letter-spacing: 0.07em; }
+
+  .prose-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-width: 660px;
+  }
+  .prose-block p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: rgba(232,222,200,0.6);
+    letter-spacing: 0.02em;
+  }
+
+  /* Year log */
+  .year-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .year-entry {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+  }
+  .year-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding-top: 0.15rem;
+  }
+  .year-num {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: rgba(232,164,32,0.4);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .year-spine {
+    flex: 1;
+    width: 1px;
+    background: rgba(255,255,255,0.06);
+    min-height: 1.5rem;
+  }
+  .year-entry:last-child .year-spine { background: none; }
+  .year-entry--current .year-num { color: rgba(232,164,32,0.75); }
+  .year-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-bottom: var(--space-sm);
+  }
+  .year-label {
+    font-family: var(--font-sub);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    color: var(--paper);
+    text-transform: uppercase;
+  }
+  .year-entry--current .year-label { color: var(--neon-amber); }
+  .year-body {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: rgba(232,222,200,0.45);
+  }
+
+  /* CTAs */
+  .studio-ctas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .studio-cta {
+    display: block;
+    padding: var(--space-lg);
+    border: 1px solid rgba(232,164,32,0.12);
+    background: rgba(232,164,32,0.02);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .studio-cta:hover {
+    border-color: rgba(232,164,32,0.3);
+    background: rgba(232,164,32,0.04);
+  }
+  .studio-cta--secondary {
+    border-color: rgba(255,255,255,0.05);
+    background: transparent;
+  }
+  .studio-cta--secondary:hover {
+    border-color: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.02);
+  }
+  .cta-inner { display: flex; flex-direction: column; gap: 0.3rem; }
+  .cta-eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,164,32,0.4);
+    text-transform: uppercase;
+  }
+  .studio-cta--secondary .cta-eyebrow { color: rgba(232,222,200,0.2); }
+  .cta-label {
+    font-family: var(--font-sub);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--paper);
+    text-transform: uppercase;
+  }
+  .cta-sub {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: rgba(232,222,200,0.3);
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 700px) {
+    .studio-page { padding: var(--space-md); }
+    .studio-ctas { grid-template-columns: 1fr; }
+    .year-entry { grid-template-columns: 3.5rem 1fr; gap: var(--space-md); }
+  }
+</style>

@@ -15,6 +15,7 @@ const navLinks = [
   { href: '/work', label: 'Overview' },
   { href: '/work/intake', label: 'Mission Intake' },
   { href: '/work/case-files', label: 'Case Files' },
+  { href: '/about', label: 'About' },
 ];
 ---
 
@@ -34,8 +35,6 @@ const navLinks = [
     <title>{title}</title>
   </head>
   <body class="gh-body">
-    <!-- Fixed full-page photo background — direct body child ensures position:fixed is always viewport-relative -->
-    <div class="gh-photo-bg" aria-hidden="true"></div>
     <nav class="gh-nav">
       <a href="/work" class="gh-logo" aria-label="LDI Work">
         <span class="gh-logo-mark">LDI</span>
@@ -62,12 +61,11 @@ const navLinks = [
       <div class="gh-footer-inner">
         <span class="gh-footer-brand">Lithium Dreams Industries</span>
         <span class="gh-footer-tag">Operating Systems Design</span>
+        <a href="/about" class="gh-footer-about">About</a>
         <a href="/attraction" class="gh-footer-link">Visit the Attraction →</a>
       </div>
     </footer>
 
-    <!-- Foreground depth element — direct body child so position:fixed is always viewport-relative -->
-    <img class="gh-plant" src="/plant-foreground.png" alt="" aria-hidden="true">
   </body>
 </html>
 
@@ -94,16 +92,8 @@ const navLinks = [
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .gh-photo-bg {
-    position: fixed;
-    inset: 0;
-    background: url('/glasshouse-studio.png') center / cover no-repeat;
-    z-index: -1;
-    pointer-events: none;
-  }
-
   .gh-body {
-    background: rgba(238, 241, 236, 0.28);
+    background: #F5F3EE;
     color: var(--gh-text);
     font-family: var(--gh-sans);
     font-size: 1rem;
@@ -191,7 +181,7 @@ const navLinks = [
   /* ── Footer ── */
   .gh-footer {
     border-top: 1px solid var(--gh-border);
-    background: rgba(255, 255, 255, 0.5);
+    background: #ffffff;
     padding: 1.5rem 2rem;
   }
   .gh-footer-inner {
@@ -204,6 +194,12 @@ const navLinks = [
   }
   .gh-footer-brand { font-weight: 600; color: var(--gh-text); }
   .gh-footer-tag { color: var(--gh-faint); }
+  .gh-footer-about {
+    color: var(--gh-faint);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .gh-footer-about:hover { color: var(--gh-muted); }
   .gh-footer-link {
     margin-left: auto;
     color: var(--gh-faint);
@@ -214,19 +210,6 @@ const navLinks = [
   }
   .gh-footer-link:hover { color: var(--gh-muted); }
 
-  /* ── Foreground plant ── */
-  .gh-plant {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 220px;
-    height: auto;
-    pointer-events: none;
-    z-index: 50;
-    opacity: 0.88;
-    filter: blur(1px);
-  }
-
   @media (max-width: 768px) {
     .gh-nav { padding: 0.875rem 1rem; flex-wrap: wrap; gap: 0.75rem; }
     .gh-nav-links { margin-left: 0; gap: 1rem; }
@@ -234,6 +217,5 @@ const navLinks = [
     .gh-content { padding: 2rem 1rem; }
     .gh-footer { padding: 1.25rem 1rem; }
     .gh-footer-link { display: none; }
-    .gh-plant { width: 130px; opacity: 0.75; }
   }
 </style>

@@ -34,6 +34,76 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
         <p>// Please do not ask about <a href="/chapel/back-room" class="backroom-link">the back room</a></p>
         <p>// Rice provided. Cleanup is your responsibility.</p>
       </div>
+
+      <!-- Bob Officiant Notice -->
+      <EmployeeNotice heading="Officiants on File" variant="caution">
+        <p>Bob is licensed in this state and two others he won't name. He does not wear a suit. He does wear his badge. The ceremony will be brief, correct, and memorable in ways you may not anticipate.</p>
+        <p>Bob does not do destination weddings. Bob also does not explain why.</p>
+      </EmployeeNotice>
+
+      <!-- Guest Book -->
+      <div class="guest-book">
+        <p class="book-eyebrow mono">Guest Registry</p>
+        <p class="book-note text-dim">These people were married here. We have no reason to doubt them.</p>
+        <div class="book-entries">
+          <div class="book-entry">
+            <span class="entry-names">T. Hargrove &amp; M. Hargrove</span>
+            <span class="entry-date mono text-dim">Year 4 — Tuesday</span>
+            <p class="entry-note">"The organ played something we didn't request. It was better."</p>
+          </div>
+          <div class="book-entry">
+            <span class="entry-names">Agent W. &amp; The Fog</span>
+            <span class="entry-date mono text-dim">Year 6 — Friday</span>
+            <p class="entry-note">"We do not know what The Fog is. The certificate is valid."</p>
+          </div>
+          <div class="book-entry">
+            <span class="entry-names">Two People Who Asked For Privacy</span>
+            <span class="entry-date mono text-dim">Year 7 — Tuesday</span>
+            <p class="entry-note">"Request honored. Entry included anyway, anonymized. They seemed happy."</p>
+          </div>
+          <div class="book-entry">
+            <span class="entry-names">???</span>
+            <span class="entry-date mono text-dim">Present — Ongoing</span>
+            <p class="entry-note">"This line was already filled in when we opened the book this morning."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gift Shop Rack -->
+      <div class="gift-rack">
+        <p class="rack-eyebrow mono">Chapel Gift Shelf</p>
+        <p class="rack-note text-dim">A small selection. Bob curates it. Do not ask why he chose these items.</p>
+        <div class="rack-grid">
+          <div class="rack-item">
+            <span class="item-name">Laminated Certificate (Extra Copy)</span>
+            <span class="item-price mono">$3.00</span>
+          </div>
+          <div class="rack-item">
+            <span class="item-name">Plastic Flower Bouquet (Mixed Species)</span>
+            <span class="item-price mono">$7.50</span>
+          </div>
+          <div class="rack-item">
+            <span class="item-name">Cryptid Witness Postcard (signed)</span>
+            <span class="item-price mono">$4.00</span>
+          </div>
+          <div class="rack-item">
+            <span class="item-name">Rice (single serving, pre-measured)</span>
+            <span class="item-price mono">$0.50</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cathedral Doorway — stronger presence -->
+      <div class="cathedral-threshold">
+        <div class="threshold-tape"></div>
+        <div class="threshold-body">
+          <span class="threshold-label mono">RESTRICTED ACCESS</span>
+          <p class="threshold-copy mono">The door at the back of the chapel is not part of the venue. It is not part of the attraction. It predates the building.</p>
+          <p class="threshold-copy mono text-dim">If you hear something from behind it, inform the Warden. Do not open it on your own. Not because it is locked — it isn't — but because some things need to be approached correctly.</p>
+          <a href="/chapel/back-room" class="threshold-link mono">[ proceed — you were warned ]</a>
+        </div>
+        <div class="threshold-tape"></div>
+      </div>
     </div>
   </div>
 </Layout>
@@ -99,7 +169,143 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
     color: rgba(232, 222, 200, 0.7);
     border-color: rgba(232, 222, 200, 0.3);
   }
+  /* Guest book */
+  .guest-book {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: var(--space-lg);
+  }
+  .book-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.25);
+    text-transform: uppercase;
+  }
+  .book-note { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.04em; }
+  .book-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-top: var(--space-xs);
+  }
+  .book-entry {
+    padding: var(--space-md);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .book-entry:last-child { border-bottom: none; }
+  .entry-names {
+    font-family: var(--font-sub);
+    font-size: 0.85rem;
+    color: var(--paper);
+    letter-spacing: 0.04em;
+  }
+  .entry-date { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .entry-note {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(232,222,200,0.45);
+    font-style: italic;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    margin-top: 0.2rem;
+  }
+
+  /* Gift rack */
+  .gift-rack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .rack-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.25);
+    text-transform: uppercase;
+  }
+  .rack-note { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.04em; }
+  .rack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-top: var(--space-xs);
+  }
+  .rack-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: var(--space-md);
+    background: var(--ldi-black);
+  }
+  .item-name {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: rgba(232,222,200,0.55);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+  .item-price {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--neon-amber);
+  }
+
+  /* Cathedral threshold */
+  .cathedral-threshold {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(194, 59, 34, 0.15);
+    margin-top: var(--space-sm);
+  }
+  .threshold-tape {
+    height: 6px;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(194, 59, 34, 0.3),
+      rgba(194, 59, 34, 0.3) 8px,
+      rgba(0,0,0,0) 8px,
+      rgba(0,0,0,0) 16px
+    );
+  }
+  .threshold-body {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    background: rgba(194, 59, 34, 0.03);
+  }
+  .threshold-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(194, 59, 34, 0.6);
+  }
+  .threshold-copy {
+    font-size: 0.72rem;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+  }
+  .threshold-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(194, 59, 34, 0.4);
+    text-decoration: none;
+    margin-top: var(--space-sm);
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+  .threshold-link:hover { color: rgba(194, 59, 34, 0.8); }
+
   @media (max-width: 600px) {
     .district-page { padding: var(--space-md); }
+    .rack-grid { grid-template-columns: 1fr; }
   }
 </style>

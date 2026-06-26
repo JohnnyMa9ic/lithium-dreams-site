@@ -1,0 +1,1117 @@
+---
+import Layout from '../components/Layout.astro';
+---
+
+<Layout title="LDI — Yasuragi / Deep Garden" description="A quiet place behind the noise. Yasuragi Garden above, Deep Garden below." activePage="/deep-garden">
+
+  <!-- Depth marker -->
+  <aside class="depth-marker" aria-label="Garden depth position">
+    <a href="#yasuragi" class="depth-link active" data-depth="yasuragi"><span class="depth-dot"></span>Yasuragi</a>
+    <a href="#root-layer" class="depth-link" data-depth="root-layer"><span class="depth-dot"></span>Root Layer</a>
+    <a href="#deep-garden" class="depth-link" data-depth="deep-garden"><span class="depth-dot"></span>Deep Garden</a>
+  </aside>
+
+  <!-- ── 01. Hero: Yasuragi Garden ── -->
+  <section id="yasuragi" class="garden-hero">
+    <div class="hero-bg yasuragi-bg" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-body">
+      <div class="hero-text">
+        <p class="eyebrow">Warden Collection</p>
+        <h1>Yasuragi<br>Garden</h1>
+        <p class="hero-copy">A quiet place behind the noise.</p>
+        <p class="hero-flavor">Please walk slowly. The garden is listening.</p>
+        <div class="hero-actions">
+          <a class="garden-btn garden-btn--primary" href="#surface-garden">Walk the Lantern Path</a>
+          <a class="garden-btn garden-btn--ghost" href="#deep-garden">Descend to the Deep Garden</a>
+        </div>
+      </div>
+      <aside class="status-card">
+        <p class="status-label">Garden Status</p>
+        <strong>Root System Active</strong>
+        <span>Rainfall steady · Lanterns lit · Visitors calm</span>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ── 02–03. Surface Garden ── -->
+  <section id="surface-garden" class="garden-section surface-section">
+    <div class="section-inner">
+      <header class="section-head">
+        <p class="eyebrow">ACC. ROOT-001</p>
+        <h2>Visible Root System<br>Restorative Zone</h2>
+        <p class="section-copy">
+          Yasuragi Garden is the visible layer of the garden system — cultivated, tended, and accessible.
+          This is where the attraction softens. Where noise drains off.
+          Where ideas can rest long enough to become clear again.
+        </p>
+        <p class="section-note">Not every path needs to lead somewhere loud.</p>
+      </header>
+
+      <div class="artifact-grid">
+        <article class="artifact-card">
+          <span class="artifact-idx">01</span>
+          <h3>Bonsai Registry</h3>
+          <p>Atlas, Patient Zero, Lantern Keeper, and Quiet Signal remain under active care.</p>
+          <small>Warden note: do not rush the small trees.</small>
+        </article>
+        <article class="artifact-card">
+          <span class="artifact-idx">02</span>
+          <h3>Lantern Path</h3>
+          <p>Teal lanterns mark safe routes. Dim lanterns indicate slow zones. Flicker does not always mean danger.</p>
+          <small>Current lantern status: all lit.</small>
+        </article>
+        <article class="artifact-card quote-card">
+          <span class="artifact-idx">03</span>
+          <h3>Warden's Bench</h3>
+          <blockquote>"Urgency is often just unprocessed fear wearing a watch."</blockquote>
+        </article>
+        <article class="artifact-card">
+          <span class="artifact-idx">04</span>
+          <h3>Greenhouse Notes</h3>
+          <p>Glass cleaned after storm activity. Rain chain repaired. Roots visible near west wall.</p>
+          <small>Filed under: ordinary miracles.</small>
+        </article>
+        <article class="artifact-card">
+          <span class="artifact-idx">05</span>
+          <h3>Stone Basin</h3>
+          <p>Touch water. Breathe. Begin again.</p>
+          <small>Water recirculating normally.</small>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04. Root Layer Transition ── -->
+  <section id="root-layer" class="root-transition">
+    <div class="cutaway-bg" aria-hidden="true"></div>
+    <div class="transition-scrim" aria-hidden="true"></div>
+    <div class="transition-content">
+      <p class="eyebrow">Root Layer</p>
+      <h2>Below the visible garden<br>is the part that remembers.</h2>
+      <p class="hero-flavor">Some ideas are not dead. They are just underground.</p>
+      <p class="transition-body">The attraction has wiring. The garden has roots. They are not the same system, but they often agree.</p>
+    </div>
+  </section>
+
+  <!-- ── 05. Root Map ── -->
+  <section id="root-map" class="garden-section root-map-section">
+    <div class="section-inner">
+      <header class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">ACC. ROOT-MAP-01</p>
+          <h2>Living Infrastructure Index</h2>
+        </div>
+        <p class="section-copy">
+          The visible attraction is not the whole structure. Beneath it runs a quieter network:
+          roots, memory, patience, and living continuity.
+        </p>
+      </header>
+
+      <div class="root-map" role="img" aria-label="Root network connecting Deep Garden to all attraction locations">
+        <svg class="root-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M50 50 C35 20 22 17 12 22" />
+          <path d="M50 50 C70 22 80 18 91 24" />
+          <path d="M50 50 C25 55 14 55 8 60" />
+          <path d="M50 50 C75 55 85 55 93 60" />
+          <path d="M50 50 C35 80 24 82 15 84" />
+          <path d="M50 50 C67 78 78 82 89 84" />
+          <path d="M50 50 C50 20 50 12 50 5" />
+          <path d="M50 50 C50 80 50 88 50 95" />
+        </svg>
+        <div class="root-node root-node--center">Deep Garden</div>
+        <div class="root-node root-node--n1">Midway</div>
+        <div class="root-node root-node--n2">Museum</div>
+        <div class="root-node root-node--n3">Bob's Fortune</div>
+        <div class="root-node root-node--n4">Ghost's Workshop</div>
+        <div class="root-node root-node--n5">Wedding Chapel</div>
+        <div class="root-node root-node--n6 root-node--warning">Cathedral</div>
+        <div class="root-node root-node--n7">Crossroads</div>
+        <div class="root-node root-node--n8">Corporate Glasshouse</div>
+      </div>
+
+      <p class="map-caption">Wiring carries signals. Roots carry memory.</p>
+    </div>
+  </section>
+
+  <!-- ── 06. Deep Garden Reveal ── -->
+  <section id="deep-garden" class="garden-hero deep-garden-hero">
+    <div class="hero-bg deep-bg" aria-hidden="true"></div>
+    <div class="hero-scrim hero-scrim--deep" aria-hidden="true"></div>
+    <div class="hero-body">
+      <div class="hero-text">
+        <p class="eyebrow">ACC. ROOT-002</p>
+        <h1>Deep<br>Garden</h1>
+        <p class="hero-copy">Memory compost / dormant idea storage.</p>
+        <p class="hero-flavor">Not every idea is supposed to bloom today.</p>
+      </div>
+      <aside class="status-card status-card--deep">
+        <p class="status-label">Belowground Status</p>
+        <strong>Dormant Systems Stable</strong>
+        <span>Humidity 81% · Lanterns active · Cathedral boundary intact</span>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ── 07. Deep Garden Artifacts ── -->
+  <section class="garden-section deep-section">
+    <div class="section-inner">
+      <div class="artifact-grid artifact-grid--deep">
+        <article class="artifact-card artifact-card--deep">
+          <span class="artifact-idx">A</span>
+          <h3>Seed Archive</h3>
+          <p>Dream Crown, Archive Courtyard, Crossroads Atlas, Signal Herbarium, and Dormant Cabinet 7.</p>
+        </article>
+        <article class="artifact-card artifact-card--deep">
+          <span class="artifact-idx">B</span>
+          <h3>Compost Notes</h3>
+          <p>Some ideas do not fail. They become soil.</p>
+        </article>
+        <article class="artifact-card artifact-card--deep">
+          <span class="artifact-idx">C</span>
+          <h3>Dormant Ideas</h3>
+          <p>Not ready yet does not mean abandoned. Some roots grow in silence for years before finding light.</p>
+        </article>
+        <article class="artifact-card artifact-card--deep artifact-card--warning">
+          <span class="artifact-idx artifact-idx--warn">!</span>
+          <h3>Root Warnings</h3>
+          <p>Do not pull at active roots. Do not follow roots toward the Cathedral without escort. Do not confuse dormancy with abandonment.</p>
+        </article>
+        <article class="artifact-card artifact-card--deep">
+          <span class="artifact-idx">W</span>
+          <h3>Warden's Field Notes</h3>
+          <p>The difference between delay and incubation is care.</p>
+        </article>
+        <article class="artifact-card artifact-card--deep">
+          <span class="artifact-idx">?</span>
+          <h3>Things Not Ready Yet</h3>
+          <p>A holding shelf for ideas that still have heat but no shape. Come back when the season changes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 08. Plant an Idea ── -->
+  <section id="plant-idea" class="garden-section plant-section">
+    <div class="section-inner plant-inner">
+      <header class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Planting Station</p>
+          <h2>Plant an Idea</h2>
+        </div>
+        <p class="section-copy">Every idea is a seed. Not every seed should become a project immediately. Give it the right conditions and check back.</p>
+      </header>
+
+      <div class="planting-station">
+        <form id="seedForm" class="seed-form" autocomplete="off">
+          <label>
+            Idea Name
+            <input id="ideaName" name="ideaName" maxlength="80" placeholder="Give your idea a name..." />
+          </label>
+          <label>
+            What sparked it?
+            <textarea id="ideaSpark" name="ideaSpark" maxlength="300" placeholder="What moment, observation, or question lit this idea?"></textarea>
+          </label>
+          <label>
+            Why isn't it ready?
+            <textarea id="ideaBlock" name="ideaBlock" maxlength="300" placeholder="What's missing, unclear, or unresolved right now?"></textarea>
+          </label>
+          <label>
+            What might help it grow?
+            <textarea id="ideaNeed" name="ideaNeed" maxlength="300" placeholder="What resources, connections, or conditions would support it?"></textarea>
+          </label>
+          <label>
+            When should it be checked again?
+            <select id="reviewTime" name="reviewTime">
+              <option>Later</option>
+              <option>7 days</option>
+              <option>30 days</option>
+              <option>Next season</option>
+              <option>When Bob stops laughing</option>
+            </select>
+          </label>
+          <div class="form-actions">
+            <button type="button" id="clearSeed" class="garden-btn garden-btn--ghost">Clear</button>
+            <button type="button" id="downloadSeed" class="garden-btn garden-btn--primary">Download Packet</button>
+          </div>
+        </form>
+
+        <aside class="seed-preview-panel">
+          <div class="seed-packet">
+            <p class="packet-kicker">Deep Garden Archive</p>
+            <h3 id="packetTitle">Seed of Potential</h3>
+            <div class="packet-illustration" aria-hidden="true">✦</div>
+            <dl class="packet-data">
+              <div class="packet-row">
+                <dt>Idea</dt>
+                <dd id="packetIdea">Your idea's name will appear here</dd>
+              </div>
+              <div class="packet-row">
+                <dt>Status</dt>
+                <dd>Dormant</dd>
+              </div>
+              <div class="packet-row">
+                <dt>Planted</dt>
+                <dd id="packetDate"></dd>
+              </div>
+              <div class="packet-row">
+                <dt>Review</dt>
+                <dd id="packetReview">Later</dd>
+              </div>
+            </dl>
+            <p class="warden-stamp">Warden Note: Let it rest.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 09. Warden's Notes ── -->
+  <section class="garden-section warden-section">
+    <div class="section-inner">
+      <p class="eyebrow">Filed Under: Long-Term Care</p>
+      <div class="note-grid">
+        <blockquote>Not every idea should become a task immediately.</blockquote>
+        <blockquote>Patience is structure in biological form.</blockquote>
+        <blockquote>A living system knows when not to act.</blockquote>
+        <blockquote>Clarity is often what remains after urgency leaves.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 10. Next Doorways ── -->
+  <section class="garden-section doorway-section">
+    <div class="section-inner">
+      <p class="eyebrow">Next Doorways</p>
+      <div class="doorway-grid">
+        <a href="/attraction" class="doorway-card">Return to the Attraction</a>
+        <a href="/museum" class="doorway-card">Visit the Museum File</a>
+        <a href="/workshop" class="doorway-card">Access Ghost's Workshop</a>
+        <a href="/" class="doorway-card">Return to the Crossroads</a>
+        <a href="/cathedral" class="doorway-card doorway-card--danger">Do Not Follow Roots Toward the Cathedral</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 11. Garden Footer ── -->
+  <footer class="garden-footer">
+    <strong>Yasuragi / Deep Garden</strong>
+    <span>Root Systems Stable</span>
+    <em>Somewhere above, the Midway is still making noise.</em>
+  </footer>
+
+</Layout>
+
+<style>
+  /* ── Garden palette (local overrides) ── */
+  :root {
+    --g-teal: #36d5cd;
+    --g-teal-dim: rgba(54, 213, 205, 0.28);
+    --g-amber: #d3a85b;
+    --g-paper: #e7dbc0;
+    --g-paper-ink: #2d2418;
+    --g-ink: #f1ead8;
+    --g-muted: #a99f8e;
+    --g-moss: #547249;
+    --g-green: #85a96d;
+    --g-line: rgba(184, 145, 78, 0.28);
+    --g-soil: #0a0f0c;
+    --g-stone: #18201b;
+    --g-display: Georgia, 'Times New Roman', serif;
+    --g-max: 1180px;
+  }
+
+  /* ── Depth marker ── */
+  .depth-marker {
+    position: fixed;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .depth-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--g-muted);
+    opacity: 0.48;
+    text-decoration: none;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .depth-dot {
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--g-teal);
+    border-radius: 50%;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .depth-link.active {
+    color: var(--g-teal);
+    opacity: 1;
+  }
+  .depth-link.active .depth-dot {
+    background: var(--g-teal);
+    box-shadow: 0 0 12px rgba(54, 213, 205, 0.8);
+  }
+
+  /* ── Shared typography ── */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--g-amber);
+    margin-bottom: 0.75rem;
+  }
+  .hero-flavor,
+  .section-note {
+    font-family: var(--g-display);
+    font-style: italic;
+    color: var(--g-muted);
+  }
+
+  /* ── Hero ── */
+  .garden-hero {
+    position: relative;
+    min-height: calc(100vh - 56px);
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+  }
+  .yasuragi-bg {
+    background-image: url('/yasuragi-garden-hero.png');
+  }
+  .deep-bg {
+    background-image: url('/deep-garden-hero.png');
+  }
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg, rgba(5,8,7,0.88) 0%, rgba(5,8,7,0.52) 36%, rgba(5,8,7,0.18) 70%, rgba(5,8,7,0.72) 100%),
+      linear-gradient(180deg, rgba(5,8,7,0.04), rgba(5,8,7,0.94) 100%);
+  }
+  .hero-scrim--deep {
+    background:
+      linear-gradient(100deg, rgba(3,8,6,0.92) 0%, rgba(3,8,6,0.60) 40%, rgba(3,8,6,0.30) 70%, rgba(3,8,6,0.80) 100%),
+      linear-gradient(180deg, rgba(3,8,6,0.12), rgba(3,8,6,0.96) 100%);
+  }
+  .hero-body {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: calc(var(--g-max) + 4rem);
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-text {
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .hero-text h1 {
+    font-family: var(--g-display);
+    font-size: clamp(4.5rem, 9vw, 8rem);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    font-weight: 700;
+    color: var(--g-ink);
+    margin: 0;
+  }
+  .hero-copy {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    color: #d8cfba;
+    margin: 0;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ── Buttons ── */
+  .garden-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.7rem 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid var(--g-line);
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .garden-btn--primary {
+    background: linear-gradient(180deg, #d9b66f, #a77b34);
+    color: #07100d;
+    border-color: transparent;
+  }
+  .garden-btn--primary:hover {
+    background: linear-gradient(180deg, #e5c47c, #b88840);
+    color: #07100d;
+  }
+  .garden-btn--ghost {
+    background: rgba(8, 13, 11, 0.68);
+    color: var(--g-teal);
+    border-color: var(--g-teal-dim);
+  }
+  .garden-btn--ghost:hover {
+    background: rgba(54, 213, 205, 0.08);
+    color: var(--g-teal);
+    border-color: rgba(54, 213, 205, 0.5);
+  }
+
+  /* ── Status card ── */
+  .status-card {
+    flex-shrink: 0;
+    width: min(300px, 100%);
+    padding: 1.1rem;
+    border: 1px solid var(--g-teal-dim);
+    background: rgba(8, 19, 17, 0.78);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .status-card--deep {
+    border-color: rgba(54, 213, 205, 0.35);
+    background: rgba(4, 10, 8, 0.85);
+  }
+  .status-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--g-teal);
+    margin: 0;
+  }
+  .status-card strong {
+    font-family: var(--g-display);
+    font-size: 1.2rem;
+    color: #e8dec7;
+    font-weight: 700;
+  }
+  .status-card span {
+    font-size: 0.82rem;
+    color: #9fb8ac;
+  }
+
+  /* ── Sections ── */
+  .garden-section {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+  }
+  .surface-section {
+    background: linear-gradient(180deg, #0a110d 0%, #080e0b 100%);
+  }
+  .root-map-section {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(54, 213, 205, 0.06), transparent 32rem),
+      #070d09;
+  }
+  .deep-section {
+    background: linear-gradient(180deg, #060c09 0%, #040806 100%);
+  }
+  .plant-section {
+    background: #060b08;
+  }
+  .warden-section {
+    background: #050808;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .doorway-section {
+    background: #040706;
+  }
+  .section-inner {
+    width: min(var(--g-max), calc(100vw - 2rem));
+    margin: 0 auto;
+  }
+  .plant-inner {
+    width: min(1280px, calc(100vw - 2rem));
+  }
+  .section-head {
+    max-width: 820px;
+    margin-bottom: 2.5rem;
+  }
+  .section-head--split {
+    max-width: none;
+    display: grid;
+    grid-template-columns: 1fr minmax(260px, 420px);
+    gap: 2rem;
+    align-items: end;
+  }
+  .section-head h2 {
+    font-family: var(--g-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.0;
+    font-weight: 700;
+    color: var(--g-ink);
+    margin: 0.25rem 0 0;
+  }
+  .section-copy {
+    color: var(--g-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .section-note {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+  }
+
+  /* ── Artifact grid ── */
+  .artifact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .artifact-card {
+    position: relative;
+    min-height: 240px;
+    padding: 1.25rem;
+    background:
+      linear-gradient(180deg, rgba(22, 36, 30, 0.94), rgba(8, 14, 12, 0.94)),
+      radial-gradient(circle at 20% 10%, rgba(54, 213, 205, 0.10), transparent 16rem);
+    border: 1px solid var(--g-line);
+    box-shadow: 0 16px 50px rgba(0,0,0,0.28);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow: hidden;
+  }
+  .artifact-card::after {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgba(184,145,78,0.15);
+    border-radius: 50%;
+  }
+  .artifact-card--deep {
+    background:
+      linear-gradient(180deg, rgba(12, 19, 16, 0.96), rgba(5, 8, 6, 0.96)),
+      radial-gradient(circle at 20% 10%, rgba(133,169,109,0.07), transparent 14rem);
+    border-color: rgba(54, 213, 205, 0.18);
+  }
+  .artifact-card--warning {
+    border-color: rgba(182, 83, 70, 0.45);
+  }
+  .artifact-idx {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--g-teal-dim);
+    color: var(--g-teal);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+  .artifact-idx--warn {
+    border-color: rgba(182,83,70,0.55);
+    color: #ff8c82;
+  }
+  .artifact-card h3 {
+    font-family: var(--g-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--g-ink);
+    margin: 0;
+  }
+  .artifact-card p {
+    color: #b7ae9d;
+    font-size: 0.88rem;
+    margin: 0;
+    flex: 1;
+  }
+  .artifact-card small {
+    display: block;
+    color: var(--g-muted);
+    font-size: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+  .quote-card blockquote {
+    margin: 0.5rem 0 0;
+    font-family: var(--g-display);
+    font-size: 1.45rem;
+    line-height: 1.3;
+    font-style: italic;
+    color: #e5d6b8;
+    flex: 1;
+  }
+
+  /* ── Root transition ── */
+  .root-transition {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .cutaway-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/garden-cutaway.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transform: scale(1.01);
+  }
+  .transition-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(5,8,7,0.24), rgba(5,8,7,0.52) 35%, rgba(5,8,7,0.90) 100%),
+      radial-gradient(circle at 50% 48%, rgba(54, 213, 205, 0.08), transparent 28rem);
+  }
+  .transition-content {
+    position: relative;
+    z-index: 2;
+    width: min(760px, calc(100vw - 2rem));
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: rgba(5,8,7,0.58);
+    border: 1px solid rgba(54, 213, 205, 0.18);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .transition-content h2 {
+    font-family: var(--g-display);
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    color: var(--g-ink);
+    line-height: 1.05;
+    margin: 0;
+  }
+  .transition-body {
+    color: var(--g-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* ── Root Map ── */
+  .root-map {
+    position: relative;
+    height: min(660px, 80vw);
+    min-height: 460px;
+    border: 1px solid var(--g-line);
+    background:
+      radial-gradient(circle at 50% 50%, rgba(54, 213, 205, 0.07), transparent 22rem),
+      linear-gradient(180deg, rgba(14, 24, 20, 0.84), rgba(5, 8, 7, 0.88));
+    overflow: hidden;
+  }
+  .root-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .root-svg path {
+    fill: none;
+    stroke: rgba(54, 213, 205, 0.40);
+    stroke-width: 0.22;
+    stroke-dasharray: 1.2 1.0;
+  }
+  .root-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--g-line);
+    background: rgba(8, 14, 12, 0.92);
+    color: #ded5bf;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    z-index: 2;
+  }
+  .root-node--center {
+    left: 50%; top: 50%;
+    color: var(--g-teal);
+    border-color: var(--g-teal-dim);
+    font-size: 0.85rem;
+    box-shadow: 0 0 36px rgba(54,213,205,0.14);
+  }
+  .root-node--n1 { left: 12%; top: 22%; }
+  .root-node--n2 { left: 91%; top: 24%; }
+  .root-node--n3 { left: 8%; top: 60%; }
+  .root-node--n4 { left: 93%; top: 60%; }
+  .root-node--n5 { left: 15%; top: 84%; }
+  .root-node--n6 { left: 89%; top: 84%; }
+  .root-node--n7 { left: 50%; top: 7%; }
+  .root-node--n8 { left: 50%; top: 94%; }
+  .root-node--warning {
+    color: #ff8c82;
+    border-color: rgba(182, 83, 70, 0.45);
+  }
+  .map-caption {
+    text-align: center;
+    font-family: var(--g-display);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--g-teal);
+    margin-top: 1.25rem;
+  }
+
+  /* ── Plant an Idea ── */
+  .planting-station {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .seed-form {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(10, 18, 15, 0.85);
+    border: 1px solid var(--g-line);
+  }
+  .seed-form label {
+    display: grid;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--g-amber);
+  }
+  .seed-form input,
+  .seed-form textarea,
+  .seed-form select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(231, 219, 192, 0.95);
+    border: 1px solid rgba(184, 145, 78, 0.45);
+    color: var(--g-paper-ink);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .seed-form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  .seed-form input:focus,
+  .seed-form textarea:focus,
+  .seed-form select:focus {
+    border-color: var(--g-teal);
+    box-shadow: 0 0 0 3px rgba(54, 213, 205, 0.14);
+  }
+  .form-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  /* ── Seed Packet ── */
+  .seed-preview-panel {
+    position: sticky;
+    top: 72px;
+    padding: 1.25rem;
+    border: 1px solid var(--g-teal-dim);
+    background: rgba(5, 8, 7, 0.72);
+  }
+  .seed-packet {
+    min-height: 580px;
+    padding: 1.5rem;
+    background:
+      radial-gradient(circle at 0 30%, transparent 14px, rgba(231,219,192,0.96) 15px),
+      radial-gradient(circle at 100% 30%, transparent 14px, rgba(231,219,192,0.96) 15px);
+    outline: 1px solid rgba(70,48,21,0.22);
+    outline-offset: -12px;
+    box-shadow: 0 28px 70px rgba(0,0,0,0.30);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .packet-kicker {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #594523;
+    margin-bottom: 0.5rem;
+  }
+  .seed-packet h3 {
+    font-family: var(--g-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--g-paper-ink);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0;
+  }
+  .packet-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    margin: 1rem 0;
+    border: 1px solid rgba(70,48,21,0.22);
+    font-size: 4rem;
+    color: #5d7a45;
+  }
+  .packet-data {
+    display: grid;
+    gap: 0;
+  }
+  .packet-row {
+    border-top: 1px solid rgba(70,48,21,0.18);
+    padding: 0.5rem 0;
+  }
+  .packet-row dt {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6c552e;
+    margin-bottom: 0.15rem;
+  }
+  .packet-row dd {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--g-paper-ink);
+  }
+  .warden-stamp {
+    text-align: center;
+    font-family: var(--g-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: #594523;
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(70,48,21,0.18);
+  }
+
+  /* ── Warden Notes ── */
+  .note-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .note-grid blockquote {
+    margin: 0;
+    min-height: 180px;
+    padding: 1.1rem;
+    background: rgba(16, 26, 22, 0.82);
+    border-left: 4px solid var(--g-moss);
+    font-family: var(--g-display);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #d8cfba;
+    line-height: 1.3;
+  }
+
+  /* ── Doorways ── */
+  .doorway-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+  .doorway-card {
+    min-height: 120px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    background: rgba(10, 18, 15, 0.88);
+    border: 1px solid var(--g-line);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--g-amber);
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .doorway-card:hover {
+    background: rgba(18, 30, 24, 0.92);
+    border-color: rgba(184,145,78,0.45);
+    color: var(--g-amber);
+  }
+  .doorway-card--danger {
+    border-color: rgba(182, 83, 70, 0.45);
+    color: #ff8c82;
+  }
+  .doorway-card--danger:hover {
+    background: rgba(20, 10, 10, 0.92);
+    border-color: rgba(182, 83, 70, 0.65);
+    color: #ff8c82;
+  }
+
+  /* ── Garden Footer ── */
+  .garden-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem clamp(1rem, 4vw, 3rem);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: #040706;
+    color: #9b927f;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .garden-footer strong { color: var(--g-amber); }
+  .garden-footer em {
+    color: var(--g-teal);
+    font-style: normal;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1050px) {
+    .depth-marker { display: none; }
+    .status-card {
+      position: static;
+      width: 100%;
+      max-width: 520px;
+    }
+    .section-head--split,
+    .planting-station,
+    .note-grid,
+    .doorway-grid { grid-template-columns: 1fr; }
+    .seed-preview-panel { position: static; }
+    .artifact-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 680px) {
+    .hero-text h1 { font-size: 4rem; }
+    .artifact-grid { grid-template-columns: 1fr; }
+    .root-transition { min-height: 80vh; }
+    .cutaway-bg { background-attachment: scroll; }
+    .root-map { min-height: 580px; }
+    .root-node {
+      font-size: 0.6rem;
+      white-space: normal;
+      max-width: 100px;
+      text-align: center;
+    }
+    .note-grid blockquote { min-height: unset; }
+    .doorway-grid { grid-template-columns: 1fr 1fr; }
+    .doorway-card--danger { grid-column: 1 / -1; }
+  }
+</style>
+
+<script>
+  // Depth marker scroll tracking
+  const depthSections = ['yasuragi', 'root-layer', 'deep-garden'];
+  const depthLinks = Array.from(document.querySelectorAll('[data-depth]')) as HTMLAnchorElement[];
+
+  function updateDepthMarker() {
+    const midpoint = window.scrollY + window.innerHeight * 0.42;
+    let active = depthSections[0];
+    for (const id of depthSections) {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= midpoint) active = id;
+    }
+    depthLinks.forEach(link => {
+      link.classList.toggle('active', link.dataset.depth === active);
+    });
+  }
+
+  window.addEventListener('scroll', updateDepthMarker, { passive: true });
+  updateDepthMarker();
+
+  // Seed packet live preview
+  const fields = {
+    ideaName: document.getElementById('ideaName') as HTMLInputElement,
+    ideaSpark: document.getElementById('ideaSpark') as HTMLTextAreaElement,
+    ideaBlock: document.getElementById('ideaBlock') as HTMLTextAreaElement,
+    ideaNeed: document.getElementById('ideaNeed') as HTMLTextAreaElement,
+    reviewTime: document.getElementById('reviewTime') as HTMLSelectElement,
+  };
+
+  const packetTitle = document.getElementById('packetTitle')!;
+  const packetIdea = document.getElementById('packetIdea')!;
+  const packetDate = document.getElementById('packetDate')!;
+  const packetReview = document.getElementById('packetReview')!;
+
+  function todayLabel() {
+    return new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function updatePacket() {
+    const idea = fields.ideaName.value.trim();
+    packetTitle.textContent = idea || 'Seed of Potential';
+    packetIdea.textContent = idea || "Your idea's name will appear here";
+    packetDate.textContent = todayLabel();
+    packetReview.textContent = fields.reviewTime.value || 'Later';
+  }
+
+  Object.values(fields).forEach(f => {
+    f.addEventListener('input', updatePacket);
+    f.addEventListener('change', updatePacket);
+  });
+
+  (document.getElementById('clearSeed') as HTMLButtonElement).addEventListener('click', () => {
+    (document.getElementById('seedForm') as HTMLFormElement).reset();
+    updatePacket();
+  });
+
+  (document.getElementById('downloadSeed') as HTMLButtonElement).addEventListener('click', () => {
+    const packet = {
+      type: 'LDI Seed Packet',
+      idea: fields.ideaName.value.trim() || 'Seed of Potential',
+      spark: fields.ideaSpark.value.trim(),
+      notReadyBecause: fields.ideaBlock.value.trim(),
+      growthConditions: fields.ideaNeed.value.trim(),
+      status: 'Dormant',
+      planted: todayLabel(),
+      review: fields.reviewTime.value,
+      wardenNote: 'Let it rest.',
+    };
+    const blob = new Blob([JSON.stringify(packet, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'ldi-seed-packet.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  updatePacket();
+</script>

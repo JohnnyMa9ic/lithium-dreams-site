@@ -1,0 +1,80 @@
+---
+interface Props {
+  active: 'story' | 'field-notes' | 'infrastructure';
+}
+const { active } = Astro.props;
+---
+
+<nav class="studio-nav" aria-label="Studio section navigation">
+  <a href="/about" class="studio-back mono">← About</a>
+  <div class="studio-links">
+    <a href="/studio" class={`studio-link${active === 'story' ? ' studio-link--active' : ''}`}>
+      <span class="link-num mono">01</span>
+      <span class="link-label">The Story</span>
+    </a>
+    <a href="/studio/field-notes" class={`studio-link${active === 'field-notes' ? ' studio-link--active' : ''}`}>
+      <span class="link-num mono">02</span>
+      <span class="link-label">Field Notes</span>
+    </a>
+    <a href="/studio/infrastructure" class={`studio-link${active === 'infrastructure' ? ' studio-link--active' : ''}`}>
+      <span class="link-num mono">03</span>
+      <span class="link-label">Infrastructure</span>
+    </a>
+  </div>
+</nav>
+
+<style>
+  .studio-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    padding: 0.6rem var(--space-xl);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: rgba(10,10,12,0.85);
+    backdrop-filter: blur(10px);
+  }
+  .studio-back {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    color: rgba(232,222,200,0.2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .studio-back:hover { color: rgba(232,222,200,0.55); }
+  .studio-links {
+    display: flex;
+    gap: var(--space-lg);
+    overflow-x: auto;
+  }
+  .studio-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: rgba(232,222,200,0.3);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    white-space: nowrap;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s;
+  }
+  .studio-link:hover { color: rgba(232,222,200,0.65); }
+  .studio-link--active {
+    color: var(--paper);
+    border-bottom-color: rgba(232,164,32,0.35);
+  }
+  .link-num {
+    font-size: 0.5rem;
+    letter-spacing: 0.12em;
+    opacity: 0.5;
+  }
+  @media (max-width: 600px) {
+    .studio-nav { padding: 0.5rem var(--space-md); gap: var(--space-md); }
+    .studio-back { display: none; }
+    .studio-links { gap: var(--space-md); }
+  }
+</style>

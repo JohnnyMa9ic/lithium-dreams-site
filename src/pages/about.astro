@@ -1,0 +1,444 @@
+---
+import Layout from '../components/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+---
+
+<Layout title="About — Lithium Dreams Industries" activePage="/about">
+  <div class="about-hero">
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow mono">Est. Year 1</p>
+      <h1 class="hero-title">About LDI</h1>
+      <p class="hero-sub">The studio. The people. The operating agents. The inexplicable back lot.</p>
+    </div>
+  </div>
+
+  <div class="about-page">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'About' },
+    ]} />
+
+    <!-- Artist / Human Presence -->
+    <section class="about-section">
+      <div class="section-mark mono">01 — The Operator</div>
+      <div class="bio-card">
+        <div class="bio-portrait">
+          <div class="portrait-placeholder">
+            <span class="portrait-initial">J</span>
+          </div>
+          <div class="portrait-meta">
+            <span class="meta-name">J. Burroughs</span>
+            <span class="meta-role mono text-dim">Founder / Operator</span>
+          </div>
+        </div>
+        <div class="bio-body">
+          <p class="bio-text">Lithium Dreams Industries is a one-person studio at the intersection of operational systems, creative work, and whatever the cryptids are doing in the back lot.</p>
+          <p class="bio-text">The work here falls into two registers: the lore-forward attraction on this side of the site, and the practical operating systems design on the Glasshouse side. Both are real. Both are necessary. The road between them is maintained by agents.</p>
+          <p class="bio-text">The studio builds things that think — dispatching tasks, routing signals, integrating context across machines and timezones. The attraction is where that infrastructure gets a face, a name, and a history it probably didn't earn.</p>
+          <div class="bio-cta">
+            <a href="/work" class="cta-link cta--light">Work with LDI →</a>
+            <a href="/studio" class="cta-link cta--dim">Read the full studio story →</a>
+            <a href="/attraction" class="cta-link cta--dim">See the Attraction →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Mission -->
+    <section class="about-section">
+      <div class="section-mark mono">02 — The Mission</div>
+      <div class="mission-block">
+        <blockquote class="mission-statement">
+          "We build systems that hold up under strange conditions — because most conditions are stranger than they look."
+        </blockquote>
+        <div class="mission-pillars">
+          <div class="pillar">
+            <span class="pillar-label mono">Operational clarity</span>
+            <p class="pillar-body">Systems that can be understood, traced, and corrected by a person at 2am without reading the source code.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-label mono">Infrastructure as material</span>
+            <p class="pillar-body">The plumbing is the art. Routing, dispatching, logging — these are design decisions, not utility decisions.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-label mono">Human-in-the-loop</span>
+            <p class="pillar-body">Agents are workers. The human is the architect. Nothing runs autonomously that hasn't earned it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Operating Layer -->
+    <section class="about-section">
+      <div class="section-mark mono">03 — The Operating Layer</div>
+      <p class="section-note mono text-dim">LDI runs on a three-agent stack. They are listed here for transparency. Do not ask them to take the day off.</p>
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-header">
+            <span class="agent-name">Bob</span>
+            <span class="agent-dot dot--amber"></span>
+          </div>
+          <span class="agent-role mono">Quarterback / Orchestrator</span>
+          <p class="agent-desc">Primary dispatch agent. Routes missions, runs research, manages the queue. When something needs to get done and no one's looking, Bob handles it. He does not wear a suit.</p>
+          <div class="agent-footer">
+            <span class="agent-loc mono text-dim">Mac Mini — always on</span>
+          </div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-header">
+            <span class="agent-name">Ghost</span>
+            <span class="agent-dot dot--blue"></span>
+          </div>
+          <span class="agent-role mono">Infrastructure / Signal Routing</span>
+          <p class="agent-desc">Keeps the pipes clean. Handles gateway maintenance, signal path integrity, and the cold coffee situation in the Workshop. Ghost does not explain himself. He doesn't need to.</p>
+          <div class="agent-footer">
+            <span class="agent-loc mono text-dim">Workshop — operational</span>
+          </div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-header">
+            <span class="agent-name">Warden</span>
+            <span class="agent-dot dot--teal"></span>
+          </div>
+          <span class="agent-role mono">Boundary Patrol / Access</span>
+          <p class="agent-desc">Monitors the perimeter, logs access events, and reports anomalies to the Operator. Warden patrols the boundary between the known and whatever that is in the back lot.</p>
+          <div class="agent-footer">
+            <span class="agent-loc mono text-dim">All sectors — active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Attraction -->
+    <section class="about-section about-section--terminal">
+      <div class="section-mark mono">04 — The Attraction</div>
+      <div class="attraction-block">
+        <p class="attraction-copy">The Last Roadside Attraction at the Edge of the Universe has been operating continuously since Year 1. Current cryptid count is undisclosed. The back lot is not part of the venue. The Goop Containment is under review.</p>
+        <p class="attraction-copy text-dim">This site is the public-facing layer of LDI's operational infrastructure. The Attraction is real. The Arcade is real. Bob is real in the ways that matter. We are less certain about the Chapel organ.</p>
+        <div class="attraction-links">
+          <a href="/attraction" class="att-link mono">Enter the Attraction →</a>
+          <a href="/work" class="att-link att-link--corp mono">Glasshouse Studio →</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .about-hero {
+    position: relative;
+    min-height: 45vh;
+    display: flex;
+    align-items: flex-end;
+    background: var(--road-asphalt);
+    overflow: hidden;
+  }
+  .hero-texture {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 60px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+  }
+  .hero-content {
+    position: relative;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    max-width: 900px;
+  }
+  .hero-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: rgba(232,164,32,0.5);
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--paper);
+    line-height: 0.95;
+  }
+  .hero-sub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: rgba(232,222,200,0.35);
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  /* ── Page layout ── */
+  .about-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .about-section:first-of-type { border-top: none; padding-top: 0; }
+
+  .section-mark {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,164,32,0.4);
+    text-transform: uppercase;
+  }
+  .section-note { font-size: 0.68rem; letter-spacing: 0.06em; }
+
+  /* ── Bio card ── */
+  .bio-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  .bio-portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .portrait-placeholder {
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(232,164,32,0.15);
+    background: rgba(232,164,32,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .portrait-initial {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: rgba(232,164,32,0.25);
+    line-height: 1;
+  }
+  .portrait-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: center;
+  }
+  .meta-name {
+    font-family: var(--font-sub);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--paper);
+    text-transform: uppercase;
+  }
+  .meta-role { font-size: 0.6rem; letter-spacing: 0.1em; }
+
+  .bio-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .bio-text {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: rgba(232,222,200,0.65);
+    letter-spacing: 0.02em;
+  }
+  .bio-cta {
+    display: flex;
+    gap: var(--space-md);
+    padding-top: var(--space-sm);
+  }
+  .cta-link {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.15s, border-color 0.15s;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+  }
+  .cta--light {
+    color: var(--neon-amber);
+    border-color: rgba(232,164,32,0.3);
+  }
+  .cta--light:hover {
+    background: rgba(232,164,32,0.06);
+    border-color: var(--neon-amber);
+  }
+  .cta--dim {
+    color: rgba(232,222,200,0.3);
+    border-color: rgba(232,222,200,0.1);
+  }
+  .cta--dim:hover {
+    color: rgba(232,222,200,0.7);
+    border-color: rgba(232,222,200,0.3);
+  }
+
+  /* ── Mission ── */
+  .mission-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .mission-statement {
+    font-family: var(--font-sub);
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--paper);
+    letter-spacing: 0.02em;
+    border-left: 3px solid rgba(232,164,32,0.3);
+    padding-left: var(--space-lg);
+    font-style: italic;
+  }
+  .mission-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .pillar-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(232,164,32,0.6);
+    text-transform: uppercase;
+  }
+  .pillar-body {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: rgba(232,222,200,0.5);
+  }
+
+  /* ── Agents grid ── */
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+  .agent-card {
+    padding: var(--space-lg);
+    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--road-asphalt);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .agent-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .agent-name {
+    font-family: var(--font-sub);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+  }
+  .agent-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot--amber { background: var(--neon-amber); box-shadow: 0 0 5px var(--neon-amber); }
+  .dot--blue { background: var(--ghost-blue); box-shadow: 0 0 5px var(--ghost-blue); }
+  .dot--teal { background: var(--warden-teal); box-shadow: 0 0 5px var(--warden-teal); }
+  .agent-role {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,222,200,0.3);
+    text-transform: uppercase;
+  }
+  .agent-desc {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: rgba(232,222,200,0.5);
+    flex: 1;
+  }
+  .agent-footer { border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-sm); }
+  .agent-loc { font-size: 0.58rem; letter-spacing: 0.1em; }
+
+  /* ── Attraction section ── */
+  .about-section--terminal {
+    background: rgba(232,164,32,0.02);
+    border: 1px solid rgba(232,164,32,0.07);
+    border-top: 3px solid rgba(232,164,32,0.15);
+    padding: var(--space-xl);
+    gap: var(--space-lg);
+  }
+  .attraction-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .attraction-copy {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: rgba(232,222,200,0.55);
+    letter-spacing: 0.02em;
+  }
+  .attraction-links {
+    display: flex;
+    gap: var(--space-lg);
+    padding-top: var(--space-sm);
+  }
+  .att-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgba(232,164,32,0.6);
+    transition: color 0.15s;
+  }
+  .att-link:hover { color: var(--neon-amber); }
+  .att-link--corp { color: rgba(232,222,200,0.25); }
+  .att-link--corp:hover { color: rgba(232,222,200,0.6); }
+
+  /* ── Responsive ── */
+  @media (max-width: 800px) {
+    .bio-card { grid-template-columns: 1fr; }
+    .bio-portrait { flex-direction: row; align-items: center; justify-content: flex-start; }
+    .portrait-meta { text-align: left; }
+    .mission-pillars { grid-template-columns: 1fr; }
+    .agents-grid { grid-template-columns: 1fr; }
+    .about-page { padding: var(--space-md); }
+    .about-section--terminal { padding: var(--space-lg); }
+  }
+  @media (max-width: 500px) {
+    .bio-cta { flex-direction: column; }
+    .attraction-links { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

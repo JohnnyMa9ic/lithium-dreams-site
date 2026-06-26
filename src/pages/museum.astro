@@ -38,6 +38,53 @@ import Breadcrumb from '../components/Breadcrumb.astro';
         <MuseumPlaque accession="MUS-004" title="Field Reports" subtitle="Ongoing documentation from active operatives." />
         <div class="case-status mono text-dim">// exhibits rotating</div>
       </div>
+      <div class="exhibit-case exhibit-case--flagged">
+        <MuseumPlaque accession="MUS-005" title="Goop Containment Note" subtitle="Greenish residue cataloged. Do not taste, touch, or compliment." />
+        <div class="case-note mono">
+          <span class="note-label">CONTAINMENT STATUS:</span> Contained.
+          <span class="note-label"> ORIGIN:</span> Unknown.
+          <span class="note-label"> TEXTURE:</span> Consistent with itself.
+          <br />
+          Warden note: <em>It has not expanded. This is the best we can say.</em>
+        </div>
+        <div class="case-status mono case-status--warn">// do not interact with exhibit</div>
+      </div>
+    </div>
+
+    <!-- Institutional Timeline -->
+    <div class="timeline-section">
+      <p class="timeline-eyebrow mono">Institutional History</p>
+      <p class="timeline-note text-dim">A partial reconstruction. Some years are missing. The museum does not apologize for this.</p>
+      <div class="timeline-drawer">
+        <details class="timeline-entry">
+          <summary class="timeline-label mono">Year Zero — Founding Conditions</summary>
+          <div class="timeline-body">
+            <p>The site was selected. No one remembers by whom. A sign was placed. The sign said: Last Roadside Attraction.</p>
+            <p>The cryptids arrived before the staff.</p>
+          </div>
+        </details>
+        <details class="timeline-entry">
+          <summary class="timeline-label mono">Year 3 — First Expansions</summary>
+          <div class="timeline-body">
+            <p>The Arcade was added. Bob's cabinet arrived by freight. No invoice was included.</p>
+            <p>The Museum was proposed to contain what could not be explained by any other department.</p>
+          </div>
+        </details>
+        <details class="timeline-entry">
+          <summary class="timeline-label mono">Year 7 — The Crossroads Incident</summary>
+          <div class="timeline-body">
+            <p>Details are classified pending review. What can be said: something was left behind. The Museum received three new exhibits.</p>
+            <p>The Chapel was repurposed. The back room was sealed. The Warden requested additional lanterns.</p>
+          </div>
+        </details>
+        <details class="timeline-entry">
+          <summary class="timeline-label mono">Present — Ongoing Operations</summary>
+          <div class="timeline-body">
+            <p>The attraction is open. The Museum is accepting new submissions. MUS-005 remains contained.</p>
+            <p>Bob says everything is fine. The Warden has not confirmed this.</p>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
 </Layout>
@@ -102,6 +149,91 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     padding-left: var(--space-md);
     text-transform: uppercase;
   }
+  .exhibit-case--flagged {
+    border-left: 2px solid rgba(194, 59, 34, 0.3);
+    padding-left: var(--space-md);
+  }
+  .case-note {
+    font-size: 0.65rem;
+    color: rgba(232,222,200,0.4);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    padding-left: var(--space-md);
+  }
+  .note-label {
+    color: rgba(194, 59, 34, 0.6);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+  }
+  .case-status--warn { color: rgba(194, 59, 34, 0.5); }
+
+  /* Timeline */
+  .timeline-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: var(--space-lg);
+    margin-top: var(--space-sm);
+  }
+  .timeline-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.25);
+    text-transform: uppercase;
+  }
+  .timeline-note {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+  }
+  .timeline-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .timeline-entry {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .timeline-entry:last-child { border-bottom: none; }
+  .timeline-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,222,200,0.5);
+    padding: 0.8rem var(--space-md);
+    cursor: pointer;
+    list-style: none;
+    text-transform: uppercase;
+    transition: color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .timeline-label::before {
+    content: '▶';
+    font-size: 0.45rem;
+    opacity: 0.4;
+    transition: transform 0.2s;
+  }
+  details[open] .timeline-label::before { transform: rotate(90deg); }
+  .timeline-label:hover { color: var(--paper); background: rgba(255,255,255,0.02); }
+  .timeline-body {
+    padding: 0 var(--space-md) var(--space-md) calc(var(--space-md) + 1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .timeline-body p {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: rgba(232,222,200,0.4);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
   @media (max-width: 600px) {
     .district-page { padding: var(--space-md); }
   }

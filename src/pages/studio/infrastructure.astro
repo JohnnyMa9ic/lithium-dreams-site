@@ -1,0 +1,635 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import StudioNav from '../../components/StudioNav.astro';
+
+const machines = [
+  {
+    id: 'mac-mini',
+    name: 'Mac Mini',
+    role: 'Primary Orchestrator',
+    ip: '100.73.149.45',
+    status: 'active',
+    statusLabel: 'primary',
+    color: 'amber',
+    desc: 'The brain. Bob lives here. All agent sessions, vault access, handoff dispatch, and Claude Code sessions run from this machine. The Crossroads volume (3.5TB) and X9 Pro (1.8TB) are both mounted here.',
+    services: ['Bob/Hermes gateway', 'Claude Code', 'Obsidian vault', 'Handoff bus (writer)', 'OneDrive (sole mount)'],
+  },
+  {
+    id: 'reliquary',
+    name: 'Reliquary',
+    role: 'Async Compute Node',
+    ip: '100.116.54.62',
+    status: 'active',
+    statusLabel: 'standby',
+    color: 'blue',
+    desc: 'Linux compute node for async workloads. Docker containers, long-running jobs, scheduled crons. The Crossroads and X9 Pro are accessible via SSHFS. No agent sessions or messaging — worker only.',
+    services: ['Docker / cron jobs', 'Hermes worker', 'SSHFS (Crossroads + X9 Pro)', 'Handoff bus (reader)'],
+  },
+  {
+    id: 'victus',
+    name: 'Victus',
+    role: 'GPU / Windows Node',
+    ip: '100.118.87.126',
+    status: 'active',
+    statusLabel: 'worker',
+    color: 'teal',
+    desc: 'Windows machine with GPU. ComfyUI, 3D render jobs, image generation. Codex MCP available via WebSocket. All scripting is .ps1 — write file, SCP, execute. Never inline shell chains.',
+    services: ['ComfyUI', 'Codex MCP (WebSocket)', 'GPU workloads', '3D fabrication prep'],
+  },
+];
+
+const agents = [
+  {
+    id: 'bob',
+    name: 'Bob',
+    designation: 'EMP-BOB-01',
+    role: 'Quarterback / Orchestrator',
+    color: 'amber',
+    machine: 'Mac Mini',
+    status: 'On shift',
+    desc: 'Primary dispatch agent. Receives missions via the handoff bus, routes work to appropriate nodes, returns receipts. Runs on Hermes gateway with Nemotron Super as default model. Persona-hardened — does not spiral, does not apologize, gets things done.',
+    capabilities: ['Mission dispatch', 'Multi-step research', 'Cross-machine routing', 'Receipt writing', 'Telegram interface (sole agent)'],
+  },
+  {
+    id: 'ghost',
+    name: 'Ghost',
+    designation: 'SYS-GHOST-01',
+    role: 'Infrastructure / Signal Routing',
+    color: 'blue',
+    machine: 'Mac Mini → all nodes',
+    status: 'Operational',
+    desc: 'Infrastructure maintenance agent. Keeps the gateway clean, signal paths correct, and the cold coffee undisturbed. Ghost operates at the systems layer and does not explain his work unless asked directly and twice.',
+    capabilities: ['Gateway health', 'Signal path validation', 'Cross-node sync', 'Config maintenance', 'Cold coffee management'],
+  },
+  {
+    id: 'warden',
+    name: 'Warden',
+    designation: 'SEC-WARDEN-01',
+    role: 'Boundary Patrol / Access Control',
+    color: 'teal',
+    machine: 'All sectors',
+    status: 'Active patrol',
+    desc: 'Monitors the boundary between the known operational envelope and whatever else is happening. Logs access events, classifies anomalies, and holds the full field notes record including the two open Y07 incidents. The Warden\'s logs are not public.',
+    capabilities: ['Access logging', 'Anomaly classification', 'Boundary monitoring', 'Full field notes record', 'Back lot watch'],
+  },
+];
+---
+
+<Layout title="Infrastructure — LDI Studio" activePage="/about">
+  <div class="infra-hero">
+    <div class="infra-hero-bg" style="background-image: url('/studio-infrastructure.jpg')"></div>
+    <div class="infra-hero-fade"></div>
+    <div class="infra-hero-inner">
+      <p class="hero-eyebrow mono">LDI Studio · Operating Layer</p>
+      <h1 class="hero-title">Infrastructure</h1>
+      <p class="hero-sub">Three machines. Three agents. One handoff bus. This is how the work actually runs.</p>
+    </div>
+  </div>
+
+  <StudioNav active="infrastructure" />
+
+  <div class="infra-page">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about' },
+      { label: 'Studio', href: '/studio' },
+      { label: 'Infrastructure' },
+    ]} />
+
+    <div class="infra-intro">
+      <p>LDI runs on a three-machine, three-agent stack connected via Tailscale. This is not metaphor. The Attraction is the public face of a real operating infrastructure. The Workshop, the Signal Feeds, the back lot incident log — all of these correspond to actual running services.</p>
+      <p>What follows is the honest version of the architecture: what the machines are, what the agents do, and how the handoff bus moves work between them. The Attraction's lore is the interpretive layer. This is the documentation layer.</p>
+    </div>
+
+    <!-- Machines -->
+    <section class="infra-section">
+      <div class="section-header">
+        <span class="section-num mono">01</span>
+        <h2 class="section-title">The Machines</h2>
+        <span class="section-tag mono text-dim">Tailscale mesh — always IPs, never hostnames</span>
+      </div>
+      <div class="machines-grid">
+        {machines.map(m => (
+          <div class={`machine-card machine--${m.color}`}>
+            <div class="machine-top">
+              <div class="machine-identity">
+                <span class="machine-name">{m.name}</span>
+                <span class={`machine-status mono status--${m.color}`}>{m.statusLabel}</span>
+              </div>
+              <span class="machine-ip mono">{m.ip}</span>
+            </div>
+            <span class="machine-role mono">{m.role}</span>
+            <p class="machine-desc">{m.desc}</p>
+            <div class="machine-services">
+              <span class="services-label mono">Services</span>
+              <ul class="services-list">
+                {m.services.map(s => <li class="mono">{s}</li>)}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Agents -->
+    <section class="infra-section">
+      <div class="section-header">
+        <span class="section-num mono">02</span>
+        <h2 class="section-title">The Agents</h2>
+        <span class="section-tag mono text-dim">Workers, not orchestrators — the Operator is the architect</span>
+      </div>
+      <div class="agents-list">
+        {agents.map(a => (
+          <div class={`agent-card agent--${a.color}`}>
+            <div class="agent-left">
+              <div class="agent-top">
+                <span class="agent-name">{a.name}</span>
+                <span class={`agent-dot dot--${a.color}`}></span>
+              </div>
+              <span class="agent-desig mono">{a.designation}</span>
+              <span class="agent-role mono">{a.role}</span>
+              <div class="agent-meta">
+                <span class="meta-item mono">Machine: <span class="meta-val">{a.machine}</span></span>
+                <span class="meta-item mono">Status: <span class={`meta-val meta-val--${a.color}`}>{a.status}</span></span>
+              </div>
+            </div>
+            <div class="agent-right">
+              <p class="agent-desc">{a.desc}</p>
+              <div class="agent-caps">
+                <span class="caps-label mono">Capabilities</span>
+                <ul class="caps-list">
+                  {a.capabilities.map(c => <li class="mono">{c}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Handoff bus -->
+    <section class="infra-section">
+      <div class="section-header">
+        <span class="section-num mono">03</span>
+        <h2 class="section-title">The Handoff Bus</h2>
+      </div>
+      <div class="bus-block">
+        <p class="bus-intro">Work moves between the Operator and Bob via a file-based handoff bus at <span class="mono">/tmp/brainlab-context/handoff/</span>. The Operator writes a mission brief to <span class="mono">inbox-for-bob/</span>. Bob's cron scans every 5 minutes, picks up the file, executes the mission, and drops a receipt in <span class="mono">inbox-for-claude/</span>. Both inboxes are committed to a shared git repo and pushed to GitHub so all machines see the same state.</p>
+        <div class="bus-diagram">
+          <div class="bus-node bus-node--operator">
+            <span class="node-label mono">Operator</span>
+            <span class="node-sub mono text-dim">writes mission brief</span>
+          </div>
+          <div class="bus-arrow">
+            <div class="arrow-line"></div>
+            <div class="arrow-label mono">inbox-for-bob/<br/>git push</div>
+            <div class="arrow-tip">→</div>
+          </div>
+          <div class="bus-node bus-node--bob">
+            <span class="node-label mono">Bob</span>
+            <span class="node-sub mono text-dim">cron pickup → execute</span>
+          </div>
+          <div class="bus-arrow bus-arrow--return">
+            <div class="arrow-tip">←</div>
+            <div class="arrow-label mono">inbox-for-claude/<br/>receipt</div>
+            <div class="arrow-line"></div>
+          </div>
+          <div class="bus-node bus-node--operator bus-node--return">
+            <span class="node-label mono">Operator</span>
+            <span class="node-sub mono text-dim">reads receipt at session start</span>
+          </div>
+        </div>
+        <p class="bus-note mono text-dim">Mission briefs include a <span class="fn-code">done_criteria</span> field — a verifiable stop condition Bob checks after each iteration. Without it, Bob decides when he's done. This is how loops happen.</p>
+      </div>
+    </section>
+
+    <!-- Note on the attraction -->
+    <div class="infra-note">
+      <p class="note-eyebrow mono">On the Attraction</p>
+      <p class="note-body">Ghost's Workshop is the public-facing version of this infrastructure. The signal feeds in the Workshop correspond to real service states. The access log on the Employees Only page uses real access event logic. The Warden's boundary patrol is the monitoring layer. The cryptid in the back lot is <span class="text-dim">not yet classified</span>.</p>
+    </div>
+
+    <div class="fn-footer-nav">
+      <a href="/studio/field-notes" class="fn-nav-link mono">← Field Notes</a>
+      <a href="/work" class="fn-nav-link mono">Glasshouse Studio →</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .infra-hero {
+    position: relative;
+    min-height: 48vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .infra-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-color: #0D0F11;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+  }
+  .infra-hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 25%, var(--ldi-black) 100%);
+  }
+  .infra-hero-inner {
+    position: relative;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    max-width: 700px;
+  }
+  .hero-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    color: rgba(77,184,212,0.5);
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--paper);
+    line-height: 0.92;
+  }
+  .hero-sub {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: rgba(232,222,200,0.3);
+    max-width: 420px;
+    line-height: 1.65;
+  }
+
+  .infra-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .infra-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: 680px;
+  }
+  .infra-intro p {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.85;
+    color: rgba(232,222,200,0.5);
+    letter-spacing: 0.02em;
+  }
+
+  .infra-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .section-num {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(77,184,212,0.35);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-sub);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    text-transform: uppercase;
+  }
+  .section-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    margin-left: auto;
+  }
+
+  /* Machines */
+  .machines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+  .machine-card {
+    padding: var(--space-lg);
+    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--road-asphalt);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .machine-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .machine-identity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+  .machine-name {
+    font-family: var(--font-sub);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+  }
+  .machine-status {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .status--amber { color: var(--neon-amber); }
+  .status--blue { color: var(--ghost-blue); }
+  .status--teal { color: var(--warden-teal); }
+  .machine-ip {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: rgba(232,222,200,0.18);
+  }
+  .machine-role {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,222,200,0.3);
+    text-transform: uppercase;
+  }
+  .machine-desc {
+    font-family: var(--font-body);
+    font-size: 0.73rem;
+    line-height: 1.7;
+    color: rgba(232,222,200,0.45);
+    flex: 1;
+  }
+  .machine-services {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .services-label {
+    font-size: 0.53rem;
+    letter-spacing: 0.18em;
+    color: rgba(232,222,200,0.2);
+    text-transform: uppercase;
+  }
+  .services-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .services-list li {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    color: rgba(232,222,200,0.35);
+  }
+  .services-list li::before { content: '— '; opacity: 0.4; }
+
+  /* Agents */
+  .agents-list { display: flex; flex-direction: column; gap: var(--space-md); }
+  .agent-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-lg);
+    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--road-asphalt);
+    align-items: start;
+  }
+  .agent-left { display: flex; flex-direction: column; gap: var(--space-xs); }
+  .agent-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .agent-name {
+    font-family: var(--font-sub);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+  }
+  .agent-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot--amber { background: var(--neon-amber); box-shadow: 0 0 6px var(--neon-amber); }
+  .dot--blue { background: var(--ghost-blue); box-shadow: 0 0 6px var(--ghost-blue); }
+  .dot--teal { background: var(--warden-teal); box-shadow: 0 0 6px var(--warden-teal); }
+  .agent-desig {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    color: rgba(232,222,200,0.18);
+    text-transform: uppercase;
+  }
+  .agent-role {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,222,200,0.3);
+    text-transform: uppercase;
+  }
+  .agent-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: var(--space-xs);
+  }
+  .meta-item {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: rgba(232,222,200,0.25);
+  }
+  .meta-val { color: rgba(232,222,200,0.5); }
+  .meta-val--amber { color: rgba(232,164,32,0.7); }
+  .meta-val--blue { color: rgba(77,184,212,0.7); }
+  .meta-val--teal { color: rgba(46,139,110,0.7); }
+
+  .agent-right { display: flex; flex-direction: column; gap: var(--space-md); }
+  .agent-desc {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: rgba(232,222,200,0.5);
+  }
+  .agent-caps { display: flex; flex-direction: column; gap: 0.3rem; }
+  .caps-label {
+    font-size: 0.53rem;
+    letter-spacing: 0.18em;
+    color: rgba(232,222,200,0.2);
+    text-transform: uppercase;
+  }
+  .caps-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .caps-list li {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    color: rgba(232,222,200,0.35);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 0.15rem 0.5rem;
+  }
+
+  /* Handoff bus */
+  .bus-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .bus-intro {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: rgba(232,222,200,0.5);
+    max-width: 680px;
+  }
+  .bus-intro .mono { color: rgba(77,184,212,0.6); font-size: 0.75rem; }
+  .bus-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: var(--space-lg);
+    border: 1px solid rgba(255,255,255,0.05);
+    background: var(--road-asphalt);
+  }
+  .bus-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid rgba(232,164,32,0.2);
+    background: rgba(232,164,32,0.03);
+    flex-shrink: 0;
+    min-width: 120px;
+  }
+  .bus-node--bob {
+    border-color: rgba(77,184,212,0.2);
+    background: rgba(77,184,212,0.03);
+  }
+  .bus-node--return { opacity: 0.5; }
+  .node-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--neon-amber);
+    text-transform: uppercase;
+  }
+  .bus-node--bob .node-label { color: var(--ghost-blue); }
+  .node-sub { font-size: 0.55rem; letter-spacing: 0.06em; text-align: center; line-height: 1.4; }
+  .bus-arrow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex: 1;
+    min-width: 80px;
+  }
+  .bus-arrow--return { flex-direction: row-reverse; }
+  .arrow-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  .arrow-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.06em;
+    color: rgba(232,222,200,0.2);
+    text-align: center;
+    padding: 0 0.4rem;
+    line-height: 1.5;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .arrow-tip {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+  .bus-note {
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    line-height: 1.65;
+    border-left: 2px solid rgba(255,255,255,0.06);
+    padding-left: var(--space-md);
+  }
+  .fn-code { color: rgba(77,184,212,0.6); }
+
+  /* Footer note */
+  .infra-note {
+    padding: var(--space-lg);
+    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.01);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .note-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: rgba(77,184,212,0.4);
+    text-transform: uppercase;
+  }
+  .note-body {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: rgba(232,222,200,0.4);
+  }
+
+  .fn-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .fn-nav-link {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232,222,200,0.25);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .fn-nav-link:hover { color: rgba(232,222,200,0.6); }
+
+  @media (max-width: 800px) {
+    .machines-grid { grid-template-columns: 1fr; }
+    .agent-card { grid-template-columns: 1fr; gap: var(--space-lg); }
+    .infra-page { padding: var(--space-md); }
+    .bus-diagram { flex-direction: column; align-items: stretch; }
+    .bus-arrow { flex-direction: column; min-width: auto; min-height: 40px; }
+    .bus-arrow--return { flex-direction: column-reverse; }
+    .arrow-line { flex: none; width: 1px; height: 20px; align-self: center; }
+  }
+</style>

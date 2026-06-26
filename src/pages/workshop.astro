@@ -31,6 +31,72 @@ import Breadcrumb from '../components/Breadcrumb.astro';
       <p class="text-dim">The cold coffee on the rack is Ghost's. Do not touch it.</p>
     </CRTFrame>
 
+    <!-- Maintenance log -->
+    <div class="maint-log">
+      <p class="log-eyebrow mono">Maintenance Log</p>
+      <div class="log-entries">
+        <div class="log-entry">
+          <span class="entry-date mono">Y10 — Day 203</span>
+          <p class="entry-body mono">Hermes gateway restarted after upstream congestion. 3 queued missions delivered on next tick.</p>
+        </div>
+        <div class="log-entry">
+          <span class="entry-date mono">Y10 — Day 198</span>
+          <p class="entry-body mono">Signal routing paths rebuilt. Previous paths were technically working. Ghost disagreed.</p>
+        </div>
+        <div class="log-entry">
+          <span class="entry-date mono">Y10 — Day 191</span>
+          <p class="entry-body mono">Installed badge reader at sector boundary. Badge reader immediately flagged itself. Conflict resolved.</p>
+        </div>
+        <div class="log-entry">
+          <span class="entry-date mono">Y10 — Day 184</span>
+          <p class="entry-body mono">Bob requested a new joke module. Two approved. Sarcasm density increased by 4%.</p>
+        </div>
+        <div class="log-entry">
+          <span class="entry-date mono">Y10 — Day 177</span>
+          <p class="entry-body mono">Cold coffee on rack replaced. Ghost put the old one back. This is a known issue. Do not escalate.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signal feeds -->
+    <div class="signal-feeds">
+      <p class="feeds-eyebrow mono">Signal Feeds</p>
+      <div class="feeds-grid">
+        <div class="feed-card feed--online">
+          <div class="feed-top">
+            <span class="feed-name mono">Hermes</span>
+            <span class="feed-dot dot--online"></span>
+          </div>
+          <span class="feed-status mono">online</span>
+          <p class="feed-note text-dim">Gateway active. Queue nominal.</p>
+        </div>
+        <div class="feed-card feed--active">
+          <div class="feed-top">
+            <span class="feed-name mono">Warden</span>
+            <span class="feed-dot dot--active"></span>
+          </div>
+          <span class="feed-status mono">active</span>
+          <p class="feed-note text-dim">Signal steady. Boundary patrol running.</p>
+        </div>
+        <div class="feed-card feed--standby">
+          <div class="feed-top">
+            <span class="feed-name mono">Reliquary</span>
+            <span class="feed-dot dot--standby"></span>
+          </div>
+          <span class="feed-status mono">standby</span>
+          <p class="feed-note text-dim">Compute node idle. Awaiting dispatch.</p>
+        </div>
+        <div class="feed-card feed--elevated">
+          <div class="feed-top">
+            <span class="feed-name mono">Cryptid Watch</span>
+            <span class="feed-dot dot--elevated"></span>
+          </div>
+          <span class="feed-status mono">elevated</span>
+          <p class="feed-note text-dim">Back lot activity above baseline. Within normal range.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Access terminal -->
     <div class="access-terminal">
       <div class="terminal-header mono">
@@ -200,6 +266,89 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     margin: 0;
   }
 
+  /* Maintenance log */
+  .maint-log { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .log-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(77,184,212,0.3);
+    text-transform: uppercase;
+  }
+  .log-entries { display: flex; flex-direction: column; gap: 0; }
+  .log-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .log-entry:last-child { border-bottom: none; }
+  .entry-date {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(77,184,212,0.5);
+    text-transform: uppercase;
+  }
+  .entry-body {
+    font-size: 0.68rem;
+    color: rgba(232,222,200,0.4);
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+
+  /* Signal feeds */
+  .signal-feeds { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .feeds-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(77,184,212,0.3);
+    text-transform: uppercase;
+  }
+  .feeds-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+  }
+  .feed-card {
+    padding: var(--space-md);
+    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--road-asphalt);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .feed-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .feed-name { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(232,222,200,0.5); }
+  .feed-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot--online { background: #4ade80; box-shadow: 0 0 4px #4ade80; }
+  .dot--active { background: var(--warden-teal); box-shadow: 0 0 4px var(--warden-teal); }
+  .dot--standby { background: rgba(255,255,255,0.2); }
+  .dot--elevated { background: var(--neon-amber); box-shadow: 0 0 4px var(--neon-amber); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .feed-status {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .feed--online .feed-status { color: #4ade80; }
+  .feed--active .feed-status { color: var(--warden-teal); }
+  .feed--standby .feed-status { color: rgba(255,255,255,0.2); }
+  .feed--elevated .feed-status { color: var(--neon-amber); }
+  .feed-note { font-size: 0.6rem; letter-spacing: 0.04em; line-height: 1.5; }
+
+  @media (max-width: 700px) {
+    .feeds-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 600px) {
     .district-page { padding: var(--space-md); }
   }

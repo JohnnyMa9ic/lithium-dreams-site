@@ -72,6 +72,50 @@ const midwayDistricts = districts;
     <div class="panorama-fade" aria-hidden="true"></div>
   </section>
 
+  <!-- Intercom ticker -->
+  <div class="intercom-ticker" aria-label="Midway announcements">
+    <span class="ticker-label mono">INTERCOM</span>
+    <div class="ticker-track-wrap">
+      <div class="ticker-track">
+        <span class="ticker-msg mono">Welcome to the Midway. Please keep your hands inside the lore. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Bob's Fortune Emporium is operational. Results not guaranteed. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; The Museum of Ongoing Events is accepting new submissions. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Wedding Chapel: open Tuesdays and Fridays. Do not ask about the back room. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; The Arcade cabinet in the corner is still technically running. We are aware. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Lost &amp; Found hours: whenever someone remembers to open it. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; The Warden would like to remind everyone that the cryptids are not decorative. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;</span>
+        <span class="ticker-msg mono" aria-hidden="true">Welcome to the Midway. Please keep your hands inside the lore. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Bob's Fortune Emporium is operational. Results not guaranteed. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; The Museum of Ongoing Events is accepting new submissions. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Wedding Chapel: open Tuesdays and Fridays. Do not ask about the back room. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; The Arcade cabinet in the corner is still technically running. We are aware. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Lost &amp; Found hours: whenever someone remembers to open it. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; The Warden would like to remind everyone that the cryptids are not decorative. &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status panel + ticket card -->
+  <section class="midway-status-section">
+    <div class="status-panel">
+      <p class="status-panel-eyebrow mono">District Status</p>
+      <div class="status-list">
+        <div class="status-item"><span class="sdot sdot--active"></span><span class="mono sname">Gift Shop</span></div>
+        <div class="status-item"><span class="sdot sdot--active"></span><span class="mono sname">Fortune Emporium</span></div>
+        <div class="status-item"><span class="sdot sdot--flickering"></span><span class="mono sname">Arcade</span></div>
+        <div class="status-item"><span class="sdot sdot--active"></span><span class="mono sname">Museum</span></div>
+        <div class="status-item"><span class="sdot sdot--active"></span><span class="mono sname">Wedding Chapel</span></div>
+        <div class="status-item"><span class="sdot sdot--active"></span><span class="mono sname">Garden</span></div>
+        <div class="status-item"><span class="sdot sdot--restricted"></span><span class="mono sname">Employees Only</span></div>
+        <div class="status-item"><span class="sdot sdot--offline"></span><span class="mono sname">Snack Counter</span><span class="mono sname-note text-dim">soon</span></div>
+      </div>
+    </div>
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <span class="ticket-kicker mono">General Admission</span>
+        <span class="ticket-price">$12</span>
+      </div>
+      <p class="ticket-copy">Access to all open Midway districts. Cryptid encounters not included but also not excluded.</p>
+      <div class="ticket-details mono text-dim">
+        <span>Valid: one entry</span>
+        <span>Non-refundable after threshold</span>
+      </div>
+      <div class="ticket-tear"></div>
+      <div class="ticket-stub">
+        <span class="mono stub-label">KEEP THIS PORTION</span>
+        <span class="mono stub-text text-dim">LDI ADMIT ONE</span>
+      </div>
+    </div>
+  </section>
+
   <!-- District grid -->
   <section class="midway-grid-section">
     <p class="midway-eyebrow mono">District Directory</p>
@@ -83,6 +127,29 @@ const midwayDistricts = districts;
     <p class="midway-footer mono text-dim">
       Additional districts are indicated by the arrows. The arrows are correct. Probably.
     </p>
+  </section>
+
+  <!-- Lore log -->
+  <section class="lore-log-section">
+    <p class="lore-eyebrow mono">Incident Log</p>
+    <div class="lore-entries">
+      <div class="lore-entry">
+        <span class="lore-time mono text-dim">Year 3 — Tuesday</span>
+        <p class="lore-body mono">The organ in the wedding chapel played something no one requested. Guests appreciated it. Warden says this was not unexpected.</p>
+      </div>
+      <div class="lore-entry">
+        <span class="lore-time mono text-dim">Year 6 — Friday</span>
+        <p class="lore-body mono">A visitor left a note in the Lost &amp; Found. The note was addressed to the Midway. The Midway has been informed.</p>
+      </div>
+      <div class="lore-entry">
+        <span class="lore-time mono text-dim">Year 7 — Unknown</span>
+        <p class="lore-body mono">The Crossroads Incident. Museum is documenting. Details pending clearance.</p>
+      </div>
+      <div class="lore-entry">
+        <span class="lore-time mono text-dim">Present — Ongoing</span>
+        <p class="lore-body mono">You are here. The Midway has noted your arrival. Welcome. Please don't rush.</p>
+      </div>
+    </div>
   </section>
 
 </Layout>
@@ -209,10 +276,179 @@ const midwayDistricts = districts;
     text-align: center;
   }
 
+  /* ── Intercom ticker ── */
+  .intercom-ticker {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: rgba(232,164,32,0.04);
+    border-top: 1px solid rgba(232,164,32,0.12);
+    border-bottom: 1px solid rgba(232,164,32,0.12);
+    overflow: hidden;
+    padding: 0.5rem 0;
+  }
+  .ticker-label {
+    flex-shrink: 0;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    color: var(--neon-amber);
+    text-transform: uppercase;
+    padding: 0 var(--space-md);
+    border-right: 1px solid rgba(232,164,32,0.2);
+    white-space: nowrap;
+  }
+  .ticker-track-wrap { overflow: hidden; flex: 1; }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 60s linear infinite;
+  }
+  .ticker-msg {
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: rgba(232,222,200,0.45);
+    white-space: nowrap;
+    padding-right: 0;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── Status + ticket section ── */
+  .midway-status-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .status-panel { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .status-panel-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.25);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .status-list { display: flex; flex-direction: column; gap: 0.4rem; }
+  .status-item { display: flex; align-items: center; gap: var(--space-sm); }
+  .sdot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .sdot--active { background: var(--warden-teal); }
+  .sdot--flickering { background: var(--neon-amber); animation: flick 1.8s infinite; }
+  .sdot--restricted { background: rgba(194,59,34,0.6); }
+  .sdot--offline { background: rgba(255,255,255,0.12); }
+  @keyframes flick { 0%,100%{opacity:1} 50%{opacity:0.2} }
+  .sname { font-size: 0.68rem; letter-spacing: 0.08em; color: rgba(232,222,200,0.5); }
+  .sname-note { font-size: 0.55rem; letter-spacing: 0.12em; margin-left: 0.25rem; }
+
+  /* Ticket card */
+  .ticket-card {
+    border: 1px solid rgba(232,164,32,0.2);
+    display: flex;
+    flex-direction: column;
+    background: rgba(232,164,32,0.03);
+  }
+  .ticket-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--space-md) var(--space-md) var(--space-sm);
+  }
+  .ticket-kicker {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.3);
+    text-transform: uppercase;
+  }
+  .ticket-price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--neon-amber);
+    line-height: 1;
+  }
+  .ticket-copy {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: rgba(232,222,200,0.5);
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    padding: 0 var(--space-md) var(--space-sm);
+  }
+  .ticket-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0 var(--space-md) var(--space-md);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+  .ticket-tear {
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(232,164,32,0.3) 0,
+      rgba(232,164,32,0.3) 4px,
+      transparent 4px,
+      transparent 10px
+    );
+    margin: 0 var(--space-md);
+  }
+  .ticket-stub {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-md);
+    border-top: none;
+  }
+  .stub-label { font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(232,164,32,0.4); text-transform: uppercase; }
+  .stub-text { font-size: 0.6rem; letter-spacing: 0.15em; }
+
+  /* ── Lore log ── */
+  .lore-log-section {
+    padding: var(--space-xl);
+    padding-top: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .lore-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.2);
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+  }
+  .lore-entries { display: flex; flex-direction: column; gap: 0; }
+  .lore-entry {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: baseline;
+  }
+  .lore-entry:last-child { border-bottom: none; }
+  .lore-time { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .lore-body { font-size: 0.68rem; color: rgba(232,222,200,0.4); line-height: 1.6; letter-spacing: 0.03em; }
+
+  @media (max-width: 700px) {
+    .midway-status-section { grid-template-columns: 1fr; }
+    .lore-entry { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
   @media (max-width: 600px) {
     .midway-grid-section { padding: var(--space-md); }
     .midway-grid { grid-template-columns: 1fr; }
-    /* On mobile, panorama is short — hotspot labels always visible */
+    .midway-status-section { padding: var(--space-md); }
+    .lore-log-section { padding: var(--space-md); }
     .hotspot-label { color: rgba(232, 164, 32, 0.4); }
   }
 </style>

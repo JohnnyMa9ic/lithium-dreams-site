@@ -10,11 +10,24 @@ const fortunes = [
   "You will make a decision. It will be the right one. It is also the wrong one. Congratulations.",
   "Something you lost is not lost. It is waiting for you to stop looking.",
   "The fog is not hiding anything. The fog is just the fog. You can relax.",
-  "Bob says this is probably fine.",
+  "Bob says the answer is probably behind the snack counter. Bob is not allowed behind the snack counter.",
   "Your next idea is better than your last one. Your last one was not bad. This is meant as encouragement.",
+  "A door you already opened is still deciding whether it counts.",
+  "Trust the note you almost threw away.",
+  "The machine says yes. Management says no. Warden says breathe first.",
+  "Your next good idea will arrive dressed as a maintenance problem.",
+  "Do not confuse a flicker with a failure. Sometimes the light is thinking.",
+  "A small system, properly named, will defeat a large chaos.",
+];
+
+const recentFortunes = [
+  "Your next idea is better than your last one.",
+  "Something you lost is not lost. It is waiting.",
+  "The fog is not hiding anything. The fog is just the fog.",
 ];
 
 const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0');
 ---
 
 <Layout title="Bob's Fortune Emporium — Lithium Dreams Industries" activePage="/fortune">
@@ -41,15 +54,88 @@ const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
       <p>Bob says this is probably fine.</p>
     </EmployeeNotice>
 
+    <!-- Machine rules -->
+    <div class="machine-rules">
+      <p class="rules-eyebrow mono">House Rules</p>
+      <ol class="rules-list">
+        <li>One question at a time. Bob is not a search engine.</li>
+        <li>The fortune is final. Disputes go to the Lost &amp; Found.</li>
+        <li>Do not tap the cabinet. It is aware of you.</li>
+        <li>Bob's sarcasm module is a feature, not a flaw. Management has been informed.</li>
+      </ol>
+    </div>
+
+    <!-- Fortune display -->
     <div class="fortune-display">
-      <FortuneCard fortune={randomFortune} number={String(Math.floor(Math.random() * 99) + 1).padStart(2, '0')} />
+      <FortuneCard fortune={randomFortune} number={fortuneNumber} />
     </div>
 
     <p class="fortune-footer mono text-dim">
       — Lever mechanism under maintenance. Fortune dispensed automatically. —
     </p>
+
+    <!-- Ask Bob + recent fortunes + maintenance notes -->
+    <div class="bottom-section">
+      <div class="ask-bob">
+        <p class="ask-eyebrow mono">Ask Bob</p>
+        <p class="ask-note text-dim">Bob will probably make fun of it. That's part of the service.</p>
+        <div class="bob-form">
+          <textarea id="bobQuestion" placeholder="Type your question here..." rows="3"></textarea>
+          <button id="askBobBtn" class="bob-submit mono">Submit Question</button>
+        </div>
+        <div id="bobAnswer" class="bob-answer" aria-live="polite"></div>
+      </div>
+
+      <div class="sidebar-column">
+        <div class="recent-fortunes">
+          <p class="recent-eyebrow mono">Recent Fortunes</p>
+          <div class="recent-list">
+            {recentFortunes.map(f => (
+              <p class="recent-entry mono text-dim">"{f}"</p>
+            ))}
+          </div>
+          <a href="#" class="archive-link mono text-dim">Fortune Archive →</a>
+        </div>
+
+        <div class="maint-notes">
+          <p class="notes-eyebrow mono">Service Notes</p>
+          <p class="mono text-dim">// Replaced jaw servo. Again.</p>
+          <p class="mono text-dim">// Lubricated gears (10W-30, per spec).</p>
+          <p class="mono text-dim">// Bob insisted on new jokes. Two approved.</p>
+          <p class="mono text-dim">// Sarcasm module: operational. As expected.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </Layout>
+
+<script>
+  const responses = [
+    "That's a great question. I'm going to pretend I didn't hear it.",
+    "The answer is behind the snack counter. I cannot say more. Management is watching.",
+    "You already know. You've always known. You just wanted someone else to say it.",
+    "Error: compassion module offline. Sarcasm module: operational.",
+    "Absolutely. Wait — no. Recalculating.",
+    "Bob has logged your question. Bob has also lost the log.",
+    "My crystal ball says probably. My gut says definitely. We are in disagreement.",
+    "That's not a question. That's a feeling wearing a question mark.",
+    "Have you considered that the answer is 'yes' and that this creates more problems?",
+    "The fog is not hiding anything. Neither is the answer. You're not looking in the right place.",
+  ];
+
+  document.getElementById('askBobBtn')?.addEventListener('click', () => {
+    const textarea = document.getElementById('bobQuestion') as HTMLTextAreaElement | null;
+    const answerEl = document.getElementById('bobAnswer');
+    if (!answerEl) return;
+    const q = textarea?.value?.trim();
+    if (!q) {
+      answerEl.textContent = 'Bob requires a question. A real one. Try again.';
+      return;
+    }
+    const r = responses[Math.floor(Math.random() * responses.length)];
+    answerEl.textContent = `Bob says: "${r}"`;
+  });
+</script>
 
 <style>
   .page-hero {
@@ -61,15 +147,13 @@ const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
   }
   .page-hero-fade {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     height: 55%;
     background: linear-gradient(to bottom, transparent, var(--ldi-black));
   }
 
   .district-page {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
     padding: var(--space-xl);
     display: flex;
@@ -83,12 +167,6 @@ const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
     justify-content: space-between;
     width: 100%;
   }
-  .back-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.4);
-  }
-  .back-link:hover { color: var(--paper); }
   .emporium-header { display: flex; flex-direction: column; gap: 0.4rem; }
   .emporium-title {
     font-family: var(--font-display);
@@ -97,17 +175,150 @@ const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
     line-height: 1;
   }
   .emporium-sub { font-size: 0.75rem; letter-spacing: 0.12em; }
-  .fortune-display {
-    align-self: center;
+
+  /* Rules */
+  .machine-rules {
+    width: 100%;
+    border-left: 2px solid rgba(232,164,32,0.2);
+    padding-left: var(--space-lg);
   }
+  .rules-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--neon-amber);
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+    opacity: 0.7;
+  }
+  .rules-list {
+    padding-left: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .rules-list li {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: rgba(232,222,200,0.5);
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+  }
+
+  .fortune-display { align-self: center; width: 100%; }
+
   .fortune-footer {
     font-size: 0.65rem;
     align-self: center;
     text-align: center;
     letter-spacing: 0.1em;
   }
-  @media (max-width: 600px) {
+
+  /* Bottom section */
+  .bottom-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    width: 100%;
+  }
+
+  /* Ask Bob */
+  .ask-bob { display: flex; flex-direction: column; gap: var(--space-md); }
+  .ask-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--neon-amber);
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .ask-note { font-size: 0.72rem; line-height: 1.5; }
+  .bob-form { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .bob-form textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(232,164,32,0.2);
+    border-radius: 1px;
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--paper);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .bob-form textarea:focus { border-color: rgba(232,164,32,0.5); }
+  .bob-submit {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid rgba(232,164,32,0.3);
+    color: var(--neon-amber);
+    padding: 0.4rem 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .bob-submit:hover {
+    background: rgba(232,164,32,0.08);
+    border-color: var(--neon-amber);
+  }
+  .bob-answer {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--neon-amber);
+    line-height: 1.7;
+    min-height: 2rem;
+    padding: var(--space-sm) 0;
+    font-style: italic;
+  }
+
+  /* Sidebar */
+  .sidebar-column { display: flex; flex-direction: column; gap: var(--space-xl); }
+  .recent-fortunes { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .recent-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.3);
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+  }
+  .recent-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .recent-entry {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    border-left: 1px solid rgba(232,164,32,0.12);
+    padding-left: var(--space-sm);
+  }
+  .archive-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    opacity: 0.4;
+    transition: opacity 0.15s;
+  }
+  .archive-link:hover { opacity: 0.7; }
+
+  /* Maintenance notes */
+  .maint-notes {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .notes-eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(232,222,200,0.2);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .maint-notes p { font-size: 0.65rem; letter-spacing: 0.05em; }
+
+  @media (max-width: 680px) {
     .district-page { padding: var(--space-md); }
     .fortune-display { align-self: stretch; }
+    .bottom-section { grid-template-columns: 1fr; }
   }
 </style>
