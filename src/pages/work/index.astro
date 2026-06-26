@@ -4,6 +4,9 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 
 <GlasshouseLayout title="LDI — Glasshouse Systems Studio" activePage="/work">
 
+  <!-- Foreground depth: photographic plant corner -->
+  <img class="plant-corner-left" src="/plant-foreground-left.png" alt="" aria-hidden="true">
+
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg"></div>
@@ -168,6 +171,20 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 </GlasshouseLayout>
 
 <style>
+  /* ── Foreground plant corner ── */
+  .plant-corner-left {
+    position: fixed;
+    bottom: 0;
+    left: -24px;
+    width: 280px;
+    height: auto;
+    pointer-events: none;
+    z-index: 40;
+    opacity: 0.92;
+    filter: blur(1.5px);
+    mix-blend-mode: multiply;
+  }
+
   /* ── Hero ── */
   .hero {
     position: relative;
@@ -181,9 +198,9 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/glasshouse-hero.png');
+    background-image: url('/glasshouse-studio.png');
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
   }
   .hero-bg::after {
     content: '';
@@ -420,48 +437,66 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     overflow: hidden;
     box-shadow: var(--gh-shadow);
   }
+  .material-card > * {
+    position: relative;
+    z-index: 1;
+  }
   .material-card--walnut {
-    background:
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        rgba(255,255,255,0.06) 2px,
-        rgba(255,255,255,0.06) 4px
-      ),
-      linear-gradient(160deg, #a8724f, #8b6547 60%, #6d4f35);
-    color: rgba(255,255,255,0.92);
+    background-image: url('/swatch-warm-walnut.png');
+    background-size: cover;
+    background-position: center;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+  .material-card--walnut::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(80,50,25,0.25) 0%, rgba(60,38,18,0.45) 100%);
+    border-radius: inherit;
   }
   .material-card--silver {
-    background:
-      repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 3px,
-        rgba(255,255,255,0.12) 3px,
-        rgba(255,255,255,0.12) 6px
-      ),
-      linear-gradient(135deg, #b0bec5, #9ba8b2 50%, #8a9bab);
-    color: rgba(30,30,30,0.88);
+    background-image: url('/swatch-brushed-silver.png');
+    background-size: cover;
+    background-position: center;
+    color: rgba(25,30,35,0.90);
+  }
+  .material-card--silver::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(180,190,200,0.08) 100%);
+    border-radius: inherit;
   }
   .material-card--glass {
-    background: rgba(255,255,255,0.75);
-    border: 1px solid rgba(255,255,255,0.6);
-    backdrop-filter: blur(12px);
+    background-image: url('/swatch-frosted-glass.png');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
     color: var(--gh-text);
-    box-shadow: 0 4px 24px rgba(61,127,189,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 4px 24px rgba(61,127,189,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+  .material-card--glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.45);
+    border-radius: inherit;
   }
   .material-card--green {
-    background:
-      repeating-linear-gradient(
-        60deg,
-        transparent,
-        transparent 6px,
-        rgba(255,255,255,0.05) 6px,
-        rgba(255,255,255,0.05) 12px
-      ),
-      linear-gradient(140deg, #b5c9a8, #9cad8d 50%, #85997a);
-    color: rgba(30,40,28,0.88);
+    background-image: url('/swatch-living-botanicals.png');
+    background-size: cover;
+    background-position: center top;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+  .material-card--green::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(20,45,20,0.35) 0%, rgba(10,35,10,0.55) 100%);
+    border-radius: inherit;
   }
   .material-label {
     font-size: 0.58rem;

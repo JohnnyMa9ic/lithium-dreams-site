@@ -6,8 +6,8 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 
   <div class="intake-env">
 
-    <!-- Foreground depth: botanical blur -->
-    <div class="plant-blur" aria-hidden="true"></div>
+    <!-- Foreground depth: photographic plant corner -->
+    <img class="plant-corner-left" src="/plant-foreground-left.png" alt="" aria-hidden="true">
 
     <!-- Page header -->
     <div class="intake-header">
@@ -453,22 +453,18 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     padding-bottom: 90px;
   }
 
-  /* ── Botanical depth: CSS blur blob ── */
-  .plant-blur {
+  /* ── Foreground plant corner ── */
+  .plant-corner-left {
     position: fixed;
-    bottom: 56px;
-    left: -70px;
+    bottom: 0;
+    left: -24px;
     width: 280px;
-    height: 380px;
+    height: auto;
     pointer-events: none;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 130px 220px at 55% 75%, rgba(110, 150, 100, 0.20) 0%, transparent 100%),
-      radial-gradient(ellipse 90px 160px at 25% 35%, rgba(140, 175, 128, 0.15) 0%, transparent 100%),
-      radial-gradient(ellipse 70px 100px at 75% 15%, rgba(95, 135, 88, 0.12) 0%, transparent 100%),
-      radial-gradient(ellipse 50px 80px at 40% 60%, rgba(125, 165, 115, 0.18) 0%, transparent 100%);
-    filter: blur(18px);
-    transform: rotate(-8deg);
+    z-index: 40;
+    opacity: 0.92;
+    filter: blur(1.5px);
+    mix-blend-mode: multiply;
   }
 
   /* ── Page header ── */
