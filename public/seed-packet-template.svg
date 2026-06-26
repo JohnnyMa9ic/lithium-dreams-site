@@ -1,0 +1,17 @@
+<svg width="600" height="820" viewBox="0 0 600 820" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="paper"><feTurbulence baseFrequency="0.015" numOctaves="3" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feBlend in="SourceGraphic" mode="multiply"/></filter>
+  </defs>
+  <rect x="36" y="36" width="528" height="748" rx="8" fill="#E8DEC8" filter="url(#paper)"/>
+  <rect x="60" y="60" width="480" height="700" rx="3" fill="none" stroke="#6C552E" stroke-opacity="0.35" stroke-dasharray="8 8"/>
+  <text x="300" y="118" text-anchor="middle" font-family="Georgia" font-size="34" fill="#2D2418">LDI SEED PACKET</text>
+  <circle cx="300" cy="310" r="116" fill="#85A96D" fill-opacity="0.22" stroke="#547249" stroke-width="2"/>
+  <path d="M300 398 C300 330 245 305 250 248 C292 256 314 292 300 340 C323 298 362 272 402 272 C391 332 354 368 300 398Z" fill="#547249"/>
+  <line x1="105" y1="510" x2="495" y2="510" stroke="#6C552E" stroke-opacity="0.3"/>
+  <line x1="105" y1="570" x2="495" y2="570" stroke="#6C552E" stroke-opacity="0.3"/>
+  <line x1="105" y1="630" x2="495" y2="630" stroke="#6C552E" stroke-opacity="0.3"/>
+  <text x="105" y="495" font-family="monospace" font-size="15" fill="#6C552E">IDEA</text>
+  <text x="105" y="555" font-family="monospace" font-size="15" fill="#6C552E">STATUS</text>
+  <text x="105" y="615" font-family="monospace" font-size="15" fill="#6C552E">REVIEW</text>
+  <text x="300" y="720" text-anchor="middle" font-family="Georgia" font-size="20" fill="#2D2418" font-style="italic">Warden Note: Let it rest.</text>
+</svg>

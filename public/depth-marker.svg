@@ -1,0 +1,8 @@
+<svg width="220" height="640" viewBox="0 0 220 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="28" y="24" width="2" height="592" fill="#1B7D7A" fill-opacity="0.45"/>
+  <g font-family="monospace" font-size="15" letter-spacing="2" fill="#E8DEC8">
+    <circle cx="29" cy="86" r="8" fill="#36D5CD"/><text x="52" y="91">FLOOR 01 — YASURAGI</text>
+    <circle cx="29" cy="320" r="8" fill="#B8914E"/><text x="52" y="325">FLOOR 00 — ROOT LAYER</text>
+    <circle cx="29" cy="554" r="8" fill="#85A96D"/><text x="52" y="559">FLOOR -01 — DEEP GARDEN</text>
+  </g>
+</svg>

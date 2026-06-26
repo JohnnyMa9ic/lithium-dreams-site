@@ -82,15 +82,32 @@ import Layout from '../components/Layout.astro';
     </div>
   </section>
 
-  <!-- ── 04. Root Layer Transition ── -->
-  <section id="root-layer" class="root-transition">
-    <div class="cutaway-bg" aria-hidden="true"></div>
-    <div class="transition-scrim" aria-hidden="true"></div>
-    <div class="transition-content">
-      <p class="eyebrow">Root Layer</p>
-      <h2>Below the visible garden<br>is the part that remembers.</h2>
-      <p class="hero-flavor">Some ideas are not dead. They are just underground.</p>
-      <p class="transition-body">The attraction has wiring. The garden has roots. They are not the same system, but they often agree.</p>
+  <!-- ── 04. Root Layer Descent (pinned scroll: surface → roots → deep) ── -->
+  <section id="root-layer" class="descent-stage" aria-label="Garden descent from surface to deep">
+    <div class="descent-viewport">
+      <div class="motion-layer surface-image" aria-hidden="true"></div>
+      <div class="motion-layer cutaway-image" aria-hidden="true"></div>
+      <div class="motion-layer deep-image" aria-hidden="true"></div>
+      <div class="motion-layer leaves-layer" aria-hidden="true"></div>
+      <div class="motion-layer roots-layer" aria-hidden="true"></div>
+      <div class="motion-layer signal-layer" aria-hidden="true"></div>
+      <div class="motion-layer mist-layer" aria-hidden="true"></div>
+      <div class="motion-layer shaft-vignette-layer" aria-hidden="true"></div>
+      <div class="descent-copy" data-copy="surface">
+        <p class="eyebrow">Warden Collection</p>
+        <h2>Yasuragi<br>Garden</h2>
+        <p>A quiet place behind the noise.</p>
+      </div>
+      <div class="descent-copy" data-copy="root">
+        <p class="eyebrow">Root Layer</p>
+        <h2>Below the visible garden<br>is the part that remembers.</h2>
+        <p>Some ideas are not dead. They are just underground.</p>
+      </div>
+      <div class="descent-copy" data-copy="deep">
+        <p class="eyebrow">ACC. ROOT-002</p>
+        <h2>Deep<br>Garden</h2>
+        <p>Memory compost / dormant idea storage.</p>
+      </div>
     </div>
   </section>
 
@@ -319,6 +336,22 @@ import Layout from '../components/Layout.astro';
     --g-stone: #18201b;
     --g-display: Georgia, 'Times New Roman', serif;
     --g-max: 1180px;
+    /* scroll descent motion vars — updated by JS */
+    --p: 0;
+    --surfaceOpacity: 1;
+    --cutawayOpacity: 0;
+    --deepOpacity: 0;
+    --rootOpacity: 0;
+    --signalOpacity: 0;
+    --mistOpacity: 0.25;
+    --surfaceY: 0px;
+    --cutawayY: 40px;
+    --deepY: 80px;
+    --leafY: 0px;
+    --rootY: 80px;
+    --surfaceScale: 1;
+    --cutawayScale: 1.04;
+    --deepScale: 1.08;
   }
 
   /* ── Depth marker ── */
@@ -672,56 +705,107 @@ import Layout from '../components/Layout.astro';
     flex: 1;
   }
 
-  /* ── Root transition ── */
-  .root-transition {
+  /* ── Scroll descent ── */
+  .descent-stage {
     position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    height: 460vh;
   }
-  .cutaway-bg {
+  .descent-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #020403;
+  }
+  .descent-viewport::after {
+    content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/garden-cutaway.png');
+    background: linear-gradient(180deg, rgba(5,8,7,0.08), rgba(5,8,7,0.4) 48%, rgba(5,8,7,0.92));
+    pointer-events: none;
+    z-index: 3;
+  }
+  .motion-layer {
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    transform: scale(1.01);
+    will-change: opacity, transform;
   }
-  .transition-scrim {
+  .surface-image {
+    background-image: url('/yasuragi-garden-hero.png');
+    opacity: var(--surfaceOpacity);
+    transform: translate3d(0, var(--surfaceY), 0) scale(var(--surfaceScale));
+  }
+  .cutaway-image {
+    background-image: url('/root-transition-cutaway.png');
+    opacity: var(--cutawayOpacity);
+    transform: translate3d(0, var(--cutawayY), 0) scale(var(--cutawayScale));
+  }
+  .deep-image {
+    background-image: url('/deep-garden-hero.png');
+    opacity: var(--deepOpacity);
+    transform: translate3d(0, var(--deepY), 0) scale(var(--deepScale));
+  }
+  .leaves-layer {
+    background-image: url('/foreground-leaves-lanterns.png');
+    opacity: calc(var(--surfaceOpacity) * 0.9);
+    transform: translate3d(0, var(--leafY), 0) scale(1.03);
+  }
+  .roots-layer {
+    background-image: url('/foreground-roots-cables.png');
+    opacity: var(--rootOpacity);
+    transform: translate3d(0, var(--rootY), 0) scale(1.06);
+  }
+  .signal-layer {
+    background-image: url('/teal-root-signals.png');
+    opacity: var(--signalOpacity);
+    mix-blend-mode: screen;
+  }
+  .mist-layer {
+    background-image: url('/mist-noise-overlay.png');
+    opacity: var(--mistOpacity);
+    mix-blend-mode: screen;
+    animation: mistDrift 18s ease-in-out infinite alternate;
+  }
+  .shaft-vignette-layer {
+    background-image: url('/shaft-vignette.png');
+    opacity: calc(0.35 + var(--p) * 0.6);
+  }
+  @keyframes mistDrift {
+    from { transform: translate3d(-2%, 0, 0) scale(1.04); }
+    to   { transform: translate3d(2%, -1%, 0) scale(1.07); }
+  }
+  .descent-copy {
     position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(5,8,7,0.24), rgba(5,8,7,0.52) 35%, rgba(5,8,7,0.90) 100%),
-      radial-gradient(circle at 50% 48%, rgba(54, 213, 205, 0.08), transparent 28rem);
+    right: clamp(1rem, 7vw, 5rem);
+    bottom: clamp(2rem, 10vw, 7rem);
+    z-index: 5;
+    width: min(520px, calc(100vw - 6rem));
+    padding: 1.25rem 1.5rem;
+    background: rgba(5, 8, 7, 0.58);
+    border: 1px solid rgba(54, 213, 205, 0.2);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
   }
-  .transition-content {
-    position: relative;
-    z-index: 2;
-    width: min(760px, calc(100vw - 2rem));
-    text-align: center;
-    padding: 2.5rem 2rem;
-    background: rgba(5,8,7,0.58);
-    border: 1px solid rgba(54, 213, 205, 0.18);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .descent-copy.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
-  .transition-content h2 {
+  .descent-copy h2 {
     font-family: var(--g-display);
-    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    font-size: clamp(2rem, 4vw, 3.6rem);
     font-weight: 700;
     color: var(--g-ink);
-    line-height: 1.05;
-    margin: 0;
+    line-height: 1.0;
+    margin: 0 0 0.75rem;
   }
-  .transition-body {
-    color: var(--g-muted);
+  .descent-copy > p {
+    color: #d8cfba;
     font-size: 0.95rem;
     margin: 0;
   }
@@ -1017,12 +1101,17 @@ import Layout from '../components/Layout.astro';
     .doorway-grid { grid-template-columns: 1fr; }
     .seed-preview-panel { position: static; }
     .artifact-grid { grid-template-columns: repeat(2, 1fr); }
+    .descent-copy {
+      left: 1rem;
+      right: 1rem;
+      bottom: 2rem;
+      width: auto;
+    }
   }
   @media (max-width: 680px) {
     .hero-text h1 { font-size: 4rem; }
     .artifact-grid { grid-template-columns: 1fr; }
-    .root-transition { min-height: 80vh; }
-    .cutaway-bg { background-attachment: scroll; }
+    .descent-stage { height: 360vh; }
     .root-map { min-height: 580px; }
     .root-node {
       font-size: 0.6rem;
@@ -1034,10 +1123,79 @@ import Layout from '../components/Layout.astro';
     .doorway-grid { grid-template-columns: 1fr 1fr; }
     .doorway-card--danger { grid-column: 1 / -1; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .descent-stage { height: auto; }
+    .descent-viewport { position: relative; height: auto; min-height: 100vh; }
+    .cutaway-image, .deep-image, .roots-layer, .signal-layer { opacity: 0.35 !important; }
+    .surface-image { opacity: 0.5 !important; }
+    .descent-copy { position: relative; opacity: 1 !important; transform: none !important; right: auto; bottom: auto; margin: 1.5rem auto; width: min(520px, calc(100vw - 2rem)); }
+    .motion-layer { transform: none !important; }
+    .mist-layer { animation: none; }
+  }
 </style>
 
 <script>
-  // Depth marker scroll tracking
+  // ── Scroll descent motion ──
+  const descentStage = document.querySelector('.descent-stage') as HTMLElement | null;
+  const descentCopies = [...document.querySelectorAll<HTMLElement>('.descent-copy')];
+
+  function clamp(n: number, min = 0, max = 1) { return Math.min(max, Math.max(min, n)); }
+  function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
+  function smoothstep(edge0: number, edge1: number, x: number) {
+    const t = clamp((x - edge0) / (edge1 - edge0));
+    return t * t * (3 - 2 * t);
+  }
+  function peak(start: number, mid: number, end: number, x: number) {
+    if (x < start || x > end) return 0;
+    if (x <= mid) return smoothstep(start, mid, x);
+    return 1 - smoothstep(mid, end, x);
+  }
+
+  function updateDescent() {
+    if (!descentStage) return;
+    const rect = descentStage.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    const progress = clamp(-rect.top / total);
+
+    const surfaceOut  = smoothstep(0.12, 0.42, progress);
+    const deepIn      = smoothstep(0.55, 0.86, progress);
+    const rootPeak    = peak(0.18, 0.52, 0.88, progress);
+    const cutaway     = peak(0.12, 0.48, 0.78, progress);
+    const mist        = 0.25 + peak(0.18, 0.52, 0.82, progress) * 0.5 + deepIn * 0.08;
+    const signals     = smoothstep(0.35, 0.72, progress) * (1 - smoothstep(0.95, 1, progress));
+
+    const r = document.documentElement;
+    r.style.setProperty('--p',              progress.toFixed(4));
+    r.style.setProperty('--surfaceOpacity', (1 - surfaceOut * 0.92).toFixed(3));
+    r.style.setProperty('--cutawayOpacity', cutaway.toFixed(3));
+    r.style.setProperty('--deepOpacity',    deepIn.toFixed(3));
+    r.style.setProperty('--rootOpacity',    rootPeak.toFixed(3));
+    r.style.setProperty('--signalOpacity',  signals.toFixed(3));
+    r.style.setProperty('--mistOpacity',    mist.toFixed(3));
+    r.style.setProperty('--surfaceY',       `${lerp(0,   -180,  progress).toFixed(1)}px`);
+    r.style.setProperty('--cutawayY',       `${lerp(120, -140,  progress).toFixed(1)}px`);
+    r.style.setProperty('--deepY',          `${lerp(160,    0,  deepIn).toFixed(1)}px`);
+    r.style.setProperty('--leafY',          `${lerp(0,   -260,  progress).toFixed(1)}px`);
+    r.style.setProperty('--rootY',          `${lerp(140, -120,  progress).toFixed(1)}px`);
+    r.style.setProperty('--surfaceScale',   lerp(1,    1.12, progress).toFixed(3));
+    r.style.setProperty('--cutawayScale',   lerp(1.06, 1.0,  cutaway).toFixed(3));
+    r.style.setProperty('--deepScale',      lerp(1.12, 1.0,  deepIn).toFixed(3));
+
+    const floor = progress < 0.34 ? 'surface' : progress < 0.70 ? 'root' : 'deep';
+    descentCopies.forEach(el => el.classList.toggle('active', el.dataset.copy === floor));
+  }
+
+  let descentTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!descentTicking) {
+      requestAnimationFrame(() => { updateDescent(); descentTicking = false; });
+      descentTicking = true;
+    }
+  }, { passive: true });
+  window.addEventListener('resize', updateDescent);
+  updateDescent();
+
+  // ── Depth marker scroll tracking ──
   const depthSections = ['yasuragi', 'root-layer', 'deep-garden'];
   const depthLinks = Array.from(document.querySelectorAll('[data-depth]')) as HTMLAnchorElement[];
 
