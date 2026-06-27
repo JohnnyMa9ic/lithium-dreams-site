@@ -1,0 +1,371 @@
+---
+import Layout from '../components/Layout.astro';
+import MuseumPlaque from '../components/MuseumPlaque.astro';
+import MaintenanceTag from '../components/MaintenanceTag.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import CRTFrame from '../components/CRTFrame.astro';
+import EmployeeNotice from '../components/EmployeeNotice.astro';
+
+const episodes: {
+  id: string;
+  title: string;
+  subtitle: string;
+  status: 'LIVE' | 'PENDING' | 'IN PRODUCTION' | 'CLASSIFIED';
+  date?: string;
+  duration?: string;
+  links?: { label: string; href: string }[];
+}[] = [
+  // Add episodes here as they publish. Format:
+  // {
+  //   id: 'BCT-001',
+  //   title: 'Episode title',
+  //   subtitle: 'One-line description — deadpan, factual, slightly strange.',
+  //   status: 'LIVE',
+  //   date: 'YYYY-MM-DD',
+  //   duration: '00:00',
+  //   links: [
+  //     { label: 'YouTube', href: 'https://...' },
+  //     { label: 'Podcast', href: 'https://...' },
+  //   ],
+  // },
+];
+---
+
+<Layout title="Broadcasts — Lithium Dreams Industries" activePage="/broadcasts">
+  <div class="page-hero broadcasts-hero">
+    <div class="page-hero-fade"></div>
+    <div class="hero-signal-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="district-page">
+    <div class="district-header">
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: 'Broadcasts' },
+      ]} />
+      <MaintenanceTag status="FLICKERING" size="md" />
+    </div>
+
+    <MuseumPlaque
+      accession="BCT-000"
+      title="Lithium Dreams Broadcast Tower"
+      subtitle="Transmissions from the Crossroads. Irregular schedule. Confirmed reception area: Earth."
+    />
+
+    <div class="velvet-rope-notice mono text-dim">
+      — Signal strength varies. This is not a technical problem. —
+    </div>
+
+    <!-- SIGNAL STATUS -->
+    <CRTFrame label="BROADCAST STATUS">
+      <div class="signal-status">
+        <p class="mono"><span class="status-label">CHANNEL:</span> Lithium Dreams Broadcast Tower</p>
+        <p class="mono"><span class="status-label">PLATFORMS:</span> YouTube · Podcast RSS · Archive</p>
+        <p class="mono"><span class="status-label">SIGNAL:</span> <span class="signal-live">ACTIVE — FIRST TRANSMISSION PENDING</span></p>
+        <p class="mono"><span class="status-label">OPERATOR:</span> John. Assisted by Bob. Fact-checked by Ghost. Narrated by whoever arrived.</p>
+        <p class="mono text-dim">// Equipment arriving. Tower warming up. Stand by.</p>
+      </div>
+    </CRTFrame>
+
+    <!-- EPISODE ARCHIVE -->
+    <div class="broadcast-archive">
+      <p class="section-eyebrow mono">Transmission Archive</p>
+
+      {episodes.length === 0 ? (
+        <EmployeeNotice>
+          <p>The archive is empty. This is temporary.</p>
+          <p>First transmission is in preparation. Bob has reviewed the script. Ghost has reviewed Bob's review. Warden has reviewed everything and said nothing, which means it's probably fine.</p>
+          <p class="mono text-dim">// check back after the tower goes live</p>
+        </EmployeeNotice>
+      ) : (
+        <div class="episode-grid">
+          {episodes.map((ep) => (
+            <div class={`episode-card ${ep.status === 'LIVE' ? 'episode-card--live' : ''}`}>
+              <div class="episode-header">
+                <span class="episode-id mono">{ep.id}</span>
+                <span class={`episode-status mono episode-status--${ep.status.toLowerCase().replace(' ', '-')}`}>
+                  {ep.status}
+                </span>
+              </div>
+              <h3 class="episode-title">{ep.title}</h3>
+              <p class="episode-subtitle text-dim">{ep.subtitle}</p>
+              {ep.date && (
+                <p class="episode-meta mono text-dim">
+                  {ep.date}{ep.duration ? ` · ${ep.duration}` : ''}
+                </p>
+              )}
+              {ep.links && ep.links.length > 0 && (
+                <div class="episode-links">
+                  {ep.links.map((link) => (
+                    <a href={link.href} class="episode-link mono" target="_blank" rel="noopener noreferrer">
+                      → {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- WHAT THIS IS -->
+    <div class="about-broadcasts">
+      <p class="section-eyebrow mono">About the Tower</p>
+      <div class="about-grid">
+        <div class="about-card">
+          <p class="about-card-label mono">SUBJECT MATTER</p>
+          <p>AI systems and what they're actually doing. Infrastructure that thinks. The gap between what was promised and what was built. Occasional world-building segments. Bob has opinions.</p>
+        </div>
+        <div class="about-card">
+          <p class="about-card-label mono">FORMAT</p>
+          <p>Long-form research episodes. Field reports. Occasional guest transmissions from the Pantheon. Each episode feeds the Museum — the research lives here after the broadcast ends.</p>
+        </div>
+        <div class="about-card">
+          <p class="about-card-label mono">CADENCE</p>
+          <p>Irregular. The tower broadcasts when the signal is ready, not when the calendar says so. Quality of transmission takes priority over frequency of transmission.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSCRIBE -->
+    <CRTFrame label="TUNE IN">
+      <div class="subscribe-block">
+        <p class="mono text-dim">// platforms will appear here as they go live</p>
+        <div class="platform-list">
+          <div class="platform-item platform-item--pending">
+            <span class="platform-name mono">YouTube</span>
+            <span class="platform-status mono">COMING ONLINE</span>
+          </div>
+          <div class="platform-item platform-item--pending">
+            <span class="platform-name mono">Podcast RSS</span>
+            <span class="platform-status mono">COMING ONLINE</span>
+          </div>
+          <div class="platform-item platform-item--pending">
+            <span class="platform-name mono">Archive.org</span>
+            <span class="platform-status mono">COMING ONLINE</span>
+          </div>
+        </div>
+        <p class="mono text-dim">// or watch the museum — episodes become exhibits after they air</p>
+      </div>
+    </CRTFrame>
+
+  </div>
+</Layout>
+
+<style>
+  /* Hero */
+  .broadcasts-hero {
+    width: 100%;
+    min-height: 40vh;
+    background: radial-gradient(ellipse at 50% 60%, #0d1a0d 0%, #050a05 60%, #000 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-signal-bars {
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+  }
+
+  .hero-signal-bars span {
+    display: block;
+    width: 8px;
+    background: var(--ldi-green, #39ff14);
+    opacity: 0.6;
+    animation: signal-pulse 2s ease-in-out infinite;
+  }
+
+  .hero-signal-bars span:nth-child(1) { height: 12px; animation-delay: 0s; }
+  .hero-signal-bars span:nth-child(2) { height: 24px; animation-delay: 0.15s; }
+  .hero-signal-bars span:nth-child(3) { height: 40px; animation-delay: 0.3s; }
+  .hero-signal-bars span:nth-child(4) { height: 24px; animation-delay: 0.45s; }
+  .hero-signal-bars span:nth-child(5) { height: 12px; animation-delay: 0.6s; }
+
+  @keyframes signal-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+  }
+
+  .page-hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom, transparent, var(--ldi-black, #050505));
+  }
+
+  /* Page layout */
+  .district-page {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--content-pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .district-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .velvet-rope-notice {
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Signal status */
+  .signal-status {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .status-label {
+    color: var(--ldi-green, #39ff14);
+    margin-right: 0.5rem;
+  }
+
+  .signal-live {
+    color: var(--ldi-green, #39ff14);
+    animation: blink 2s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Episode archive */
+  .section-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ldi-dim, #555);
+    margin-bottom: var(--space-sm);
+  }
+
+  .episode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .episode-card {
+    border: 1px solid var(--ldi-border, #1a1a1a);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--ldi-surface, #0a0a0a);
+  }
+
+  .episode-card--live {
+    border-color: var(--ldi-green, #39ff14);
+  }
+
+  .episode-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .episode-id { font-size: 0.75rem; color: var(--ldi-dim, #555); }
+  .episode-title { font-size: 1.1rem; margin: 0; }
+  .episode-subtitle { font-size: 0.9rem; margin: 0; }
+  .episode-meta { font-size: 0.75rem; }
+
+  .episode-status { font-size: 0.7rem; letter-spacing: 0.1em; }
+  .episode-status--live { color: var(--ldi-green, #39ff14); }
+  .episode-status--pending,
+  .episode-status--in-production { color: var(--ldi-amber, #f5a623); }
+  .episode-status--classified { color: var(--ldi-red, #ff3b3b); }
+
+  .episode-links {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+  }
+
+  .episode-link {
+    font-size: 0.8rem;
+    color: var(--ldi-green, #39ff14);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .episode-link:hover { text-decoration: underline; }
+
+  /* About section */
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .about-card {
+    border: 1px solid var(--ldi-border, #1a1a1a);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--ldi-surface, #0a0a0a);
+  }
+
+  .about-card-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--ldi-dim, #555);
+    margin: 0;
+  }
+
+  .about-card p:last-child {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Subscribe block */
+  .subscribe-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .platform-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .platform-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--ldi-border, #1a1a1a);
+  }
+
+  .platform-name { font-size: 0.9rem; }
+
+  .platform-status { font-size: 0.75rem; letter-spacing: 0.08em; }
+  .platform-item--pending .platform-status { color: var(--ldi-dim, #555); }
+  .platform-item--live .platform-status { color: var(--ldi-green, #39ff14); }
+</style>
