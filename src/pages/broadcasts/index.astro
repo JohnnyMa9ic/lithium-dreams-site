@@ -153,6 +153,15 @@ const episodes: {
       </div>
     </CRTFrame>
 
+    <!-- WITNESS REGISTRY CTA -->
+    <CRTFrame label="FIELD REPORTS">
+      <div class="registry-cta">
+        <p class="mono">Something happened to you. You saw something you cannot explain. We are collecting accounts.</p>
+        <p class="mono text-dim">// submissions are reviewed before filing · real names not required · WIT-0001 is unclaimed</p>
+        <a href="/broadcasts/witness-registry" class="registry-cta-link mono">→ SUBMIT A FIELD REPORT</a>
+      </div>
+    </CRTFrame>
+
   </div>
 </Layout>
 
@@ -368,4 +377,29 @@ const episodes: {
   .platform-status { font-size: 0.75rem; letter-spacing: 0.08em; }
   .platform-item--pending .platform-status { color: var(--ldi-dim, #555); }
   .platform-item--live .platform-status { color: var(--ldi-green, #39ff14); }
+
+  /* Witness Registry CTA */
+  .registry-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .registry-cta-link {
+    display: inline-block;
+    margin-top: 0.25rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--ldi-amber, #ffa000);
+    text-decoration: none;
+    border: 1px solid rgba(255, 160, 0, 0.3);
+    padding: 0.4rem 1rem;
+    transition: background 0.2s, color 0.2s;
+    align-self: flex-start;
+  }
+
+  .registry-cta-link:hover {
+    background: var(--ldi-amber, #ffa000);
+    color: #000;
+  }
 </style>
