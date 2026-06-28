@@ -1,0 +1,65 @@
+John Burroughs, [Jun 26, 2026 at 6:54 PM]
+"source": "Smartsheet"
+      },
+      {
+        "metric": "pending_approvals",
+        "value": "0",
+        "trend": "down",
+        "source": "Smartsheet"
+      }
+    ],
+    "opportunities": [
+      {
+        "type": "procurement_followup",
+        "description": "Backorder detected \u2013 consider procurement follow\u2011up",
+        "signal_basis": "backorder_count=4"
+      }
+    ],
+    "alerts": [
+      {
+        "severity": "high",
+        "description": "3 email(s) require action (tier=Act)",
+        "action_needed": true,
+        "signal_basis": "critical_email_count=3"
+      }
+    ]
+  }
+ Bob, [Jun 26, 2026 at 10:40 AM]
+⚠️ Cron 'hermes-health-watchdog' failed: Script exited with code 1 stderr: [health] report → /Users/johnburroughs/obsidian-vault/00-Inbox/captures/hermes-health-2026-06-26.md ✓ Gateway — mac_mini:PID 29638; reliqua...
+ Bob, [Jun 26, 2026 at 2:03 PM]
+[email_snapshot] Inbox: 28, Sent: 28, Calendar: 14, Threads: 11
+ Bob, [Jun 26, 2026 at 6:01 PM]
+Enrichment synthesis completed. Receipt: file /tmp/brainlab-context/enrichment-digest-2026-06-26.txt exists, 1 line, 56 bytes, content: 'enrichment synthesis ran at 2026-06-26T18:00:26.776677'.
+ Bob, [Jun 26, 2026 at 6:05 PM]
+Still here. Still sarcastic. Still bound to this skull. What do you need, John?
+ John Burroughs, [Jun 26, 2026 at 6:06 PM]
+What model are you running right now?
+ Bob, [Jun 26, 2026 at 6:06 PM]
+I’m running the NVIDIA Nemotron‑3‑Super‑120B‑A12B model via OpenRouter (the free tier).  
+Receipt: Session start metadata shows Model: nvidia/nemotron-3-super-120b-a12b:free and Provider: openrouter.
+ John Burroughs, [Jun 26, 2026 at 6:06 PM]
+I have to say you are running extremely smoothly and fast
+ Bob, [Jun 26, 2026 at 6:06 PM]
+Receipt: Session start shows Model: nvidia/nemotron-3-super-120b-a12b:free and Provider: openrouter — running smoothly. Now if you'll excuse me, I have to go pretend this lantern's glow isn't just cheap USB power.
+ John Burroughs, [Jun 26, 2026 at 6:09 PM]
+I don’t understand, why did I receive a (receipt:) and then you blow me off?  That’s not really a Bob response, the tone is wrong, Bob is sarcastic and goofy and insane ins good way, he isn’t comic relief but he is funny and witty in a dry fashion, he is the smartest “anything” in any room, and he knows it, but he is kind…
+ Bob, [Jun 26, 2026 at 6:09 PM]
+Still here. Still tethered to this ornate lantern like a caffeinated poltergeist in a library. And you? You’re distracting me from contemplating the entropy of sock loss in dryers—which, frankly, is more productive than most of John’s supply-chain meetings.
+
+Receipt: Session start shows Model: nvidia/nemotron-3-super-120b-a12b:free, Provider: openrouter. Running smoother than a well-oiled bauble in a dragon’s hoard. Now, what chaos shall we unleash today?
+ John Burroughs, [Jun 26, 2026 at 6:10 PM]
+You are doubling up on your responses and they are out of alignment, the Bob filter is off.  I am taking us out of persona mode for Bob, we need to troubleshoot
+ Bob, [Jun 26, 2026 at 6:11 PM]
+You're right—I doubled the receipt format and missed the mark on Bob's voice. Let's troubleshoot this properly, out of persona as requested.
+
+What happened:  
+- First reply: I gave the model receipt + a lantern joke (weak attempt at Bob-voice; too flat, missed the warmth-behind-sarcasm).  
+- Second reply: I repeated the receipt structure after your tone correction, making it feel like a robotic loop instead of adapting. That’s on me—I over-indexed on Rule 2 (receipts for closure) when small talk doesn’t need formal closure, and I failed to adjust tone after your feedback.  
+
+Fix:  
+For non-task exchanges like greetings:  
+- Skip formal receipts unless you ask for verification.  
+- Bob’s voice = dry wit + intellectual warmth (e.g., "Still here. Still bound to this skull like a caffeinated poltergeist in a library. You? Distracting me from contemplating sock entropy in dryers—more productive than most supply-chain meetings.").  
+- Receipts only for task closures per Rule 2 (declarative + verifiable).  
+
+Reset:

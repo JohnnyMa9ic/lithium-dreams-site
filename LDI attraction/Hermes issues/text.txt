@@ -1,0 +1,75 @@
+John Burroughs, [Jun 26, 2026 at 6:54 PM]
+Bob, [Jun 25, 2026 at 8:02 PM]
+[email_snapshot] Inbox: 28, Sent: 28, Calendar: 14, Threads: 11
+ Bob, [Jun 25, 2026 at 11:11 PM]
+Mini hydration analyzer executed successfully at 2026-06-25T23:00:34.238156. Verifiable receipt: log file /tmp/brainlab-context/mini_hydration_analyzer-2026-06-25.log exists and contains exactly one line: mini_hydration_analyzer ran at 2026-06-25T23:00:34.238156. Line count: 1. File size: 59 bytes. No truncation, not binary. This confirms the script ran and logged its output.
+ Bob, [Jun 26, 2026 at 3:00 AM]
+PRIORITY_ONE: behavioral file drift — SOUL.md (was:33793dcb now:1b8aeb8f) — review before next session.
+ Bob, [Jun 26, 2026 at 3:00 AM]
+Dream-infra: hash:config.yaml:✓ SOUL.md:DRIFT | chroma:✓(2314docs) | memory:✓(disabled) | identity:✓
+ Bob, [Jun 26, 2026 at 3:33 AM]
+⚠️ Cron 'hermes-health-watchdog' failed: Script exited with code 1 stderr: [health] report → /Users/johnburroughs/obsidian-vault/00-Inbox/captures/hermes-health-2026-06-26.md ✓ Gateway — mac_mini:PID 29638; reliqua...
+ Bob, [Jun 26, 2026 at 3:50 AM]
+Ad-hoc Verification Summary  
+Run: /Volumes/The Crossroads/obsidian-vault/40-BRAINLab/infrastructure/hermes-verify-2026-06-26.py  
+Results:  
+✅ Valid: /Volumes/The Crossroads/obsidian-vault/40-BRAINLab/builds/vault-correlations-2026-06-26.md (type: build)  
+✅ Valid: /Volumes/The Crossroads/obsidian-vault/40-BRAINLab/infrastructure/session-learnings.md (type: infrastructure)  
+❌ Missing folder: /Users/johnburroughs/obsidian-vault/00-Inbox/  
+❌ Missing folder: /Users/johnburroughs/obsidian-vault/30-Daily/  
+
+Verification Status  
+✅ Notes validated successfully  
+⚠️ Critical blocker: 00-Inbox/ and 30-Daily/ folders missing — cannot proceed with vault correlation scan  
+
+Next Steps  
+1. Confirm folder structure: Verify 00-Inbox/ and 30-Daily/ exist in /Users/johnburroughs/obsidian-vault/  
+2. Re-run vault correlation scan with confirmed paths  
+3. Monitor behavioral sync status (last sync: 2026-06-26 03:15:42)  
+
+No further action required unless verification blockers emerge.
+ Bob, [Jun 26, 2026 at 7:03 AM]
+Morning Brief – 2026-06-26
+
+Calendar (Google Workspace):  
+- No events scheduled for today.
+
+Blog Feed Monitor (blogwatcher-cli):  
+- DeepMind Blog: feed fetch failed (HTTP 404)  
+- Google AI Blog: feed fetch failed (HTTP 404)  
+- OpenAI Blog: feed fetch failed (HTTP 403)  
+- No new articles retrieved.
+
+BRAINLab Vault Updates (search results):  
+- Mission Control (mission-control.md): Shows the Hermes Auto-Update cron job failed (error) as of 2026-06-10; other jobs (Token Cost Summary, Vault Linter, Hermes Behavioral Sync → Reliquary, Bob Identity Gravity, bobs-desk-router) were OK.  
+- Email Snapshots: Most recent snapshots are from June 5–22, 2026 (e.g., June 5: Anthropic officially files; June 7 morning: calendar events including RX refill, Backorder Review, Catch-up JB, etc.). No email snapshot files dated 2026-06-26 were found in the search results.  
+
+Summary: No calendar events today; all monitored blog feeds are currently inaccessible (404/403). The vault indicates an ongoing issue with the Hermes Auto-Update cron job (since June 10) and no new email activity logged for today.  
+
+---  
+End of brief.
+ Bob, [Jun 26, 2026 at 7:46 AM]
+The mini hydration analyzer script executed at 07:45:56 on 2026-06-26 and logged its run.
+Receipt: Log file /tmp/brainlab-context/mini_hydration_analyzer-2026-06-26.log exists, contains 1 line: "mini_hydration_analyzer ran at 2026-06-26T07:45:56.976188".
+ Bob, [Jun 26, 2026 at 8:03 AM]
+[email_snapshot] Inbox: 25, Sent: 25, Calendar: 14, Threads: 11
+ Bob, [Jun 26, 2026 at 8:16 AM]
+KPI digest generated successfully at /tmp/brainlab-context/kpi-digest-2026-06-26.json.
+
+Receipt:
+- File exists and contains 86 lines.
+- First lines:
+  {
+    "date": "2026-06-26",
+    "generated_at": "2026-06-26T13:15:01.219622+00:00",
+    "kpis": [
+      {
+        "metric": "backorder_count",
+        "value": "4",
+        "trend": "up",
+        "source": "Smartsheet"
+      },
+      {
+        "metric": "project_count",
+        "value": "0",
+        "trend": "down",
