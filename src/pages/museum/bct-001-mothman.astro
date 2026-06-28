@@ -339,10 +339,10 @@ const exhibit = {
   .placard-val--redacted { color: rgba(255,255,255,0.2); font-style: italic; }
 
   /* Exhibit body */
-  .exhibit-body { display: flex; flex-direction: column; gap: 0.75rem; }
+  .exhibit-body { display: flex; flex-direction: column; gap: 0.75rem; max-width: 780px; }
   .exhibit-divider { font-size: 0.7rem; color: rgba(255,255,255,0.1); overflow: hidden; }
-  .exhibit-text { display: flex; flex-direction: column; gap: 1.1rem; padding: 0.5rem 0; }
-  .exhibit-text p { font-size: 0.9rem; line-height: 1.85; color: var(--ldi-text, #d4cfc8); }
+  .exhibit-text { display: flex; flex-direction: column; gap: 1.1rem; padding: 0.5rem 0; max-width: 680px; }
+  .exhibit-text p { font-size: 0.9rem; line-height: 1.85; color: var(--ldi-text, #d4cfc8); letter-spacing: 0.015em; }
   .exhibit-note { font-size: 0.72rem !important; letter-spacing: 0.04em; line-height: 1.6 !important; }
 
   /* Witness table */
