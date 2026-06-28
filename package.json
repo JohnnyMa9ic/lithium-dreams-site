@@ -8,21 +8,25 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "verify": "playwright test",
     "review:routes": "playwright test --config playwright.qa.config.js qa/link-check.spec.ts",
     "review:screenshots": "playwright test --config playwright.qa.config.js qa/screenshots.spec.ts",
     "review:axe": "playwright test --config playwright.qa.config.js qa/axe.spec.ts",
     "review:lighthouse": "echo 'Run: npx lighthouse http://localhost:4321 --output html --output-path reviews/$(date +%Y-%m-%d)-opening-day/lighthouse.html'",
-    "review:all": "npm run review:routes && npm run review:screenshots && npm run review:axe"
+    "review:all": "npm run review:routes && npm run review:screenshots && npm run review:axe",
+    "generate-types": "wrangler types",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.0.1",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.0.2"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
-    "@playwright/test": "^1.61.1"
+    "@playwright/test": "^1.61.1",
+    "wrangler": "^4.105.0"
   }
 }
