@@ -178,6 +178,27 @@ import CRTFrame from '../../components/CRTFrame.astro';
         transform-origin: top;
         animation: shard-fall linear infinite;
       }
+
+      .cath-divider {
+        font-size: 0.55rem;
+        letter-spacing: 0.3em;
+        color: rgba(77, 184, 212, 0.15);
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+      .cath-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .cath-exit--secondary {
+        opacity: 0.5;
+        font-size: 0.6rem;
+      }
+      .cath-exit--secondary:hover {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -201,7 +222,22 @@ import CRTFrame from '../../components/CRTFrame.astro';
         <p>This record is sealed.</p>
       </CRTFrame>
 
-      <a href="/chapel" class="cath-exit">← Return to the chapel</a>
+      <div class="cath-divider" aria-hidden="true">— — —</div>
+
+      <CRTFrame label="WARDEN CLASSIFICATION NOTICE">
+        <p>This sector does not appear on the official venue map.</p>
+        <p>&nbsp;</p>
+        <p>The organ plays music that has not been scheduled. The Warden has flagged this location for containment review since Y07. Incidents that originate here are reclassified before they reach the log.</p>
+        <p>&nbsp;</p>
+        <p>The Warden knows. The Warden is not elaborating at this time.</p>
+        <p>&nbsp;</p>
+        <p>You should not have followed the roots.</p>
+      </CRTFrame>
+
+      <nav class="cath-nav" aria-label="Exit options">
+        <a href="/chapel" class="cath-exit">← Return to the chapel</a>
+        <a href="/deep-garden" class="cath-exit cath-exit--secondary">← Return to the garden</a>
+      </nav>
     </div>
 
     <script>
