@@ -1,0 +1,403 @@
+---
+import Layout from '../../components/Layout.astro';
+import MuseumPlaque from '../../components/MuseumPlaque.astro';
+import MaintenanceTag from '../../components/MaintenanceTag.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CRTFrame from '../../components/CRTFrame.astro';
+
+const exhibit = {
+  accession: 'MUS-006',
+  episode_id: 'BCT-001',
+  episode_title: 'The Mothman of Point Pleasant',
+  episode_url: '/broadcasts/#BCT-001',
+  title: 'The Mothman',
+  subtitle: 'Point Pleasant, West Virginia. 13 months. 46 dead. One eyebar.',
+  classification: 'Cryptid · Avian-Humanoid · Precursor Entity (disputed)',
+  first_documented: 'August 1966',
+  location: 'Point Pleasant, Mason County, West Virginia',
+  threat_assessment: '[REDACTED — SEE FIELD NOTES]',
+  status: 'ACTIVE · OPEN FOR VIEWING',
+  narration_audio: null as string | null,
+};
+---
+
+<Layout title={`${exhibit.title} — Museum — Lithium Dreams Industries`} activePage="/museum">
+  <div class="page-hero exhibit-hero">
+    <div class="page-hero-fade"></div>
+    <div class="exhibit-hero-label mono" aria-hidden="true">
+      {exhibit.accession} · ROOM 7 — THE OHIO VALLEY ARCHIVE
+    </div>
+  </div>
+
+  <div class="district-page">
+    <div class="district-header">
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: 'Museum', href: '/museum' },
+        { label: exhibit.accession },
+      ]} />
+      <MaintenanceTag status="ACTIVE" size="md" />
+    </div>
+
+    <MuseumPlaque
+      accession={exhibit.accession}
+      title={exhibit.title}
+      subtitle={exhibit.subtitle}
+    />
+
+    <div class="velvet-rope-notice mono text-dim">
+      — Enter through the east corridor. The room is dark. That is intentional. —
+    </div>
+
+    <!-- CLASSIFICATION PLACARD -->
+    <CRTFrame label="SPECIMEN DATA">
+      <div class="placard-grid">
+        <div class="placard-row">
+          <span class="placard-key mono">ACCESSION</span>
+          <span class="placard-val mono">{exhibit.accession}</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">STATUS</span>
+          <span class="placard-val mono placard-val--active">{exhibit.status}</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">CLASSIFICATION</span>
+          <span class="placard-val mono">{exhibit.classification}</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">FIRST DOCUMENTED</span>
+          <span class="placard-val mono">{exhibit.first_documented}</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">PRIMARY LOCATION</span>
+          <span class="placard-val mono">{exhibit.location}</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">ACTIVE FLAP PERIOD</span>
+          <span class="placard-val mono">November 1966 – December 15, 1967</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">DOCUMENTED WITNESSES</span>
+          <span class="placard-val mono">13 named · approx. 26 total (1966–67 cluster)</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">SECONDARY FLAP</span>
+          <span class="placard-val mono">Chicago Metropolitan Area, 2011–2021</span>
+        </div>
+        <div class="placard-row">
+          <span class="placard-key mono">THREAT ASSESSMENT</span>
+          <span class="placard-val mono placard-val--redacted">{exhibit.threat_assessment}</span>
+        </div>
+      </div>
+    </CRTFrame>
+
+    <!-- EXHIBIT BODY -->
+    <div class="exhibit-body">
+      <p class="section-eyebrow mono">Field Notes</p>
+      <div class="exhibit-divider mono" aria-hidden="true">────────────────────────────────────────</div>
+
+      <div class="exhibit-text">
+
+        <p>
+          On the evening of November 15, 1966, four people driving near an abandoned munitions facility
+          outside Point Pleasant, West Virginia encountered something they could not explain and could not
+          stop describing for the rest of their lives. Roger Scarberry, Linda Scarberry, Steve Mallette,
+          and Mary Mallette reported a large gray figure — wings folded against its body, standing
+          upright, somewhere between six and seven feet tall — near the entrance to the North Power Plant
+          in the TNT Area. When the vehicle attempted to leave, the entity pursued it. Witnesses reported
+          speeds in excess of 100 miles per hour. The eyes, they said, were red. Not reflective. Illuminated.
+        </p>
+
+        <p>
+          What followed over the next thirteen months constitutes one of the most densely documented
+          anomaly clusters in American cryptid record. Thirteen named witnesses. Approximately
+          twenty-six total sightings in the 1966–67 cluster alone. The entity was described with
+          remarkable consistency across observers who had no contact with each other: gray or brown,
+          humanoid, winged, red-eyed, large. Somewhere between six and seven feet tall. Wingspan
+          reported between six and fifteen feet depending on the witness and the conditions of observation.
+          It did not flap its wings to fly. It rose vertically. It paced automobiles on open highway.
+          It appeared without approach and departed without landing.
+        </p>
+
+        <p>
+          The sightings did not occur in isolation. On November 14th — one day before the primary
+          incident — Merle Partridge of Salem, West Virginia reported anomalous television interference
+          accompanied by a high-pitched tone, two red lights in the yard described as close-set and
+          circular, and the permanent disappearance of his German Shepherd. The animal ran toward
+          the lights. It did not return. On November 27th, Connie Jo Carpenter reported an approach
+          by a seven-foot gray entity near Route 33. Following the encounter she developed significant
+          conjunctival irritation. No chemical exposure was identified. The medical record was
+          never fully reconciled with a benign explanation.
+        </p>
+
+        <p>
+          Journalist John A. Keel arrived in Point Pleasant in late 1966 and conducted field
+          investigations through 1967. His subsequent analysis produced what became known as
+          the Keel Hypothesis: that the Mothman was not a biological entity, not an extraterrestrial
+          visitor, and not a harbinger in the folkloric sense — but an ultraterrestrial, an
+          intelligence native to Earth operating at a frequency of existence adjacent to but
+          not coincident with our own. Keel documented correlations between sighting clusters and
+          electromagnetic anomalies, telephone interference, and what he described as Men in Black
+          visitations to witnesses. He did not claim to know what the Mothman was. He claimed,
+          carefully, that the available evidence was incompatible with every conventional explanation
+          he had been able to construct.
+        </p>
+
+        <p>
+          On December 15, 1967, at approximately 5:00 PM EST, the Silver Bridge collapsed.
+          The bridge connected Point Pleasant to Gallipolis, Ohio across the Ohio River.
+          Thirty-two vehicles were on the structure at the time of failure. Sixty-four people.
+          Forty-six died. The National Transportation Safety Board investigation — conducted over
+          three years — identified a single point of failure: Eyebar #330, one link in the
+          suspension chain, had developed a stress corrosion crack on the inner surface of its
+          eye-hole. The crack was physically inaccessible to inspection without disassembling
+          the bridge. At the moment of failure, the crack that brought the structure down was
+          smaller than a human thumbnail.
+        </p>
+
+        <p>
+          The Mothman sightings stopped. The correlation between the active flap period and the
+          bridge collapse has never been explained to any researcher's satisfaction — including
+          those researchers most committed to finding a conventional explanation. The NTSB
+          determined the bridge failed due to engineering deficiency. The NTSB made no finding
+          regarding the entity observed by dozens of witnesses in the thirteen months preceding
+          the collapse. These are two separate records that happen to share a geography and
+          a timeline. What to do with that fact remains an open question in the archive.
+        </p>
+
+        <p>
+          The case did not close in 1967. Between 2011 and 2021, the Chicago metropolitan area
+          accumulated its own cluster of reports — winged humanoid, red-eyed, observed near
+          O'Hare International Airport, over Lake Michigan, in Logan Square. The Mutual UFO
+          Network documented over fifty individual reports. Investigators noted the same
+          characteristics: large, gray or brown, not flapping, ascending vertically, observed
+          briefly and then gone. No connection to Point Pleasant was established. No explanation
+          was established either.
+        </p>
+
+        <p class="exhibit-note mono text-dim">
+          // The Museum of Ongoing Events does not adjudicate what the Mothman is.
+          The Museum notes what witnesses reported, preserves the record intact, and
+          keeps the file open. Some things are not solved. They are accumulated.
+        </p>
+
+      </div>
+
+      <div class="exhibit-divider mono" aria-hidden="true">────────────────────────────────────────</div>
+    </div>
+
+    <!-- WITNESS SUMMARY -->
+    <CRTFrame label="WITNESS REGISTRY — PARTIAL">
+      <div class="witness-table-wrap">
+        <p class="mono text-dim">// 13 named witnesses on record · 1966–67 cluster · names as they appear in public record</p>
+        <div class="witness-table">
+          <div class="witness-row witness-row--header">
+            <span class="mono">CASE ID</span>
+            <span class="mono">WITNESS</span>
+            <span class="mono">DATE</span>
+            <span class="mono">TYPE</span>
+          </div>
+          <div class="witness-row"><span class="mono text-dim">WIT-001</span><span>Lawrence Gray</span><span class="mono text-dim">Aug 1966</span><span class="mono text-dim">Interior Apparition</span></div>
+          <div class="witness-row"><span class="mono text-dim">WIT-003</span><span>Kenneth Duncan + party</span><span class="mono text-dim">Nov 12, 1966</span><span class="mono text-dim">Aerial · Daylight</span></div>
+          <div class="witness-row"><span class="mono text-dim">WIT-004</span><span>Merle Partridge</span><span class="mono text-dim">Nov 14, 1966</span><span class="mono text-dim">EM Interference · Animal Loss</span></div>
+          <div class="witness-row witness-row--primary"><span class="mono text-dim">WIT-005–008</span><span>Scarberry / Mallette party</span><span class="mono text-dim">Nov 15, 1966</span><span class="mono text-dim">Vehicle Pursuit · Primary Incident</span></div>
+          <div class="witness-row"><span class="mono text-dim">WIT-009</span><span>Marcella Bennett</span><span class="mono text-dim">Nov 16, 1966</span><span class="mono text-dim">Ground Encounter</span></div>
+          <div class="witness-row"><span class="mono text-dim">WIT-011</span><span>Richard West</span><span class="mono text-dim">Nov 21, 1966</span><span class="mono text-dim">Rooftop · Vertical Departure</span></div>
+          <div class="witness-row"><span class="mono text-dim">WIT-013</span><span>Connie Jo Carpenter</span><span class="mono text-dim">Nov 27, 1966</span><span class="mono text-dim">Vehicle Approach · Physical Sequela</span></div>
+        </div>
+        <p class="mono text-dim">// Full registry: 13 named witnesses on file · additional accounts unattributed by witness request</p>
+      </div>
+    </CRTFrame>
+
+    <!-- SILVER BRIDGE NOTE -->
+    <CRTFrame label="ANCHOR EVENT — DEC 15, 1967">
+      <div class="anchor-block">
+        <div class="anchor-stats">
+          <div class="anchor-stat"><span class="mono text-dim">VEHICLES ON BRIDGE</span><span class="mono anchor-num">32</span></div>
+          <div class="anchor-stat"><span class="mono text-dim">PERSONS</span><span class="mono anchor-num">64</span></div>
+          <div class="anchor-stat"><span class="mono text-dim">FATALITIES</span><span class="mono anchor-num">46</span></div>
+          <div class="anchor-stat"><span class="mono text-dim">CAUSE</span><span class="mono anchor-num">Eyebar #330</span></div>
+        </div>
+        <p class="mono text-dim">
+          // The crack that initiated the collapse was inaccessible to inspection without disassembling the bridge.
+          At the time of failure, it was smaller than a human thumbnail.
+          The Mothman sightings stopped the same night. The file remains open.
+        </p>
+      </div>
+    </CRTFrame>
+
+    <!-- BROADCAST CROSS-REFERENCE -->
+    <CRTFrame label="SOURCE TRANSMISSION">
+      <div class="broadcast-ref">
+        <p class="mono text-dim">// This exhibit was assembled from research conducted during:</p>
+        <a href={exhibit.episode_url} class="broadcast-link mono">
+          → BROADCAST: {exhibit.episode_title} — {exhibit.episode_id}
+        </a>
+        <p class="mono text-dim">// The research lives here after the broadcast ends.</p>
+      </div>
+    </CRTFrame>
+
+    <!-- MUSEUM NAV -->
+    <div class="exhibit-nav">
+      <a href="/museum" class="exhibit-nav-link mono">← Return to Museum Index</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .exhibit-hero {
+    width: 100%;
+    min-height: 45vh;
+    background:
+      radial-gradient(ellipse at 50% 80%, #1a0000 0%, #0a0005 40%, #000 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .exhibit-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.012) 2px,
+        rgba(255,255,255,0.012) 4px
+      );
+    pointer-events: none;
+  }
+
+  /* Two red eye glows in the hero */
+  .exhibit-hero::after {
+    content: '';
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 20px;
+    background:
+      radial-gradient(circle at 30% 50%, rgba(255,0,0,0.5) 0%, transparent 60%),
+      radial-gradient(circle at 70% 50%, rgba(255,0,0,0.5) 0%, transparent 60%);
+    filter: blur(4px);
+    animation: eyes-pulse 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes eyes-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .exhibit-hero-label {
+    position: absolute;
+    bottom: 4rem;
+    left: var(--content-pad, 1.5rem);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: rgba(255, 160, 0, 0.3);
+    z-index: 1;
+  }
+
+  .page-hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--ldi-bg, #050505));
+    z-index: 1;
+  }
+
+  .velvet-rope-notice {
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    margin: 0.5rem 0 1rem;
+  }
+
+  /* Placard */
+  .placard-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+  .placard-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  @media (max-width: 600px) {
+    .placard-row { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+  .placard-key { font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); }
+  .placard-val { font-size: 0.78rem; letter-spacing: 0.05em; color: var(--ldi-text, #d4cfc8); }
+  .placard-val--active { color: var(--ldi-teal, #00e5cc); }
+  .placard-val--redacted { color: rgba(255,255,255,0.2); font-style: italic; }
+
+  /* Exhibit body */
+  .exhibit-body { display: flex; flex-direction: column; gap: 0.75rem; }
+  .exhibit-divider { font-size: 0.7rem; color: rgba(255,255,255,0.1); overflow: hidden; }
+  .exhibit-text { display: flex; flex-direction: column; gap: 1.1rem; padding: 0.5rem 0; }
+  .exhibit-text p { font-size: 0.9rem; line-height: 1.85; color: var(--ldi-text, #d4cfc8); }
+  .exhibit-note { font-size: 0.72rem !important; letter-spacing: 0.04em; line-height: 1.6 !important; }
+
+  /* Witness table */
+  .witness-table-wrap { display: flex; flex-direction: column; gap: 0.75rem; }
+  .witness-table { display: flex; flex-direction: column; gap: 0; border: 1px solid rgba(255,255,255,0.06); }
+  .witness-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 110px 1fr;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.72rem;
+    color: var(--ldi-text, #d4cfc8);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .witness-row:last-child { border-bottom: none; }
+  .witness-row--header {
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.35);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+  .witness-row--primary { background: rgba(255,160,0,0.04); }
+  @media (max-width: 700px) {
+    .witness-row { grid-template-columns: 80px 1fr; }
+    .witness-row span:nth-child(3),
+    .witness-row span:nth-child(4) { display: none; }
+  }
+
+  /* Anchor block */
+  .anchor-block { display: flex; flex-direction: column; gap: 0.75rem; }
+  .anchor-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 600px) { .anchor-stats { grid-template-columns: repeat(2, 1fr); } }
+  .anchor-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+  .anchor-stat span:first-child { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .anchor-num { font-size: 1rem; color: var(--ldi-amber, #ffa000); letter-spacing: 0.05em; }
+
+  /* Broadcast ref */
+  .broadcast-ref { display: flex; flex-direction: column; gap: 0.5rem; }
+  .broadcast-link {
+    font-size: 0.8rem; letter-spacing: 0.06em;
+    color: var(--ldi-amber, #ffa000); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .broadcast-link:hover { color: #fff; }
+
+  /* Nav */
+  .exhibit-nav { padding-top: 0.5rem; }
+  .exhibit-nav-link {
+    font-size: 0.75rem; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.3); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .exhibit-nav-link:hover { color: var(--ldi-text, #d4cfc8); }
+</style>
