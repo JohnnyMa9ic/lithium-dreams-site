@@ -1,0 +1,365 @@
+---
+import Layout from '../../../components/Layout.astro';
+import MuseumPlaque from '../../../components/MuseumPlaque.astro';
+import MaintenanceTag from '../../../components/MaintenanceTag.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import CRTFrame from '../../../components/CRTFrame.astro';
+
+const episode = {
+  accession: 'MVL-EP001',
+  case_id: 'BCT-001',
+  title: 'The Mothman of Point Pleasant',
+  subtitle: 'Point Pleasant, West Virginia. 13 months. 46 dead. One eyebar.',
+  status: 'FILED TONIGHT',
+  filed: 'June 2026',
+  runtime: 'TBD',
+  youtube_url: null as string | null,
+  podcast_url: null as string | null,
+  museum_url: '/museum/bct-001-mothman',
+};
+---
+
+<Layout title={`${episode.title} — Midnight Visitor Log — Lithium Dreams Industries`} activePage="/broadcasts">
+  <div class="page-hero broadcast-hero">
+    <div class="page-hero-fade"></div>
+    <div class="broadcast-hero-label mono" aria-hidden="true">
+      MIDNIGHT VISITOR LOG · {episode.accession} · ACTIVE CASE
+    </div>
+  </div>
+
+  <div class="district-page">
+    <div class="district-header">
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: 'Broadcasts', href: '/broadcasts' },
+        { label: 'Midnight Visitor Log', href: '/broadcasts' },
+        { label: episode.accession },
+      ]} />
+      <MaintenanceTag status="ACTIVE" size="md" />
+    </div>
+
+    <MuseumPlaque
+      accession={episode.accession}
+      title={episode.title}
+      subtitle={episode.subtitle}
+    />
+
+    <div class="velvet-rope-notice mono text-dim">
+      — Case filed tonight. Log is open. Come back when more is known. —
+    </div>
+
+    <!-- CASE STATUS PANEL -->
+    <CRTFrame label="CASE STATUS">
+      <div class="case-status-grid">
+        <div class="case-row">
+          <span class="case-key mono">ACCESSION</span>
+          <span class="case-val mono">{episode.accession} / {episode.case_id}</span>
+        </div>
+        <div class="case-row">
+          <span class="case-key mono">STATUS</span>
+          <span class="case-val mono case-val--active">{episode.status}</span>
+        </div>
+        <div class="case-row">
+          <span class="case-key mono">FILED</span>
+          <span class="case-val mono">{episode.filed}</span>
+        </div>
+        <div class="case-row">
+          <span class="case-key mono">SUBJECT</span>
+          <span class="case-val mono">THE MOTHMAN — Point Pleasant, WV</span>
+        </div>
+        <div class="case-row">
+          <span class="case-key mono">FLAP PERIOD</span>
+          <span class="case-val mono">November 1966 – December 15, 1967</span>
+        </div>
+        <div class="case-row">
+          <span class="case-key mono">SECONDARY FLAP</span>
+          <span class="case-val mono">Chicago Metropolitan Area, 2011–2021</span>
+        </div>
+        <div class="case-row">
+          <span class="case-key mono">WITNESSES LOGGED</span>
+          <span class="case-val mono">13 named · approx. 26 (1966–67) · 160+ (Chicago)</span>
+        </div>
+        <div class="case-row">
+          <span class="case-key mono">CASE RESOLUTION</span>
+          <span class="case-val mono case-val--open">OPEN — ACTIVE OBSERVATION</span>
+        </div>
+      </div>
+    </CRTFrame>
+
+    <!-- BROADCAST LINKS -->
+    <div class="broadcast-links-block">
+      <p class="section-eyebrow mono">Transmission</p>
+      <div class="broadcast-links">
+        {episode.youtube_url ? (
+          <a href={episode.youtube_url} class="broadcast-btn mono" target="_blank" rel="noopener noreferrer">
+            → Watch on YouTube
+          </a>
+        ) : (
+          <div class="broadcast-btn broadcast-btn--pending mono">
+            YouTube — TRANSMISSION PENDING
+          </div>
+        )}
+        {episode.podcast_url ? (
+          <a href={episode.podcast_url} class="broadcast-btn mono" target="_blank" rel="noopener noreferrer">
+            → Listen — Podcast
+          </a>
+        ) : (
+          <div class="broadcast-btn broadcast-btn--pending mono">
+            Podcast — FEED PENDING
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- WHAT THIS EPISODE COVERS -->
+    <div class="episode-body">
+      <p class="section-eyebrow mono">Case Summary</p>
+      <div class="exhibit-divider mono" aria-hidden="true">────────────────────────────────────────</div>
+
+      <div class="episode-text">
+        <p>
+          On November 15, 1966, four people in a single vehicle near an abandoned munitions facility outside
+          Point Pleasant, West Virginia encountered something that pursued them at speeds exceeding 100 miles
+          per hour. The eyes, they said, were red. Not reflective. Illuminated.
+        </p>
+
+        <p>
+          What followed was thirteen months of the most densely documented anomaly cluster in American
+          cryptid record — thirteen named witnesses, dozens of sightings, a string of Men in Black
+          encounters, anomalous telephone interference, animal disappearances, and one journalist,
+          John A. Keel, who went to Point Pleasant to write a story and came back with something
+          harder to explain.
+        </p>
+
+        <p>
+          On December 15, 1967, the Silver Bridge collapsed into the Ohio River at rush hour.
+          Forty-six people died. The sightings stopped the same night. The two events have never been
+          formally connected. They have also never been adequately explained as coincidence.
+        </p>
+
+        <p>
+          This episode covers the full 1966–67 Point Pleasant flap, the Chicago metropolitan cluster of
+          2017–2021 (160+ documented sightings), the three explanatory frameworks and their individual
+          failure points, and the one physical detail — the eyes — that none of the frameworks resolve.
+        </p>
+
+        <p class="mono text-dim">
+          // The case is open. The log is open. Something happened. The record shows that much.
+        </p>
+      </div>
+    </div>
+
+    <!-- INCIDENT LOG PREVIEW -->
+    <CRTFrame label="INCIDENT LOG — SELECTED ENTRIES">
+      <div class="incident-preview">
+        <div class="incident-entry">
+          <span class="incident-date mono">August 1966</span>
+          <span class="incident-type mono text-dim">INTERIOR APPARITION</span>
+          <p class="incident-desc">Lawrence Gray, Point Pleasant. Full-body paralysis. Duration under one minute. Filed retroactively after November events.</p>
+        </div>
+        <div class="incident-entry">
+          <span class="incident-date mono">November 15, 1966 — PRIMARY</span>
+          <span class="incident-type mono text-dim">VEHICLE PURSUIT · 4 WITNESSES · POLICE REPORT</span>
+          <p class="incident-desc">Scarberry-Mallette vehicle. TNT Area. Gray figure, folded wings, six to seven feet. Pursuit at 100+ mph. Eyes: red. Illuminated, not reflective.</p>
+        </div>
+        <div class="incident-entry">
+          <span class="incident-date mono">December 15, 1967 — TERMINATION EVENT</span>
+          <span class="incident-type mono text-dim">BRIDGE COLLAPSE · 46 DEAD</span>
+          <p class="incident-desc">Silver Bridge, Point Pleasant. Rush hour. The sightings stopped the same night. Correlation unconfirmed. Coincidence unexplained.</p>
+        </div>
+        <div class="incident-entry">
+          <span class="incident-date mono">April 15, 2017 — CHICAGO CLUSTER</span>
+          <span class="incident-type mono text-dim">AERIAL · MULTIPLE WITNESSES · LAKE MICHIGAN</span>
+          <p class="incident-desc">"Blacker than the surrounding night sky." Circled a vessel three times in silence. Departed toward Montrose Avenue. Green luminous object observed afterward on the lake horizon.</p>
+        </div>
+        <p class="mono text-dim incident-more">// Full incident log: 13 entries. See exhibit record for complete documentation.</p>
+      </div>
+    </CRTFrame>
+
+    <!-- FRAMEWORK VERDICTS -->
+    <CRTFrame label="EXPLANATORY FRAMEWORKS — STATUS">
+      <div class="framework-grid">
+        <div class="framework-row">
+          <span class="framework-label mono">FRAMEWORK-A</span>
+          <span class="framework-name mono text-dim">Misidentified Avian (Sandhill Crane)</span>
+          <span class="framework-verdict mono verdict--inconclusive">INCONCLUSIVE</span>
+        </div>
+        <div class="framework-row">
+          <span class="framework-label mono">FRAMEWORK-B</span>
+          <span class="framework-name mono text-dim">Mass Psychogenic Illness</span>
+          <span class="framework-verdict mono verdict--inconclusive">INCONCLUSIVE</span>
+        </div>
+        <div class="framework-row">
+          <span class="framework-label mono">FRAMEWORK-C</span>
+          <span class="framework-name mono text-dim">Ultraterrestrial / Superspectrum Entity (Keel)</span>
+          <span class="framework-verdict mono verdict--inconclusive">INCONCLUSIVE</span>
+        </div>
+        <p class="mono text-dim framework-note">// The eyes remain unresolved. All three frameworks fail on this detail. The record notes that fact.</p>
+      </div>
+    </CRTFrame>
+
+    <!-- MUSEUM LINK -->
+    <div class="archive-notice">
+      <CRTFrame label="ARCHIVE RECORD">
+        <p class="mono">
+          This case is filed as an active broadcast. The permanent exhibit record is maintained
+          at the Museum of Ongoing Events.
+        </p>
+        <a href={episode.museum_url} class="archive-link mono">
+          → View Exhibit Record — MUS-006 · Room 7, Ohio Valley Archive
+        </a>
+        <p class="mono text-dim" style="margin-top: 0.75rem;">
+          // When Episode 2 transmits, this case transfers to the archive. The museum entry will remain.
+        </p>
+      </CRTFrame>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .district-page {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--content-pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  @media (max-width: 600px) {
+    .district-page { padding: var(--space-md); }
+  }
+
+  /* HERO */
+  .broadcast-hero {
+    width: 100%;
+    min-height: 40vh;
+    background:
+      radial-gradient(ellipse at 30% 70%, rgba(0,229,204,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 30%, rgba(192,40,26,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, #0d1214 0%, #0a0907 40%, #000 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .page-hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, var(--ldi-void, #0a0907) 100%);
+  }
+  .broadcast-hero-label {
+    position: relative;
+    z-index: 1;
+    padding: var(--space-md) var(--content-pad);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--ldi-teal, #00e5cc);
+    opacity: 0.7;
+  }
+
+  /* VELVET ROPE */
+  .velvet-rope-notice {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+    opacity: 0.5;
+  }
+
+  /* CASE STATUS GRID */
+  .case-status-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+  .case-row { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+  .case-key {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--ldi-text-secondary, #a89870);
+    min-width: 10rem;
+    flex-shrink: 0;
+  }
+  .case-val {
+    font-size: 0.8rem;
+    color: var(--ldi-text-primary, #e8dcc0);
+    letter-spacing: 0.04em;
+  }
+  .case-val--active { color: var(--ldi-amber-bright, #f0a020); }
+  .case-val--open { color: var(--ldi-teal, #00e5cc); }
+
+  /* BROADCAST LINKS */
+  .broadcast-links-block { display: flex; flex-direction: column; gap: 0.75rem; }
+  .broadcast-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .broadcast-btn {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--ldi-teal, #00e5cc);
+    border: 1px solid var(--ldi-teal, #00e5cc);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .broadcast-btn:hover { background: var(--ldi-teal, #00e5cc); color: var(--ldi-void, #0a0907); }
+  .broadcast-btn--pending {
+    color: var(--ldi-text-dim, #5a5040);
+    border-color: var(--ldi-text-dim, #5a5040);
+    cursor: default;
+  }
+
+  /* EPISODE BODY */
+  .episode-body { display: flex; flex-direction: column; gap: 0.75rem; max-width: 780px; }
+  .exhibit-divider { font-size: 0.75rem; color: var(--ldi-text-dim, #5a5040); letter-spacing: 0; }
+  .episode-text { display: flex; flex-direction: column; gap: 1.1rem; padding: 0.5rem 0; max-width: 680px; }
+  .episode-text p { font-size: 0.9rem; line-height: 1.85; color: var(--ldi-text, #d4cfc8); letter-spacing: 0.015em; }
+
+  /* INCIDENT LOG */
+  .incident-preview { display: flex; flex-direction: column; gap: 1rem; }
+  .incident-entry { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .incident-entry:last-of-type { border-bottom: none; }
+  .incident-date { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--ldi-amber-bright, #f0a020); }
+  .incident-type { font-size: 0.65rem; letter-spacing: 0.15em; }
+  .incident-desc { font-size: 0.82rem; line-height: 1.6; color: var(--ldi-text-primary, #e8dcc0); margin-top: 0.2rem; }
+  .incident-more { font-size: 0.7rem; margin-top: 0.25rem; }
+
+  /* FRAMEWORK GRID */
+  .framework-grid { display: flex; flex-direction: column; gap: 0.6rem; }
+  .framework-row { display: flex; gap: 0.75rem; align-items: baseline; flex-wrap: wrap; }
+  .framework-label { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--ldi-teal, #00e5cc); min-width: 7rem; flex-shrink: 0; }
+  .framework-name { font-size: 0.78rem; flex: 1; }
+  .framework-verdict { font-size: 0.7rem; letter-spacing: 0.1em; }
+  .verdict--inconclusive { color: var(--ldi-amber, #d4820a); }
+  .framework-note { font-size: 0.72rem; margin-top: 0.5rem; }
+
+  /* ARCHIVE NOTICE */
+  .archive-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: var(--ldi-teal, #00e5cc);
+    text-decoration: none;
+  }
+  .archive-link:hover { text-decoration: underline; }
+
+  /* SHARED */
+  .section-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--ldi-text-secondary, #a89870);
+    text-transform: uppercase;
+  }
+  .district-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .text-dim { color: var(--ldi-text-dim, #5a5040); }
+  .mono { font-family: 'Space Mono', monospace; }
+
+  @media (max-width: 600px) {
+    .case-key { min-width: 7rem; font-size: 0.65rem; }
+    .broadcast-links { flex-direction: column; }
+    .framework-row { flex-direction: column; gap: 0.2rem; }
+  }
+</style>
