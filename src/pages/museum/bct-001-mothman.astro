@@ -247,6 +247,18 @@ const exhibit = {
 </Layout>
 
 <style>
+  .district-page {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--content-pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  @media (max-width: 600px) {
+    .district-page { padding: var(--space-md); }
+  }
+
   .exhibit-hero {
     width: 100%;
     min-height: 45vh;
