@@ -94,7 +94,7 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
               <p class="recent-entry mono text-dim">"{f}"</p>
             ))}
           </div>
-          <a href="#" class="archive-link mono text-dim">Fortune Archive →</a>
+          <p class="archive-link mono text-dim archive-placeholder">Fortune Archive → <span class="archive-note">// THE ARCHIVE IS BEING COLLATED. CHECK BACK.</span></p>
         </div>
 
         <div class="maint-notes">
@@ -321,4 +321,6 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
     .fortune-display { align-self: stretch; }
     .bottom-section { grid-template-columns: 1fr; }
   }
+  .archive-placeholder { cursor: default; }
+  .archive-note { opacity: 0.5; margin-left: 0.5rem; }
 </style>
