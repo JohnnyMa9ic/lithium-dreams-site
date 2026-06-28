@@ -26,6 +26,10 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     </div>
 
     <div class="exhibit-grid">
+      <a href="/museum/bct-001-mothman" class="exhibit-case exhibit-case--live">
+        <MuseumPlaque accession="MUS-006" title="The Mothman" subtitle="Point Pleasant, West Virginia. 13 months. 46 dead. One eyebar." />
+        <div class="case-status mono case-status--live">// open — enter through east corridor</div>
+      </a>
       <div class="exhibit-case">
         <MuseumPlaque accession="MUS-002" title="Case File: Origin" subtitle="Circumstances of founding — incomplete." />
         <div class="case-status mono text-dim">// exhibit being prepared</div>
@@ -236,5 +240,20 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 
   @media (max-width: 600px) {
     .district-page { padding: var(--space-md); }
+  }
+  .exhibit-case--live {
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255, 160, 0, 0.2);
+    transition: border-color 0.2s, background 0.2s;
+    display: block;
+    padding: 0;
+  }
+  .exhibit-case--live:hover {
+    border-color: rgba(255, 160, 0, 0.5);
+    background: rgba(255, 160, 0, 0.03);
+  }
+  .case-status--live {
+    color: var(--warden-teal, #00e5cc);
   }
 </style>
