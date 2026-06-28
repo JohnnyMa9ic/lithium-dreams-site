@@ -55,7 +55,20 @@ const episodes: {
       subtitle="Transmissions from the Crossroads. Irregular schedule. Confirmed reception area: Earth."
     />
 
-    <div class="velvet-rope-notice mono text-dim">
+    <!-- COMING ATTRACTION -->
+    <a href="/broadcasts/midnight-visitor-log/ep01-mothman" class="coming-attraction-link">
+      <div class="coming-attraction">
+        <p class="section-eyebrow mono">Now Showing — BCT-001</p>
+        <img
+          src="/images/ldi-mothman-stinger.png"
+          alt="The Midnight Visitor Log — EP01: The Mothman of Point Pleasant"
+          class="attraction-poster"
+        />
+        <p class="attraction-caption mono text-dim">→ The Mothman of Point Pleasant — Case filed. Log open.</p>
+      </div>
+    </a>
+
+        <div class="velvet-rope-notice mono text-dim">
       — Signal strength varies. This is not a technical problem. —
     </div>
 
@@ -162,16 +175,6 @@ const episodes: {
       </div>
     </CRTFrame>
 
-
-    <!-- COMING ATTRACTION -->
-    <div class="coming-attraction">
-      <p class="section-eyebrow mono">Now Showing</p>
-      <img
-        src="/images/ldi-mothman-stinger.png"
-        alt="The Midnight Visitor Log — Lithium Dreams Industries"
-        class="attraction-poster"
-      />
-    </div>
 
   </div>
 </Layout>
@@ -423,6 +426,35 @@ const episodes: {
     max-width: 860px;
     border: 1px solid rgba(255,255,255,0.06);
     display: block;
+  }
+
+
+  /* COMING ATTRACTION */
+  .coming-attraction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .attraction-poster {
+    width: 100%;
+    max-width: 860px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .coming-attraction-link {
+    display: block;
+    text-decoration: none;
+  }
+  .coming-attraction-link:hover .attraction-poster {
+    border-color: rgba(212,130,10,0.4);
+  }
+  .attraction-caption {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
   }
 
 </style>

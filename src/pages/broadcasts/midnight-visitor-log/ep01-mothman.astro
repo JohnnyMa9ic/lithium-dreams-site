@@ -216,6 +216,7 @@ const episode = {
     </div>
 
 
+
     <!-- COMING ATTRACTION -->
     <div class="coming-attraction">
       <p class="section-eyebrow mono">Now Showing</p>
@@ -385,6 +386,35 @@ const episode = {
     max-width: 860px;
     border: 1px solid rgba(255,255,255,0.06);
     display: block;
+  }
+
+
+  /* COMING ATTRACTION */
+  .coming-attraction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .attraction-poster {
+    width: 100%;
+    max-width: 860px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .coming-attraction-link {
+    display: block;
+    text-decoration: none;
+  }
+  .coming-attraction-link:hover .attraction-poster {
+    border-color: rgba(212,130,10,0.4);
+  }
+  .attraction-caption {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
   }
 
 </style>
