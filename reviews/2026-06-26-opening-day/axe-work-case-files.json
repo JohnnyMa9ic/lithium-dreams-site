@@ -1,0 +1,4299 @@
+{
+  "testEngine": {
+    "name": "axe-core",
+    "version": "4.12.1"
+  },
+  "testRunner": {
+    "name": "axe"
+  },
+  "testEnvironment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36",
+    "windowWidth": 1280,
+    "windowHeight": 720,
+    "orientationAngle": 0,
+    "orientationType": "landscape-primary"
+  },
+  "timestamp": "2026-06-26T20:14:12.757Z",
+  "url": "http://localhost:4321/work/case-files",
+  "toolOptions": {
+    "runOnly": {
+      "type": "tag",
+      "values": [
+        "wcag2a",
+        "wcag2aa"
+      ]
+    },
+    "reporter": "v1"
+  },
+  "inapplicable": [
+    {
+      "id": "area-alt",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag244",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.2.4.4",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.2"
+      ],
+      "description": "Ensure <area> elements of image maps have alternative text",
+      "help": "Active <area> elements must have alternative text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/area-alt?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-braille-equivalent",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2"
+      ],
+      "description": "Ensure aria-braillelabel and aria-brailleroledescription have a non-braille equivalent",
+      "help": "aria-braille attributes must have a non-braille equivalent",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-braille-equivalent?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-command-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "description": "Ensure every ARIA button, link and menuitem has an accessible name",
+      "help": "ARIA commands must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-command-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-deprecated-role",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure elements do not use deprecated roles",
+      "help": "Deprecated ARIA roles must not be used",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-deprecated-role?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-input-field-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "description": "Ensure every ARIA input field has an accessible name",
+      "help": "ARIA input fields must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-input-field-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-meter-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag111",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "description": "Ensure every ARIA meter node has an accessible name",
+      "help": "ARIA meter nodes must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-meter-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-progressbar-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag111",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "description": "Ensure every ARIA progressbar node has an accessible name",
+      "help": "ARIA progressbar nodes must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-progressbar-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-required-attr",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure elements with ARIA roles have all required ARIA attributes",
+      "help": "Required ARIA attributes must be provided",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-required-attr?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-required-children",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "description": "Ensure elements with an ARIA role that require child roles contain them",
+      "help": "Certain ARIA roles must contain particular children",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-required-children?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-required-parent",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "description": "Ensure elements with an ARIA role that require parent roles are contained by them",
+      "help": "Certain ARIA roles must be contained by particular parents",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-required-parent?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-roles",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure all elements with a role attribute use a valid value",
+      "help": "ARIA roles used must conform to valid values",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-roles?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-tab-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure every ARIA tab node has an accessible name",
+      "help": "ARIA tab nodes must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-tab-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-toggle-field-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure every ARIA toggle field has an accessible name",
+      "help": "ARIA toggle fields must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-toggle-field-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "aria-tooltip-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2"
+      ],
+      "description": "Ensure every ARIA tooltip node has an accessible name",
+      "help": "ARIA tooltip nodes must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-tooltip-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "blink",
+      "impact": null,
+      "tags": [
+        "cat.time-and-media",
+        "wcag2a",
+        "wcag222",
+        "section508",
+        "section508.22.j",
+        "TTv5",
+        "TT2.b",
+        "EN-301-549",
+        "EN-9.2.2.2",
+        "RGAAv4",
+        "RGAA-13.8.1"
+      ],
+      "description": "Ensure <blink> elements are not used",
+      "help": "<blink> elements are deprecated and must not be used",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/blink?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "definition-list",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.3"
+      ],
+      "description": "Ensure <dl> elements are structured correctly",
+      "help": "<dl> elements must only directly contain properly-ordered <dt> and <dd> groups, <script>, <template> or <div> elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/definition-list?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "dlitem",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.3"
+      ],
+      "description": "Ensure <dt> and <dd> elements are contained by a <dl>",
+      "help": "<dt> and <dd> elements must be contained by a <dl>",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/dlitem?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "duplicate-id-aria",
+      "impact": null,
+      "tags": [
+        "cat.parsing",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-8.2.1"
+      ],
+      "description": "Ensure every id attribute value used in ARIA and in labels is unique",
+      "help": "IDs used in ARIA and labels must be unique",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/duplicate-id-aria?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "form-field-multiple-labels",
+      "impact": null,
+      "tags": [
+        "cat.forms",
+        "wcag2a",
+        "wcag332",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.3.3.2",
+        "RGAAv4",
+        "RGAA-11.2.1"
+      ],
+      "description": "Ensure form field does not have multiple label elements",
+      "help": "Form field must not have multiple label elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/form-field-multiple-labels?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "frame-focusable-content",
+      "impact": null,
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag211",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "RGAAv4",
+        "RGAA-7.3.2"
+      ],
+      "description": "Ensure <frame> and <iframe> elements with focusable content do not have tabindex=-1",
+      "help": "Frames with focusable content must not have tabindex=-1",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/frame-focusable-content?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "frame-title-unique",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT12.d",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-2.2.1"
+      ],
+      "description": "Ensure <iframe> and <frame> elements contain a unique title attribute",
+      "help": "Frames must have a unique title attribute",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/frame-title-unique?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "frame-title",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.i",
+        "TTv5",
+        "TT12.d",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-2.1.1"
+      ],
+      "description": "Ensure <iframe> and <frame> elements have an accessible name",
+      "help": "Frames must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/frame-title?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "html-xml-lang-mismatch",
+      "impact": null,
+      "tags": [
+        "cat.language",
+        "wcag2a",
+        "wcag311",
+        "EN-301-549",
+        "EN-9.3.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.3.1"
+      ],
+      "description": "Ensure that HTML elements with both valid lang and xml:lang attributes agree on the base language of the page",
+      "help": "HTML elements with lang and xml:lang must have the same base language",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/html-xml-lang-mismatch?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "image-alt",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "TT7.b",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.1"
+      ],
+      "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+      "help": "Images must have alternative text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "input-button-name",
+      "impact": null,
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "description": "Ensure input buttons have discernible text",
+      "help": "Input buttons must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/input-button-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "input-image-alt",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.3"
+      ],
+      "description": "Ensure <input type=\"image\"> elements have alternative text",
+      "help": "Image buttons must have alternative text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/input-image-alt?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "label",
+      "impact": null,
+      "tags": [
+        "cat.forms",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.n",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "description": "Ensure every form element has a label",
+      "help": "Form elements must have labels",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/label?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "link-in-text-block",
+      "impact": null,
+      "tags": [
+        "cat.color",
+        "wcag2a",
+        "wcag141",
+        "TTv5",
+        "TT13.a",
+        "EN-301-549",
+        "EN-9.1.4.1",
+        "RGAAv4",
+        "RGAA-10.6.1"
+      ],
+      "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+      "help": "Links must be distinguishable without relying on color",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/link-in-text-block?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "list",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "description": "Ensure that lists are structured correctly",
+      "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/list?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "listitem",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "description": "Ensure <li> elements are used semantically",
+      "help": "<li> elements must be contained in a <ul> or <ol>",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/listitem?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "marquee",
+      "impact": null,
+      "tags": [
+        "cat.parsing",
+        "wcag2a",
+        "wcag222",
+        "TTv5",
+        "TT2.b",
+        "EN-301-549",
+        "EN-9.2.2.2",
+        "RGAAv4",
+        "RGAA-13.8.1"
+      ],
+      "description": "Ensure <marquee> elements are not used",
+      "help": "<marquee> elements are deprecated and must not be used",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/marquee?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "meta-refresh",
+      "impact": null,
+      "tags": [
+        "cat.time-and-media",
+        "wcag2a",
+        "wcag221",
+        "TTv5",
+        "TT8.a",
+        "EN-301-549",
+        "EN-9.2.2.1",
+        "RGAAv4",
+        "RGAA-13.1.2"
+      ],
+      "description": "Ensure <meta http-equiv=\"refresh\"> is not used for delayed refresh",
+      "help": "Delayed refresh under 20 hours must not be used",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/meta-refresh?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "object-alt",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "RGAAv4",
+        "RGAA-1.1.6"
+      ],
+      "description": "Ensure <object> elements have alternative text",
+      "help": "<object> elements must have alternative text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/object-alt?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "role-img-alt",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.1"
+      ],
+      "description": "Ensure [role=\"img\"] elements have alternative text",
+      "help": "[role=\"img\"] elements must have alternative text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/role-img-alt?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "scrollable-region-focusable",
+      "impact": null,
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag211",
+        "wcag213",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "EN-9.2.1.3",
+        "RGAAv4",
+        "RGAA-7.3.2"
+      ],
+      "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
+      "help": "Scrollable region must have keyboard access",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/scrollable-region-focusable?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "select-name",
+      "impact": null,
+      "tags": [
+        "cat.forms",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.n",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "description": "Ensure select element has an accessible name",
+      "help": "Select element must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/select-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "server-side-image-map",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag211",
+        "section508",
+        "section508.22.f",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "RGAAv4",
+        "RGAA-1.1.4"
+      ],
+      "description": "Ensure that server-side image maps are not used",
+      "help": "Server-side image maps must not be used",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/server-side-image-map?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "summary-name",
+      "impact": null,
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2"
+      ],
+      "description": "Ensure summary elements have discernible text",
+      "help": "Summary elements must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/summary-name?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "svg-img-alt",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.5"
+      ],
+      "description": "Ensure <svg> elements with an img, graphics-document or graphics-symbol role have accessible text",
+      "help": "<svg> elements with an img role must have alternative text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/svg-img-alt?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "td-headers-attr",
+      "impact": null,
+      "tags": [
+        "cat.tables",
+        "wcag2a",
+        "wcag131",
+        "section508",
+        "section508.22.g",
+        "TTv5",
+        "TT14.b",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-5.7.4"
+      ],
+      "description": "Ensure that each cell in a table that uses the headers attribute refers only to other <th> elements in that table",
+      "help": "Table cell headers attributes must refer to other <th> elements in the same table",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/td-headers-attr?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "th-has-data-cells",
+      "impact": null,
+      "tags": [
+        "cat.tables",
+        "wcag2a",
+        "wcag131",
+        "section508",
+        "section508.22.g",
+        "TTv5",
+        "TT14.b",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-5.7.1"
+      ],
+      "description": "Ensure that <th> elements and elements with role=columnheader/rowheader have data cells they describe",
+      "help": "Table headers in a data table must refer to data cells",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/th-has-data-cells?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "valid-lang",
+      "impact": null,
+      "tags": [
+        "cat.language",
+        "wcag2aa",
+        "wcag312",
+        "TTv5",
+        "TT11.b",
+        "EN-301-549",
+        "EN-9.3.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.8.1"
+      ],
+      "description": "Ensure lang attributes have valid values",
+      "help": "lang attribute must have a valid value",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/valid-lang?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "video-caption",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag122",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT17.a",
+        "EN-301-549",
+        "EN-9.1.2.2",
+        "RGAAv4",
+        "RGAA-4.3.1"
+      ],
+      "description": "Ensure <video> elements have captions",
+      "help": "<video> elements must have captions",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/video-caption?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "no-autoplay-audio",
+      "impact": null,
+      "tags": [
+        "cat.time-and-media",
+        "wcag2a",
+        "wcag142",
+        "TTv5",
+        "TT2.a",
+        "EN-301-549",
+        "EN-9.1.4.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-4.10.1"
+      ],
+      "description": "Ensure <video> or <audio> elements do not autoplay audio for more than 3 seconds without a control mechanism to stop or mute the audio",
+      "help": "<video> or <audio> elements must not play automatically",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/no-autoplay-audio?application=playwright",
+      "nodes": []
+    }
+  ],
+  "passes": [
+    {
+      "id": "aria-allowed-attr",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure an element's role supports its ARIA attributes",
+      "help": "Elements must only use supported ARIA attributes",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-allowed-attr?application=playwright",
+      "nodes": [
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-allowed-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attributes are used correctly for the defined role"
+            },
+            {
+              "id": "aria-allowed-attr-elm",
+              "data": null,
+              "relatedNodes": [],
+              "message": "ARIA attributes are allowed for this element",
+              "impact": "critical"
+            }
+          ],
+          "none": [
+            {
+              "id": "aria-unsupported-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute is supported"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"gh-logo\" aria-label=\"LDI Work\" data-astro-cid-zyfjkaoe=\"\"><span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span><span class=\"gh-logo-name\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span></a>",
+          "target": [
+            ".gh-logo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aria-conditional-attr",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure ARIA attributes are used as described in the specification of the element's role",
+      "help": "ARIA attributes must be used as specified for the element's role",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-conditional-attr?application=playwright",
+      "nodes": [
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-conditional-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"gh-logo\" aria-label=\"LDI Work\" data-astro-cid-zyfjkaoe=\"\"><span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span><span class=\"gh-logo-name\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span></a>",
+          "target": [
+            ".gh-logo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aria-hidden-body",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag131",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-10.8.1"
+      ],
+      "description": "Ensure aria-hidden=\"true\" is not present on the document body.",
+      "help": "aria-hidden=\"true\" must not be present on the document body",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-hidden-body?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "aria-hidden-body",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "No aria-hidden attribute is present on document body"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+          "target": [
+            "body"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aria-hidden-focus",
+      "impact": null,
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-10.8.1"
+      ],
+      "description": "Ensure aria-hidden elements are not focusable nor contain focusable elements",
+      "help": "ARIA hidden element must not be focusable or contain focusable elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-hidden-focus?application=playwright",
+      "nodes": [
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 85 107\" aria-hidden=\"true\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              "svg[viewBox=\"0 0 85 107\"]"
+            ]
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              "svg[viewBox=\"0 0 24 24\"]"
+            ]
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 1 20 16\" aria-hidden=\"true\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              "svg[viewBox=\"0 1 20 16\"]"
+            ]
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 22 22\" aria-hidden=\"true\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              "svg[viewBox=\"0 0 22 22\"][aria-hidden=\"true\"][fill=\"none\"]"
+            ]
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 25 24\" aria-hidden=\"true\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              "astro-dev-toolbar-app-canvas[data-app-id=\"astro:home\"]",
+              "astro-dev-toolbar-icon[icon=\"bug\"]",
+              "svg[viewBox=\"0 0 25 24\"]"
+            ]
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 22 22\" aria-hidden=\"true\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              "astro-dev-toolbar-app-canvas[data-app-id=\"astro:settings\"]",
+              "astro-dev-toolbar-icon[icon=\"gear\"]",
+              "svg[viewBox=\"0 0 22 22\"][aria-hidden=\"true\"][fill=\"none\"]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aria-prohibited-attr",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure ARIA attributes are not prohibited for an element's role",
+      "help": "Elements must only use permitted ARIA attributes",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-prohibited-attr?application=playwright",
+      "nodes": [
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "aria-prohibited-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"gh-logo\" aria-label=\"LDI Work\" data-astro-cid-zyfjkaoe=\"\"><span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span><span class=\"gh-logo-name\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span></a>",
+          "target": [
+            ".gh-logo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aria-valid-attr-value",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure all ARIA attributes have valid values",
+      "help": "ARIA attributes must conform to valid values",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-valid-attr-value?application=playwright",
+      "nodes": [
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-valid-attr-value",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute values are valid"
+            },
+            {
+              "id": "aria-errormessage",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
+            },
+            {
+              "id": "aria-level",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-level values are valid"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"gh-logo\" aria-label=\"LDI Work\" data-astro-cid-zyfjkaoe=\"\"><span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span><span class=\"gh-logo-name\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span></a>",
+          "target": [
+            ".gh-logo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aria-valid-attr",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure attributes that begin with aria- are valid ARIA attributes",
+      "help": "ARIA attributes must conform to valid names",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-valid-attr?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "aria-valid-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute name is valid"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"gh-logo\" aria-label=\"LDI Work\" data-astro-cid-zyfjkaoe=\"\"><span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span><span class=\"gh-logo-name\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span></a>",
+          "target": [
+            ".gh-logo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "button-name",
+      "impact": null,
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "description": "Ensure buttons have discernible text",
+      "help": "Buttons must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/button-name?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:home\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:home\"]"
+            ]
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:xray\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:xray\"]"
+            ]
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:audit\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:audit\"]"
+            ]
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:settings\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:settings\"]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bypass",
+      "impact": null,
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag241",
+        "section508",
+        "section508.22.o",
+        "TTv5",
+        "TT9.a",
+        "EN-301-549",
+        "EN-9.2.4.1",
+        "RGAAv4",
+        "RGAA-12.7.1"
+      ],
+      "description": "Ensure each page has at least one mechanism for a user to bypass navigation and jump straight to the content",
+      "help": "Page must have means to bypass repeated blocks",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/bypass?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "header-present",
+              "data": null,
+              "relatedNodes": [
+                {
+                  "html": "<h1 class=\"page-headline\" data-astro-cid-24nodo3f=\"\">Internal deployments first.</h1>",
+                  "target": [
+                    ".page-headline"
+                  ]
+                },
+                {
+                  "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">LDI Website</h2>",
+                  "target": [
+                    ".case-card--featured > .case-title"
+                  ]
+                },
+                {
+                  "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Mission Intake Pipeline</h2>",
+                  "target": [
+                    "article:nth-child(2) > .case-title"
+                  ]
+                },
+                {
+                  "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Bob's Fortune Emporium</h2>",
+                  "target": [
+                    "article:nth-child(3) > .case-title"
+                  ]
+                },
+                {
+                  "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Ghost's Workshop</h2>",
+                  "target": [
+                    "article:nth-child(4) > .case-title"
+                  ]
+                },
+                {
+                  "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Signal Engine / Research OS</h2>",
+                  "target": [
+                    ".case-card--featured-2 > .case-title"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Page has a heading"
+            },
+            {
+              "id": "landmark",
+              "data": null,
+              "relatedNodes": [
+                {
+                  "html": "<main class=\"gh-content\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "main"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Page has a landmark region"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<html lang=\"en\" data-astro-cid-zyfjkaoe=\"\">",
+          "target": [
+            "html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fefefd",
+                "contrastRatio": 6.47,
+                "fontSize": "9.6pt (12.8px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.47"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"gh-logo-name\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span>",
+          "target": [
+            ".gh-logo-name"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fefefd",
+                "contrastRatio": 6.47,
+                "fontSize": "9.6pt (12.8px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.47"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"\" data-astro-cid-zyfjkaoe=\"\">Overview</a>",
+          "target": [
+            ".gh-nav-links > a[href$=\"work\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fefefd",
+                "contrastRatio": 6.47,
+                "fontSize": "9.6pt (12.8px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.47"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"/work/intake\" class=\"\" data-astro-cid-zyfjkaoe=\"\">Mission Intake</a>",
+          "target": [
+            ".gh-nav-links > a[href$=\"intake\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fefefd",
+                "contrastRatio": 6.47,
+                "fontSize": "9.6pt (12.8px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.47"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"/about\" class=\"\" data-astro-cid-zyfjkaoe=\"\">About</a>",
+          "target": [
+            ".gh-nav-links > a[href$=\"about\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#1a1d1a",
+                "bgColor": "#f5f3ee",
+                "contrastRatio": 15.33,
+                "fontSize": "33.0pt (44px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.33"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<h1 class=\"page-headline\" data-astro-cid-24nodo3f=\"\">Internal deployments first.</h1>",
+          "target": [
+            ".page-headline"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#f5f3ee",
+                "contrastRatio": 5.89,
+                "fontSize": "10.8pt (14.4px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 5.89"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p class=\"page-sub\" data-astro-cid-24nodo3f=\"\">We don't pitch client work we haven't run ourselves. These are LDI's live internal deployments — each one is a real system operating under real conditions. Client engagements come after the internal proof of concept holds up.</p>",
+          "target": [
+            ".page-sub"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#1a1d1a",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 16.45,
+                "fontSize": "16.2pt (21.6px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.45"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">LDI Website</h2>",
+          "target": [
+            ".case-card--featured > .case-title"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p class=\"case-body\" data-astro-cid-24nodo3f=\"\">",
+          "target": [
+            ".case-card--featured > .case-body"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Astro + Cloudflare Pages</span>",
+          "target": [
+            ".case-card--featured > .case-outcomes > .case-outcome:nth-child(1) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Live — this session</span>",
+          "target": [
+            ".case-card--featured > .case-outcomes > .case-outcome:nth-child(2) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Two visual identities, one coherent build</span>",
+          "target": [
+            ".case-card--featured > .case-outcomes > .case-outcome:nth-child(3) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#1a1d1a",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 16.45,
+                "fontSize": "16.2pt (21.6px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.45"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Mission Intake Pipeline</h2>",
+          "target": [
+            "article:nth-child(2) > .case-title"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p class=\"case-body\" data-astro-cid-24nodo3f=\"\">The intake wizard on this page feeds a structured JSON pipeline. 6-step guided brief replaces the vague discovery call. JSON output with copy/download. Webhook delivery to structured intake queue in active development.</p>",
+          "target": [
+            "article:nth-child(2) > .case-body"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Vanilla JS wizard + JSON pipeline</span>",
+          "target": [
+            "article:nth-child(2) > .case-outcomes > .case-outcome:nth-child(1) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Form live — webhook in dev</span>",
+          "target": [
+            "article:nth-child(2) > .case-outcomes > .case-outcome:nth-child(2) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#1a1d1a",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 16.45,
+                "fontSize": "16.2pt (21.6px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.45"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Bob's Fortune Emporium</h2>",
+          "target": [
+            "article:nth-child(3) > .case-title"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p class=\"case-body\" data-astro-cid-24nodo3f=\"\">",
+          "target": [
+            "article:nth-child(3) > .case-body"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Hermes gateway · Mac Mini orchestrator</span>",
+          "target": [
+            "article:nth-child(3) > .case-outcomes > .case-outcome:nth-child(1) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Running — nightly cron + live dispatch</span>",
+          "target": [
+            "article:nth-child(3) > .case-outcomes > .case-outcome:nth-child(2) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#2a5f96",
+                "bgColor": "#e5ecf3",
+                "contrastRatio": 5.54,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 5.54"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"case-status case-status--pilot\" data-astro-cid-24nodo3f=\"\">Pilot Ready</span>",
+          "target": [
+            ".case-status--pilot"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#1a1d1a",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 16.45,
+                "fontSize": "16.2pt (21.6px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.45"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Ghost's Workshop</h2>",
+          "target": [
+            "article:nth-child(4) > .case-title"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p class=\"case-body\" data-astro-cid-24nodo3f=\"\">Creative systems and content pipeline powering the Workshop district of the Attraction. AI-assisted generation with human curation and lore consistency enforcement. Acts as internal proof-of-concept for content engine client engagements.</p>",
+          "target": [
+            "article:nth-child(4) > .case-body"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Multi-agent creative pipeline</span>",
+          "target": [
+            "article:nth-child(4) > .case-outcomes > .case-outcome:nth-child(1) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Pilot — not yet client-ready</span>",
+          "target": [
+            "article:nth-child(4) > .case-outcomes > .case-outcome:nth-child(2) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a6620",
+                "bgColor": "#f6f0e5",
+                "contrastRatio": 4.62,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 4.62"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"case-status case-status--dev\" data-astro-cid-24nodo3f=\"\">In Development</span>",
+          "target": [
+            ".case-status--dev"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#1a1d1a",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 16.45,
+                "fontSize": "16.2pt (21.6px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.45"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<h2 class=\"case-title\" data-astro-cid-24nodo3f=\"\">Signal Engine / Research OS</h2>",
+          "target": [
+            ".case-card--featured-2 > .case-title"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p class=\"case-body\" data-astro-cid-24nodo3f=\"\">",
+          "target": [
+            ".case-card--featured-2 > .case-body"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Hermes · Perplexity · Claude · cron delivery</span>",
+          "target": [
+            ".case-card--featured-2 > .case-outcomes > .case-outcome:nth-child(1) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">Internal — client release TBD</span>",
+          "target": [
+            ".case-card--featured-2 > .case-outcomes > .case-outcome:nth-child(2) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 6.32,
+                "fontSize": "9.4pt (12.48px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.32"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"outcome-val\" data-astro-cid-24nodo3f=\"\">First external track to ship</span>",
+          "target": [
+            ".case-card--featured-2 > .case-outcomes > .case-outcome:nth-child(3) > .outcome-val"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#5a5f58",
+                "bgColor": "#fcfcfa",
+                "contrastRatio": 6.36,
+                "fontSize": "10.8pt (14.4px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.36"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p data-astro-cid-24nodo3f=\"\">Every client engagement begins with a mission brief. It takes 10 minutes and replaces the vague discovery call.</p>",
+          "target": [
+            ".cta-strip-copy > p"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#1a1d1a",
+                "bgColor": "#ffffff",
+                "contrastRatio": 17,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 17"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"gh-footer-brand\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span>",
+          "target": [
+            ".gh-footer-brand"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "hidden"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is hidden"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<select name=\"dev-toolbar-select\"><option value=\"bottom-left\">Bottom left</option><option value=\"bottom-center\">Bottom center</option><option value=\"bottom-right\">Bottom right</option></select>",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              "astro-dev-toolbar-app-canvas[data-app-id=\"astro:settings\"]",
+              "astro-dev-toolbar-select",
+              "select"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "document-title",
+      "impact": null,
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag242",
+        "TTv5",
+        "TT12.a",
+        "EN-301-549",
+        "EN-9.2.4.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.5.1"
+      ],
+      "description": "Ensure each HTML document contains a non-empty <title> element",
+      "help": "Documents must have <title> element to aid in navigation",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "doc-has-title",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Document has a non-empty <title> element"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<html lang=\"en\" data-astro-cid-zyfjkaoe=\"\">",
+          "target": [
+            "html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "html-has-lang",
+      "impact": null,
+      "tags": [
+        "cat.language",
+        "wcag2a",
+        "wcag311",
+        "TTv5",
+        "TT11.a",
+        "EN-301-549",
+        "EN-9.3.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.3.1"
+      ],
+      "description": "Ensure every HTML document has a lang attribute",
+      "help": "<html> element must have a lang attribute",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "has-lang",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "The <html> element has a lang attribute"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<html lang=\"en\" data-astro-cid-zyfjkaoe=\"\">",
+          "target": [
+            "html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "html-lang-valid",
+      "impact": null,
+      "tags": [
+        "cat.language",
+        "wcag2a",
+        "wcag311",
+        "TTv5",
+        "TT11.a",
+        "EN-301-549",
+        "EN-9.3.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.4.1"
+      ],
+      "description": "Ensure the lang attribute of the <html> element has a valid value",
+      "help": "<html> element must have a valid value for the lang attribute",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/html-lang-valid?application=playwright",
+      "nodes": [
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "valid-lang",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Value of lang attribute is included in the list of valid languages"
+            }
+          ],
+          "impact": null,
+          "html": "<html lang=\"en\" data-astro-cid-zyfjkaoe=\"\">",
+          "target": [
+            "html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "link-name",
+      "impact": null,
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag244",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.2.4.4",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-6.2.1"
+      ],
+      "description": "Ensure links have discernible text",
+      "help": "Links must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/link-name?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "aria-label attribute exists and is not empty"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"gh-logo\" aria-label=\"LDI Work\" data-astro-cid-zyfjkaoe=\"\"><span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span><span class=\"gh-logo-name\" data-astro-cid-zyfjkaoe=\"\">Lithium Dreams Industries</span></a>",
+          "target": [
+            ".gh-logo"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/work\" class=\"\" data-astro-cid-zyfjkaoe=\"\">Overview</a>",
+          "target": [
+            ".gh-nav-links > a[href$=\"work\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/work/intake\" class=\"\" data-astro-cid-zyfjkaoe=\"\">Mission Intake</a>",
+          "target": [
+            ".gh-nav-links > a[href$=\"intake\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/work/case-files\" class=\"active\" data-astro-cid-zyfjkaoe=\"\">Case Files</a>",
+          "target": [
+            ".active"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/about\" class=\"\" data-astro-cid-zyfjkaoe=\"\">About</a>",
+          "target": [
+            ".gh-nav-links > a[href$=\"about\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/attraction\" class=\"gh-nav-escape\" data-astro-cid-zyfjkaoe=\"\">← The Attraction</a>",
+          "target": [
+            ".gh-nav-escape"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/work/intake\" class=\"btn-cta\" data-astro-cid-24nodo3f=\"\">Start a Mission Brief →</a>",
+          "target": [
+            ".btn-cta"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/about\" class=\"gh-footer-about\" data-astro-cid-zyfjkaoe=\"\">About</a>",
+          "target": [
+            ".gh-footer-about"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/attraction\" class=\"gh-footer-link\" data-astro-cid-zyfjkaoe=\"\">Visit the Attraction →</a>",
+          "target": [
+            ".gh-footer-link"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-viewport",
+      "impact": null,
+      "tags": [
+        "cat.sensory-and-visual-cues",
+        "wcag2aa",
+        "wcag144",
+        "EN-301-549",
+        "EN-9.1.4.4",
+        "ACT",
+        "RGAAv4",
+        "RGAA-10.4.2"
+      ],
+      "description": "Ensure <meta name=\"viewport\"> does not disable text scaling and zooming",
+      "help": "Zooming and scaling must not be disabled",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/meta-viewport?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "meta-viewport",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "<meta> tag does not disable zooming on mobile devices"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+          "target": [
+            "meta[name=\"viewport\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nested-interactive",
+      "impact": null,
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "description": "Ensure interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+      "help": "Interactive controls must not be nested",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/nested-interactive?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:home\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:home\"]"
+            ]
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:xray\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:xray\"]"
+            ]
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:audit\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:audit\"]"
+            ]
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"item\" data-app-id=\"astro:settings\">",
+          "target": [
+            [
+              "astro-dev-toolbar",
+              ".item[data-app-id=\"astro:settings\"]"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "incomplete": [],
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#ffffff",
+                "bgColor": "#c99d4c",
+                "contrastRatio": 2.49,
+                "fontSize": "7.8pt (10.4px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span>",
+                  "target": [
+                    ".gh-logo-mark"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.49 (foreground color: #ffffff, background color: #c99d4c, font size: 7.8pt (10.4px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"gh-logo-mark\" data-astro-cid-zyfjkaoe=\"\">LDI</span>",
+          "target": [
+            ".gh-logo-mark"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.49 (foreground color: #ffffff, background color: #c99d4c, font size: 7.8pt (10.4px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#3d7fbd",
+                "bgColor": "#fefefd",
+                "contrastRatio": 4.18,
+                "fontSize": "9.6pt (12.8px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<nav class=\"gh-nav\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "nav"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.18 (foreground color: #3d7fbd, background color: #fefefd, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"/work/case-files\" class=\"active\" data-astro-cid-zyfjkaoe=\"\">Case Files</a>",
+          "target": [
+            ".active"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #3d7fbd, background color: #fefefd, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fefefd",
+                "contrastRatio": 3.26,
+                "fontSize": "8.6pt (11.52px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<nav class=\"gh-nav\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "nav"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.26 (foreground color: #8a8f88, background color: #fefefd, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"/attraction\" class=\"gh-nav-escape\" data-astro-cid-zyfjkaoe=\"\">← The Attraction</a>",
+          "target": [
+            ".gh-nav-escape"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.26 (foreground color: #8a8f88, background color: #fefefd, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#c99d4c",
+                "bgColor": "#f5f3ee",
+                "contrastRatio": 2.25,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.25 (foreground color: #c99d4c, background color: #f5f3ee, font size: 7.4pt (9.92px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"page-eyebrow\" data-astro-cid-24nodo3f=\"\">Case Files</div>",
+          "target": [
+            ".page-eyebrow"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.25 (foreground color: #c99d4c, background color: #f5f3ee, font size: 7.4pt (9.92px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#2e7d4f",
+                "bgColor": "#e7f2e9",
+                "contrastRatio": 4.39,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<span class=\"case-status case-status--operational\" data-astro-cid-24nodo3f=\"\">Operational</span>",
+                  "target": [
+                    ".case-card--featured > .case-meta > .case-status--operational.case-status"
+                  ]
+                },
+                {
+                  "html": "<article class=\"case-card case-card--featured\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.39 (foreground color: #2e7d4f, background color: #e7f2e9, font size: 7.0pt (9.28px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-status case-status--operational\" data-astro-cid-24nodo3f=\"\">Operational</span>",
+          "target": [
+            ".case-card--featured > .case-meta > .case-status--operational.case-status"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.39 (foreground color: #2e7d4f, background color: #e7f2e9, font size: 7.0pt (9.28px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-id\" data-astro-cid-24nodo3f=\"\">FILE — 001</span>",
+          "target": [
+            ".case-card--featured > .case-meta > .case-id"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#c99d4c",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 2.41,
+                "fontSize": "8.2pt (10.88px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"case-track\" data-astro-cid-24nodo3f=\"\">Creative Systems · Content Engine</div>",
+          "target": [
+            ".case-card--featured > .case-track"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Architecture</span>",
+          "target": [
+            ".case-card--featured > .case-outcomes > .case-outcome:nth-child(1) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Status</span>",
+          "target": [
+            ".case-card--featured > .case-outcomes > .case-outcome:nth-child(2) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Key result</span>",
+          "target": [
+            ".case-card--featured > .case-outcomes > .case-outcome:nth-child(3) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#2e7d4f",
+                "bgColor": "#e7f2e9",
+                "contrastRatio": 4.39,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<span class=\"case-status case-status--operational\" data-astro-cid-24nodo3f=\"\">Operational</span>",
+                  "target": [
+                    "article:nth-child(2) > .case-meta > .case-status--operational.case-status"
+                  ]
+                },
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(2)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.39 (foreground color: #2e7d4f, background color: #e7f2e9, font size: 7.0pt (9.28px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-status case-status--operational\" data-astro-cid-24nodo3f=\"\">Operational</span>",
+          "target": [
+            "article:nth-child(2) > .case-meta > .case-status--operational.case-status"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.39 (foreground color: #2e7d4f, background color: #e7f2e9, font size: 7.0pt (9.28px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(2)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-id\" data-astro-cid-24nodo3f=\"\">FILE — 002</span>",
+          "target": [
+            "article:nth-child(2) > .case-meta > .case-id"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#c99d4c",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 2.41,
+                "fontSize": "8.2pt (10.88px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(2)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"case-track\" data-astro-cid-24nodo3f=\"\">Automation Systems · Research OS</div>",
+          "target": [
+            "article:nth-child(2) > .case-track"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(2)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Architecture</span>",
+          "target": [
+            "article:nth-child(2) > .case-outcomes > .case-outcome:nth-child(1) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(2)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Status</span>",
+          "target": [
+            "article:nth-child(2) > .case-outcomes > .case-outcome:nth-child(2) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#2e7d4f",
+                "bgColor": "#e7f2e9",
+                "contrastRatio": 4.39,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<span class=\"case-status case-status--operational\" data-astro-cid-24nodo3f=\"\">Operational</span>",
+                  "target": [
+                    "article:nth-child(3) > .case-meta > .case-status--operational.case-status"
+                  ]
+                },
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(3)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.39 (foreground color: #2e7d4f, background color: #e7f2e9, font size: 7.0pt (9.28px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-status case-status--operational\" data-astro-cid-24nodo3f=\"\">Operational</span>",
+          "target": [
+            "article:nth-child(3) > .case-meta > .case-status--operational.case-status"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.39 (foreground color: #2e7d4f, background color: #e7f2e9, font size: 7.0pt (9.28px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(3)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-id\" data-astro-cid-24nodo3f=\"\">FILE — 003</span>",
+          "target": [
+            "article:nth-child(3) > .case-meta > .case-id"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#c99d4c",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 2.41,
+                "fontSize": "8.2pt (10.88px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(3)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"case-track\" data-astro-cid-24nodo3f=\"\">Executive Assistant OS · Operator Dashboards</div>",
+          "target": [
+            "article:nth-child(3) > .case-track"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(3)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Architecture</span>",
+          "target": [
+            "article:nth-child(3) > .case-outcomes > .case-outcome:nth-child(1) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(3)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Status</span>",
+          "target": [
+            "article:nth-child(3) > .case-outcomes > .case-outcome:nth-child(2) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(4)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-id\" data-astro-cid-24nodo3f=\"\">FILE — 004</span>",
+          "target": [
+            "article:nth-child(4) > .case-meta > .case-id"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#c99d4c",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 2.41,
+                "fontSize": "8.2pt (10.88px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(4)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"case-track\" data-astro-cid-24nodo3f=\"\">Creative Systems · Content Engine</div>",
+          "target": [
+            "article:nth-child(4) > .case-track"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(4)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Architecture</span>",
+          "target": [
+            "article:nth-child(4) > .case-outcomes > .case-outcome:nth-child(1) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    "article:nth-child(4)"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Status</span>",
+          "target": [
+            "article:nth-child(4) > .case-outcomes > .case-outcome:nth-child(2) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.0pt (9.28px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured-2\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured-2"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"case-id\" data-astro-cid-24nodo3f=\"\">FILE — 005</span>",
+          "target": [
+            ".case-card--featured-2 > .case-meta > .case-id"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.0pt (9.28px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#c99d4c",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 2.41,
+                "fontSize": "8.2pt (10.88px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured-2\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured-2"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"case-track\" data-astro-cid-24nodo3f=\"\">Research OS · Knowledge Systems</div>",
+          "target": [
+            ".case-card--featured-2 > .case-track"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.41 (foreground color: #c99d4c, background color: #fcfbfa, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured-2\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured-2"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Architecture</span>",
+          "target": [
+            ".case-card--featured-2 > .case-outcomes > .case-outcome:nth-child(1) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured-2\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured-2"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Status</span>",
+          "target": [
+            ".case-card--featured-2 > .case-outcomes > .case-outcome:nth-child(2) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#fcfbfa",
+                "contrastRatio": 3.19,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<article class=\"case-card case-card--featured-2\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".case-card--featured-2"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"outcome-label\" data-astro-cid-24nodo3f=\"\">Priority</span>",
+          "target": [
+            ".case-card--featured-2 > .case-outcomes > .case-outcome:nth-child(3) > .outcome-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.19 (foreground color: #8a8f88, background color: #fcfbfa, font size: 7.4pt (9.92px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#c99d4c",
+                "bgColor": "#fcfcfa",
+                "contrastRatio": 2.43,
+                "fontSize": "7.4pt (9.92px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"cta-strip\" data-astro-cid-24nodo3f=\"\">",
+                  "target": [
+                    ".cta-strip"
+                  ]
+                },
+                {
+                  "html": "<body class=\"gh-body\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.43 (foreground color: #c99d4c, background color: #fcfcfa, font size: 7.4pt (9.92px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"cta-eyebrow\" data-astro-cid-24nodo3f=\"\">Ready to start?</div>",
+          "target": [
+            ".cta-eyebrow"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.43 (foreground color: #c99d4c, background color: #fcfcfa, font size: 7.4pt (9.92px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#ffffff",
+                "bgColor": "#3d7fbd",
+                "contrastRatio": 4.22,
+                "fontSize": "10.2pt (13.6px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<a href=\"/work/intake\" class=\"btn-cta\" data-astro-cid-24nodo3f=\"\">Start a Mission Brief →</a>",
+                  "target": [
+                    ".btn-cta"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.22 (foreground color: #ffffff, background color: #3d7fbd, font size: 10.2pt (13.6px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"/work/intake\" class=\"btn-cta\" data-astro-cid-24nodo3f=\"\">Start a Mission Brief →</a>",
+          "target": [
+            ".btn-cta"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #ffffff, background color: #3d7fbd, font size: 10.2pt (13.6px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.29,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<footer class=\"gh-footer\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "footer"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.29 (foreground color: #8a8f88, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"gh-footer-tag\" data-astro-cid-zyfjkaoe=\"\">Operating Systems Design</span>",
+          "target": [
+            ".gh-footer-tag"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.29 (foreground color: #8a8f88, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.29,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<footer class=\"gh-footer\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "footer"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.29 (foreground color: #8a8f88, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"/about\" class=\"gh-footer-about\" data-astro-cid-zyfjkaoe=\"\">About</a>",
+          "target": [
+            ".gh-footer-about"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.29 (foreground color: #8a8f88, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8a8f88",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.29,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<footer class=\"gh-footer\" data-astro-cid-zyfjkaoe=\"\">",
+                  "target": [
+                    "footer"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.29 (foreground color: #8a8f88, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<a href=\"/attraction\" class=\"gh-footer-link\" data-astro-cid-zyfjkaoe=\"\">Visit the Attraction →</a>",
+          "target": [
+            ".gh-footer-link"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.29 (foreground color: #8a8f88, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ]
+}

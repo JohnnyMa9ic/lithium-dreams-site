@@ -11,30 +11,7 @@ import Layout from '../components/Layout.astro';
     <a href="#deep-garden" class="depth-link" data-depth="deep-garden"><span class="depth-dot"></span>Deep Garden</a>
   </aside>
 
-  <!-- ── 01. Hero: Yasuragi Garden ── -->
-  <section id="yasuragi" class="garden-hero">
-    <div class="hero-bg yasuragi-bg" aria-hidden="true"></div>
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="hero-body">
-      <div class="hero-text">
-        <p class="eyebrow">Warden Collection</p>
-        <h1>Yasuragi<br>Garden</h1>
-        <p class="hero-copy">A quiet place behind the noise.</p>
-        <p class="hero-flavor">Please walk slowly. The garden is listening.</p>
-        <div class="hero-actions">
-          <a class="garden-btn garden-btn--primary" href="#surface-garden">Walk the Lantern Path</a>
-          <a class="garden-btn garden-btn--ghost" href="#deep-garden">Descend to the Deep Garden</a>
-        </div>
-      </div>
-      <aside class="status-card">
-        <p class="status-label">Garden Status</p>
-        <strong>Root System Active</strong>
-        <span>Rainfall steady · Lanterns lit · Visitors calm</span>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ── 02–03. Surface Garden ── -->
+  <!-- ── 01. Surface Garden ── -->
   <section id="surface-garden" class="garden-section surface-section">
     <div class="section-inner">
       <header class="section-head">
@@ -82,8 +59,8 @@ import Layout from '../components/Layout.astro';
     </div>
   </section>
 
-  <!-- ── 04. Root Layer Descent (pinned scroll: surface → roots → deep) ── -->
-  <section id="root-layer" class="descent-stage" aria-label="Garden descent from surface to deep">
+  <!-- ── 02. Root Layer Descent (pinned scroll: surface → roots → deep) ── -->
+  <section id="yasuragi" class="descent-stage" aria-label="Garden descent from surface to deep">
     <div class="descent-viewport">
       <div class="motion-layer surface-image" aria-hidden="true"></div>
       <div class="motion-layer cutaway-image" aria-hidden="true"></div>
@@ -111,8 +88,8 @@ import Layout from '../components/Layout.astro';
     </div>
   </section>
 
-  <!-- ── 05. Root Map ── -->
-  <section id="root-map" class="garden-section root-map-section">
+  <!-- ── 03. Root Map ── -->
+  <section id="root-layer" class="garden-section root-map-section">
     <div class="section-inner">
       <header class="section-head section-head--split">
         <div>
@@ -151,27 +128,8 @@ import Layout from '../components/Layout.astro';
     </div>
   </section>
 
-  <!-- ── 06. Deep Garden Reveal ── -->
-  <section id="deep-garden" class="garden-hero deep-garden-hero">
-    <div class="hero-bg deep-bg" aria-hidden="true"></div>
-    <div class="hero-scrim hero-scrim--deep" aria-hidden="true"></div>
-    <div class="hero-body">
-      <div class="hero-text">
-        <p class="eyebrow">ACC. ROOT-002</p>
-        <h1>Deep<br>Garden</h1>
-        <p class="hero-copy">Memory compost / dormant idea storage.</p>
-        <p class="hero-flavor">Not every idea is supposed to bloom today.</p>
-      </div>
-      <aside class="status-card status-card--deep">
-        <p class="status-label">Belowground Status</p>
-        <strong>Dormant Systems Stable</strong>
-        <span>Humidity 81% · Lanterns active · Cathedral boundary intact</span>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ── 07. Deep Garden Artifacts ── -->
-  <section class="garden-section deep-section">
+  <!-- ── 04. Deep Garden Artifacts ── -->
+  <section id="deep-garden" class="garden-section deep-section">
     <div class="section-inner">
       <div class="artifact-grid artifact-grid--deep">
         <article class="artifact-card artifact-card--deep">
@@ -409,79 +367,6 @@ import Layout from '../components/Layout.astro';
     font-family: var(--g-display);
     font-style: italic;
     color: var(--g-muted);
-  }
-
-  /* ── Hero ── */
-  .garden-hero {
-    position: relative;
-    min-height: calc(100vh - 56px);
-    display: flex;
-    align-items: stretch;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    transform: scale(1.02);
-  }
-  .yasuragi-bg {
-    background-image: url('/yasuragi-garden-hero.png');
-  }
-  .deep-bg {
-    background-image: url('/deep-garden-hero.png');
-  }
-  .hero-scrim {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(100deg, rgba(5,8,7,0.88) 0%, rgba(5,8,7,0.52) 36%, rgba(5,8,7,0.18) 70%, rgba(5,8,7,0.72) 100%),
-      linear-gradient(180deg, rgba(5,8,7,0.04), rgba(5,8,7,0.94) 100%);
-  }
-  .hero-scrim--deep {
-    background:
-      linear-gradient(100deg, rgba(3,8,6,0.92) 0%, rgba(3,8,6,0.60) 40%, rgba(3,8,6,0.30) 70%, rgba(3,8,6,0.80) 100%),
-      linear-gradient(180deg, rgba(3,8,6,0.12), rgba(3,8,6,0.96) 100%);
-  }
-  .hero-body {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: calc(var(--g-max) + 4rem);
-    margin: 0 auto;
-    padding: 5rem 2rem 4rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .hero-text {
-    max-width: 560px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .hero-text h1 {
-    font-family: var(--g-display);
-    font-size: clamp(4.5rem, 9vw, 8rem);
-    line-height: 0.88;
-    letter-spacing: 0.01em;
-    font-weight: 700;
-    color: var(--g-ink);
-    margin: 0;
-  }
-  .hero-copy {
-    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-    color: #d8cfba;
-    margin: 0;
-  }
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-top: 0.5rem;
   }
 
   /* ── Buttons ── */
@@ -758,7 +643,13 @@ import Layout from '../components/Layout.astro';
     transform: translate3d(0, var(--rootY), 0) scale(1.06);
   }
   .signal-layer {
-    background-image: url('/teal-root-signals.png');
+    background:
+      radial-gradient(ellipse 130px 90px at 22% 66%, rgba(54,213,205,0.6) 0%, transparent 100%),
+      radial-gradient(ellipse 95px 65px at 48% 72%, rgba(54,213,205,0.5) 0%, transparent 100%),
+      radial-gradient(ellipse 110px 75px at 72% 64%, rgba(54,213,205,0.55) 0%, transparent 100%),
+      radial-gradient(ellipse 75px 52px at 36% 80%, rgba(54,213,205,0.38) 0%, transparent 100%),
+      radial-gradient(ellipse 85px 58px at 83% 74%, rgba(54,213,205,0.42) 0%, transparent 100%);
+    background-size: 100% 100%;
     opacity: var(--signalOpacity);
     mix-blend-mode: screen;
   }

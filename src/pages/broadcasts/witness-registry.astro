@@ -1,0 +1,582 @@
+---
+import Layout from '../../components/Layout.astro';
+import MuseumPlaque from '../../components/MuseumPlaque.astro';
+import MaintenanceTag from '../../components/MaintenanceTag.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CRTFrame from '../../components/CRTFrame.astro';
+import EmployeeNotice from '../../components/EmployeeNotice.astro';
+
+// Filed witness accounts — approved entries only.
+// Format: { id, name, date, location, type, body, filed }
+const filedAccounts: {
+  id: string;
+  name: string;
+  date: string;
+  location: string;
+  type: string;
+  body: string;
+  filed: string;
+}[] = [
+  // Populate as submissions are approved. Example:
+  // {
+  //   id: 'WIT-0001',
+  //   name: 'Anonymous',
+  //   date: '2026-06-01',
+  //   location: 'Point Pleasant, WV',
+  //   type: 'SIGHTING',
+  //   body: 'Report body here.',
+  //   filed: '2026-06-15',
+  // },
+];
+
+const incidentTypes = [
+  'SIGHTING',
+  'SOUND',
+  'ELECTROMAGNETIC',
+  'DISAPPEARANCE',
+  'OTHER',
+];
+---
+
+<Layout title="Witness Registry — Lithium Dreams Industries" activePage="/broadcasts">
+  <div class="page-hero witness-hero">
+    <div class="page-hero-fade"></div>
+    <div class="hero-eye" aria-hidden="true">
+      <div class="eye-outer"></div>
+      <div class="eye-iris"></div>
+      <div class="eye-pupil"></div>
+    </div>
+  </div>
+
+  <div class="district-page">
+    <div class="district-header">
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: 'Broadcasts', href: '/broadcasts' },
+        { label: 'Witness Registry' },
+      ]} />
+      <MaintenanceTag status="RECEIVING" size="md" />
+    </div>
+
+    <MuseumPlaque
+      accession="WIT-REG"
+      title="Witness Registry"
+      subtitle="Field reports from the perimeter. Submitted by those who saw something and decided to say so."
+    />
+
+    <div class="velvet-rope-notice mono text-dim">
+      — All submissions are reviewed before filing. Real names are never required. —
+    </div>
+
+    <!-- CLASSIFICATION NOTICE -->
+    <CRTFrame label="FILING PROTOCOL">
+      <div class="protocol-block">
+        <p class="mono">All accounts entered into the Registry are assigned an accession number and formatted in LDI dossier standard before publication.</p>
+        <p class="mono text-dim">// submissions are not published in real time — review lag is 1–5 days</p>
+        <p class="mono text-dim">// light editorial formatting only — we preserve the original report's character</p>
+        <p class="mono text-dim">// contact information is never shared or published</p>
+      </div>
+    </CRTFrame>
+
+    <!-- SUBMISSION FORM -->
+    <div class="registry-form-section">
+      <p class="section-eyebrow mono">Submit a Field Report</p>
+
+      <form
+        class="witness-form"
+        name="witness-registry"
+        method="POST"
+        action="/broadcasts/witness-registry/submitted"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="witness-registry" />
+        <p class="sr-only" aria-hidden="true">
+          <label>Do not fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-row">
+          <div class="form-group form-group--half">
+            <label class="form-label mono" for="witness-name">
+              WITNESS NAME OR HANDLE
+              <span class="form-hint text-dim">// alias accepted — real name not required</span>
+            </label>
+            <input
+              id="witness-name"
+              name="witness_name"
+              type="text"
+              class="form-input mono"
+              placeholder="Anonymous"
+              maxlength="80"
+              required
+            />
+          </div>
+
+          <div class="form-group form-group--half">
+            <label class="form-label mono" for="incident-date">
+              DATE OF INCIDENT
+              <span class="form-hint text-dim">// approximate is fine</span>
+            </label>
+            <input
+              id="incident-date"
+              name="incident_date"
+              type="date"
+              class="form-input mono"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group form-group--half">
+            <label class="form-label mono" for="location">
+              LOCATION
+              <span class="form-hint text-dim">// city/state or region — no addresses</span>
+            </label>
+            <input
+              id="location"
+              name="location"
+              type="text"
+              class="form-input mono"
+              placeholder="e.g. Point Pleasant, WV"
+              maxlength="120"
+              required
+            />
+          </div>
+
+          <div class="form-group form-group--half">
+            <label class="form-label mono" for="incident-type">
+              INCIDENT TYPE
+            </label>
+            <select id="incident-type" name="incident_type" class="form-select mono" required>
+              <option value="" disabled selected>— SELECT —</option>
+              {incidentTypes.map((t) => (
+                <option value={t}>{t}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mono" for="report-body">
+            FIELD REPORT
+            <span class="form-hint text-dim">// 500 characters max — write it like a report, not a story</span>
+          </label>
+          <textarea
+            id="report-body"
+            name="report_body"
+            class="form-textarea mono"
+            maxlength="500"
+            rows="6"
+            placeholder="Describe what you witnessed. Dates, times, specific observations. Write what you saw, not what you think it means."
+            required
+          ></textarea>
+          <div class="char-counter mono text-dim">
+            <span id="char-count">0</span> / 500
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mono" for="contact-consent">
+            CONTACT CONSENT
+          </label>
+          <div class="radio-group">
+            <label class="radio-label mono">
+              <input type="radio" name="contact_consent" value="no" checked />
+              NO — do not contact me
+            </label>
+            <label class="radio-label mono">
+              <input type="radio" name="contact_consent" value="yes" />
+              YES — I am open to follow-up
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group contact-email-wrap" id="contact-email-wrap" style="display:none">
+          <label class="form-label mono" for="contact-email">
+            CONTACT EMAIL
+            <span class="form-hint text-dim">// optional — never published, never shared</span>
+          </label>
+          <input
+            id="contact-email"
+            name="contact_email"
+            type="email"
+            class="form-input mono"
+            placeholder="your@email.com"
+          />
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="submit-btn mono">
+            → FILE REPORT
+          </button>
+          <p class="form-disclaimer mono text-dim">
+            // By submitting you confirm this is your genuine account. No fabricated reports.
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <!-- FILED ACCOUNTS -->
+    <div class="filed-accounts">
+      <p class="section-eyebrow mono">Filed Accounts</p>
+
+      {filedAccounts.length === 0 ? (
+        <EmployeeNotice>
+          <p>The Registry is open. No accounts have been filed yet.</p>
+          <p>Submit the first field report using the form above. Ghost will review it. If it checks out, it gets a number and lives here.</p>
+          <p class="mono text-dim">// WIT-0001 is unclaimed</p>
+        </EmployeeNotice>
+      ) : (
+        <div class="accounts-list">
+          {filedAccounts.map((acct) => (
+            <div class="account-card">
+              <div class="account-header">
+                <span class="account-id mono">{acct.id}</span>
+                <span class="account-type mono">{acct.type}</span>
+                <span class="account-filed mono text-dim">FILED {acct.filed}</span>
+              </div>
+              <div class="account-meta mono">
+                <span>WITNESS: {acct.name}</span>
+                <span class="meta-sep">·</span>
+                <span>DATE: {acct.date}</span>
+                <span class="meta-sep">·</span>
+                <span>LOCATION: {acct.location}</span>
+              </div>
+              <div class="account-divider" aria-hidden="true">────────────────────────</div>
+              <p class="account-body">{acct.body}</p>
+              <div class="account-divider" aria-hidden="true">────────────────────────</div>
+              <p class="account-status mono text-dim">STATUS: RECEIVED AND FILED</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  // Character counter for report body
+  const textarea = document.getElementById('report-body') as HTMLTextAreaElement;
+  const counter = document.getElementById('char-count');
+  if (textarea && counter) {
+    textarea.addEventListener('input', () => {
+      counter.textContent = String(textarea.value.length);
+    });
+  }
+
+  // Show/hide contact email based on consent
+  const radios = document.querySelectorAll('input[name="contact_consent"]');
+  const emailWrap = document.getElementById('contact-email-wrap');
+  radios.forEach((radio) => {
+    radio.addEventListener('change', () => {
+      const val = (document.querySelector('input[name="contact_consent"]:checked') as HTMLInputElement)?.value;
+      if (emailWrap) emailWrap.style.display = val === 'yes' ? 'block' : 'none';
+    });
+  });
+</script>
+
+<style>
+  /* Hero */
+  .witness-hero {
+    width: 100%;
+    min-height: 40vh;
+    background: radial-gradient(ellipse at 50% 40%, #0a0a1a 0%, #050508 60%, #000 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .eye-outer {
+    width: 120px;
+    height: 60px;
+    border: 1px solid rgba(255, 160, 0, 0.25);
+    border-radius: 50%;
+    position: absolute;
+    animation: eye-blink 6s ease-in-out infinite;
+  }
+
+  .eye-iris {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff8c00 0%, #b35c00 60%, #1a0a00 100%);
+    opacity: 0.5;
+    animation: iris-pulse 4s ease-in-out infinite;
+  }
+
+  .eye-pupil {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #000;
+    position: absolute;
+    animation: iris-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes eye-blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.05); }
+  }
+
+  @keyframes iris-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+  }
+
+  .page-hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--ldi-bg, #050505));
+    z-index: 1;
+  }
+
+  /* Protocol block */
+  .protocol-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Form */
+  .registry-form-section {
+    margin: 2.5rem 0;
+  }
+
+  .witness-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem;
+    margin-top: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--ldi-amber, #ffa000);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .form-hint {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--ldi-text, #d4cfc8);
+    padding: 0.6rem 0.75rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: rgba(255, 160, 0, 0.4);
+  }
+
+  .form-select option {
+    background: #0d0d0d;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .char-counter {
+    font-size: 0.65rem;
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--ldi-text, #d4cfc8);
+    cursor: pointer;
+  }
+
+  .radio-label input[type="radio"] {
+    accent-color: var(--ldi-amber, #ffa000);
+  }
+
+  .form-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .submit-btn {
+    background: transparent;
+    border: 1px solid var(--ldi-amber, #ffa000);
+    color: var(--ldi-amber, #ffa000);
+    padding: 0.6rem 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .submit-btn:hover {
+    background: var(--ldi-amber, #ffa000);
+    color: #000;
+  }
+
+  .form-disclaimer {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+  }
+
+  /* Filed Accounts */
+  .filed-accounts {
+    margin: 2.5rem 0;
+  }
+
+  .accounts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .account-card {
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 1.25rem 1.5rem;
+    background: rgba(255,255,255,0.015);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .account-header {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .account-id {
+    color: var(--ldi-amber, #ffa000);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+
+  .account-type {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--ldi-teal, #00e5cc);
+    border: 1px solid rgba(0, 229, 204, 0.3);
+    padding: 0.1rem 0.4rem;
+  }
+
+  .account-filed {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    margin-left: auto;
+  }
+
+  .account-meta {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    color: var(--ldi-text, #d4cfc8);
+  }
+
+  .meta-sep {
+    color: rgba(255,255,255,0.2);
+  }
+
+  .account-divider {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 0;
+    overflow: hidden;
+  }
+
+  .account-body {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--ldi-text, #d4cfc8);
+  }
+
+  .account-status {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* Velvet rope */
+  .velvet-rope-notice {
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    margin: 0.75rem 0 1.5rem;
+  }
+</style>
