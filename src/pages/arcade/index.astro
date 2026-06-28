@@ -1,15 +1,15 @@
 ---
-import Layout from '../components/Layout.astro';
-import MuseumPlaque from '../components/MuseumPlaque.astro';
-import MaintenanceTag from '../components/MaintenanceTag.astro';
-import CRTFrame from '../components/CRTFrame.astro';
-import Breadcrumb from '../components/Breadcrumb.astro';
+import Layout from '../../components/Layout.astro';
+import MuseumPlaque from '../../components/MuseumPlaque.astro';
+import MaintenanceTag from '../../components/MaintenanceTag.astro';
+import CRTFrame from '../../components/CRTFrame.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const cabinets = [
   { id: '01', name: 'Cosmic Selector', status: 'active', label: 'active', copy: 'Insert coin. Save the world. Choose your destiny.' },
   { id: '02', name: 'Gopher Guts', status: 'flickering', label: 'flickering', copy: 'Absolutely required. Lore integrity depends on it.' },
   { id: '03', name: 'Jersey Devil Joust', status: 'out-of-order', label: 'out of order / still running', copy: 'Two cryptids enter. One leaves confused.' },
-  { id: '04', name: 'Mothman Signal', status: 'active', label: 'active', copy: 'Every warning is also a broadcast.' },
+  { id: '04', name: 'Mothman Signal', status: 'active', label: 'active', copy: 'Every warning is also a broadcast.', href: '/arcade/mothman-signal' },
   { id: '05', name: 'Alien Abduction', status: 'beta', label: 'beta', copy: 'No refunds for missing time.' },
   { id: '06', name: 'No-Clip Racing', status: 'unstable', label: 'unstable', copy: 'Reality optional. Seatbelt recommended.' },
   { id: '07', name: 'Bigfoot Brawl', status: 'maintenance', label: 'maintenance', copy: 'Temporarily offline. Bigfoot is consulting legal.' },
@@ -51,7 +51,7 @@ const leaderboard = [
 
     <div class="cabinet-grid">
       {cabinets.map(c => (
-        <div class={`cabinet-card cabinet--${c.status}`}>
+        <div class={`cabinet-card cabinet--${c.status}${c.href ? ' cabinet-card--linked' : ''}`} data-href={c.href}>
           <div class="cabinet-top">
             <span class="cabinet-num mono">{c.id}</span>
             <span class={`cabinet-status-dot dot--${c.status}`}></span>
@@ -92,6 +92,15 @@ const leaderboard = [
       </table>
     </div>
   </div>
+
+<script>
+  document.querySelectorAll('.cabinet-card[data-href]').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      window.location.href = card.dataset.href;
+    });
+  });
+</script>
 </Layout>
 
 <style>
@@ -305,5 +314,11 @@ const leaderboard = [
   }
   @media (max-width: 420px) {
     .cabinet-grid { grid-template-columns: 1fr; }
+  }
+
+  .cabinet-card--linked:hover {
+    border-color: rgba(255, 160, 0, 0.4);
+    background: rgba(255, 160, 0, 0.03);
+    cursor: pointer;
   }
 </style>

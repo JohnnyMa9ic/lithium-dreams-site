@@ -1,0 +1,330 @@
+---
+// ARC-004 — Mothman Signal
+// BCT-001 companion cabinet · Episode: The Mothman of Point Pleasant
+// Status: STUB — game logic to be implemented after BCT-001 records
+
+import Layout from '../../components/Layout.astro';
+import MuseumPlaque from '../../components/MuseumPlaque.astro';
+import MaintenanceTag from '../../components/MaintenanceTag.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CRTFrame from '../../components/CRTFrame.astro';
+
+const cabinet = {
+  id: 'ARC-004',
+  name: 'Mothman Signal',
+  episode_id: 'BCT-001',
+  episode_title: 'The Mothman of Point Pleasant',
+  episode_url: '/broadcasts/#BCT-001',
+  museum_url: '/museum/bct-001-mothman',
+  status: 'COMING SOON',
+  tagline: 'Every warning is also a broadcast.',
+  mechanic: 'Signal detection · 3–5 minutes · Point Pleasant, WV · Nov 1966',
+};
+---
+
+<Layout title="Mothman Signal — Arcade — Lithium Dreams Industries" activePage="/arcade">
+  <div class="page-hero cabinet-hero">
+    <div class="page-hero-fade"></div>
+    <div class="cabinet-hero-scan" aria-hidden="true"></div>
+    <div class="cabinet-hero-eyes" aria-hidden="true"></div>
+    <div class="cabinet-hero-label mono" aria-hidden="true">
+      {cabinet.id} · {cabinet.name}
+    </div>
+  </div>
+
+  <div class="district-page">
+    <div class="district-header">
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Midway', href: '/attraction' },
+        { label: 'Arcade', href: '/arcade' },
+        { label: cabinet.name },
+      ]} />
+      <MaintenanceTag status="COMING SOON" size="md" />
+    </div>
+
+    <MuseumPlaque
+      accession={cabinet.id}
+      title={cabinet.name}
+      subtitle={cabinet.tagline}
+    />
+
+    <!-- CABINET STATUS -->
+    <CRTFrame label="CABINET STATUS">
+      <div class="status-block">
+        <p class="mono"><span class="status-key">UNIT:</span> {cabinet.id}</p>
+        <p class="mono"><span class="status-key">EPISODE:</span> {cabinet.episode_id} — {cabinet.episode_title}</p>
+        <p class="mono"><span class="status-key">MECHANIC:</span> {cabinet.mechanic}</p>
+        <p class="mono"><span class="status-key">STATUS:</span> <span class="status-pending">CABINET IN FABRICATION</span></p>
+        <p class="mono text-dim">// Game ships after BCT-001 airs. The episode researched the case. The cabinet makes you live it.</p>
+      </div>
+    </CRTFrame>
+
+    <!-- GAME BRIEF -->
+    <div class="game-brief">
+      <p class="section-eyebrow mono">What You're Playing</p>
+
+      <div class="brief-body">
+        <p>
+          November 1966. You are a radio operator somewhere in the Ohio Valley. Interference
+          has been moving through the region for three weeks — not random interference, not
+          atmospheric scatter. Patterned. Directional. Coming from the TNT Area outside Point
+          Pleasant, West Virginia, and you are the only one who keeps picking it up.
+        </p>
+        <p>
+          You have a signal map, a radio dial, and a log. Your job is to triangulate the source
+          before December 15th. You will not be told what you're looking for. You will be given
+          what witnesses reported: interference patterns, animal disappearances, a sequence of
+          events that the NTSB investigation will later decline to address.
+        </p>
+        <p>
+          There are signals in the noise. Some of them are the Mothman. Some of them are not.
+          The game does not tell you which is which. Point Pleasant didn't know either.
+        </p>
+      </div>
+
+      <div class="brief-specs">
+        <div class="spec-row">
+          <span class="spec-key mono">PLAY TIME</span>
+          <span class="spec-val mono">3–5 minutes</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key mono">MECHANIC</span>
+          <span class="spec-val mono">Signal triangulation · Pattern recognition · Evidence logging</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key mono">WIN CONDITION</span>
+          <span class="spec-val mono">[DATA PENDING]</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key mono">LOSE CONDITION</span>
+          <span class="spec-val mono">December 15, 1967. 5:00 PM. You didn't log enough.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key mono">ENDINGS</span>
+          <span class="spec-val mono">3 — determined by what you logged and what you ignored</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key mono">PLATFORM</span>
+          <span class="spec-val mono">Browser · No install · Keyboard or mouse</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COME BACK NOTE -->
+    <CRTFrame label="WHEN IT OPENS">
+      <div class="comeback-block">
+        <p class="mono">The cabinet ships after Episode 1 of the Midnight Visitor Log airs.</p>
+        <p class="mono text-dim">// The episode researched the case. The game makes you live it. That's the order.</p>
+        <div class="comeback-links">
+          <a href={cabinet.museum_url} class="comeback-link mono">→ Read the Museum Exhibit first — MUS-006</a>
+          <a href={cabinet.episode_url} class="comeback-link mono">→ Listen to the Broadcast — {cabinet.episode_id}</a>
+        </div>
+      </div>
+    </CRTFrame>
+
+    <!-- GAME AREA — placeholder for actual game embed -->
+    <div class="game-frame-placeholder" id="game-container" aria-label="Game area — not yet available">
+      <div class="game-placeholder-inner">
+        <div class="placeholder-scanlines" aria-hidden="true"></div>
+        <div class="placeholder-content">
+          <p class="mono placeholder-title">MOTHMAN SIGNAL</p>
+          <p class="mono text-dim">// Cabinet not yet operational</p>
+          <p class="mono text-dim">// Insert coin after BCT-001 airs</p>
+          <div class="placeholder-eyes" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCADE NAV -->
+    <div class="exhibit-nav">
+      <a href="/arcade" class="exhibit-nav-link mono">← Return to Arcade Floor</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  /* Hero */
+  .cabinet-hero {
+    width: 100%;
+    min-height: 45vh;
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .cabinet-hero-scan {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 50, 50, 0.04) 3px,
+      rgba(255, 50, 50, 0.04) 4px
+    );
+    animation: scan-drift 8s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes scan-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+  }
+
+  .cabinet-hero-eyes {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background:
+      radial-gradient(circle at 28% 50%, rgba(255, 0, 0, 0.8) 0%, transparent 55%),
+      radial-gradient(circle at 72% 50%, rgba(255, 0, 0, 0.8) 0%, transparent 55%);
+    filter: blur(3px);
+    animation: eye-flicker 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes eye-flicker {
+    0%, 100% { opacity: 0.7; }
+    25% { opacity: 1; }
+    50% { opacity: 0.4; }
+    75% { opacity: 0.9; }
+  }
+
+  .cabinet-hero-label {
+    position: absolute;
+    bottom: 3.5rem;
+    left: var(--content-pad, 1.5rem);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: rgba(255, 50, 50, 0.4);
+    z-index: 1;
+  }
+
+  .page-hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--ldi-bg, #050505));
+    z-index: 1;
+  }
+
+  /* Status block */
+  .status-block { display: flex; flex-direction: column; gap: 0.4rem; }
+  .status-key { color: rgba(255,255,255,0.35); font-size: 0.68rem; letter-spacing: 0.1em; }
+  .status-pending { color: var(--ldi-amber, #ffa000); }
+
+  /* Game brief */
+  .game-brief { display: flex; flex-direction: column; gap: 1.25rem; }
+  .brief-body { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.75rem; }
+  .brief-body p { font-size: 0.9rem; line-height: 1.8; color: var(--ldi-text, #d4cfc8); }
+
+  .brief-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .spec-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1rem;
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: baseline;
+  }
+
+  .spec-row:last-child { border-bottom: none; }
+
+  .spec-key { font-size: 0.62rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); }
+  .spec-val { font-size: 0.75rem; letter-spacing: 0.04em; color: var(--ldi-text, #d4cfc8); }
+
+  @media (max-width: 600px) {
+    .spec-row { grid-template-columns: 1fr; gap: 0.1rem; padding: 0.5rem 0.75rem; }
+  }
+
+  /* Comeback block */
+  .comeback-block { display: flex; flex-direction: column; gap: 0.6rem; }
+  .comeback-links { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.25rem; }
+  .comeback-link {
+    font-size: 0.78rem; letter-spacing: 0.06em;
+    color: var(--ldi-amber, #ffa000); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .comeback-link:hover { color: #fff; }
+
+  /* Game frame placeholder */
+  .game-frame-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    max-height: 500px;
+    border: 1px solid rgba(255, 50, 50, 0.15);
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .game-placeholder-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.02) 2px,
+      rgba(255,255,255,0.02) 4px
+    );
+    pointer-events: none;
+  }
+
+  .placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+  }
+
+  .placeholder-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.25em;
+    color: rgba(255, 50, 50, 0.5);
+  }
+
+  .placeholder-eyes {
+    width: 60px;
+    height: 16px;
+    margin-top: 0.5rem;
+    background:
+      radial-gradient(circle at 25% 50%, rgba(255, 0, 0, 0.6) 0%, transparent 60%),
+      radial-gradient(circle at 75% 50%, rgba(255, 0, 0, 0.6) 0%, transparent 60%);
+    filter: blur(2px);
+    animation: eye-flicker 4s ease-in-out infinite;
+  }
+
+  /* Nav */
+  .exhibit-nav { padding-top: 0.5rem; }
+  .exhibit-nav-link {
+    font-size: 0.75rem; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.3); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .exhibit-nav-link:hover { color: var(--ldi-text, #d4cfc8); }
+</style>
