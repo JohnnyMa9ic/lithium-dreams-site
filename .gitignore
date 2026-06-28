@@ -1,28 +1,50 @@
-# build output
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
 dist/
-# generated types
 .astro/
 
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# environment variables
+# Environment & secrets
 .env
-.env.production
+.env.*
+!.env.example
+*.key
+*.pem
 
-# macOS-specific files
+# OS
 .DS_Store
+Thumbs.db
 
-# jetbrains setting folder
+# Editor
+.vscode/settings.json
 .idea/
+*.swp
+*.swo
 
-# playwright output
+# Test artifacts
 test-results/
 playwright-report/
+
+# LDI spec/content folders — not part of the site repo
+LDI attraction/
+LDI Corp/
+ElevenLabs/
+UIHC work/
+Auth code backups*/
+
+# Loose spec docs in repo root
+LDI_Brand_Bible_v1.md
+LDI_Corporate_Philosophy_and_Site_Vision.md
+LDI_Engineering_Repository_and_Imagineering_Roadmap.md
+ldi-master-reference.md
+Lithium_Dreams_Codex.pdf
+
+# Session/handoff docs
+session-handoff-*.md
+
+# Logs
+*.log
+npm-debug.log*
