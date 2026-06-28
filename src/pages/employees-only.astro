@@ -6,13 +6,14 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import EmployeeNotice from '../components/EmployeeNotice.astro';
 
 const accessLog = [
-  { time: '08:14', id: 'EMP-008', name: 'Warden', status: 'GRANTED', note: 'Routine entry' },
-  { time: '08:47', id: 'EMP-???', name: 'Unknown', status: 'DENIED', note: 'Badge not recognized' },
-  { time: '09:02', id: 'EMP-???', name: 'Unknown', status: 'DENIED', note: 'Badge still not recognized' },
-  { time: '09:03', id: 'EMP-???', name: 'Unknown', status: 'DENIED', note: 'Stop trying' },
-  { time: '10:30', id: 'SYS-01', name: 'Ghost', status: 'GRANTED', note: 'Remote access — Workshop relay' },
-  { time: '11:15', id: 'EMP-???', name: 'Unknown', status: 'DENIED', note: 'Different badge. Same result.' },
-  { time: '13:48', id: 'EMP-001', name: 'Warden', status: 'GRANTED', note: 'Second entry — forgot something' },
+  { time: '1994-10-31 23:47', id: 'EMP-0003', name: '—', status: 'GRANTED', note: 'Back entrance. Authorized. Do not follow.' },
+  { time: '2003-07-14 02:13', id: 'EMP-0007', name: '—', status: 'GRANTED', note: 'Storage B. After-hours. Logged per Protocol 4.' },
+  { time: '2011-03-01 09:00', id: 'EMP-0012', name: '—', status: 'GRANTED', note: 'Main floor. Regular shift begin.' },
+  { time: '2019-08-22 11:34', id: 'EMP-0001', name: 'Warden', status: 'GRANTED', note: 'Restricted Zone. Clearance: OMEGA. No further notes.' },
+  { time: '2021-12-13 03:03', id: 'EMP-????', name: 'Unknown', status: 'DENIED', note: 'Unrecognized badge. Not on file. Reviewed.' },
+  { time: '2023-05-07 17:59', id: 'EMP-0003', name: '—', status: 'GRANTED', note: 'Storage B. Again. Third time this month.' },
+  { time: '2024-11-01 00:00', id: 'EMP-0000', name: '[SYSTEM]', status: 'GRANTED', note: 'All points. System reset. Visitor log purged.' },
+  { time: '2026-06-20 21:14', id: 'EMP-0019', name: '—', status: 'GRANTED', note: 'Broadcast Tower. Routine maintenance. Signal nominal.' },
   { time: 'NOW', id: 'VIS-000', name: 'YOU', status: 'PENDING', note: 'Evaluating' },
 ];
 ---

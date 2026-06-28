@@ -20,10 +20,25 @@ import EmployeeNotice from '../components/EmployeeNotice.astro';
         <p>Please do not ask about the clearance bin in the back.</p>
       </EmployeeNotice>
 
-      <div class="placeholder-shelf">
-        <p class="mono text-dim">// merchandise coming soon</p>
-        <p class="mono text-dim">// field notes · stickers · patches · realm records</p>
-        <p class="mono text-dim">// no refunds after portal exposure</p>
+      <div class="shop-grid">
+        <div class="shop-item">
+          <div class="item-badge item-badge--soldout mono">SOLD OUT</div>
+          <p class="item-name">Field Notes Vol. 1 — The Crossroads</p>
+          <p class="item-desc mono text-dim">// 48pp · hand-numbered · last batch</p>
+        </div>
+        <div class="shop-item">
+          <p class="item-name">Warden Patch — Standard Issue</p>
+          <p class="item-desc mono text-dim">// embroidered · 3" · iron-on · limited</p>
+          <p class="item-price mono">$8</p>
+        </div>
+        <div class="shop-item">
+          <div class="item-badge item-badge--soldout mono">SOLD OUT</div>
+          <p class="item-name">Realm Record No. 1 — Mothman Signal</p>
+          <p class="item-desc mono text-dim">// 7" · lathe cut · 150 copies · gone</p>
+        </div>
+      </div>
+      <div class="backroom-teaser mono text-dim">
+        // BACKROOM INVENTORY: items not listed here exist. ask at the counter. some require clearance.
       </div>
     </div>
   </div>
@@ -62,4 +77,12 @@ import EmployeeNotice from '../components/EmployeeNotice.astro';
     gap: 0.4rem;
     font-size: 0.75rem;
   }
+  .shop-grid { display: flex; flex-direction: column; gap: var(--space-md); }
+  .shop-item { position: relative; padding: var(--space-md); border: 1px solid var(--ldi-border, rgba(255,255,255,0.06)); display: flex; flex-direction: column; gap: 0.3rem; }
+  .item-badge { font-size: 0.6rem; letter-spacing: 0.15em; display: inline-block; padding: 0.15rem 0.5rem; margin-bottom: 0.25rem; }
+  .item-badge--soldout { color: var(--ldi-crimson, #c0281a); border: 1px solid var(--ldi-crimson, #c0281a); opacity: 0.7; }
+  .item-name { font-family: var(--font-display, var(--ldi-font-display)); font-size: var(--ldi-text-lg, 1.25rem); letter-spacing: 0.05em; color: var(--paper, var(--ldi-text-primary)); }
+  .item-desc { font-size: 0.68rem; letter-spacing: 0.08em; }
+  .item-price { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--ldi-amber, #d4820a); }
+  .backroom-teaser { font-size: 0.65rem; letter-spacing: 0.08em; padding: var(--space-sm) 0; border-top: 1px solid rgba(255,255,255,0.04); }
 </style>
