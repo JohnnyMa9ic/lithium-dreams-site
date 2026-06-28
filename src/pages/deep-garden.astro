@@ -211,6 +211,19 @@ import Layout from '../components/Layout.astro';
           </div>
         </form>
 
+        <div id="plantingConfirmed" class="planting-confirmed" aria-live="polite" hidden>
+          <p class="confirm-eyebrow mono">PLANTING CONFIRMED</p>
+          <div class="confirm-divider"></div>
+          <p class="confirm-line">Your specimen has been logged.</p>
+          <p class="confirm-line confirm-line--dim">The Garden keeps its own records.<br/>We do not guarantee what grows.<br/>We do not guarantee it stays where you plant it.</p>
+          <p class="confirm-accession mono" id="confirmAccession">ACC. GARDEN-——</p>
+          <div class="confirm-divider"></div>
+          <div class="confirm-actions">
+            <a href="/deep-garden" class="confirm-btn mono">RETURN TO THE GARDEN</a>
+            <button type="button" id="plantAnother" class="confirm-btn confirm-btn--ghost mono">PLANT ANOTHER</button>
+          </div>
+        </div>
+
         <aside class="seed-preview-panel">
           <div class="seed-packet">
             <p class="packet-kicker">Deep Garden Archive</p>
@@ -767,6 +780,61 @@ import Layout from '../components/Layout.astro';
   }
 
   /* ── Plant an Idea ── */
+  .planting-confirmed {
+    border: 1px solid rgba(0, 229, 204, 0.15);
+    background: rgba(0, 229, 204, 0.02);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 480px;
+  }
+  .planting-confirmed[hidden] { display: none; }
+  .confirm-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: rgba(0, 229, 204, 0.6);
+    text-transform: uppercase;
+  }
+  .confirm-divider {
+    height: 1px;
+    background: rgba(0, 229, 204, 0.1);
+  }
+  .confirm-line {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: rgba(232, 222, 200, 0.5);
+  }
+  .confirm-line--dim { color: rgba(232, 222, 200, 0.3); }
+  .confirm-accession {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: rgba(0, 229, 204, 0.35);
+  }
+  .confirm-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .confirm-btn {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(0, 229, 204, 0.5);
+    border: 1px solid rgba(0, 229, 204, 0.2);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .confirm-btn:hover { color: rgba(0, 229, 204, 0.9); border-color: rgba(0, 229, 204, 0.5); }
+  .confirm-btn--ghost { border-color: rgba(255,255,255,0.08); color: rgba(232,222,200,0.3); }
+  .confirm-btn--ghost:hover { color: rgba(232,222,200,0.6); border-color: rgba(255,255,255,0.2); }
+
   .planting-station {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 400px;
@@ -1142,8 +1210,18 @@ import Layout from '../components/Layout.astro';
   });
 
   (document.getElementById('downloadSeed') as HTMLButtonElement).addEventListener('click', () => {
+    const now = new Date();
+    const stamp = now.getFullYear().toString()
+      + String(now.getMonth()+1).padStart(2,'0')
+      + String(now.getDate()).padStart(2,'0')
+      + '-'
+      + String(now.getHours()).padStart(2,'0')
+      + String(now.getMinutes()).padStart(2,'0');
+    const accession = `GARDEN-${stamp}`;
+
     const packet = {
       type: 'LDI Seed Packet',
+      accession,
       idea: fields.ideaName.value.trim() || 'Seed of Potential',
       spark: fields.ideaSpark.value.trim(),
       notReadyBecause: fields.ideaBlock.value.trim(),
@@ -1160,6 +1238,25 @@ import Layout from '../components/Layout.astro';
     a.download = 'ldi-seed-packet.json';
     a.click();
     URL.revokeObjectURL(url);
+
+    // Show confirmation state
+    const confirmed = document.getElementById('plantingConfirmed') as HTMLElement;
+    const accEl = document.getElementById('confirmAccession') as HTMLElement;
+    const form = document.getElementById('seedForm') as HTMLFormElement;
+    if (accEl) accEl.textContent = `ACC. ${accession}`;
+    if (form) form.hidden = true;
+    if (confirmed) confirmed.hidden = false;
+
+    // Plant Another button — reset and show form again
+    const plantAnother = document.getElementById('plantAnother');
+    if (plantAnother) {
+      plantAnother.addEventListener('click', () => {
+        form.reset();
+        updatePacket();
+        form.hidden = false;
+        confirmed.hidden = true;
+      }, { once: true });
+    }
   });
 
   updatePacket();
