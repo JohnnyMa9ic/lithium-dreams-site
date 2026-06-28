@@ -1,49 +1,223 @@
+/* ============================================================
+   VD-0001 CANONICAL TOKEN SET — Rev 1.0 — June 2026
+   lithium-dreams.com design system
+   Do not add raw hex values outside this :root block.
+   ============================================================ */
+
 :root {
-  /* Core palette */
-  --ldi-black: #0A0A0C;
-  --road-asphalt: #1A1C1F;
-  --rain-slate: #2C3038;
-  --neon-amber: #E8A420;
-  --ghost-blue: #4DB8D4;
-  --warden-teal: #2E8B6E;
-  --moss-green: #4A6741;
-  --brass: #B5893E;
-  --paper: #E8DEC8;
-  --warning-red: #C23B22;
 
-  /* Derived */
-  --amber-dim: #9A6B10;
-  --amber-glow: rgba(232, 164, 32, 0.25);
-  --paper-dark: #C8B898;
-  --paper-line: rgba(0, 0, 0, 0.12);
+  /* === FOUNDATION === */
+  --ldi-void:              #0a0907;   /* True page background */
+  --ldi-void-deep:         #060504;   /* Deepest layer */
+  --ldi-void-lifted:       #111009;   /* Slightly raised surface */
 
-  /* Typography */
-  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
-  --font-sub: 'Oswald', 'Arial Narrow', sans-serif;
-  --font-body: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
-  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  /* === PANEL SURFACES === */
+  --ldi-surface:           #141210;
+  --ldi-surface-warm:      #1a1610;
+  --ldi-surface-cool:      #0d1214;
+  --ldi-surface-parchment: #f0e8d0;
+  --ldi-surface-parchment-dark: #d4c9a8;
 
-  /* Spacing scale */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 2rem;
-  --space-xl: 4rem;
+  /* === PANEL BORDERS === */
+  --ldi-border:            #2a2520;
+  --ldi-border-amber:      #8a6020;
+  --ldi-border-teal:       #1a4a44;
+  --ldi-border-dim:        #1c1a17;
 
-  /* Layout */
+  /* === TEXT === */
+  --ldi-text-primary:      #e8dcc0;   /* Main body — warm off-white */
+  --ldi-text-secondary:    #a89870;   /* Secondary — muted gold */
+  --ldi-text-dim:          #5a5040;   /* Dim — breadcrumbs, labels */
+  --ldi-text-ghost:        #302820;   /* Near-invisible — texture text */
+  --ldi-text-parchment:    #2a1f0a;   /* Dark ink on parchment */
+
+  /* === ACCENT: TEAL (Signal) === */
+  --ldi-teal:              #00e5cc;
+  --ldi-teal-dim:          #00a090;
+  --ldi-teal-ghost:        #003d38;
+  --ldi-teal-glow:         rgba(0, 229, 204, 0.15);
+  --ldi-teal-glow-strong:  rgba(0, 229, 204, 0.35);
+
+  /* === ACCENT: AMBER (Heat/Warning) === */
+  --ldi-amber:             #d4820a;
+  --ldi-amber-bright:      #f0a020;
+  --ldi-amber-dim:         #7a4a08;
+  --ldi-amber-glow:        rgba(212, 130, 10, 0.20);
+  --ldi-amber-glow-strong: rgba(240, 160, 32, 0.40);
+
+  /* === ACCENT: CRIMSON (Danger/Denied) === */
+  --ldi-crimson:           #c0281a;
+  --ldi-crimson-dim:       #701008;
+  --ldi-crimson-glow:      rgba(192, 40, 26, 0.25);
+
+  /* === ACCENT: GOLD (Decorative) === */
+  --ldi-gold:              #b08840;
+  --ldi-gold-bright:       #d4a848;
+
+  /* === STATUS === */
+  --ldi-status-open:        #00e5cc;
+  --ldi-status-active:      #4cbb6a;
+  --ldi-status-flickering:  #f0a020;
+  --ldi-status-unstable:    #e0601a;
+  --ldi-status-denied:      #c0281a;
+  --ldi-status-appointment: #6a5a40;
+  --ldi-status-coming:      #3a3228;
+  --ldi-status-prepared:    #8a7858;
+
+  /* === FONT FAMILIES === */
+  --ldi-font-display:  'Bebas Neue', Impact, 'Arial Black', sans-serif;
+  --ldi-font-body:     'Inter', system-ui, -apple-system, sans-serif;
+  --ldi-font-mono:     'Space Mono', 'Courier New', monospace;
+  --ldi-font-japanese: 'Noto Serif JP', serif;
+
+  /* === FONT SIZES === */
+  --ldi-text-xs:   0.625rem;   /*  10px */
+  --ldi-text-sm:   0.75rem;    /*  12px */
+  --ldi-text-base: 0.875rem;   /*  14px */
+  --ldi-text-md:   1rem;       /*  16px */
+  --ldi-text-lg:   1.25rem;    /*  20px */
+  --ldi-text-xl:   1.5rem;     /*  24px */
+  --ldi-text-2xl:  2rem;       /*  32px */
+  --ldi-text-3xl:  3rem;       /*  48px */
+  --ldi-text-4xl:  4.5rem;     /*  72px */
+  --ldi-text-5xl:  7rem;       /* 112px */
+  --ldi-text-6xl:  10rem;      /* 160px */
+
+  /* === FONT WEIGHTS === */
+  --ldi-weight-light:   300;
+  --ldi-weight-regular: 400;
+  --ldi-weight-medium:  500;
+  --ldi-weight-bold:    700;
+
+  /* === LINE HEIGHTS === */
+  --ldi-leading-tight:  1.1;
+  --ldi-leading-snug:   1.3;
+  --ldi-leading-normal: 1.6;
+  --ldi-leading-loose:  1.9;
+
+  /* === LETTER SPACING === */
+  --ldi-tracking-tight:  -0.01em;
+  --ldi-tracking-normal:  0;
+  --ldi-tracking-wide:    0.05em;
+  --ldi-tracking-wider:   0.1em;
+  --ldi-tracking-widest:  0.2em;
+
+  /* === SPACING SCALE (4px base) === */
+  --ldi-space-1:   0.25rem;   /*  4px */
+  --ldi-space-2:   0.5rem;    /*  8px */
+  --ldi-space-3:   0.75rem;   /* 12px */
+  --ldi-space-4:   1rem;      /* 16px */
+  --ldi-space-5:   1.25rem;   /* 20px */
+  --ldi-space-6:   1.5rem;    /* 24px */
+  --ldi-space-8:   2rem;      /* 32px */
+  --ldi-space-10:  2.5rem;    /* 40px */
+  --ldi-space-12:  3rem;      /* 48px */
+  --ldi-space-16:  4rem;      /* 64px */
+  --ldi-space-20:  5rem;      /* 80px */
+  --ldi-space-24:  6rem;      /* 96px */
+  --ldi-space-32:  8rem;      /* 128px */
+  --ldi-space-48: 12rem;      /* 192px */
+
+  /* === BORDER RADIUS === */
+  --ldi-radius-none: 0;
+  --ldi-radius-sm:   2px;
+  --ldi-radius-md:   4px;
+  --ldi-radius-pill: 999px;
+
+  /* === SHADOWS === */
+  --ldi-shadow-sm:    0 1px 4px rgba(0,0,0,0.6);
+  --ldi-shadow-md:    0 4px 16px rgba(0,0,0,0.8);
+  --ldi-shadow-lg:    0 8px 32px rgba(0,0,0,0.9);
+  --ldi-shadow-inset: inset 0 1px 0 rgba(255,255,255,0.03);
+
+  /* === GLOW === */
+  --ldi-glow-teal-sm:    0 0 8px var(--ldi-teal-glow);
+  --ldi-glow-teal-md:    0 0 20px var(--ldi-teal-glow), 0 0 40px var(--ldi-teal-ghost);
+  --ldi-glow-teal-lg:    0 0 40px var(--ldi-teal-glow-strong), 0 0 80px var(--ldi-teal-ghost);
+  --ldi-glow-amber-sm:   0 0 8px var(--ldi-amber-glow);
+  --ldi-glow-amber-md:   0 0 20px var(--ldi-amber-glow), 0 0 40px rgba(212,130,10,0.10);
+  --ldi-glow-amber-lg:   0 0 40px var(--ldi-amber-glow-strong);
+  --ldi-glow-crimson-sm: 0 0 8px var(--ldi-crimson-glow);
+  --ldi-glow-crimson-md: 0 0 20px var(--ldi-crimson-glow);
+
+  /* === ANIMATION TIMING === */
+  --ldi-duration-instant: 80ms;
+  --ldi-duration-fast:    150ms;
+  --ldi-duration-normal:  300ms;
+  --ldi-duration-slow:    600ms;
+  --ldi-duration-crawl:   1200ms;
+  --ldi-duration-pulse:   2400ms;
+
+  /* === EASING === */
+  --ldi-ease-out:    cubic-bezier(0.0, 0.0, 0.2, 1.0);
+  --ldi-ease-in:     cubic-bezier(0.4, 0.0, 1.0, 1.0);
+  --ldi-ease-inout:  cubic-bezier(0.4, 0.0, 0.2, 1.0);
+  --ldi-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1.0);
+  --ldi-ease-glitch: steps(1, end);
+
+  /* === LAYOUT === */
   --content-max: 1200px;
   --content-pad: 2.5rem;
 
-  /* Borders */
-  --border-faint: 1px solid rgba(255, 255, 255, 0.08);
-  --border-amber: 1px solid var(--amber-dim);
-  --border-paper: 1px solid var(--paper-dark);
+  /* ============================================================
+     LEGACY ALIASES — old names → VD-0001 canonical tokens
+     Do not use these in new code. Use --ldi-* names directly.
+     ============================================================ */
+  --ldi-black:      var(--ldi-void);
+  --road-asphalt:   var(--ldi-void-lifted);
+  --rain-slate:     #2C3038;
+  --neon-amber:     var(--ldi-amber-bright);
+  --ghost-blue:     #4DB8D4;
+  --warden-teal:    var(--ldi-teal);
+  --moss-green:     #4A6741;
+  --brass:          var(--ldi-gold);
+  --paper:          var(--ldi-text-primary);
+  --warning-red:    var(--ldi-crimson);
+  --amber-dim:      var(--ldi-amber-dim);
+  --amber-glow:     var(--ldi-amber-glow);
+  --paper-dark:     var(--ldi-text-secondary);
+  --paper-line:     rgba(0, 0, 0, 0.12);
+  --font-display:   var(--ldi-font-display);
+  --font-sub:       'Oswald', 'Arial Narrow', sans-serif;
+  --font-body:      var(--ldi-font-body);
+  --font-mono:      var(--ldi-font-mono);
+  --space-xs:       var(--ldi-space-1);
+  --space-sm:       var(--ldi-space-2);
+  --space-md:       var(--ldi-space-4);
+  --space-lg:       var(--ldi-space-8);
+  --space-xl:       var(--ldi-space-16);
+  --border-faint:   1px solid rgba(255, 255, 255, 0.08);
+  --border-amber:   1px solid var(--ldi-amber-dim);
+  --border-paper:   1px solid var(--ldi-text-secondary);
+  --shadow-card:    var(--ldi-shadow-sm);
+  --shadow-neon-amber: var(--ldi-glow-amber-md);
+  --transition-fast: var(--ldi-duration-fast) var(--ldi-ease-out);
+  --transition-mid:  var(--ldi-duration-normal) var(--ldi-ease-out);
+}
 
-  /* Shadows */
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.5);
-  --shadow-neon-amber: 0 0 8px var(--neon-amber), 0 0 20px var(--amber-glow);
+/* === KEYFRAME ANIMATIONS === */
 
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-mid: 0.25s ease;
+@keyframes ldi-signal-pulse {
+  0%, 100% { opacity: 1; box-shadow: var(--ldi-glow-teal-sm); }
+  50%       { opacity: 0.4; box-shadow: none; }
+}
+
+@keyframes ldi-flicker {
+  0%   { opacity: 1; }
+  8%   { opacity: 0.8; }
+  15%  { opacity: 1; }
+  40%  { opacity: 0.9; }
+  55%  { opacity: 1; }
+  72%  { opacity: 0.7; }
+  80%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes ldi-glitch-shift {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-2px); }
+  40%  { transform: translateX(2px); }
+  60%  { transform: translateX(-1px); }
+  80%  { transform: translateX(1px); }
+  100% { transform: translateX(0); }
 }
