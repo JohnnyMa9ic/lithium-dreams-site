@@ -75,6 +75,16 @@ export const districts: District[] = [
     inNav: false,
   },
   {
+    title: 'Traveling Agency',
+    description:
+      'The Cursed Traveling Agency travel desk. Route oracles, field permits, and official paperwork for real destinations.',
+    status: 'OPEN',
+    href: '/cta/',
+    icon: '🎫',
+    microcopy: 'The trolley knows where you meant to go.',
+    inNav: false,
+  },
+  {
     title: 'Wedding Chapel',
     description: 'Open Tuesdays and Fridays. Do not ask about the back room.',
     status: 'BY APPOINTMENT',
