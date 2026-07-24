@@ -18,6 +18,7 @@
     "review:all": "npm run review:routes && npm run review:screenshots && npm run review:axe"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.1.4",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.0.2"
   },
