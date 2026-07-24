@@ -27,7 +27,7 @@ Cloudflare picks up the push and rebuilds. No `wrangler deploy` required.
 
 ## Stack
 
-- **Astro** static site (Cloudflare Workers adapter injected at build time — do not add it locally)
+- **Astro** static site, `@astrojs/cloudflare` adapter (real dependency in `package.json` + `astro.config.mjs` — the "injected at build time, don't add it locally" claim that used to live here was wrong and caused a real build failure 2026-07-23; the adapter is only needed once a route opts into on-demand rendering via `export const prerender = false`, e.g. `src/pages/api/*`. Pure static pages need nothing extra.)
 - **TypeScript** for data files
 - **Vanilla CSS** with CSS custom properties (no Tailwind, no CSS-in-JS)
 - **No framework components** — Astro `.astro` files only
@@ -49,6 +49,9 @@ Cloudflare picks up the push and rebuilds. No `wrangler deploy` required.
 | `/chapel/back-room` | `src/pages/chapel/back-room.astro` | Hidden Cathedral teaser (not in nav) |
 | `/workshop` | `src/pages/workshop.astro` | Ghost's Workshop — access portal to cc.lithium-dreams.com |
 | `/crossroads` | `src/pages/crossroads.astro` | Deeper lore hub placeholder |
+| `/api/intake` | `src/pages/api/intake.ts` | POST endpoint, on-demand (`prerender = false`) — writes Mission Intake submissions to the `MISSION_INTAKE` KV binding. Added 2026-07-23. |
+
+**Note (2026-07-23):** this table predates the `/work`, `/about`, `/studio`, `/broadcasts`, `/cathedral`, `/deep-garden` routes and several others already live on the site — it was not kept current. Treat it as a partial reference, not a full route inventory; check `src/pages/` directly for the real picture.
 
 ---
 
@@ -178,8 +181,8 @@ In `src/pages/workshop.astro`, find `<a href="https://cc.lithium-dreams.com/app/
 
 ## What NOT to do
 
-- Do not add `@astrojs/cloudflare` adapter locally — Cloudflare injects it at build time
 - Do not run `wrangler deploy` manually — push to git triggers the build
+- Do not add `output: 'server'`/`'hybrid'` globally — the adapter already supports per-route on-demand rendering via `export const prerender = false`; keep everything else static
 - Do not create React/Vue/Svelte components — Astro components only
 - Do not add Tailwind — vanilla CSS with custom properties only
 - Do not make it look like a SaaS dashboard

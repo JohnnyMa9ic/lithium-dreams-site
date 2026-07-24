@@ -317,6 +317,15 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
                 <span>We'll be in touch based on your preferred follow-up method.</span>
               </div>
             </div>
+            <div class="submit-notice submit-notice--error hidden" id="submitError">
+              <div class="submit-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#C23B22" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" stroke="#C23B22" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <strong>Delivery failed.</strong>
+                <span id="submitErrorText">Please copy or download your JSON and email it to us directly.</span>
+              </div>
+            </div>
             <div class="review-summary" id="reviewSummary"></div>
             <div class="review-actions">
               <button type="button" id="copyJsonBtn" class="btn-action">Copy JSON</button>
@@ -768,6 +777,9 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   .submit-icon { flex-shrink: 0; margin-top: 2px; }
   .submit-notice strong { font-weight: 600; color: #2d6b42; font-size: 0.86rem; display: block; margin-bottom: 2px; }
   .submit-notice span { font-size: 0.80rem; color: #4a7055; }
+  .submit-notice--error { background: rgba(194, 59, 34, 0.08); border-color: rgba(194, 59, 34, 0.25); }
+  .submit-notice--error strong { color: #a12f1c; }
+  .submit-notice--error span { color: #a1493a; }
 
   .review-summary {
     display: flex;
@@ -1145,6 +1157,8 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   const trackerTimelineRow = document.getElementById('trackerTimelineRow') as HTMLElement;
   const trackerTimelineVal = document.getElementById('trackerTimelineVal') as HTMLElement;
   const submitNotice = document.getElementById('submitNotice') as HTMLElement;
+  const submitError = document.getElementById('submitError') as HTMLElement;
+  const submitErrorText = document.getElementById('submitErrorText') as HTMLElement;
   const reviewSummary = document.getElementById('reviewSummary') as HTMLElement;
   const confidenceText = document.getElementById('confidenceText') as HTMLElement;
 
@@ -1324,8 +1338,36 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     updateTracker();
-    submitNotice.classList.remove('hidden');
-    submitNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    submitNotice.classList.add('hidden');
+    submitError.classList.add('hidden');
+
+    const brief = buildBrief();
+    submitBtn.disabled = true;
+    const originalLabel = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting…';
+
+    fetch('/api/intake', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(brief),
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({}));
+          throw new Error(body.error || `Server responded ${res.status}`);
+        }
+        submitNotice.classList.remove('hidden');
+        submitNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      })
+      .catch((err) => {
+        submitErrorText.textContent = `${err.message} — your data was NOT lost: copy or download the JSON above and email it to us directly.`;
+        submitError.classList.remove('hidden');
+        submitError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
   });
 
   // ── Copy / Download (tracker panel + review step share same buttons) ──
@@ -1361,6 +1403,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     form.reset();
     document.querySelectorAll('.track-card').forEach(c => c.classList.remove('selected'));
     submitNotice.classList.add('hidden');
+    submitError.classList.add('hidden');
     setStep(0);
   });
 
