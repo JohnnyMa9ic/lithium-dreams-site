@@ -1,0 +1,530 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import StudioNav from '../../components/StudioNav.astro';
+---
+
+<Layout title="Design Notes — LDI Studio" description="The Deep Garden chrome: how the operator's instrument canvas got its brass. Frontmatter, doctrine, and the rule that nothing is claimed without a receipt." activePage="/about">
+  <div class="dn-hero">
+    <div class="dn-hero-rail" aria-hidden="true"></div>
+    <div class="dn-hero-inner">
+      <p class="dn-eyebrow mono">Lithium Dreams Industries · Studio</p>
+      <h1 class="dn-title">Design Notes</h1>
+      <p class="dn-sub">The Deep Garden chrome — how the operator's instrument canvas got its brass.</p>
+    </div>
+    <div class="dn-corner dn-corner--nw" aria-hidden="true"></div>
+    <div class="dn-corner dn-corner--se" aria-hidden="true"></div>
+  </div>
+
+  <StudioNav active="design-notes" />
+
+  <div class="dn-page">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about' },
+      { label: 'Studio', href: '/studio' },
+      { label: 'Design Notes' },
+    ]} />
+
+    <section class="dn-section">
+      <div class="dn-section-head">
+        <span class="dn-num mono">01</span>
+        <h2>The room below the garden</h2>
+      </div>
+      <div class="dn-prose">
+        <p>Visitors know the Deep Garden as the quiet layer — Warden territory, lanterns and root systems, a place where ideas are allowed to be dormant. What the tour does not mention is that the garden has instruments. Below the seedbeds sits the operator's canvas: the working surface where the lab's dispatches are watched, weighed, and either approved or sent back.</p>
+        <p>For most of its life the canvas was honest but bare. In August of Y10 it received its frontmatter — the ornamental layer that frames and opens every surface. Cast bezels. Ivy-circuit corners. Engraved title plates. Status chips with a live pulse. An approval stamp. A seal.</p>
+        <p>These notes are the parts of that design pass we are willing to show. The garden keeps the rest.</p>
+      </div>
+    </section>
+
+    <section class="dn-section">
+      <div class="dn-section-head">
+        <span class="dn-num mono">02</span>
+        <h2>Specimens</h2>
+      </div>
+      <p class="dn-caption">Recreated here in the site's own materials. The originals live on the instrument canvas and do not leave it.</p>
+
+      <div class="dn-specimens">
+        <figure class="dn-specimen">
+          <div class="dn-plate">
+            <p class="dn-plate-kicker mono">Lithium Dreams Industries · The Glasshouse</p>
+            <p class="dn-plate-title">The Deep Garden</p>
+          </div>
+          <figcaption>Title plate. Display face, bone-to-brass gradient, an engraved rule beneath — brass at the ends, the room's accent at the centre. Every room re-tints the accent; the brass stays structural.</figcaption>
+        </figure>
+
+        <figure class="dn-specimen">
+          <div class="dn-chiprow">
+            <span class="dn-chip" data-tone="ok"><i></i>air bridge<b>up</b></span>
+            <span class="dn-chip" data-tone="warn"><i></i>vault sync<b>stale</b></span>
+            <span class="dn-chip" data-tone="idle"><i></i>renderer<b>not yet probed</b></span>
+          </div>
+          <figcaption>Service chips. The pip only pulses when the thing is genuinely live — the pulse is the permitted continuous motion, and it is a claim. Tone comes from a real probe, never from optimism.</figcaption>
+        </figure>
+
+        <figure class="dn-specimen">
+          <div class="dn-band">
+            <span class="dn-band-no mono">01</span>
+            <span class="dn-band-em">—</span>
+            <span class="dn-band-title">Needs you</span>
+            <i class="dn-band-pip" aria-hidden="true"></i>
+            <span class="dn-band-rule" aria-hidden="true"></span>
+            <span class="dn-band-meta mono">return gate</span>
+          </div>
+          <figcaption>Section band. Numbered lanes, a live pip for a lane with something in it. The meta slot takes a real count or nothing at all — it is forbidden to render "0 items". The lane's empty state says that, in its own voice.</figcaption>
+        </figure>
+
+        <figure class="dn-specimen">
+          <div class="dn-empty">
+            <p class="dn-empty-line">Nothing needs you.</p>
+            <p class="dn-empty-note">Nothing was expecting you either. The return gate is clear.</p>
+          </div>
+          <figcaption>Empty state, return gate. Four situations, four fixed lines: <em>Nothing has been kept yet. The workshop is dark. It is waiting on your word.</em> Empty states stay empty — no placeholder rows, ever.</figcaption>
+        </figure>
+
+        <figure class="dn-specimen">
+          <div class="dn-stamps">
+            <span class="dn-stamp" data-state="approved"><b>Approved</b><span>Enters QA</span></span>
+            <span class="dn-stamp"><b>Reshaped</b><span>Sent back</span></span>
+            <span class="dn-stamp" data-state="pending"><b>Awaiting</b><span>Your word</span></span>
+          </div>
+          <figcaption>The approval stamp. The copy matters: approve <em>enters QA</em> — it does not ship. Only a genuine failure is allowed to wear the danger colour, and decoration never is.</figcaption>
+        </figure>
+
+        <figure class="dn-specimen">
+          <div class="dn-seal-line">
+            <span class="dn-seal" aria-hidden="true"><span class="dn-seal-ring"></span><span class="dn-seal-core"></span></span>
+            <p class="dn-seal-text mono">WIRED BY EVIDENCE — NO CLAIM WITHOUT A RECEIPT</p>
+          </div>
+          <figcaption>The evidence seal. Mounted once per surface. It does not mean "this was verified" — it means the surface is built so that nothing can be claimed without a receipt. It asserts the rule, not a result.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="dn-section">
+      <div class="dn-section-head">
+        <span class="dn-num mono">03</span>
+        <h2>Doctrine</h2>
+      </div>
+      <div class="dn-prose">
+        <p>The frontmatter is ornamental. The rules underneath it are not. Every element on the canvas obeys the same law, quoted here as written:</p>
+      </div>
+      <ul class="dn-rules">
+        <li><strong>Truth before paint.</strong> No decorative numbers, no placeholder rows, no progress bars for pipelines that report no fraction. The scan motif deliberately has no percentage.</li>
+        <li><strong>Motion means something changed or something is alive.</strong> Static data does not animate. Reduced-motion collapses everything gracefully, and the scan still reads as working.</li>
+        <li><strong>Liveness is a claim.</strong> The pulse runs only when the thing is genuinely live. A chip that glows on a dead service is a lie with good production values.</li>
+        <li><strong>The asset layer is opt-in.</strong> Delete every generated image and each element still renders in its drawn form. Ornament that becomes a dependency has stopped being ornament.</li>
+        <li><strong>No text lives in the art.</strong> Every character on screen is live type over the imagery, so nothing goes stale when the data changes.</li>
+      </ul>
+      <div class="dn-prose">
+        <p>This is the studio's actual position on decoration: the same rules that keep the chrome beautiful keep the instruments honest. A surface that is allowed to invent a number for aesthetic balance will eventually invent one you believe.</p>
+      </div>
+    </section>
+
+    <section class="dn-section">
+      <div class="dn-section-head">
+        <span class="dn-num mono">04</span>
+        <h2>Where the brass goes next</h2>
+      </div>
+      <div class="dn-prose">
+        <p>The chrome language is spreading, deliberately, in two directions. The Attraction inherits it as frontmatter — plates, bands, seals and stamps anchoring the lore the way a real place accumulates signage. The Glasshouse inherits it in its professional register — the same materials, quieter, carrying client work instead of cryptids. One frame language, two registers. Brass stays structural in both.</p>
+        <p class="dn-forward-note">If you have been to the garden, you have already stood on top of this. <em>Somewhere below, a lane just went quiet.</em></p>
+      </div>
+    </section>
+
+    <section class="dn-doorways">
+      <a href="/deep-garden" class="dn-doorway">The garden above</a>
+      <a href="/workshop" class="dn-doorway">Ghost's Workshop</a>
+      <a href="/studio/infrastructure" class="dn-doorway">Infrastructure</a>
+      <a href="/work" class="dn-doorway">The Glasshouse</a>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* ── Deep Garden chrome, in site materials ── */
+  .dn-hero {
+    position: relative;
+    padding: clamp(4rem, 9vw, 7rem) var(--space-xl) clamp(2.5rem, 6vw, 4rem);
+    background:
+      radial-gradient(ellipse at 50% -20%, rgba(46, 139, 110, 0.14), transparent 60%),
+      linear-gradient(180deg, #0a0f0c 0%, var(--ldi-black) 100%);
+    overflow: hidden;
+  }
+  .dn-hero-rail {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 14px;
+    background-image: url('/dg-brass-rail.webp');
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    opacity: 0.55;
+  }
+  .dn-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .dn-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 1rem;
+  }
+  .dn-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    background: linear-gradient(180deg, var(--paper) 20%, var(--brass) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+    margin: 0 0 0.75rem;
+  }
+  .dn-sub {
+    color: rgba(232, 222, 200, 0.55);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .dn-corner {
+    position: absolute;
+    width: 74px;
+    height: 86px;
+    background-image: url('/dg-corner-casting.png');
+    background-size: 100% 100%;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  .dn-corner--nw { top: 10px; left: 10px; }
+  .dn-corner--se { bottom: 22px; right: 10px; transform: rotate(180deg); }
+
+  .dn-page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+  }
+  .dn-section { margin-top: var(--space-xl); }
+  .dn-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    border-bottom: 1px solid rgba(181, 137, 62, 0.25);
+    padding-bottom: 0.5rem;
+    margin-bottom: var(--space-md);
+  }
+  .dn-num { font-size: 0.62rem; color: var(--brass); letter-spacing: 0.2em; }
+  .dn-section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: 0.03em;
+    color: var(--paper);
+    margin: 0;
+  }
+  .dn-prose p {
+    color: rgba(232, 222, 200, 0.72);
+    line-height: 1.75;
+    font-size: 0.95rem;
+    max-width: 760px;
+    margin: 0 0 1rem;
+  }
+  .dn-caption {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(232, 222, 200, 0.35);
+    margin: 0 0 var(--space-md);
+  }
+
+  /* Specimens */
+  .dn-specimens {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+  .dn-specimen {
+    margin: 0;
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .dn-specimen figcaption {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: rgba(232, 222, 200, 0.45);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+  .dn-specimen figcaption em { color: rgba(232, 222, 200, 0.6); }
+
+  .dn-plate {
+    text-align: center;
+    padding: 1.25rem 1rem 1rem;
+    position: relative;
+  }
+  .dn-plate-kicker {
+    font-size: 0.55rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(181, 137, 62, 0.8);
+    margin: 0 0 0.4rem;
+  }
+  .dn-plate-title {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    letter-spacing: 0.05em;
+    background: linear-gradient(180deg, var(--paper) 25%, var(--brass) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.55);
+    margin: 0;
+  }
+  .dn-plate::after {
+    content: '';
+    display: block;
+    height: 1px;
+    margin: 0.9rem auto 0;
+    width: 78%;
+    background: linear-gradient(90deg, var(--brass), var(--warden-teal), var(--brass));
+    opacity: 0.7;
+  }
+
+  .dn-chiprow { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .dn-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(232, 222, 200, 0.75);
+    border: 1px solid var(--rain-slate);
+    background: rgba(10, 10, 12, 0.7);
+    padding: 0.4rem 0.6rem;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+  .dn-chip i {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--rain-slate);
+    flex-shrink: 0;
+  }
+  .dn-chip b {
+    font-weight: 400;
+    color: rgba(232, 222, 200, 0.4);
+  }
+  .dn-chip[data-tone="ok"] i {
+    background: var(--warden-teal);
+    box-shadow: 0 0 8px rgba(46, 139, 110, 0.8);
+    animation: dn-pulse 2.4s ease-in-out infinite;
+  }
+  .dn-chip[data-tone="warn"] i { background: var(--neon-amber); }
+  .dn-chip[data-tone="idle"] i { background: var(--rain-slate); }
+
+  @keyframes dn-pulse {
+    0%, 100% { box-shadow: 0 0 4px rgba(46, 139, 110, 0.5); }
+    50% { box-shadow: 0 0 12px rgba(46, 139, 110, 1); }
+  }
+
+  .dn-band {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .dn-band-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; height: 30px;
+    font-size: 0.7rem;
+    color: #1a1408;
+    background: linear-gradient(180deg, #d9b66f, #a77b34);
+    border: 1px solid rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
+  .dn-band-em { color: var(--brass); }
+  .dn-band-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+  }
+  .dn-band-pip {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--warden-teal);
+    animation: dn-pulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .dn-band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(181,137,62,0.5), rgba(181,137,62,0.08));
+  }
+  .dn-band-meta {
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(232, 222, 200, 0.35);
+  }
+
+  .dn-empty {
+    border: 1px dashed rgba(181, 137, 62, 0.3);
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    background: rgba(10, 10, 12, 0.5);
+  }
+  .dn-empty-line {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    margin: 0 0 0.35rem;
+  }
+  .dn-empty-note {
+    font-size: 0.8rem;
+    color: rgba(232, 222, 200, 0.4);
+    margin: 0;
+  }
+
+  .dn-stamps { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .dn-stamp {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    padding: 0.5rem 0.9rem;
+    border: 2px solid rgba(46, 139, 110, 0.65);
+    color: var(--warden-teal);
+    transform: rotate(-3deg);
+    background: rgba(10, 10, 12, 0.4);
+  }
+  .dn-stamp b {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .dn-stamp span {
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .dn-stamp:nth-child(2) {
+    border-color: rgba(232, 164, 32, 0.55);
+    color: var(--neon-amber);
+    transform: rotate(2deg);
+  }
+  .dn-stamp[data-state="pending"] {
+    border-color: rgba(232, 222, 200, 0.3);
+    color: rgba(232, 222, 200, 0.55);
+    transform: rotate(-1deg);
+  }
+
+  .dn-seal-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .dn-seal {
+    position: relative;
+    width: 64px; height: 64px;
+    flex-shrink: 0;
+  }
+  .dn-seal-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--brass);
+    border-radius: 50%;
+    opacity: 0.85;
+  }
+  .dn-seal-core {
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(181, 137, 62, 0.55);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181, 137, 62, 0.2), transparent 70%);
+  }
+  .dn-seal-text {
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    color: var(--brass);
+    line-height: 1.7;
+  }
+
+  .dn-rules {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0;
+    display: grid;
+    gap: 0.75rem;
+    max-width: 760px;
+  }
+  .dn-rules li {
+    border-left: 3px solid var(--brass);
+    background: var(--road-asphalt);
+    padding: 0.85rem 1.1rem;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: rgba(232, 222, 200, 0.65);
+  }
+  .dn-rules strong {
+    display: block;
+    color: var(--paper);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+
+  .dn-forward-note {
+    font-style: italic;
+    color: rgba(232, 222, 200, 0.5);
+  }
+  .dn-forward-note em { color: var(--warden-teal); font-style: italic; }
+
+  .dn-doorways {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    margin-top: var(--space-xl);
+  }
+  .dn-doorway {
+    min-height: 96px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.9rem;
+    background: var(--road-asphalt);
+    border: 1px solid rgba(181, 137, 62, 0.25);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--neon-amber);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .dn-doorway:hover {
+    border-color: rgba(181, 137, 62, 0.55);
+    background: #20242a;
+  }
+
+  @media (max-width: 760px) {
+    .dn-specimens { grid-template-columns: 1fr; }
+    .dn-doorways { grid-template-columns: 1fr 1fr; }
+    .dn-corner { width: 52px; height: 60px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dn-chip[data-tone="ok"] i, .dn-band-pip { animation: none; }
+  }
+</style>

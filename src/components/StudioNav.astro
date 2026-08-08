@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active: 'story' | 'field-notes' | 'infrastructure';
+  active: 'story' | 'field-notes' | 'infrastructure' | 'design-notes';
 }
 const { active } = Astro.props;
 ---
@@ -19,6 +19,10 @@ const { active } = Astro.props;
     <a href="/studio/infrastructure" class={`studio-link${active === 'infrastructure' ? ' studio-link--active' : ''}`}>
       <span class="link-num mono">03</span>
       <span class="link-label">Infrastructure</span>
+    </a>
+    <a href="/studio/design-notes" class={`studio-link${active === 'design-notes' ? ' studio-link--active' : ''}`}>
+      <span class="link-num mono">04</span>
+      <span class="link-label">Design Notes</span>
     </a>
   </div>
 </nav>

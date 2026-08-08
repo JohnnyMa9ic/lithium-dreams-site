@@ -50,6 +50,7 @@ Cloudflare picks up the push and rebuilds. No `wrangler deploy` required.
 | `/workshop` | `src/pages/workshop.astro` | Ghost's Workshop — access portal to cc.lithium-dreams.com |
 | `/crossroads` | `src/pages/crossroads.astro` | Deeper lore hub placeholder |
 | `/api/intake` | `src/pages/api/intake.ts` | POST endpoint, on-demand (`prerender = false`) — writes Mission Intake submissions to the `MISSION_INTAKE` KV binding. Added 2026-07-23. |
+| `/studio/design-notes` | `src/pages/studio/design-notes.astro` | Studio 04 — the Deep Garden chrome design notes (specimens + doctrine). Linked from StudioNav and a /deep-garden doorway. Added 2026-08-08. |
 
 **Note (2026-07-23):** this table predates the `/work`, `/about`, `/studio`, `/broadcasts`, `/cathedral`, `/deep-garden` routes and several others already live on the site — it was not kept current. Treat it as a partial reference, not a full route inventory; check `src/pages/` directly for the real picture.
 
