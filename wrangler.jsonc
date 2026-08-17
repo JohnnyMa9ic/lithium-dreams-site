@@ -12,6 +12,10 @@
 		{
 			"binding": "MISSION_INTAKE",
 			"id": "8722efcda2d548fbbce0c267d3b1c629"
+		},
+		{
+			"binding": "ISAAC_SAVES",
+			"id": "d3a321ff3eb94db0b2b51fd3657f1b4c"
 		}
 	],
 	"observability": {
