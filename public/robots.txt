@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /isaac/
 
 Sitemap: https://lithium-dreams.com/sitemap-index.xml
