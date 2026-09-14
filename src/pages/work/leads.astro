@@ -1,0 +1,192 @@
+---
+import { env } from 'cloudflare:workers';
+
+export const prerender = false;
+
+/* John's private, read-only window into the /work (Glasshouse) Mission Intake
+ * queue. Not linked from anywhere; reached only with the unguessable ?k= key
+ * below (an obscurity soft-gate, appropriate while lead volume is tiny and the
+ * data is prospect contact info, not credentials). Reads the MISSION_INTAKE KV
+ * namespace that /api/intake writes to and renders every brief newest-first.
+ *
+ * This is the "make intel visible" half of the intake fix — before this page a
+ * lead could only be seen by opening the Cloudflare dashboard. The push half
+ * (email + Notion row on submit) is separate and needs credentials. */
+
+const VIEW_KEY = '13ae8ac8f187836d4bec768da8e74fc7';
+if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
+  return new Response('Not found', { status: 404 });
+}
+
+type Brief = Record<string, unknown>;
+type Lead = { key: string; brief: Brief; receivedAt: string };
+
+const kv = (env as unknown as { MISSION_INTAKE?: KVNamespace }).MISSION_INTAKE;
+let leads: Lead[] = [];
+let storageOk = false;
+let readError: string | null = null;
+
+if (kv) {
+  storageOk = true;
+  try {
+    const list = await kv.list({ limit: 1000 });
+    const raws = await Promise.all(
+      list.keys.map(async (k) => ({ key: k.name, raw: await kv.get(k.name) }))
+    );
+    for (const { key, raw } of raws) {
+      if (!raw) continue;
+      try {
+        const brief = JSON.parse(raw) as Brief;
+        const receivedAt =
+          (brief.receivedAt as string) ?? key.split('__')[0] ?? '';
+        leads.push({ key, brief, receivedAt });
+      } catch {
+        leads.push({ key, brief: { _parseError: raw }, receivedAt: key.split('__')[0] ?? '' });
+      }
+    }
+    // Newest first.
+    leads.sort((a, b) => (a.receivedAt < b.receivedAt ? 1 : -1));
+  } catch (err) {
+    readError = err instanceof Error ? err.message : String(err);
+  }
+}
+
+// Pull a summary field from the brief, checking a few likely nested homes.
+function pick(brief: Brief, ...paths: string[]): string {
+  for (const path of paths) {
+    const parts = path.split('.');
+    let cur: unknown = brief;
+    for (const p of parts) {
+      if (cur && typeof cur === 'object' && p in (cur as Record<string, unknown>)) {
+        cur = (cur as Record<string, unknown>)[p];
+      } else {
+        cur = undefined;
+        break;
+      }
+    }
+    if (cur != null && cur !== '') return String(cur);
+  }
+  return '—';
+}
+
+function ago(iso: string): string {
+  const then = Date.parse(iso);
+  if (Number.isNaN(then)) return '';
+  const s = Math.max(0, Math.floor((Date.now() - then) / 1000));
+  if (s < 60) return 'just now';
+  const m = Math.floor(s / 60);
+  if (m < 60) return `${m} min ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h} hr${h > 1 ? 's' : ''} ago`;
+  const d = Math.floor(h / 24);
+  return `${d} day${d > 1 ? 's' : ''} ago`;
+}
+
+function fmt(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso || '—';
+  return d.toLocaleString('en-US', { timeZone: 'America/Chicago', dateStyle: 'medium', timeStyle: 'short' });
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Glasshouse — Intake Queue</title>
+    <style>
+      :root {
+        --bg: #0a0a0c; --card: #1a1c1f; --border: #2c3038;
+        --amber: #e8a420; --teal: #2e8b6e; --paper: #e8dec8; --dim: #8a8f98;
+        --red: #c23b22;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--paper);
+        font: 15px/1.5 'IBM Plex Sans', system-ui, sans-serif; padding: 24px 16px 64px; }
+      .wrap { max-width: 960px; margin: 0 auto; }
+      h1 { font-size: 1.4rem; margin: 0 0 2px; letter-spacing: .5px; }
+      .sub { color: var(--dim); font-size: .85rem; margin: 0 0 20px; }
+      .count { color: var(--amber); font-weight: 600; }
+      .banner { border: 1px solid var(--border); border-left: 3px solid var(--teal);
+        background: var(--card); padding: 10px 14px; border-radius: 6px; margin-bottom: 20px;
+        font-size: .85rem; color: var(--dim); }
+      .banner.warn { border-left-color: var(--red); }
+      .empty { border: 1px dashed var(--border); border-radius: 8px; padding: 40px;
+        text-align: center; color: var(--dim); }
+      .lead { background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+        margin-bottom: 14px; overflow: hidden; }
+      .lead.test { opacity: .6; border-style: dashed; }
+      .lead > summary { list-style: none; cursor: pointer; padding: 14px 16px;
+        display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline; }
+      .lead > summary::-webkit-details-marker { display: none; }
+      .who { font-weight: 600; font-size: 1.02rem; }
+      .who .org { color: var(--dim); font-weight: 400; }
+      .when { color: var(--dim); font-size: .8rem; text-align: right; white-space: nowrap; }
+      .meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 14px;
+        font-size: .82rem; color: var(--dim); margin-top: 4px; }
+      .meta b { color: var(--paper); font-weight: 500; }
+      .tag { display: inline-block; background: #0f1113; border: 1px solid var(--border);
+        border-radius: 4px; padding: 1px 8px; color: var(--amber); font-size: .75rem; }
+      .body { border-top: 1px solid var(--border); padding: 14px 16px; }
+      .kv { display: grid; grid-template-columns: 160px 1fr; gap: 6px 12px; font-size: .86rem; }
+      .kv dt { color: var(--dim); }
+      .kv dd { margin: 0; color: var(--paper); }
+      pre { background: #0f1113; border: 1px solid var(--border); border-radius: 6px;
+        padding: 12px; overflow-x: auto; font: 12px/1.5 'IBM Plex Mono', monospace;
+        color: var(--dim); margin: 12px 0 0; }
+      a { color: var(--teal); }
+      .ref { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; color: var(--dim); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Glasshouse — Intake Queue</h1>
+      <p class="sub">Private view of <code>/work/intake</code> submissions · <span class="count">{leads.length}</span> total · times in CT</p>
+
+      {!storageOk && (
+        <div class="banner warn">MISSION_INTAKE storage binding is not available to this page. Nothing can be read.</div>
+      )}
+      {readError && (
+        <div class="banner warn">Read error: {readError}</div>
+      )}
+      <div class="banner">
+        This page shows leads but does not notify you. The push layer (email + Notion row on submit) is separate — see the intake audit.
+      </div>
+
+      {storageOk && leads.length === 0 && (
+        <div class="empty">No submissions yet.</div>
+      )}
+
+      {leads.map((lead) => {
+        const org = pick(lead.brief, 'organization');
+        const contact = pick(lead.brief, 'contact', 'name');
+        const email = pick(lead.brief, 'email');
+        const track = pick(lead.brief, 'track');
+        const budget = pick(lead.brief, 'budget', 'scope.budget');
+        const timeline = pick(lead.brief, 'timeline', 'scope.timeline');
+        const ref = pick(lead.brief, 'reference');
+        const isTest = /wiring.?test|internal.?test|safe to delete/i.test(JSON.stringify(lead.brief));
+        return (
+          <details class={`lead${isTest ? ' test' : ''}`}>
+            <summary>
+              <span class="who">{contact}{org !== '—' && <span class="org"> · {org}</span>}{isTest && <span class="org"> (test)</span>}</span>
+              <span class="when">{fmt(lead.receivedAt)}<br />{ago(lead.receivedAt)}</span>
+              <span class="meta">
+                {track !== '—' && <span class="tag">{track}</span>}
+                {email !== '—' && <span><b>{email}</b></span>}
+                {budget !== '—' && <span>budget: <b>{budget}</b></span>}
+                {timeline !== '—' && <span>timeline: <b>{timeline}</b></span>}
+                {ref !== '—' && <span class="ref">{ref}</span>}
+              </span>
+            </summary>
+            <div class="body">
+              <pre>{JSON.stringify(lead.brief, null, 2)}</pre>
+            </div>
+          </details>
+        );
+      })}
+    </div>
+  </body>
+</html>
