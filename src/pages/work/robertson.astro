@@ -1,0 +1,758 @@
+---
+export const prerender = false;
+
+/* Private, blinded proposal page prepared for Robertson Real Estate (Jay
+ * Robertson). Reached only with the unguessable ?k= key below — an obscurity
+ * soft-gate, appropriate for a client proposal (not credentials). noindex.
+ * Standalone (no public Glasshouse nav) so the page reads as prepared-for-Jay,
+ * but built on the Glasshouse design language so it is unmistakably the studio.
+ * The AI Front Desk chatbot lower on the page is a MOCK — scripted, illustrative
+ * responses, no live model — clearly labelled as a demonstration. */
+
+const VIEW_KEY = 'a50808aaacc9d30e1b2bc01e01396b6a';
+if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
+  return new Response('Not found', { status: 404 });
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>A Growth Partnership — Prepared for Robertson Real Estate</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f3ee;
+        --bg-warm: #efe9dd;
+        --panel: #ffffff;
+        --glass: rgba(255, 255, 255, 0.72);
+        --text: #1a1d1a;
+        --muted: #555a52;
+        --faint: #8a8f88;
+        --blue: #3d7fbd;
+        --brass: #c99d4c;
+        --brass-deep: #a67c2e;
+        --walnut: #8b6547;
+        --green: #7f9268;
+        --green-soft: #9cad8d;
+        --silver: #9ba8b2;
+        --border: rgba(0, 0, 0, 0.10);
+        --border-soft: rgba(0, 0, 0, 0.06);
+        --shadow: 0 2px 20px rgba(40, 32, 20, 0.07);
+        --shadow-lg: 0 10px 44px rgba(40, 32, 20, 0.12);
+        --radius: 18px;
+        --radius-sm: 12px;
+        --max: 900px;
+        --sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+        --serif: 'Fraunces', ui-serif, Georgia, serif;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 1.02rem;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+      /* Brand ribbon */
+      .ribbon {
+        display: flex; align-items: center; gap: 10px;
+        padding: 14px 24px; border-bottom: 1px solid var(--border-soft);
+        background: #f7f5f0;
+        position: sticky; top: 0; z-index: 50;
+      }
+      .ribbon-mark {
+        background: var(--brass); color: #fff; font-family: var(--sans);
+        font-size: .62rem; font-weight: 700; letter-spacing: .12em;
+        padding: .38em .58em; line-height: 1; border-radius: 4px;
+      }
+      .ribbon-name { font-size: .78rem; font-weight: 500; letter-spacing: .03em; color: var(--muted); }
+      .ribbon-tag { margin-left: auto; font-size: .68rem; color: var(--faint); letter-spacing: .04em; }
+
+      /* Hero */
+      .hero { padding: 88px 0 64px; text-align: left; }
+      .eyebrow {
+        font-size: .72rem; font-weight: 600; letter-spacing: .16em;
+        text-transform: uppercase; color: var(--brass-deep); margin-bottom: 22px;
+      }
+      .hero h1 {
+        font-family: var(--serif); font-weight: 500; font-size: clamp(2.4rem, 6vw, 4rem);
+        line-height: 1.04; letter-spacing: -0.015em; color: var(--text); margin-bottom: 22px;
+      }
+      .hero .lede { font-size: 1.22rem; line-height: 1.55; color: var(--muted); max-width: 40ch; }
+      .hero-meta {
+        margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--border);
+        font-size: .82rem; color: var(--faint); display: flex; flex-wrap: wrap; gap: 6px 18px;
+      }
+      .hero-meta b { color: var(--muted); font-weight: 600; }
+
+      /* Sections */
+      section { padding: 40px 0; }
+      .sec-eyebrow {
+        font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+        color: var(--brass-deep); margin-bottom: 12px;
+      }
+      h2 {
+        font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+        line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 20px;
+      }
+      h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.005em; }
+      p { margin-bottom: 16px; color: var(--text); }
+      p.muted { color: var(--muted); }
+      .lead-p { font-size: 1.12rem; color: var(--muted); }
+      strong { font-weight: 600; }
+      .divider { height: 1px; background: var(--border); border: 0; margin: 8px 0; }
+
+      /* Note card */
+      .note {
+        background: #fffdf9; border: 1px solid var(--border);
+        border-left: 3px solid var(--walnut); border-radius: var(--radius);
+        padding: 30px 32px; box-shadow: var(--shadow);
+      }
+      .note p:last-child { margin-bottom: 0; }
+      .signoff { font-family: var(--serif); font-size: 1.15rem; color: var(--walnut); margin-top: 4px; }
+
+      /* Summary panel */
+      .summary {
+        background: var(--bg-warm); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 30px 32px;
+      }
+      .summary h2 { font-size: 1.5rem; margin-bottom: 14px; }
+
+      /* Generic cards */
+      .cards { display: grid; gap: 16px; }
+      .cards.two { grid-template-columns: repeat(2, 1fr); }
+      .cards.three { grid-template-columns: repeat(3, 1fr); }
+      .card {
+        background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 20px 22px; box-shadow: var(--shadow); position: relative;
+      }
+      .card h3 { color: var(--text); }
+      .card p { font-size: .95rem; color: var(--muted); margin-bottom: 0; }
+
+      /* Foundation strip */
+      .strengths { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+      .strength {
+        display: flex; gap: 12px; align-items: flex-start;
+        padding: 14px 16px; background: var(--panel); border: 1px solid var(--border-soft);
+        border-radius: var(--radius-sm);
+      }
+      .strength .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-top: 7px; }
+      .strength b { font-weight: 600; font-size: .95rem; }
+      .strength span { display: block; font-size: .85rem; color: var(--muted); }
+
+      /* Levers list */
+      .levers { display: grid; gap: 12px; counter-reset: lever; }
+      .lever {
+        display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start;
+        background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 20px 22px; box-shadow: var(--shadow);
+      }
+      .lever-num {
+        font-family: var(--serif); font-size: 1.5rem; color: var(--brass); font-weight: 600;
+        line-height: 1; min-width: 1.4ch;
+      }
+      .lever h3 { margin-bottom: 6px; }
+      .lever .cost { font-size: .9rem; color: var(--muted); margin-bottom: 8px; }
+      .lever .better { font-size: .92rem; color: var(--text); }
+      .lever .better b { color: var(--green); font-weight: 600; }
+
+      /* Spine (Capture/Convert/Compound) */
+      .spine { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .stage {
+        background: var(--panel); border: 1px solid var(--border); border-top: 3px solid var(--brass);
+        border-radius: var(--radius-sm); padding: 22px; box-shadow: var(--shadow);
+      }
+      .stage .label { font-family: var(--serif); font-size: 1.3rem; color: var(--text); margin-bottom: 8px; }
+      .stage p { font-size: .92rem; color: var(--muted); margin-bottom: 10px; }
+      .stage .plain { font-style: italic; color: var(--brass-deep); font-size: .9rem; }
+
+      /* Chatbot demo */
+      .demo-frame {
+        background: linear-gradient(160deg, #2a2b28 0%, #1d1e1b 100%);
+        border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-lg);
+      }
+      .demo-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+      .demo-head .t { color: #f2ede1; }
+      .demo-head .t b { display: block; font-size: 1rem; }
+      .demo-head .t span { font-size: .78rem; color: #a9a89f; }
+      .demo-badge {
+        margin-left: auto; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+        color: #d8cba8; border: 1px solid rgba(216,203,168,.4); border-radius: 999px; padding: 4px 10px;
+      }
+      .chat {
+        background: #faf8f3; border-radius: 14px; overflow: hidden;
+        display: flex; flex-direction: column; height: 460px; max-height: 70vh;
+      }
+      .chat-bar {
+        display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+        background: #fff; border-bottom: 1px solid var(--border);
+      }
+      .chat-av {
+        width: 34px; height: 34px; border-radius: 50%; flex: none;
+        background: var(--walnut); color: #fff; display: grid; place-items: center;
+        font-weight: 700; font-size: .8rem;
+      }
+      .chat-bar .who b { font-size: .88rem; display: block; line-height: 1.2; }
+      .chat-bar .who span { font-size: .72rem; color: var(--green); }
+      .chat-bar .who span::before { content: '● '; }
+      .chat-log { flex: 1; overflow-y: auto; padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; }
+      .msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: .92rem; line-height: 1.5; }
+      .msg.bot { align-self: flex-start; background: #eef0ea; color: var(--text); border-bottom-left-radius: 4px; }
+      .msg.user { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 4px; }
+      .typing { align-self: flex-start; background: #eef0ea; border-radius: 14px; padding: 12px 16px; display: inline-flex; gap: 4px; }
+      .typing i { width: 7px; height: 7px; border-radius: 50%; background: #9aa093; animation: blink 1.2s infinite; }
+      .typing i:nth-child(2) { animation-delay: .2s; }
+      .typing i:nth-child(3) { animation-delay: .4s; }
+      @keyframes blink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: 1; } }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 16px 4px; }
+      .chip {
+        font-family: var(--sans); font-size: .8rem; color: var(--blue); background: #fff;
+        border: 1px solid var(--blue); border-radius: 999px; padding: 6px 12px; cursor: pointer;
+        transition: all .15s ease;
+      }
+      .chip:hover { background: var(--blue); color: #fff; }
+      .chat-input { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); background: #fff; }
+      .chat-input input {
+        flex: 1; border: 1px solid var(--border); border-radius: 999px; padding: 10px 16px;
+        font-family: var(--sans); font-size: .9rem; outline: none;
+      }
+      .chat-input input:focus { border-color: var(--blue); }
+      .chat-input button {
+        border: 0; background: var(--walnut); color: #fff; border-radius: 999px;
+        padding: 0 18px; font-family: var(--sans); font-weight: 600; font-size: .88rem; cursor: pointer;
+      }
+      .chat-input button:hover { background: #74543b; }
+      .demo-caption { color: #b8b6ac; font-size: .8rem; margin-top: 16px; text-align: center; }
+
+      /* Module list */
+      .modules { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .module {
+        background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 20px 22px; box-shadow: var(--shadow);
+      }
+      .module.star { border-color: var(--brass); border-width: 1.5px; background: linear-gradient(180deg,#fffdf8,#fff); }
+      .module .mtitle { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+      .module .mtitle b { font-size: 1rem; font-weight: 600; }
+      .module .starmark { font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--brass-deep); border: 1px solid var(--brass); border-radius: 999px; padding: 2px 8px; }
+      .module p { font-size: .92rem; color: var(--muted); margin-bottom: 0; }
+
+      /* Highlight (farm & land) */
+      .highlight {
+        background: linear-gradient(150deg, #3a4232 0%, #2b3126 100%);
+        color: #eef0e6; border-radius: var(--radius); padding: 40px 36px; box-shadow: var(--shadow-lg);
+      }
+      .highlight .sec-eyebrow { color: var(--green-soft); }
+      .highlight h2 { color: #fff; }
+      .highlight p { color: #d3d8c8; }
+      .highlight p:last-child { margin-bottom: 0; }
+
+      /* Phases */
+      .phases { display: grid; gap: 12px; }
+      .phase {
+        display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start;
+        background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 22px 24px; box-shadow: var(--shadow);
+      }
+      .phase .pn { font-family: var(--serif); font-size: 1.4rem; color: var(--brass); font-weight: 600; min-width: 1.4ch; }
+      .phase .why { font-size: .88rem; color: var(--faint); margin-top: 6px; margin-bottom: 0; }
+      .partner {
+        margin-top: 16px; background: var(--bg-warm); border: 1px solid var(--border);
+        border-left: 3px solid var(--green); border-radius: var(--radius-sm); padding: 22px 24px;
+      }
+      .partner p:last-child { margin-bottom: 0; }
+
+      /* Investment */
+      .pilot {
+        background: linear-gradient(150deg,#fffaf0,#fff); border: 1.5px solid var(--brass);
+        border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow); margin-bottom: 18px;
+      }
+      .pilot .tag { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--brass-deep); font-weight: 600; }
+      .pilot h3 { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; margin: 8px 0 10px; }
+      .pilot .nums { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 10px; }
+      .pilot .nums div span { display: block; font-size: .74rem; color: var(--faint); text-transform: uppercase; letter-spacing: .08em; }
+      .pilot .nums div b { font-size: 1.15rem; font-weight: 600; }
+      .tiers { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 18px; }
+      .tier {
+        background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column;
+      }
+      .tier.rec { border-color: var(--green); border-width: 1.5px; }
+      .tier .rec-badge { align-self: flex-start; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: #fff; background: var(--green); border-radius: 999px; padding: 3px 9px; margin-bottom: 10px; }
+      .tier .tname { font-weight: 600; font-size: 1.05rem; }
+      .tier .price { font-family: var(--serif); font-size: 1.7rem; color: var(--text); margin: 4px 0 12px; }
+      .tier .price small { font-family: var(--sans); font-size: .8rem; color: var(--faint); font-weight: 400; }
+      .tier p { font-size: .88rem; color: var(--muted); margin-bottom: 0; }
+      .bundle {
+        background: var(--bg-warm); border: 1px solid var(--border); border-radius: var(--radius);
+        padding: 26px 28px;
+      }
+      .bundle .price { font-family: var(--serif); font-size: 1.9rem; color: var(--brass-deep); }
+      .compare { font-size: .86rem; color: var(--faint); font-style: italic; margin-top: 14px; }
+
+      /* Close */
+      .close-block { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px; box-shadow: var(--shadow); }
+      .close-block h2 { margin-bottom: 16px; }
+
+      footer { padding: 40px 0 64px; border-top: 1px solid var(--border); margin-top: 40px; }
+      .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: .8rem; color: var(--faint); }
+      .foot b { color: var(--muted); font-weight: 600; }
+
+      @media (max-width: 720px) {
+        .cards.two, .cards.three, .strengths, .spine, .modules, .tiers { grid-template-columns: 1fr; }
+        .hero { padding: 56px 0 40px; }
+        .lever, .phase { grid-template-columns: 1fr; gap: 6px; }
+        .lever-num, .phase .pn { font-size: 1.1rem; }
+      }
+
+      @media print {
+        body { background: #fff; font-size: 11pt; }
+        .ribbon { position: static; background: #fff; }
+        .demo-frame { background: #fff; border: 1px solid var(--border); box-shadow: none; }
+        .demo-frame .demo-head .t, .demo-badge { color: var(--text) !important; }
+        .chat, .chat-log, .chips, .chat-input { display: none !important; }
+        .print-only { display: block !important; }
+        .highlight { background: #fff; color: var(--text); border: 1px solid var(--border); box-shadow: none; }
+        .highlight h2, .highlight p, .highlight .sec-eyebrow { color: var(--text) !important; }
+        section { padding: 16px 0; break-inside: avoid; }
+        .card, .lever, .module, .tier, .phase, .stage { box-shadow: none; break-inside: avoid; }
+        a { color: var(--text); text-decoration: none; }
+      }
+      .print-only { display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">
+      <span class="ribbon-mark">LDI</span>
+      <span class="ribbon-name">Lithium Dreams · Glasshouse Systems Studio</span>
+      <span class="ribbon-tag">Private proposal</span>
+    </div>
+
+    <div class="wrap">
+
+      <!-- HERO -->
+      <header class="hero">
+        <div class="eyebrow">Prepared for Jay Robertson · Robertson Real Estate</div>
+        <h1>A growth system, built around your business.</h1>
+        <p class="lede">You've built something real. This is about making it work harder for you — on your terms.</p>
+        <div class="hero-meta">
+          <span>Prepared by <b>John Burroughs</b></span>
+          <span>Lithium Dreams · Glasshouse</span>
+          <span>2026-09-14</span>
+        </div>
+      </header>
+
+      <!-- PERSONAL NOTE -->
+      <section>
+        <div class="note">
+          <p>Jay — it was good running into you. I've spent a little time since with your website and your business, and I put this together so we'd have something concrete to talk through when we meet.</p>
+          <p>First, the important part: <strong>you've built something real.</strong> Robertson Real Estate has a modern site, a genuine MLS search, a strong team, and a niche — farms and land — that most agencies in this part of the state don't take seriously. This isn't about fixing anything that's broken. It's about taking a good foundation and making it work harder: responding to every lead the moment it comes in, being the obvious online authority on Southeast Iowa farm and land, and giving your four agents their time back.</p>
+          <p>That's the kind of work I do. I take a business's own strengths and its own goals, and I build the systems and technology around <em>them</em> — not a product I'm trying to sell you. This capability is the product of years of building and refining real operational systems; what follows is that work, pointed at Robertson Real Estate.</p>
+          <p class="signoff">Here's how I see it. — John</p>
+        </div>
+      </section>
+
+      <!-- EXECUTIVE SUMMARY -->
+      <section>
+        <div class="summary">
+          <div class="sec-eyebrow">In Short</div>
+          <h2>The opportunity is conversion, not repair.</h2>
+          <p class="muted">Robertson Real Estate runs a capable, modern website with full MLS search on a solid platform. The opportunity isn't technical repair — it's turning interest you're <em>already getting</em> into clients you're not yet closing.</p>
+          <p class="muted">Three things move the needle most: <strong>(1)</strong> responding to every website lead instantly, day or night; <strong>(2)</strong> turning your farm-and-land expertise into a visible online authority that pulls in the buyers and sellers competitors ignore; and <strong>(3)</strong> taking the repetitive marketing and paperwork off your team's plate so they can sell.</p>
+          <p class="muted" style="margin-bottom:0;">It's a partnership, not a hand-off. A monthly plan keeps the tools tuned and the content coming — and when something isn't working, you call me. You're never left spinning your wheels.</p>
+        </div>
+      </section>
+
+      <!-- WHAT I SEE -->
+      <section>
+        <div class="sec-eyebrow">What I See in Your Business</div>
+        <h2>A strong foundation — with room to work harder.</h2>
+        <p class="lead-p">Credit where it's due. You already have the pieces most agencies struggle to get right:</p>
+        <div class="strengths">
+          <div class="strength"><span class="dot"></span><div><b>A modern, mobile-friendly site with real MLS search</b><span>Buyers can find and browse listings — the hard part is done.</span></div></div>
+          <div class="strength"><span class="dot"></span><div><b>Full lead capture — Dream Home Finder, market analysis, buyer accounts</b><span>The plumbing to capture interest is in place.</span></div></div>
+          <div class="strength"><span class="dot"></span><div><b>A real team of four across a wide SE Iowa footprint</b><span>The capacity to grow into more volume.</span></div></div>
+          <div class="strength"><span class="dot"></span><div><b>Farms · Residential · Commercial — a genuine niche</b><span>The farm-and-land angle is your single biggest differentiator.</span></div></div>
+        </div>
+
+        <p class="lead-p" style="margin-top:34px;">And here's where the growth is — each one a place where a little technology turns interest into clients:</p>
+        <div class="levers">
+          <div class="lever"><div class="lever-num">1</div><div>
+            <h3>Respond to every lead in minutes, not hours</h3>
+            <p class="cost">A form fills out at 9pm and waits until morning. In real estate, whoever answers first usually wins the client.</p>
+            <p class="better">Better: every inquiry gets an instant, personal reply and lands with the right agent automatically — <b>24/7</b>.</p>
+          </div></div>
+          <div class="lever"><div class="lever-num">2</div><div>
+            <h3>A helpful assistant on the site, around the clock</h3>
+            <p class="cost">After-hours visitors and "quick question" browsers leave with no touchpoint.</p>
+            <p class="better">Better: a friendly assistant answers common questions, helps people find listings, and <b>quietly captures who they are</b>.</p>
+          </div></div>
+          <div class="lever"><div class="lever-num">3</div><div>
+            <h3>Own the farm &amp; land conversation online</h3>
+            <p class="cost">Your best differentiator is treated as a checkbox, not a headline.</p>
+            <p class="better">Better: you become <b>the</b> name people find when they search farm and land in Southeast Iowa.</p>
+          </div></div>
+          <div class="lever"><div class="lever-num">4</div><div>
+            <h3>Fresh, local, trustworthy content</h3>
+            <p class="cost">A stale news feed and quiet blog read as neglected — and hurt your search ranking.</p>
+            <p class="better">Better: regular, useful, local content that <b>builds trust and pulls in search traffic</b> — written for you, approved by you.</p>
+          </div></div>
+          <div class="lever"><div class="lever-num">5</div><div>
+            <h3>Give your agents their time back</h3>
+            <p class="cost">Listing write-ups, social posts, just-listed/just-sold, newsletters — all done by hand, times four agents.</p>
+            <p class="better">Better: routine marketing <b>produces itself</b> from the listing details; your team reviews and approves instead of starting from scratch.</p>
+          </div></div>
+          <div class="lever"><div class="lever-num">6</div><div>
+            <h3>Capture more sellers, not just buyers</h3>
+            <p class="cost">The site is built for buyers browsing; sellers are the higher-value side.</p>
+            <p class="better">Better: a "what's my property worth" experience that turns curious owners into <b>listing appointments</b>.</p>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- THE IDEA -->
+      <section>
+        <div class="sec-eyebrow">The Idea</div>
+        <h2>A system, not a gadget.</h2>
+        <p class="lead-p">The point isn't to bolt on a chatbot and call it done. It's one simple, connected spine that every lead travels along:</p>
+        <div class="spine">
+          <div class="stage">
+            <div class="label">Capture</div>
+            <p>An assistant on your site greets every visitor, answers questions, and captures interest.</p>
+            <div class="plain">Never miss an inquiry.</div>
+          </div>
+          <div class="stage">
+            <div class="label">Convert</div>
+            <p>That lead gets an instant reply, a quick qualification, and goes to the right agent — plus a seller-side path for owners weighing a sale.</p>
+            <div class="plain">Be the first to respond, every time.</div>
+          </div>
+          <div class="stage">
+            <div class="label">Compound</div>
+            <p>Your listings market themselves, and local + farm/land content builds authority that grows your traffic month over month.</p>
+            <div class="plain">The system gets stronger the longer it runs.</div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:18px;">Behind it, one simple dashboard shows you every lead, where it came from, and where it stands — the same kind of command center I run my own operation from.</p>
+      </section>
+
+      <!-- DEMO -->
+      <section>
+        <div class="sec-eyebrow">See It in Action</div>
+        <h2>Your AI Front Desk — try it.</h2>
+        <p class="lead-p">This is a working taste of the "Capture" piece: a 24/7 assistant on your website. Ask it something a buyer or seller might, or tap a question below.</p>
+        <div class="demo-frame">
+          <div class="demo-head">
+            <div class="t"><b>Robertson Real Estate — Front Desk</b><span>A demonstration of the AI assistant</span></div>
+            <span class="demo-badge">Demo</span>
+          </div>
+          <div class="chat" id="chat">
+            <div class="chat-bar">
+              <div class="chat-av">R</div>
+              <div class="who"><b>Robertson Real Estate</b><span>Online now</span></div>
+            </div>
+            <div class="chat-log" id="chatLog"></div>
+            <div class="chips" id="chatChips"></div>
+            <form class="chat-input" id="chatForm" autocomplete="off">
+              <input id="chatInput" type="text" placeholder="Type your question…" aria-label="Message" />
+              <button type="submit">Send</button>
+            </form>
+          </div>
+          <p class="print-only" style="color:var(--muted);text-align:center;margin:16px 0 0;">[ Live AI Front Desk demonstration — visit the online proposal to try it. It answers buyer and seller questions 24/7, surfaces listings conversationally, highlights your farm &amp; land expertise, and captures each visitor's name and number for your team. ]</p>
+          <p class="demo-caption">Illustrative responses for demonstration. Your live version connects to your real listings, your team, and your CRM.</p>
+        </div>
+      </section>
+
+      <!-- MODULES -->
+      <section>
+        <div class="sec-eyebrow">What We Could Build</div>
+        <h2>Pick what fits.</h2>
+        <p class="lead-p">À la carte, on purpose. You don't have to take all of it, and not all at once. Start with what would help you most.</p>
+        <div class="modules">
+          <div class="module"><div class="mtitle"><b>AI Front Desk</b></div><p>A 24/7 assistant on your site — answers buyer and seller questions, helps people find listings, captures name and intent, hands off to the right agent.</p></div>
+          <div class="module"><div class="mtitle"><b>Speed-to-Lead</b></div><p>Every new lead gets an instant, personalized reply and is routed automatically to Jay, Greyson, Brad, or Eva — with optional friendly follow-ups.</p></div>
+          <div class="module"><div class="mtitle"><b>Listing Content Studio</b></div><p>Feed in the address, photos, and facts → out comes a polished listing description, "just listed / just sold / open house" posts and graphics, and a property flyer.</p></div>
+          <div class="module"><div class="mtitle"><b>Local Authority Engine</b></div><p>Neighborhood and town guides, monthly county market updates, a revived blog, and a fixed, current news feed — written for you, approved by you.</p></div>
+          <div class="module star"><div class="mtitle"><b>Farm &amp; Land Intelligence</b><span class="starmark">Your edge</span></div><p>Farmland buying/selling guides, land-value explainers, SE-Iowa commercial and ag intel, and a "sell your farm or land" funnel that positions Robertson as the regional expert.</p></div>
+          <div class="module"><div class="mtitle"><b>Seller Magnet</b></div><p>Branded, easy-to-read home and farm value reports, and a "what's it worth" experience that captures seller leads — the higher-value side of the business.</p></div>
+          <div class="module" style="grid-column:1/-1;"><div class="mtitle"><b>Website Polish</b></div><p>Rewriting the stock website copy in your voice, an authentic About/story, refreshed testimonials, and tidying small dated details.</p></div>
+        </div>
+      </section>
+
+      <!-- FARM & LAND HIGHLIGHT -->
+      <section>
+        <div class="highlight">
+          <div class="sec-eyebrow">The Angle I Keep Coming Back To</div>
+          <h2>Own farm &amp; land in Southeast Iowa.</h2>
+          <p>Every agency in the area sells houses. Far fewer can speak credibly about ag land — valuation, tillable acres, CSR2, farm sales, 1031 exchanges, the things a landowner actually cares about. You already do this. Almost none of it shows up online, where the search traffic and the out-of-area buyers are.</p>
+          <p>If we did nothing else, making Robertson the obvious online authority on Southeast Iowa farm and land would likely be the highest-return move on this whole page. It's a moat you already own and just haven't planted a flag on yet.</p>
+        </div>
+      </section>
+
+      <!-- HOW WE'D WORK -->
+      <section>
+        <div class="sec-eyebrow">How We'd Work Together</div>
+        <h2>Low-risk, and proven before it scales.</h2>
+        <p class="lead-p">I don't believe in turning on everything at once and hoping.</p>
+        <div class="phases">
+          <div class="phase"><div class="pn">1</div><div>
+            <h3>Talk it through</h3>
+            <p class="muted" style="margin-bottom:0;">We sit down, I learn how leads actually flow through your shop today, and we pick the one or two things worth doing first.</p>
+            <p class="why">Free. Relationship first — I want to build the right thing, not the biggest thing.</p>
+          </div></div>
+          <div class="phase"><div class="pn">2</div><div>
+            <h3>A small, real pilot</h3>
+            <p class="muted" style="margin-bottom:0;">We stand up the first piece — likely the Front Desk plus instant lead response — and run it with one of your agents.</p>
+            <p class="why">You see it working on real leads before the whole team commits.</p>
+          </div></div>
+          <div class="phase"><div class="pn">3</div><div>
+            <h3>Grow what works</h3>
+            <p class="muted" style="margin-bottom:0;">Once the pilot proves out, we roll it to the full team and add the pieces that compound — content, the farm/land authority, the seller side.</p>
+            <p class="why">You're only ever expanding things you've already seen work.</p>
+          </div></div>
+        </div>
+        <div class="partner">
+          <p><strong>And it's a partnership, not a drop-off.</strong> Everything we build is covered by a simple monthly plan: the tools stay tuned, the content keeps coming on a steady cadence, and — this part matters — <strong>when you or your team get stuck or want a change, you reach out to me directly.</strong> No ticket queue, no waiting, no spinning your wheels on something technical.</p>
+          <p style="margin-bottom:0;">That's the whole point of working with a person instead of a piece of software.</p>
+        </div>
+      </section>
+
+      <!-- INVESTMENT -->
+      <section>
+        <div class="sec-eyebrow">Investment</div>
+        <h2>Two simple parts.</h2>
+        <p class="lead-p">A one-time <strong>setup</strong> for each piece we build, and a <strong>monthly plan</strong> that keeps it running and keeps me on call. Start with what helps most and add as you see the return — no big up-front commitment.</p>
+
+        <div class="pilot">
+          <div class="tag">Start here — a low-risk pilot</div>
+          <h3>AI Front Desk + instant lead response</h3>
+          <p class="muted" style="margin-bottom:0;">Run with one of your agents first, so you see it working on real leads before the whole team commits.</p>
+          <div class="nums">
+            <div><span>One-time setup</span><b>$2,500 – 3,500</b></div>
+            <div><span>Monthly</span><b>from $300</b> <span style="text-transform:none;letter-spacing:0;">(Essentials plan)</span></div>
+          </div>
+        </div>
+
+        <div class="tiers">
+          <div class="tier">
+            <div class="tname">Essentials</div>
+            <div class="price">$300<small>/mo &amp; up</small></div>
+            <p>Everything stays running and updated, small tweaks as needed, a monthly check-in — and you can reach me directly whenever you or your team get stuck.</p>
+          </div>
+          <div class="tier rec">
+            <div class="rec-badge">Recommended</div>
+            <div class="tname">Growth</div>
+            <div class="price">$650<small>/mo &amp; up</small></div>
+            <p>Essentials, plus a steady stream of fresh content, monthly reporting on your leads, and ongoing tuning to keep improving results.</p>
+          </div>
+          <div class="tier">
+            <div class="tname">Partner</div>
+            <div class="price">$1,200<small>/mo &amp; up</small></div>
+            <p>Growth, plus full content and search work, the farm &amp; land authority engine running in full, and quarterly strategy sessions.</p>
+          </div>
+        </div>
+
+        <div class="bundle">
+          <h3>The full Growth System, bundled</h3>
+          <p class="muted">If you'd rather do the whole system than piece it together, I'd bundle the setup at a <strong>founder's rate of <span class="price">$5,000 – 7,000</span></strong> — well under what the individual pieces would total, and a fraction of the $20,000-plus it would cost to assemble this from separate vendors.</p>
+          <p class="muted" style="margin-bottom:0;"><strong>Why the founder's rate:</strong> you'd be my first client here, and we already know and trust each other. I'd rather prove the return than maximize an invoice. It's genuine — offered for your honest feedback as we build and, if you're happy, your okay to mention Robertson as an example of my work. And we measure everything — response times, leads captured, conversions — so you see exactly what you're getting.</p>
+          <p class="compare">For comparison: the lead tools built for realtors (Ylopo, CINC and the like) run $400–900 a month and lock you into their software with no one to call. This is a system built around your business, with a person attached.</p>
+        </div>
+      </section>
+
+      <!-- CLOSE -->
+      <section>
+        <div class="close-block">
+          <div class="sec-eyebrow">A Starting Point</div>
+          <h2>This is the opening of a conversation.</h2>
+          <p class="muted">Jay, everything above is my read from the outside. You know your business, your customers, and this market far better than I do — so treat this as a starting point, not a pitch to accept or decline.</p>
+          <p class="muted">When we meet, the most useful thing you can tell me is what's actually been nagging at you — where you feel you're losing time, or losing clients, or wishing the website did more. We build from <em>there</em>. If a piece here doesn't fit how you work, we drop it. If there's something not here that you've wanted, that's exactly what I want to hear.</p>
+          <p class="muted" style="margin-bottom:0;">I'm genuinely excited about the possibility of working together. Let's find the version of this that's right for Robertson.</p>
+          <p class="signoff">— John</p>
+        </div>
+      </section>
+
+      <footer>
+        <div class="foot">
+          <span><b>John Burroughs</b></span>
+          <span>Lithium Dreams · Glasshouse Systems Studio</span>
+          <span>lithium-dreams.com/work</span>
+          <span>Prepared 2026-09-14 · for Robertson Real Estate</span>
+        </div>
+      </footer>
+
+    </div>
+
+    <script is:inline>
+      (function () {
+        var log = document.getElementById('chatLog');
+        var chipBar = document.getElementById('chatChips');
+        var form = document.getElementById('chatForm');
+        var input = document.getElementById('chatInput');
+        var awaitingContact = false;
+
+        function scroll() { log.scrollTop = log.scrollHeight; }
+
+        function addMsg(text, who) {
+          var d = document.createElement('div');
+          d.className = 'msg ' + who;
+          d.textContent = text;
+          log.appendChild(d);
+          scroll();
+        }
+
+        function setChips(items) {
+          chipBar.innerHTML = '';
+          (items || []).forEach(function (c) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'chip';
+            b.textContent = c.label;
+            b.addEventListener('click', function () { handleUser(c.label, c.key); });
+            chipBar.appendChild(b);
+          });
+        }
+
+        function typing(done) {
+          var t = document.createElement('div');
+          t.className = 'typing';
+          t.innerHTML = '<i></i><i></i><i></i>';
+          log.appendChild(t);
+          scroll();
+          setTimeout(function () { t.remove(); done(); }, 850);
+        }
+
+        function botSay(text, chips) {
+          typing(function () {
+            addMsg(text, 'bot');
+            if (chips !== undefined) setChips(chips);
+          });
+        }
+
+        var flows = {
+          farm: {
+            reply: "Absolutely — farm and land is one of our specialties. We handle tillable ground, pasture, recreational land, and full farm sales across Southeast Iowa, from Louisa and Muscatine counties out to Johnson and Washington. Are you looking to buy land, or thinking about selling a farm you own?",
+            chips: [
+              { label: "I want to sell my farm", key: "sell" },
+              { label: "Show me land for sale", key: "listings" },
+              { label: "What's my land worth?", key: "worth" }
+            ]
+          },
+          worth: {
+            reply: "Happy to help you find out. We put together a real market analysis from recent comparable sales in your area — not just an automated guess. If you share your property address, I can have one of our agents prepare a free, no-obligation valuation. Want me to set that up?",
+            chips: [
+              { label: "Yes, have someone reach out", key: "capture" },
+              { label: "Tell me about your team", key: "agent" }
+            ]
+          },
+          listings: {
+            reply: "You bet — we've got active listings across Columbus Junction and the surrounding counties, updated daily from the MLS. What are you looking for — a home, farm/land, or commercial? And any must-haves, like acreage or number of bedrooms?",
+            chips: [
+              { label: "Homes for sale", key: "homes" },
+              { label: "Acreage / land", key: "farm" },
+              { label: "Commercial property", key: "commercial" }
+            ]
+          },
+          homes: {
+            reply: "Great — I can pull homes that match what you're after and set you up with new-listing alerts so you're first to know. Tell me your price range and the area you're focused on, and I'll have an agent send over a curated list. Want me to have someone reach out?",
+            chips: [ { label: "Yes, have someone reach out", key: "capture" } ]
+          },
+          commercial: {
+            reply: "We handle commercial and investment property across the region too — retail, office, land for development, and more. Let me connect you with the right person on our team who knows the local commercial market. Shall I have them get in touch?",
+            chips: [ { label: "Yes, please", key: "capture" } ]
+          },
+          sell: {
+            reply: "That's exactly what we're here for. Whether it's a home, a farm, or a commercial building, we'll walk you through pricing, prep, and marketing — and selling farm or land is a particular strength of ours. Want me to have Jay Robertson give you a call to talk it through?",
+            chips: [ { label: "Yes, have Jay call me", key: "capture" } ]
+          },
+          agent: {
+            reply: "Of course. Our team is Jay Robertson, Greyson Conlon, Brad Akers, and Eva Garcia — someone's always glad to help. If you leave your name and the best number to reach you, I'll make sure the right person gets back to you quickly.",
+            chips: [ { label: "Okay — here's my info", key: "capture" } ]
+          },
+          hours: {
+            reply: "Our office is in Columbus Junction and you can reach the team at 319-728-8891. But this front desk is open around the clock — so ask me anything, day or night, and I'll help or pass you to the right person.",
+            chips: [
+              { label: "Show me listings", key: "listings" },
+              { label: "Talk to an agent", key: "agent" }
+            ]
+          },
+          capture: {
+            reply: "Wonderful. What's the best name and number (or email) to reach you? I'll pass it straight to the team.",
+            capture: true
+          }
+        };
+
+        function matchFree(text) {
+          var t = text.toLowerCase();
+          if (/(farm|land|acre|ag |ground|tillable|pasture|csr)/.test(t)) return 'farm';
+          if (/(worth|value|apprais|how much|market analysis|cma)/.test(t)) return 'worth';
+          if (/(sell|selling|list my|put.*market)/.test(t)) return 'sell';
+          if (/(listing|for sale|buy|browse|search|home|house)/.test(t)) return 'listings';
+          if (/(commercial|office|retail|investment)/.test(t)) return 'commercial';
+          if (/(agent|talk|call|speak|contact|reach|person|human)/.test(t)) return 'agent';
+          if (/(hour|open|phone|number|address|where|located)/.test(t)) return 'hours';
+          return null;
+        }
+
+        function handleUser(text, key) {
+          addMsg(text, 'user');
+          setChips([]);
+
+          if (awaitingContact) {
+            awaitingContact = false;
+            botSay("Perfect — I've passed that along to the team, and someone will reach out to you shortly. Is there anything else I can help with in the meantime?", [
+              { label: "Show me listings", key: "listings" },
+              { label: "Tell me about farm & land", key: "farm" }
+            ]);
+            return;
+          }
+
+          var flow = key ? flows[key] : null;
+          if (!flow) { var m = matchFree(text); flow = m ? flows[m] : null; }
+
+          if (!flow) {
+            botSay("Good question — let me get you to the right person on our team who can help with that. In the meantime, is there something specific you're looking for?", [
+              { label: "Farm & land", key: "farm" },
+              { label: "What's my home worth?", key: "worth" },
+              { label: "Talk to an agent", key: "agent" }
+            ]);
+            return;
+          }
+
+          if (flow.capture) { awaitingContact = true; botSay(flow.reply, []); return; }
+          botSay(flow.reply, flow.chips);
+        }
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var v = input.value.trim();
+          if (!v) return;
+          input.value = '';
+          handleUser(v, null);
+        });
+
+        // Opening
+        setTimeout(function () {
+          botSay("Hi there! Welcome to Robertson Real Estate. I can help you find listings, get a home or land valuation, or connect you with one of our agents. What brings you in today?", [
+            { label: "Do you handle farm & land?", key: "farm" },
+            { label: "What's my home worth?", key: "worth" },
+            { label: "Show me listings", key: "listings" },
+            { label: "I want to sell", key: "sell" }
+          ]);
+        }, 400);
+      })();
+    </script>
+  </body>
+</html>
