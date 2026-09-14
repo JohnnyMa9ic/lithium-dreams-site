@@ -325,6 +325,12 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       .vtable td.usual b { color: var(--text); font-weight: 600; }
       .vtable td.mine { color: var(--text); width: 37%; background: rgba(127, 146, 104, 0.07); }
       .vtable td.mine b { color: var(--green); font-weight: 600; }
+      .assurances { margin-top: 30px; padding: 26px 28px; background: var(--bg-warm); border-radius: var(--radius); }
+      .assurances > h3 { margin-bottom: 16px; }
+      .asrow { display: flex; gap: 12px; margin-bottom: 13px; font-size: .93rem; color: var(--muted); }
+      .asrow:last-child { margin-bottom: 0; }
+      .asrow b { color: var(--text); font-weight: 600; }
+      .ascheck { flex: none; width: 21px; height: 21px; border-radius: 50%; background: var(--green); color: #fff; font-size: .7rem; line-height: 21px; text-align: center; margin-top: 1px; }
 
       /* Close */
       .close-block { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px; box-shadow: var(--shadow); }
@@ -383,9 +389,10 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <!-- PERSONAL NOTE -->
       <section>
         <div class="note">
-          <p>Jay — it was good running into you. I've spent a little time since with your website and your business, and I put this together so we'd have something concrete to talk through when we meet.</p>
+          <p>Jay — good running into you at the gas station today. Hope the tire cooperated. It's always good to catch up and give each other a hard time. It also got me thinking on the drive home, so I spent a little time since with your website and your business and put this together — something concrete for us to talk through when we sit down.</p>
           <p>First, the important part: <strong>you've built something real.</strong> Robertson Real Estate has a modern site, a genuine MLS search, a strong team, and a niche — farms and land — that most agencies in this part of the state don't take seriously. This isn't about fixing anything that's broken. It's about taking a good foundation and making it work harder: responding to every lead the moment it comes in, being the obvious online authority on Southeast Iowa farm and land, and giving your four agents their time back.</p>
           <p>That's the kind of work I do. I take a business's own strengths and its own goals, and I build the systems and technology around <em>them</em> — not a product I'm trying to sell you. This capability is the product of years of building and refining real operational systems; what follows is that work, pointed at Robertson Real Estate.</p>
+          <p>And I'll be straight with you: I'd rather do this for someone local. You're building something in the same community I'm from — keeping that kind of work close to home, between two people who'll actually run into each other again, matters to me.</p>
           <p class="signoff">Here's how I see it. — John</p>
         </div>
       </section>
@@ -533,7 +540,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           <hr class="rule" />
           <p class="subhead">And there's a second kind of land you're sitting on.</p>
           <p>Iowa is one of the top trophy-whitetail states in the country — third in the nation for record-book bucks. The nonresident deer tag is a lottery most applicants <em>lose</em>, so serious hunters buy ground here to guarantee their access. That buyer isn't after tillable acres; they want timber, a creek bottom, a ridge, a gully — the recreational ground that's easy to treat as leftover. And there's real money in it: hunting and recreational parcels routinely sell at a premium over bare cropland.</p>
-          <p>National outfits like Whitetail Properties and Mossy Oak have built entire TV brands on this, and a regional land shop a county or two over is doing the same. Nobody has planted that flag in your backyard yet. Listing recreational ground the way that buyer searches for it — aerials, topography, timber and water, deer country — and putting real content behind it could open a whole buyer pool most local agencies never touch. <b style="color:#fff;">You know this ground far better than I do — I'd want your read on whether it's worth chasing.</b></p>
+          <p>This isn't a hunch — it's a proven playbook. <b style="color:#fff;">Whitetail Properties</b> sells land across 26 states and runs its own show on the Sportsman Channel; <b style="color:#fff;">Mossy Oak Properties</b> operates 100-plus franchised land offices. Closer to home, <b style="color:#fff;">LandGuys</b> — out of Ottumwa, about an hour from you — built its whole reputation on outdoor-TV and magazine features for recreational ground. And on <b style="color:#fff;">LandWatch</b>, the site these buyers actually search, there are tens of thousands of hunting-land listings nationwide. The demand and the playbook are established — nobody's run it in your backyard yet. Listing recreational ground the way that buyer searches — aerials, topography, timber and water, deer country — with real content behind it could open a buyer pool most local agencies never touch. <b style="color:#fff;">You know this ground far better than I do — I'd want your read on whether it's worth chasing.</b></p>
         </div>
       </section>
 
@@ -570,7 +577,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <section>
         <div class="sec-eyebrow">Investment</div>
         <h2>Two simple parts.</h2>
-        <p class="lead-p">A one-time <strong>setup</strong> for each piece we build, and a <strong>monthly plan</strong> that keeps it running and keeps me on call. Start with what helps most and add as you see the return — no big up-front commitment.</p>
+        <p class="lead-p">A one-time <strong>setup</strong> for each piece we build, and a <strong>monthly plan</strong> that keeps it running and keeps me on call. Start with whatever helps most and grow as it pays for itself — no big commitment up front, and the setup doesn't have to be a lump sum: we can spread it out or fold it into the monthly.</p>
 
         <div class="pilot">
           <div class="tag">Start here — a low-risk pilot</div>
@@ -602,9 +609,9 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         </div>
 
         <div class="bundle">
-          <h3>The full Growth System, bundled</h3>
-          <p class="muted">If you'd rather do the whole system than piece it together, I'd bundle the setup at a <strong>founder's rate of <span class="price">$5,000 – 7,000</span></strong> — well under what the individual pieces would total, and a fraction of the $20,000-plus it would cost to assemble this from separate vendors.</p>
-          <p class="muted" style="margin-bottom:0;"><strong>Why the founder's rate:</strong> you'd be my first client here, and we already know and trust each other. I'd rather prove the return than maximize an invoice. It's genuine — offered for your honest feedback as we build and, if you're happy, your okay to mention Robertson as an example of my work. And we measure everything — response times, leads captured, conversions — so you see exactly what you're getting.</p>
+          <h3>The full Growth System — if you ever want the whole thing</h3>
+          <p class="muted">Most people start with one piece and grow. But if you'd rather build the whole system at once, the founder's rate for everything is <strong><span class="price">$5,000 – 7,000</span></strong> — well under what the pieces total separately, and a fraction of the $20,000-plus it costs to assemble from separate vendors. <strong>And you'd never write a check that size.</strong> We can spread the setup across your first year — roughly $400–580 a month on top of your plan — or fold it in however works for your cash flow. I scope it to your budget, not the other way around.</p>
+          <p class="muted" style="margin-bottom:0;"><strong>Why the founder's rate:</strong> you'd be my first client here — and we're both local, we already know each other, and I'd rather prove this works for a neighbor than maximize an invoice. It's genuine: offered for your honest feedback as we build and, if you're happy, your okay to point to Robertson as an example of my work.</p>
         </div>
 
         <div class="vcompare">
@@ -640,6 +647,14 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
             </table>
           </div>
           <p class="compare">You know the commission on a typical sale here far better than I do — run it against these numbers. For most shops, <b style="font-style:normal;color:var(--green);">one or two extra closings a year covers the entire system</b>, and everything past that is upside. What the corporate tools rent you, this you own.</p>
+        </div>
+
+        <div class="assurances">
+          <h3>How this works, in plain English</h3>
+          <div class="asrow"><span class="ascheck">✓</span><div><b>We measure it.</b> Every month you get a simple scorecard — how fast leads got answered, how many came in, how many turned into real conversations. You see exactly what you're paying for, in numbers, not adjectives.</div></div>
+          <div class="asrow"><span class="ascheck">✓</span><div><b>No lock-in.</b> The monthly is month-to-month — cancel any time, no long contract. And what we build for you, you keep.</div></div>
+          <div class="asrow"><span class="ascheck">✓</span><div><b>Fair-housing safe.</b> Anything that talks to your leads is built to stay on the right side of fair-housing rules — no steering, no answering the questions an agent legally shouldn't. I handle that so you never have to worry about it.</div></div>
+          <div class="asrow"><span class="ascheck">✓</span><div><b>You own it.</b> It lives on your own site and in your own accounts — not rented from a platform that keeps everything the day you stop paying.</div></div>
         </div>
       </section>
 
