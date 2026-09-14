@@ -268,6 +268,8 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       .highlight h2 { color: #fff; }
       .highlight p { color: #d3d8c8; }
       .highlight p:last-child { margin-bottom: 0; }
+      .highlight .subhead { color: #fff; font-weight: 600; font-size: 1.06rem; margin: 30px 0 8px; }
+      .highlight .rule { height: 1px; background: rgba(255,255,255,0.14); margin: 30px 0 0; border: 0; }
 
       /* Phases */
       .phases { display: grid; gap: 12px; }
@@ -311,6 +313,18 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       }
       .bundle .price { font-family: var(--serif); font-size: 1.9rem; color: var(--brass-deep); }
       .compare { font-size: .86rem; color: var(--faint); font-style: italic; margin-top: 14px; }
+      .vcompare { margin-top: 30px; }
+      .vcompare > h3 { margin-bottom: 8px; }
+      .vwrap { margin-top: 16px; overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+      .vtable { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 580px; background: var(--panel); }
+      .vtable th, .vtable td { text-align: left; padding: 13px 15px; vertical-align: top; border-bottom: 1px solid var(--border-soft); }
+      .vtable thead th { font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); font-weight: 700; background: var(--bg-warm); }
+      .vtable tbody tr:last-child td { border-bottom: none; }
+      .vtable td.want { font-weight: 600; color: var(--text); width: 26%; }
+      .vtable td.usual { color: var(--muted); width: 37%; }
+      .vtable td.usual b { color: var(--text); font-weight: 600; }
+      .vtable td.mine { color: var(--text); width: 37%; background: rgba(127, 146, 104, 0.07); }
+      .vtable td.mine b { color: var(--green); font-weight: 600; }
 
       /* Close */
       .close-block { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px; box-shadow: var(--shadow); }
@@ -338,6 +352,8 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         .highlight h2, .highlight p, .highlight .sec-eyebrow { color: var(--text) !important; }
         section { padding: 16px 0; break-inside: avoid; }
         .card, .lever, .module, .tier, .phase, .stage { box-shadow: none; break-inside: avoid; }
+        .vwrap { overflow: visible; box-shadow: none; break-inside: avoid; }
+        .vtable { min-width: 0; font-size: 9.5pt; }
         a { color: var(--text); text-decoration: none; }
       }
       .print-only { display: none; }
@@ -500,7 +516,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           <div class="module"><div class="mtitle"><b>Speed-to-Lead</b></div><p>Every new lead gets an instant, personalized reply and is routed automatically to Jay, Greyson, Brad, or Eva — with optional friendly follow-ups.</p></div>
           <div class="module"><div class="mtitle"><b>Listing Content Studio</b></div><p>Feed in the address, photos, and facts → out comes a polished listing description, "just listed / just sold / open house" posts and graphics, and a property flyer.</p></div>
           <div class="module"><div class="mtitle"><b>Local Authority Engine</b></div><p>Neighborhood and town guides, monthly county market updates, a revived blog, and a fixed, current news feed — written for you, approved by you.</p></div>
-          <div class="module star"><div class="mtitle"><b>Farm &amp; Land Intelligence</b><span class="starmark">Your edge</span></div><p>Farmland buying/selling guides, land-value explainers, SE-Iowa commercial and ag intel, and a "sell your farm or land" funnel that positions Robertson as the regional expert.</p></div>
+          <div class="module star"><div class="mtitle"><b>Farm, Land &amp; Recreation Intelligence</b><span class="starmark">Your edge</span></div><p>Farmland and recreational/hunting-land guides, land-value and CSR2 explainers, aerial and topo listing detail, a "sell your farm, land, or hunting ground" funnel, and SE-Iowa ag and commercial intel — positioning Robertson as the regional land expert.</p></div>
           <div class="module"><div class="mtitle"><b>Seller Magnet</b></div><p>Branded, easy-to-read home and farm value reports, and a "what's it worth" experience that captures seller leads — the higher-value side of the business.</p></div>
           <div class="module" style="grid-column:1/-1;"><div class="mtitle"><b>Website Polish</b></div><p>Rewriting the stock website copy in your voice, an authentic About/story, refreshed testimonials, and tidying small dated details.</p></div>
         </div>
@@ -510,9 +526,14 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <section>
         <div class="highlight">
           <div class="sec-eyebrow">The Angle I Keep Coming Back To</div>
-          <h2>Own farm &amp; land in Southeast Iowa.</h2>
+          <h2>Own the land conversation in Southeast Iowa.</h2>
           <p>Every agency in the area sells houses. Far fewer can speak credibly about ag land — valuation, tillable acres, CSR2, farm sales, 1031 exchanges, the things a landowner actually cares about. You already do this. Almost none of it shows up online, where the search traffic and the out-of-area buyers are.</p>
-          <p>If we did nothing else, making Robertson the obvious online authority on Southeast Iowa farm and land would likely be the highest-return move on this whole page. It's a moat you already own and just haven't planted a flag on yet.</p>
+          <p>If we did nothing else, making Robertson the obvious online authority on Southeast Iowa land would likely be the highest-return move on this whole page. It's a moat you already own and just haven't planted a flag on yet.</p>
+
+          <hr class="rule" />
+          <p class="subhead">And there's a second kind of land you're sitting on.</p>
+          <p>Iowa is one of the top trophy-whitetail states in the country — third in the nation for record-book bucks. The nonresident deer tag is a lottery most applicants <em>lose</em>, so serious hunters buy ground here to guarantee their access. That buyer isn't after tillable acres; they want timber, a creek bottom, a ridge, a gully — the recreational ground that's easy to treat as leftover. And there's real money in it: hunting and recreational parcels routinely sell at a premium over bare cropland.</p>
+          <p>National outfits like Whitetail Properties and Mossy Oak have built entire TV brands on this, and a regional land shop a county or two over is doing the same. Nobody has planted that flag in your backyard yet. Listing recreational ground the way that buyer searches for it — aerials, topography, timber and water, deer country — and putting real content behind it could open a whole buyer pool most local agencies never touch. <b style="color:#fff;">You know this ground far better than I do — I'd want your read on whether it's worth chasing.</b></p>
         </div>
       </section>
 
@@ -584,7 +605,41 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           <h3>The full Growth System, bundled</h3>
           <p class="muted">If you'd rather do the whole system than piece it together, I'd bundle the setup at a <strong>founder's rate of <span class="price">$5,000 – 7,000</span></strong> — well under what the individual pieces would total, and a fraction of the $20,000-plus it would cost to assemble this from separate vendors.</p>
           <p class="muted" style="margin-bottom:0;"><strong>Why the founder's rate:</strong> you'd be my first client here, and we already know and trust each other. I'd rather prove the return than maximize an invoice. It's genuine — offered for your honest feedback as we build and, if you're happy, your okay to mention Robertson as an example of my work. And we measure everything — response times, leads captured, conversions — so you see exactly what you're getting.</p>
-          <p class="compare">For comparison: the lead tools built for realtors (Ylopo, CINC and the like) run $400–900 a month and lock you into their software with no one to call. This is a system built around your business, with a person attached.</p>
+        </div>
+
+        <div class="vcompare">
+          <h3>What this replaces — and what it would cost elsewhere</h3>
+          <p class="muted">You're not choosing between me and nothing. You're choosing between me and the corporate tools most agencies rent — which cost more every month, tie you to a contract, and give you a support queue instead of a person who picks up.</p>
+          <div class="vwrap">
+            <table class="vtable">
+              <thead>
+                <tr><th>What you want to do</th><th>The usual route (rented)</th><th>With me (built for you)</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="want">Instant lead capture &amp; auto-response</td>
+                  <td class="usual">A realtor lead platform like <b>Ylopo</b> — commonly <b>$400–500/mo</b>, typically on an annual contract, and you're renting the tool on their terms</td>
+                  <td class="mine">Built into your own site and folded into your monthly plan — month-to-month, and when you need something you <b>call me</b></td>
+                </tr>
+                <tr>
+                  <td class="want">Full team lead &amp; follow-up platform</td>
+                  <td class="usual">A team platform like <b>CINC</b> — commonly <b>$900–1,500+/mo</b>, scales up as you add agents, contract lock-in</td>
+                  <td class="mine">Included in your plan — <b>doesn't cost more as your team grows</b>, and built around how Jay, Greyson, Brad and Eva actually work</td>
+                </tr>
+                <tr>
+                  <td class="want">Chatbot + website work + lead automation</td>
+                  <td class="usual">Three separate vendors — often <b>$20,000+</b> to stand up, and three companies to manage and reconcile</td>
+                  <td class="mine">One bundled founder's rate of <b>$5,000–7,000</b> — one person who built all of it and stands behind it</td>
+                </tr>
+                <tr>
+                  <td class="want">Ongoing content + local SEO</td>
+                  <td class="usual">A marketing-agency retainer — commonly <b>$1,000–3,000/mo</b>, written by someone who's never met your market</td>
+                  <td class="mine">Included in the Growth or Partner plan — in your voice, about your towns, <b>approved by you</b> before it posts</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="compare">You know the commission on a typical sale here far better than I do — run it against these numbers. For most shops, <b style="font-style:normal;color:var(--green);">one or two extra closings a year covers the entire system</b>, and everything past that is upside. What the corporate tools rent you, this you own.</p>
         </div>
       </section>
 
