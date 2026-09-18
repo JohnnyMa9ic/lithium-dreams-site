@@ -225,6 +225,31 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       .beat-label.leads { color: var(--red-deep); background: #f6e1de; }
       .beat-label.opp { color: #46592f; background: #e6ede0; }
 
+      /* Lever progressive disclosure — on a phone the setup beats collapse
+         behind a tap so the list stays skimmable; on desktop they are always
+         shown (no accordion) and read as the full argument. */
+      .lever-why { margin: 2px 0 9px; }
+      .lever-why > summary {
+        list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+        font-size: .82rem; font-weight: 600; color: var(--red-deep); padding: 4px 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .lever-why > summary::-webkit-details-marker { display: none; }
+      .lever-why > summary::marker { content: ''; }
+      .lever-why > summary::after { content: '▾'; font-size: .7rem; color: var(--red); transition: transform .2s ease; }
+      .lever-why[open] > summary::after { transform: rotate(180deg); }
+      .lever-why .why-body { padding-top: 6px; }
+      @media (min-width: 721px) {
+        /* Desktop reads the full argument — no accordion. Force the details
+           content open for both rendering paths: the older
+           details:not([open]) > * { display:none } mechanism (Safari/Firefox)
+           and Chromium's ::details-content { content-visibility:hidden }. */
+        .lever-why { margin: 0; }
+        .lever-why > summary { display: none; }
+        .lever-why > .why-body { display: block !important; padding-top: 0; }
+        .lever-why::details-content { content-visibility: visible !important; }
+      }
+
       /* Spine (Capture/Convert/Compound) */
       .spine { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
       .stage {
@@ -490,8 +515,8 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <!-- PERSONAL NOTE -->
       <section>
         <div class="note">
-          <p>Jay — good running into you at the gas station today. Hope the tire cooperated. It's always good to catch up and give each other a hard time. It also got me thinking on the drive home, so I spent a little time since with your website and your business and put this together — something concrete for us to talk through when we sit down.</p>
-          <p>First, the important part: <strong>you've built something real.</strong> Robertson Real Estate has a modern site, a genuine MLS search, a strong team, and a niche — farms and land — that most agencies in this part of the state don't take seriously. This isn't about fixing anything that's broken. It's about taking a good foundation and making it work harder: responding to every lead the moment it comes in, being the obvious online authority on Southeast Iowa farm and land, and giving your four agents their time back.</p>
+          <p>Jay — good running into you the other day — always good to catch up and give each other a hard time. It got me thinking, so I've spent some time since with your website and your business and put this together — something concrete for us to talk through when we sit down.</p>
+          <p>First, the important part: <strong>you've built something real.</strong> Robertson Real Estate has a modern site, a genuine MLS search, a strong team, and a niche — farms and land — that most agencies in this part of the state don't take seriously. This isn't about fixing anything that's broken. It's about taking a good foundation and making it work harder.</p>
           <p>That's the kind of work I do. I take a business's own strengths and its own goals, and I build the systems and technology around <em>them</em> — not a product I'm trying to sell you. This capability is the product of years of building and refining real operational systems; what follows is that work, pointed at Robertson Real Estate.</p>
           <p>And I'll be straight with you: I'd rather do this for someone local. You're building something in the same community I'm from — keeping that kind of work close to home, between two people who'll actually run into each other again, matters to me.</p>
           <p class="signoff">Here's how I see it. — John</p>
@@ -525,38 +550,50 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         <div class="levers">
           <div class="lever"><div class="lever-num">1</div><div>
             <h3>Respond to every lead in minutes, not hours</h3>
+            <details class="lever-why"><summary><span>Why this matters</span></summary><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>You've already got the hard part — real capture forms (Dream Home Finder, market analysis, buyer accounts). The interest is coming in.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>But a form that arrives at 9pm waits until someone's free the next morning. In real estate the first agent to reply usually gets the client — so a lead that sat overnight has often already called the next name on their list. Slow reply → lost first-mover → a client who was yours to win closes with someone else.</p>
+            </div></details>
             <p class="beat opp"><span class="beat-label opp">The opportunity</span>Every inquiry gets an <b>instant, personal reply</b> and routes to the right agent automatically — Tuesday lunch or Sunday midnight, it doesn't matter.</p>
           </div></div>
           <div class="lever"><div class="lever-num">2</div><div>
             <h3>Answer the question that comes after hours</h3>
+            <details class="lever-why"><summary><span>Why this matters</span></summary><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>Outside those forms, a visitor with a quick question — "do you handle land?", "is this one still available?" — has nowhere to ask once the office is closed.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>Nobody fills out a form to ask one thing. A question with no answer just becomes a closed tab — they leave, and you never knew they were there. No answer → no capture → a lead that never lands on your books at all.</p>
+            </div></details>
             <p class="beat opp"><span class="beat-label opp">The opportunity</span>A friendly assistant on the site answers the common questions, helps people find the right listing, and <b>quietly captures who they are</b> — then hands a warm lead to the right agent.</p>
           </div></div>
           <div class="lever"><div class="lever-num">3</div><div>
             <h3>Own the farm &amp; land conversation online</h3>
+            <details class="lever-why"><summary><span>Why this matters</span></summary><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>The site lists Farms, Residential, and Commercial side by side — but farm and land, your real edge, reads as one tab of three rather than the headline.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>The landowner Googling "sell my farm ground in SE Iowa," or the out-of-area buyer researching tillable acres and CSR2, is exactly the high-value client who starts online — and right now they don't find a clear expert, so they land on whoever happened to rank. Invisible online → the ag search traffic goes to a generalist → your best differentiator earns you nothing.</p>
+            </div></details>
             <p class="beat opp"><span class="beat-label opp">The opportunity</span>Become <b>the obvious name</b> for Southeast Iowa farm and land online — the guides, the valuations, and the plain-English answers a landowner is actually searching for.</p>
           </div></div>
           <div class="lever"><div class="lever-num">4</div><div>
             <h3>A site that looks as current as your business is</h3>
+            <details class="lever-why"><summary><span>Why this matters</span></summary><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>A few honest first-impression things: the news and blog posts stop in 2024, the contact form still lists a fax number, and the photography and layout are the clean-but-generic look a lot of agency sites share — professional, but it could be almost any office.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>A first-time visitor forms a snap judgment in seconds. "Last posted 2024" and a fax line quietly read as <i>"is this place still active?"</i> — even when you're busier than ever — and a template look says "same as everyone else." Dated first impression → less trust before they've met you → the call goes to whoever looked sharper. (Stale content slips you down in search, too.)</p>
+            </div></details>
             <p class="beat opp"><span class="beat-label opp">The opportunity</span>Regular local content in your voice, current details, and a look that feels like <b>Robertson specifically</b> — so the site finally matches the quality of the work you actually do.</p>
           </div></div>
           <div class="lever"><div class="lever-num">5</div><div>
             <h3>Give your agents their time back</h3>
+            <details class="lever-why"><summary><span>Why this matters</span></summary><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>Every listing means a write-up, the social posts, a just-listed / just-sold graphic, the newsletter — built by hand, four agents deep.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>Hours spent on copy-and-paste marketing are hours not spent with clients — and when everyone's slammed, the marketing is the first thing skipped or rushed. Manual busywork → less selling time and thinner marketing → fewer touches on the listings that actually pay you.</p>
+            </div></details>
             <p class="beat opp"><span class="beat-label opp">The opportunity</span>The routine marketing <b>produces itself</b> from the listing details — your team reviews and approves in minutes instead of starting from a blank page.</p>
           </div></div>
           <div class="lever"><div class="lever-num">6</div><div>
             <h3>Turn browsers into sellers, not just buyers</h3>
+            <details class="lever-why"><summary><span>Why this matters</span></summary><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>The site is built for buyers browsing listings; there's no real front door for an owner just wondering what their home — or their ground — is worth.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>Sellers are the higher-value side of the business, but the curious owner who isn't ready to call an agent yet has no low-pressure way in — so they drift off and eventually list with whoever asked first. No seller path → no early capture → the listing goes to a competitor.</p>
+            </div></details>
             <p class="beat opp"><span class="beat-label opp">The opportunity</span>A simple <b>"what's my property (or farm) worth"</b> experience that turns a curious owner into a name in your pipeline — and a listing appointment down the road.</p>
           </div></div>
         </div>
