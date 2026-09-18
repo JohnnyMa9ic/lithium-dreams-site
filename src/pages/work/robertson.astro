@@ -144,6 +144,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
 
       /* Sections */
       section { padding: 52px 0; }
+      .close-sec { padding-bottom: 8px; }
       .sec-eyebrow {
         display: flex; align-items: center; gap: 11px;
         font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
@@ -170,6 +171,17 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       }
       .note p:last-child { margin-bottom: 0; }
       .signoff { font-family: var(--serif); font-style: italic; font-size: 1.18rem; color: var(--walnut); margin-top: 6px; }
+      .signature { display: flex; align-items: center; justify-content: flex-end; gap: 18px; margin-top: 26px; }
+      .sig-photo { width: 78px; height: 78px; border-radius: 50%; object-fit: cover; object-position: 50% 26%; border: 2px solid var(--brass); box-shadow: 0 4px 16px rgba(0,0,0,.16); flex: none; }
+      .sig-closer { font-family: var(--serif); font-style: italic; font-size: 1.06rem; color: var(--walnut); margin: 0 0 1px; }
+      .sig-ink { display: block; width: 224px; max-width: 62vw; height: auto; margin: 2px 0 4px; }
+      .sig-role { font-size: .82rem; color: var(--faint); margin: 2px 0 0; letter-spacing: .01em; }
+      @media (max-width: 720px) {
+        .signature { flex-direction: column; align-items: center; gap: 10px; margin-top: 22px; }
+        .sig-photo { order: -1; }
+        .sig-lines { text-align: center; }
+        .sig-ink { margin-left: auto; margin-right: auto; }
+      }
 
       /* Summary panel */
       .summary {
@@ -431,13 +443,31 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       .close-block { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px; box-shadow: var(--shadow); }
       .close-block h2 { margin-bottom: 16px; }
 
-      /* Brand sign-off — the studio seal crowns the footer as one unit */
-      footer { padding: 30px 0 56px; border-top: 1px solid var(--border); margin-top: 34px; text-align: center; }
+      /* Brand sign-off — dark conservatory footer band that closes the document */
+      .studio-footer {
+        position: relative; margin-top: 20px; overflow: hidden;
+        border-top: 2px solid var(--brass-deep);
+        background: linear-gradient(180deg, #1e2a2c 0%, #182027 55%, #12161b 100%);
+      }
+      /* diffused conservatory backdrop — RealVisXL gen, pulled back and softened */
+      .studio-footer::before {
+        content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+        background: url('/footer-conservatory.jpg') center / cover no-repeat;
+        opacity: .34; filter: blur(1.6px) saturate(.94);
+      }
+      /* legibility scrim + warm brass glow up top */
+      .studio-footer::after {
+        content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+        background:
+          radial-gradient(130% 150% at 50% -18%, rgba(201,157,76,.12), transparent 56%),
+          linear-gradient(180deg, rgba(16,20,24,.52) 0%, rgba(16,20,24,.28) 34%, rgba(16,20,24,.40) 72%, rgba(16,20,24,.66) 100%);
+      }
+      .foot-inner { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 42px 24px 48px; text-align: center; }
       .brandmark { text-align: center; }
-      .brandmark img { width: min(360px, 74%); height: auto; display: inline-block; }
-      .brand-tag { font-family: var(--serif); font-style: italic; color: var(--walnut); font-size: 1rem; margin: 9px 0 20px; letter-spacing: .01em; }
-      .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; gap: 6px 16px; font-size: .8rem; color: var(--faint); }
-      .foot b { color: var(--muted); font-weight: 600; }
+      .brandmark img { width: min(360px, 74%); height: auto; display: inline-block; filter: drop-shadow(0 8px 26px rgba(0,0,0,.5)); }
+      .brand-tag { font-family: var(--serif); font-style: italic; color: #e6dcc5; font-size: 1.02rem; margin: 13px 0 22px; letter-spacing: .01em; }
+      .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; gap: 6px 16px; font-size: .8rem; color: rgba(233,223,203,.64); }
+      .foot b { color: #f0e7d3; font-weight: 600; }
 
       @media (max-width: 720px) {
         .cards.two, .cards.three, .strengths, .spine, .modules, .tiers { grid-template-columns: 1fr; }
@@ -863,19 +893,29 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       </section>
 
       <!-- CLOSE -->
-      <section>
+      <section class="close-sec">
         <div class="close-block">
           <div class="sec-eyebrow">A Starting Point</div>
           <h2>This is the opening of a <em>conversation</em>.</h2>
           <p class="muted">Jay, everything above is my read from the outside. You know your business, your customers, and this market far better than I do — so treat this as a starting point, not a pitch to accept or decline.</p>
           <p class="muted">When we meet, the most useful thing you can tell me is what's actually been nagging at you — where you feel you're losing time, or losing clients, or wishing the website did more. We build from <em>there</em>. If a piece here doesn't fit how you work, we drop it. If there's something not here that you've wanted, that's exactly what I want to hear.</p>
           <p class="muted" style="margin-bottom:0;">I'm genuinely excited about the possibility of working together. Let's find the version of this that's right for Robertson.</p>
-          <p class="signoff">— John</p>
+          <div class="signature">
+            <img class="sig-photo" src="/john-headshot.jpg" width="480" height="480" alt="John Burroughs" />
+            <div class="sig-lines">
+              <p class="sig-closer">Sincerely,</p>
+              <img class="sig-ink" src="/john-signature.png" width="2000" height="837" alt="John Burroughs — signature" />
+              <p class="sig-role">John Burroughs · Glasshouse Systems Studio</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <footer>
-        <!-- BRAND SIGN-OFF — the studio seal crowns the footer -->
+    </div>
+
+    <!-- STUDIO FOOTER — full-bleed dark botanical band -->
+    <footer class="studio-footer">
+      <div class="foot-inner">
         <div class="brandmark">
           <img src="/glasshouse-lockup.png" width="1200" height="400"
                alt="Glasshouse Systems Studio — Think · Design · Build · Observe · Grow" />
@@ -887,9 +927,8 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           <span>lithium-dreams.com/work</span>
           <span>Prepared 2026-09-14 · for Robertson Real Estate</span>
         </div>
-      </footer>
-
-    </div>
+      </div>
+    </footer>
 
     <script is:inline>
       (function () {
