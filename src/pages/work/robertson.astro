@@ -415,14 +415,25 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         .lever, .phase { grid-template-columns: 1fr; gap: 6px; }
         .lever-num, .phase .pn { font-size: 1.1rem; }
         .ribbon-tag { display: none; }
-        /* On a narrow screen, weight the scrim to the bottom so the headline
-           stays readable over whatever part of the photo sits behind it. */
+        /* On a narrow screen, weight the scrim to the bottom so the whole text
+           block stays readable over whatever part of the photo sits behind it.
+           The mid-band is deliberately kept heavier (~.5 through the 34–58%
+           range) because the eyebrow sits high in the block, right where the
+           photo is often at its brightest — that band is the "semi-transparent
+           layer" that keeps "Prepared for Jay Robertson" legible on mobile. */
         .hero-scrim {
           background:
-            linear-gradient(0deg, rgba(16,12,8,.84) 0%, rgba(16,12,8,.36) 46%, rgba(16,12,8,.06) 72%, transparent 90%),
-            linear-gradient(100deg, rgba(16,12,8,.40) 0%, transparent 62%);
+            linear-gradient(0deg, rgba(16,12,8,.88) 0%, rgba(16,12,8,.66) 34%, rgba(16,12,8,.44) 58%, rgba(16,12,8,.14) 80%, transparent 94%),
+            linear-gradient(100deg, rgba(16,12,8,.42) 0%, transparent 64%);
         }
         .hero-inner { padding-bottom: clamp(52px, 12vh, 92px); }
+        /* Eyebrow legibility on mobile: brighter, a touch larger, tighter
+           tracking so the long line reads, and a shadow to lift it off the
+           photo. Desktop is untouched — it already reads perfectly there. */
+        .hero-eyebrow {
+          color: #ffdcd2; font-size: .72rem; letter-spacing: .14em; margin-bottom: 16px;
+          text-shadow: 0 1px 10px rgba(0,0,0,.9), 0 0 3px rgba(0,0,0,.7);
+        }
         .note, .summary, .highlight, .close-block, .bundle, .assurances, .partner { padding-left: 22px; padding-right: 22px; }
         .card, .lever, .module, .phase, .stage, .pilot, .tier { padding-left: 18px; padding-right: 18px; }
       }
@@ -459,6 +470,16 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         .vwrap { overflow: visible; box-shadow: none; break-inside: avoid; }
         .vtable { min-width: 0; font-size: 9.5pt; }
         a { color: var(--text); text-decoration: none; }
+      }
+      /* Web etiquette: honor the OS "Reduce Motion" accessibility setting.
+         Quiet the ambient, self-running motion (the hero's slow zoom, the
+         scroll-cue pulse, the typing dots) for anyone who has asked their
+         device not to animate. User-initiated transitions (hover, the lever
+         toggle) are momentary and stay. */
+      @media (prefers-reduced-motion: reduce) {
+        .hero-media { animation: none !important; transform: none !important; }
+        .scroll-cue .bar { animation: none !important; opacity: .6; }
+        .typing i, #chat .typing i { animation: none !important; }
       }
       .print-only { display: none; }
     </style>
