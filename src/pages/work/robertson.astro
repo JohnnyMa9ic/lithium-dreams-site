@@ -19,7 +19,6 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <script is:inline>document.documentElement.classList.add('js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>A Growth Partnership — Prepared for Robertson Real Estate</title>
@@ -226,25 +225,31 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       .beat-label.leads { color: var(--red-deep); background: #f6e1de; }
       .beat-label.opp { color: #46592f; background: #e6ede0; }
 
-      /* Lever progressive disclosure — plain button + class toggle, so it behaves
-         identically in every engine (native <details> does NOT collapse reliably
-         in WebKit/Safari). No-JS safe: the setup beats show by default; the inline
-         head script adds html.js, and only then does the phone accordion engage. */
+      /* Lever progressive disclosure — PURE CSS, zero JavaScript. A hidden
+         checkbox holds the open/closed state and its <label> is the tap target;
+         `:checked ~ .why-body` reveals the content. This works with JavaScript
+         disabled, under content blockers / Lockdown Mode, and identically in
+         every engine — the JS-gated and <details> versions both failed silently
+         on real iOS Safari, this cannot. Desktop shows the full beats and no
+         toggle (the label is display:none outside the phone breakpoint). */
+      .why-cb { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
       .lever-why { margin: 2px 0 9px; }
       .why-toggle {
-        display: none;                 /* appears only when JS enables the accordion (phone) */
+        display: none;                 /* label appears only at the phone breakpoint */
         align-items: center; gap: 7px; cursor: pointer;
-        background: none; border: 0; margin: 0; padding: 4px 0;
+        margin: 0; padding: 4px 0;
         font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--red-deep);
-        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
       }
       .why-toggle::after { content: '▾'; font-size: .7rem; color: var(--red); transition: transform .2s ease; }
-      .lever-why.open .why-toggle::after { transform: rotate(180deg); }
-      .why-body { padding-top: 6px; }  /* visible by default — safe if JS never runs; desktop keeps it */
+      .why-cb:checked ~ .why-toggle::after { transform: rotate(180deg); }
+      .why-body { padding-top: 6px; }  /* shown by default — desktop keeps it, phone collapses it below */
       @media (max-width: 720px) {
-        /* Phone + JS: collapse the setup beats behind the tap; desktop is untouched. */
-        html.js .lever-why .why-toggle { display: inline-flex; }
-        html.js .lever-why:not(.open) .why-body { display: none; }
+        /* Phone: show the tap target and collapse the setup beats until checked.
+           No JS, no html.js gate — the checkbox alone drives it. */
+        .why-toggle { display: inline-flex; }
+        .why-body { display: none; }
+        .why-cb:checked ~ .why-body { display: block; }
       }
 
       /* Spine (Capture/Convert/Compound) */
@@ -568,7 +573,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         <div class="levers">
           <div class="lever"><div class="lever-num">1</div><div>
             <h3>Respond to every lead in minutes, not hours</h3>
-            <div class="lever-why"><button type="button" class="why-toggle" aria-expanded="false">Why this matters</button><div class="why-body">
+            <div class="lever-why"><input class="why-cb" type="checkbox" id="why-1" aria-hidden="true" tabindex="-1" /><label class="why-toggle" for="why-1">Why this matters</label><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>You've already got the hard part — real capture forms (Dream Home Finder, market analysis, buyer accounts). The interest is coming in.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>But a form that arrives at 9pm waits until someone's free the next morning. In real estate the first agent to reply usually gets the client — so a lead that sat overnight has often already called the next name on their list. Slow reply → lost first-mover → a client who was yours to win closes with someone else.</p>
             </div></div>
@@ -576,7 +581,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           </div></div>
           <div class="lever"><div class="lever-num">2</div><div>
             <h3>Answer the question that comes after hours</h3>
-            <div class="lever-why"><button type="button" class="why-toggle" aria-expanded="false">Why this matters</button><div class="why-body">
+            <div class="lever-why"><input class="why-cb" type="checkbox" id="why-2" aria-hidden="true" tabindex="-1" /><label class="why-toggle" for="why-2">Why this matters</label><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>Outside those forms, a visitor with a quick question — "do you handle land?", "is this one still available?" — has nowhere to ask once the office is closed.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>Nobody fills out a form to ask one thing. A question with no answer just becomes a closed tab — they leave, and you never knew they were there. No answer → no capture → a lead that never lands on your books at all.</p>
             </div></div>
@@ -584,7 +589,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           </div></div>
           <div class="lever"><div class="lever-num">3</div><div>
             <h3>Own the farm &amp; land conversation online</h3>
-            <div class="lever-why"><button type="button" class="why-toggle" aria-expanded="false">Why this matters</button><div class="why-body">
+            <div class="lever-why"><input class="why-cb" type="checkbox" id="why-3" aria-hidden="true" tabindex="-1" /><label class="why-toggle" for="why-3">Why this matters</label><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>The site lists Farms, Residential, and Commercial side by side — but farm and land, your real edge, reads as one tab of three rather than the headline.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>The landowner Googling "sell my farm ground in SE Iowa," or the out-of-area buyer researching tillable acres and CSR2, is exactly the high-value client who starts online — and right now they don't find a clear expert, so they land on whoever happened to rank. Invisible online → the ag search traffic goes to a generalist → your best differentiator earns you nothing.</p>
             </div></div>
@@ -592,7 +597,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           </div></div>
           <div class="lever"><div class="lever-num">4</div><div>
             <h3>A site that looks as current as your business is</h3>
-            <div class="lever-why"><button type="button" class="why-toggle" aria-expanded="false">Why this matters</button><div class="why-body">
+            <div class="lever-why"><input class="why-cb" type="checkbox" id="why-4" aria-hidden="true" tabindex="-1" /><label class="why-toggle" for="why-4">Why this matters</label><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>A few honest first-impression things: the news and blog posts stop in 2024, the contact form still lists a fax number, and the photography and layout are the clean-but-generic look a lot of agency sites share — professional, but it could be almost any office.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>A first-time visitor forms a snap judgment in seconds. "Last posted 2024" and a fax line quietly read as <i>"is this place still active?"</i> — even when you're busier than ever — and a template look says "same as everyone else." Dated first impression → less trust before they've met you → the call goes to whoever looked sharper. (Stale content slips you down in search, too.)</p>
             </div></div>
@@ -600,7 +605,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           </div></div>
           <div class="lever"><div class="lever-num">5</div><div>
             <h3>Give your agents their time back</h3>
-            <div class="lever-why"><button type="button" class="why-toggle" aria-expanded="false">Why this matters</button><div class="why-body">
+            <div class="lever-why"><input class="why-cb" type="checkbox" id="why-5" aria-hidden="true" tabindex="-1" /><label class="why-toggle" for="why-5">Why this matters</label><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>Every listing means a write-up, the social posts, a just-listed / just-sold graphic, the newsletter — built by hand, four agents deep.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>Hours spent on copy-and-paste marketing are hours not spent with clients — and when everyone's slammed, the marketing is the first thing skipped or rushed. Manual busywork → less selling time and thinner marketing → fewer touches on the listings that actually pay you.</p>
             </div></div>
@@ -608,7 +613,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
           </div></div>
           <div class="lever"><div class="lever-num">6</div><div>
             <h3>Turn browsers into sellers, not just buyers</h3>
-            <div class="lever-why"><button type="button" class="why-toggle" aria-expanded="false">Why this matters</button><div class="why-body">
+            <div class="lever-why"><input class="why-cb" type="checkbox" id="why-6" aria-hidden="true" tabindex="-1" /><label class="why-toggle" for="why-6">Why this matters</label><div class="why-body">
             <p class="beat"><span class="beat-label noticed">Noticed</span>The site is built for buyers browsing listings; there's no real front door for an owner just wondering what their home — or their ground — is worth.</p>
             <p class="beat"><span class="beat-label leads">Where it leads</span>Sellers are the higher-value side of the business, but the curious owner who isn't ready to call an agent yet has no low-pressure way in — so they drift off and eventually list with whoever asked first. No seller path → no early capture → the listing goes to a competitor.</p>
             </div></div>
@@ -994,22 +999,6 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
             { label: "I want to sell", key: "sell" }
           ]);
         }, 400);
-      })();
-    </script>
-
-    <script is:inline>
-      /* Lever "Why this matters" accordion (phone only; desktop shows all).
-         Plain button + class toggle — identical behavior in every engine. */
-      (function () {
-        var toggles = document.querySelectorAll('.why-toggle');
-        for (var i = 0; i < toggles.length; i++) {
-          toggles[i].addEventListener('click', function () {
-            var w = this.closest('.lever-why');
-            if (!w) return;
-            var open = w.classList.toggle('open');
-            this.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-        }
       })();
     </script>
   </body>
