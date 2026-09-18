@@ -252,6 +252,26 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         .why-cb:checked ~ .why-body { display: block; }
       }
 
+      /* Reusable "skim, tap for more" fold — same pure-CSS checkbox mechanism as
+         the levers (proven cross-engine, JS-off safe). Used to collapse the
+         heavier support blocks (the price comparison, the assurances, phases,
+         modules) on a phone while their headline/summary stays visible. Desktop
+         shows everything and no toggle. */
+      .fold-cb { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+      .fold-toggle {
+        display: none;                 /* label appears only at the phone breakpoint */
+        align-items: center; gap: 7px; cursor: pointer; margin: 4px 0 0; padding: 4px 0;
+        font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--red-deep);
+        -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
+      }
+      .fold-toggle::after { content: '▾'; font-size: .7rem; color: var(--red); transition: transform .2s ease; }
+      .fold-cb:checked ~ .fold-toggle::after { transform: rotate(180deg); }
+      @media (max-width: 720px) {
+        .fold-toggle { display: inline-flex; }
+        .fold-body { display: none; }
+        .fold-cb:checked ~ .fold-body { display: block; }
+      }
+
       /* Spine (Capture/Convert/Compound) */
       .spine { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
       .stage {
@@ -778,6 +798,9 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         <div class="vcompare">
           <h3>What this replaces — and what it would cost elsewhere</h3>
           <p class="muted">You're not choosing between me and nothing. You're choosing between me and the corporate tools most agencies rent — which cost more every month, tie you to a contract, and give you a support queue instead of a person who picks up.</p>
+          <input class="fold-cb" type="checkbox" id="fold-compare" aria-hidden="true" tabindex="-1" />
+          <label class="fold-toggle" for="fold-compare">See the side-by-side — what these tools cost elsewhere</label>
+          <div class="fold-body">
           <div class="vwrap">
             <table class="vtable">
               <thead>
@@ -808,14 +831,19 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
             </table>
           </div>
           <p class="compare">You know the commission on a typical sale here far better than I do — run it against these numbers. For most shops, <b style="font-style:normal;color:var(--green);">one or two extra closings a year covers the entire system</b>, and everything past that is upside. What the corporate tools rent you, this you own.</p>
+          </div>
         </div>
 
         <div class="assurances">
           <h3>How this works, in plain English</h3>
+          <input class="fold-cb" type="checkbox" id="fold-assure" aria-hidden="true" tabindex="-1" />
+          <label class="fold-toggle" for="fold-assure">The four things I guarantee</label>
+          <div class="fold-body">
           <div class="asrow"><span class="ascheck">✓</span><div><b>We measure it.</b> Every month you get a simple scorecard — how fast leads got answered, how many came in, how many turned into real conversations. You see exactly what you're paying for, in numbers, not adjectives.</div></div>
           <div class="asrow"><span class="ascheck">✓</span><div><b>No lock-in.</b> The monthly is month-to-month — cancel any time, no long contract. And what we build for you, you keep.</div></div>
           <div class="asrow"><span class="ascheck">✓</span><div><b>Fair-housing safe.</b> Anything that talks to your leads is built to stay on the right side of fair-housing rules — no steering, no answering the questions an agent legally shouldn't. I handle that so you never have to worry about it.</div></div>
           <div class="asrow"><span class="ascheck">✓</span><div><b>You own it.</b> It lives on your own site and in your own accounts — not rented from a platform that keeps everything the day you stop paying.</div></div>
+          </div>
         </div>
       </section>
 
