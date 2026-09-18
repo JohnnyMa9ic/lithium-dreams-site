@@ -26,7 +26,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -39,6 +39,9 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         --muted: #555a52;
         --faint: #8a8f88;
         --blue: #3d7fbd;
+        --red: #9e2b2b;
+        --red-bright: #b23636;
+        --red-deep: #7f2222;
         --brass: #c99d4c;
         --brass-deep: #a67c2e;
         --walnut: #8b6547;
@@ -67,48 +70,91 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       }
       .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-      /* Brand ribbon */
+      /* Brand ribbon — frosted, floating over the hero image */
       .ribbon {
-        display: flex; align-items: center; gap: 10px;
-        padding: 14px 24px; border-bottom: 1px solid var(--border-soft);
-        background: #f7f5f0;
-        position: sticky; top: 0; z-index: 50;
+        position: absolute; top: 0; left: 0; right: 0; z-index: 6;
+        display: flex; align-items: center; gap: 11px;
+        padding: 16px clamp(20px, 4vw, 40px);
+        background: rgba(20, 15, 10, 0.30);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
       }
       .ribbon-mark {
-        background: var(--brass); color: #fff; font-family: var(--sans);
-        font-size: .62rem; font-weight: 700; letter-spacing: .12em;
-        padding: .38em .58em; line-height: 1; border-radius: 4px;
+        background: var(--red); color: #fff; font-family: var(--sans);
+        font-size: .62rem; font-weight: 700; letter-spacing: .13em;
+        padding: .42em .6em; line-height: 1; border-radius: 4px;
       }
-      .ribbon-name { font-size: .78rem; font-weight: 500; letter-spacing: .03em; color: var(--muted); }
-      .ribbon-tag { margin-left: auto; font-size: .68rem; color: var(--faint); letter-spacing: .04em; }
+      .ribbon-name { font-size: .76rem; font-weight: 500; letter-spacing: .03em; color: rgba(255,255,255,.9); }
+      .ribbon-tag { margin-left: auto; font-size: .66rem; color: rgba(255,255,255,.62); letter-spacing: .14em; text-transform: uppercase; }
 
-      /* Hero */
-      .hero { padding: 88px 0 64px; text-align: left; }
-      .eyebrow {
-        font-size: .72rem; font-weight: 600; letter-spacing: .16em;
-        text-transform: uppercase; color: var(--brass-deep); margin-bottom: 22px;
+      /* Hero — the one cinematic moment: full-bleed image, Ken Burns, mobile-first */
+      .hero {
+        position: relative; width: 100%;
+        height: 100vh; height: 100svh; min-height: 560px;
+        overflow: hidden; background: #201811;
       }
+      .hero-media {
+        position: absolute; inset: 0; z-index: 0;
+        background: url('/work/robertson-hero.jpg') center center / cover no-repeat;
+        transform-origin: center; will-change: transform;
+        animation: kenburns 7s ease-in-out infinite alternate;
+      }
+      @keyframes kenburns { from { transform: scale(1.0); } to { transform: scale(1.09); } }
+      .hero-scrim {
+        position: absolute; inset: 0; z-index: 1; pointer-events: none;
+        background:
+          linear-gradient(100deg, rgba(16,12,8,.82) 0%, rgba(16,12,8,.46) 40%, rgba(16,12,8,.08) 66%, transparent 82%),
+          linear-gradient(0deg, rgba(16,12,8,.66) 0%, rgba(16,12,8,.10) 38%, transparent 55%);
+      }
+      .hero-inner {
+        position: absolute; z-index: 5; left: 0; right: 0; bottom: 0;
+        max-width: var(--max); margin: 0 auto;
+        padding: 0 clamp(20px, 4vw, 40px) clamp(60px, 13vh, 128px);
+      }
+      .hero-eyebrow {
+        display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+        color: #f0c9c0; font-size: clamp(.64rem, 1.6vw, .72rem); font-weight: 600;
+        letter-spacing: .2em; text-transform: uppercase;
+      }
+      .hero-eyebrow::before { content: ''; width: 30px; height: 2px; background: var(--red-bright); display: inline-block; flex: none; }
       .hero h1 {
-        font-family: var(--serif); font-weight: 500; font-size: clamp(2.4rem, 6vw, 4rem);
-        line-height: 1.04; letter-spacing: -0.015em; color: var(--text); margin-bottom: 22px;
+        font-family: var(--serif); font-weight: 400; color: #fff;
+        font-size: clamp(2.15rem, 6.4vw, 5rem); line-height: 1.03; letter-spacing: -0.018em;
+        max-width: 17ch; text-shadow: 0 2px 40px rgba(0,0,0,.42);
       }
-      .hero .lede { font-size: 1.22rem; line-height: 1.55; color: var(--muted); max-width: 40ch; }
+      .hero h1 em { font-style: italic; font-weight: 500; color: #f4d9a6; }
+      .hero-lede {
+        margin-top: 22px; color: rgba(255,255,255,.92);
+        font-size: clamp(1.02rem, 1.7vw, 1.35rem); line-height: 1.55; max-width: 46ch;
+        text-shadow: 0 1px 18px rgba(0,0,0,.4);
+      }
       .hero-meta {
-        margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--border);
-        font-size: .82rem; color: var(--faint); display: flex; flex-wrap: wrap; gap: 6px 18px;
+        margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+        font-size: .8rem; color: rgba(255,255,255,.72); letter-spacing: .02em;
       }
-      .hero-meta b { color: var(--muted); font-weight: 600; }
+      .hero-meta b { color: rgba(255,255,255,.94); font-weight: 600; }
+      .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.5); flex: none; }
+      .scroll-cue {
+        position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 6;
+        color: rgba(255,255,255,.6); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+        display: flex; flex-direction: column; align-items: center; gap: 8px;
+      }
+      .scroll-cue .bar { width: 1px; height: 30px; background: linear-gradient(rgba(255,255,255,.65), transparent); animation: cue 2.4s ease-in-out infinite; }
+      @keyframes cue { 0%, 100% { opacity: .25; transform: scaleY(.6); } 50% { opacity: 1; transform: scaleY(1); } }
 
       /* Sections */
-      section { padding: 40px 0; }
+      section { padding: 52px 0; }
       .sec-eyebrow {
-        font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-        color: var(--brass-deep); margin-bottom: 12px;
+        display: flex; align-items: center; gap: 11px;
+        font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+        color: var(--red-deep); margin-bottom: 14px;
       }
+      .sec-eyebrow::before { content: ''; width: 26px; height: 2px; background: var(--red); display: inline-block; flex: none; }
       h2 {
         font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 3.6vw, 2.4rem);
         line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 20px;
       }
+      h2 em { font-style: italic; font-weight: 500; color: var(--red); }
       h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.005em; }
       p { margin-bottom: 16px; color: var(--text); }
       p.muted { color: var(--muted); }
@@ -123,11 +169,11 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         padding: 30px 32px; box-shadow: var(--shadow);
       }
       .note p:last-child { margin-bottom: 0; }
-      .signoff { font-family: var(--serif); font-size: 1.15rem; color: var(--walnut); margin-top: 4px; }
+      .signoff { font-family: var(--serif); font-style: italic; font-size: 1.18rem; color: var(--walnut); margin-top: 6px; }
 
       /* Summary panel */
       .summary {
-        background: var(--bg-warm); border: 1px solid var(--border);
+        background: var(--bg-warm); border: 1px solid var(--border); border-top: 3px solid var(--red);
         border-radius: var(--radius); padding: 30px 32px;
       }
       .summary h2 { font-size: 1.5rem; margin-bottom: 14px; }
@@ -162,7 +208,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         padding: 20px 22px; box-shadow: var(--shadow);
       }
       .lever-num {
-        font-family: var(--serif); font-size: 1.5rem; color: var(--brass); font-weight: 600;
+        font-family: var(--serif); font-size: 1.5rem; color: var(--red); font-weight: 600;
         line-height: 1; min-width: 1.4ch;
       }
       .lever h3 { margin-bottom: 11px; }
@@ -176,18 +222,18 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         position: relative; top: -1px;
       }
       .beat-label.noticed { color: var(--muted); background: #eceae2; }
-      .beat-label.leads { color: var(--brass-deep); background: #f7edd8; }
+      .beat-label.leads { color: var(--red-deep); background: #f6e1de; }
       .beat-label.opp { color: #46592f; background: #e6ede0; }
 
       /* Spine (Capture/Convert/Compound) */
       .spine { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
       .stage {
-        background: var(--panel); border: 1px solid var(--border); border-top: 3px solid var(--brass);
+        background: var(--panel); border: 1px solid var(--border); border-top: 3px solid var(--red);
         border-radius: var(--radius-sm); padding: 22px; box-shadow: var(--shadow);
       }
       .stage .label { font-family: var(--serif); font-size: 1.3rem; color: var(--text); margin-bottom: 8px; }
       .stage p { font-size: .92rem; color: var(--muted); margin-bottom: 10px; }
-      .stage .plain { font-style: italic; color: var(--brass-deep); font-size: .9rem; }
+      .stage .plain { font-style: italic; color: var(--red-deep); font-size: .9rem; }
 
       /* Chatbot demo */
       .demo-frame {
@@ -212,7 +258,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       }
       .chat-av {
         width: 34px; height: 34px; border-radius: 50%; flex: none;
-        background: var(--walnut); color: #fff; display: grid; place-items: center;
+        background: var(--red); color: #fff; display: grid; place-items: center;
         font-weight: 700; font-size: .8rem;
       }
       .chat-bar .who b { font-size: .88rem; display: block; line-height: 1.2; }
@@ -221,7 +267,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       .chat-log { flex: 1; overflow-y: auto; padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; }
       .msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: .92rem; line-height: 1.5; }
       .msg.bot { align-self: flex-start; background: #eef0ea; color: var(--text); border-bottom-left-radius: 4px; }
-      .msg.user { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 4px; }
+      .msg.user { align-self: flex-end; background: var(--red); color: #fff; border-bottom-right-radius: 4px; }
       .typing { align-self: flex-start; background: #eef0ea; border-radius: 14px; padding: 12px 16px; display: inline-flex; gap: 4px; }
       .typing i { width: 7px; height: 7px; border-radius: 50%; background: #9aa093; animation: blink 1.2s infinite; }
       .typing i:nth-child(2) { animation-delay: .2s; }
@@ -229,22 +275,22 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       @keyframes blink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: 1; } }
       .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 16px 4px; }
       .chip {
-        font-family: var(--sans); font-size: .8rem; color: var(--blue); background: #fff;
-        border: 1px solid var(--blue); border-radius: 999px; padding: 6px 12px; cursor: pointer;
+        font-family: var(--sans); font-size: .8rem; color: var(--red); background: #fff;
+        border: 1px solid var(--red); border-radius: 999px; padding: 6px 12px; cursor: pointer;
         transition: all .15s ease;
       }
-      .chip:hover { background: var(--blue); color: #fff; }
+      .chip:hover { background: var(--red); color: #fff; }
       .chat-input { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); background: #fff; }
       .chat-input input {
         flex: 1; border: 1px solid var(--border); border-radius: 999px; padding: 10px 16px;
         font-family: var(--sans); font-size: .9rem; outline: none;
       }
-      .chat-input input:focus { border-color: var(--blue); }
+      .chat-input input:focus { border-color: var(--red); }
       .chat-input button {
-        border: 0; background: var(--walnut); color: #fff; border-radius: 999px;
+        border: 0; background: var(--red); color: #fff; border-radius: 999px;
         padding: 0 18px; font-family: var(--sans); font-weight: 600; font-size: .88rem; cursor: pointer;
       }
-      .chat-input button:hover { background: #74543b; }
+      .chat-input button:hover { background: var(--red-deep); }
       .demo-caption { color: #b8b6ac; font-size: .8rem; margin-top: 16px; text-align: center; }
 
       /* Module list */
@@ -253,10 +299,10 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm);
         padding: 20px 22px; box-shadow: var(--shadow);
       }
-      .module.star { border-color: var(--brass); border-width: 1.5px; background: linear-gradient(180deg,#fffdf8,#fff); }
+      .module.star { border-color: var(--red); border-width: 1.5px; background: linear-gradient(180deg,#fdf5f4,#fff); }
       .module .mtitle { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
       .module .mtitle b { font-size: 1rem; font-weight: 600; }
-      .module .starmark { flex: none; white-space: nowrap; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--brass-deep); border: 1px solid var(--brass); border-radius: 999px; padding: 2px 8px; }
+      .module .starmark { flex: none; white-space: nowrap; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--red-deep); border: 1px solid var(--red); border-radius: 999px; padding: 2px 8px; }
       .module p { font-size: .92rem; color: var(--muted); margin-bottom: 0; }
 
       /* Highlight (farm & land) */
@@ -264,8 +310,10 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         background: linear-gradient(150deg, #3a4232 0%, #2b3126 100%);
         color: #eef0e6; border-radius: var(--radius); padding: 40px 36px; box-shadow: var(--shadow-lg);
       }
-      .highlight .sec-eyebrow { color: var(--green-soft); }
+      .highlight .sec-eyebrow { color: #e7d7a8; }
+      .highlight .sec-eyebrow::before { background: var(--red-bright); }
       .highlight h2 { color: #fff; }
+      .highlight h2 em { font-style: italic; font-weight: 500; color: #dd7a6f; }
       .highlight p { color: #d3d8c8; }
       .highlight p:last-child { margin-bottom: 0; }
       .highlight .subhead { color: #fff; font-weight: 600; font-size: 1.06rem; margin: 30px 0 8px; }
@@ -278,7 +326,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm);
         padding: 22px 24px; box-shadow: var(--shadow);
       }
-      .phase .pn { font-family: var(--serif); font-size: 1.4rem; color: var(--brass); font-weight: 600; min-width: 1.4ch; }
+      .phase .pn { font-family: var(--serif); font-size: 1.4rem; color: var(--red); font-weight: 600; min-width: 1.4ch; }
       .phase .why { font-size: .88rem; color: var(--faint); margin-top: 6px; margin-bottom: 0; }
       .partner {
         margin-top: 16px; background: var(--bg-warm); border: 1px solid var(--border);
@@ -288,10 +336,10 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
 
       /* Investment */
       .pilot {
-        background: linear-gradient(150deg,#fffaf0,#fff); border: 1.5px solid var(--brass);
+        background: linear-gradient(150deg,#fdf5f4,#fff); border: 1.5px solid var(--red);
         border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow); margin-bottom: 18px;
       }
-      .pilot .tag { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--brass-deep); font-weight: 600; }
+      .pilot .tag { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--red-deep); font-weight: 600; }
       .pilot h3 { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; margin: 8px 0 10px; }
       .pilot .nums { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 10px; }
       .pilot .nums div span { display: block; font-size: .74rem; color: var(--faint); text-transform: uppercase; letter-spacing: .08em; }
@@ -311,7 +359,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
         background: var(--bg-warm); border: 1px solid var(--border); border-radius: var(--radius);
         padding: 26px 28px;
       }
-      .bundle .price { font-family: var(--serif); font-size: 1.9rem; color: var(--brass-deep); }
+      .bundle .price { font-family: var(--serif); font-size: 1.9rem; color: var(--red-deep); }
       .compare { font-size: .86rem; color: var(--faint); font-style: italic; margin-top: 14px; }
       .vcompare { margin-top: 30px; }
       .vcompare > h3 { margin-bottom: 8px; }
@@ -342,20 +390,48 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
 
       @media (max-width: 720px) {
         .cards.two, .cards.three, .strengths, .spine, .modules, .tiers { grid-template-columns: 1fr; }
-        .hero { padding: 56px 0 40px; }
         .lever, .phase { grid-template-columns: 1fr; gap: 6px; }
         .lever-num, .phase .pn { font-size: 1.1rem; }
+        .ribbon-tag { display: none; }
+        /* On a narrow screen, weight the scrim to the bottom so the headline
+           stays readable over whatever part of the photo sits behind it. */
+        .hero-scrim {
+          background:
+            linear-gradient(0deg, rgba(16,12,8,.84) 0%, rgba(16,12,8,.36) 46%, rgba(16,12,8,.06) 72%, transparent 90%),
+            linear-gradient(100deg, rgba(16,12,8,.40) 0%, transparent 62%);
+        }
+        .hero-inner { padding-bottom: clamp(52px, 12vh, 92px); }
+        .note, .summary, .highlight, .close-block, .bundle, .assurances, .partner { padding-left: 22px; padding-right: 22px; }
+        .card, .lever, .module, .phase, .stage, .pilot, .tier { padding-left: 18px; padding-right: 18px; }
+      }
+      @media (max-width: 480px) {
+        .ribbon-name { display: none; }
+        section { padding: 40px 0; }
+        .hero h1 { line-height: 1.06; }
+        .demo-frame { padding: 16px; }
+        .highlight { padding: 30px 22px; }
       }
 
       @media print {
         body { background: #fff; font-size: 11pt; }
-        .ribbon { position: static; background: #fff; }
+        .hero { position: static; height: auto; min-height: 0; background: #fff; overflow: visible; }
+        .hero-media, .hero-scrim, .scroll-cue { display: none !important; }
+        .ribbon { position: static; background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid var(--border); }
+        .ribbon-name, .ribbon-tag { color: var(--muted) !important; }
+        .hero-inner { position: static; max-width: none; margin: 0; padding: 12px 24px 20px; }
+        .hero-eyebrow { color: var(--red-deep); }
+        .hero h1 { color: var(--text); text-shadow: none; }
+        .hero h1 em { color: var(--red); }
+        .hero-lede { color: var(--muted); text-shadow: none; max-width: none; }
+        .hero-meta { color: var(--faint); }
+        .hero-meta b { color: var(--muted); }
         .demo-frame { background: #fff; border: 1px solid var(--border); box-shadow: none; }
         .demo-frame .demo-head .t, .demo-badge { color: var(--text) !important; }
         .chat, .chat-log, .chips, .chat-input { display: none !important; }
         .print-only { display: block !important; }
         .highlight { background: #fff; color: var(--text); border: 1px solid var(--border); box-shadow: none; }
         .highlight h2, .highlight p, .highlight .sec-eyebrow { color: var(--text) !important; }
+        .highlight h2 em { color: var(--red) !important; }
         section { padding: 16px 0; break-inside: avoid; }
         .card, .lever, .module, .tier, .phase, .stage { box-shadow: none; break-inside: avoid; }
         .vwrap { overflow: visible; box-shadow: none; break-inside: avoid; }
@@ -364,27 +440,52 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       }
       .print-only { display: none; }
     </style>
+    <!-- Chat demo bubbles, typing dots and chips are created at runtime by JS,
+         so they never receive Astro's scoped class. Style them globally, keyed
+         to #chat so nothing leaks to other pages. -->
+    <style is:global>
+      #chat .msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: .92rem; line-height: 1.5; }
+      #chat .msg.bot { align-self: flex-start; background: #eef0ea; color: #1a1d1a; border-bottom-left-radius: 4px; }
+      #chat .msg.user { align-self: flex-end; background: var(--red); color: #fff; border-bottom-right-radius: 4px; }
+      #chat .typing { align-self: flex-start; background: #eef0ea; border-radius: 14px; padding: 12px 16px; display: inline-flex; gap: 4px; }
+      #chat .typing i { width: 7px; height: 7px; border-radius: 50%; background: #9aa093; animation: chatblink 1.2s infinite; }
+      #chat .typing i:nth-child(2) { animation-delay: .2s; }
+      #chat .typing i:nth-child(3) { animation-delay: .4s; }
+      @keyframes chatblink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: 1; } }
+      #chat .chip {
+        font-family: var(--sans); font-size: .8rem; color: var(--red); background: #fff;
+        border: 1px solid var(--red); border-radius: 999px; padding: 7px 13px; cursor: pointer;
+        transition: all .15s ease;
+      }
+      #chat .chip:hover { background: var(--red); color: #fff; }
+    </style>
   </head>
   <body>
-    <div class="ribbon">
-      <span class="ribbon-mark">LDI</span>
-      <span class="ribbon-name">Lithium Dreams · Glasshouse Systems Studio</span>
-      <span class="ribbon-tag">Private proposal</span>
-    </div>
-
-    <div class="wrap">
-
-      <!-- HERO -->
-      <header class="hero">
-        <div class="eyebrow">Prepared for Jay Robertson · Robertson Real Estate</div>
-        <h1>A growth system, built around your business.</h1>
-        <p class="lede">You've built something real. This is about making it work harder for you — on your terms.</p>
+    <!-- HERO — the one cinematic moment -->
+    <header class="hero">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="ribbon">
+        <span class="ribbon-mark">LDI</span>
+        <span class="ribbon-name">Lithium Dreams · Glasshouse Systems Studio</span>
+        <span class="ribbon-tag">Private proposal</span>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Prepared for Jay Robertson · Robertson Real Estate</div>
+        <h1>A growth system, built around <em>your business.</em></h1>
+        <p class="hero-lede">You've built something real. This is about making it work harder for you — on your terms.</p>
         <div class="hero-meta">
           <span>Prepared by <b>John Burroughs</b></span>
+          <span class="dot" aria-hidden="true"></span>
           <span>Lithium Dreams · Glasshouse</span>
+          <span class="dot" aria-hidden="true"></span>
           <span>2026-09-14</span>
         </div>
-      </header>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span class="bar"></span>Scroll</div>
+    </header>
+
+    <div class="wrap">
 
       <!-- PERSONAL NOTE -->
       <section>
@@ -401,7 +502,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <section>
         <div class="summary">
           <div class="sec-eyebrow">In Short</div>
-          <h2>The opportunity is conversion, not repair.</h2>
+          <h2>The opportunity is <em>conversion</em>, not repair.</h2>
           <p class="muted">Robertson Real Estate runs a capable, modern website with full MLS search on a solid platform. The opportunity isn't technical repair — it's turning interest you're <em>already getting</em> into clients you're not yet closing.</p>
           <p class="muted">Three things move the needle most: <strong>(1)</strong> responding to every website lead instantly, day or night; <strong>(2)</strong> turning your farm-and-land expertise into a visible online authority that pulls in the buyers and sellers competitors ignore; and <strong>(3)</strong> taking the repetitive marketing and paperwork off your team's plate so they can sell.</p>
           <p class="muted" style="margin-bottom:0;">It's a partnership, not a hand-off. A monthly plan keeps the tools tuned and the content coming — and when something isn't working, you call me. You're never left spinning your wheels.</p>
@@ -464,7 +565,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <!-- THE IDEA -->
       <section>
         <div class="sec-eyebrow">The Idea</div>
-        <h2>A system, not a gadget.</h2>
+        <h2>A <em>system</em>, not a gadget.</h2>
         <p class="lead-p">The point isn't to bolt on a chatbot and call it done. It's one simple, connected spine that every lead travels along:</p>
         <div class="spine">
           <div class="stage">
@@ -533,7 +634,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <section>
         <div class="highlight">
           <div class="sec-eyebrow">The Angle I Keep Coming Back To</div>
-          <h2>Own the land conversation in Southeast Iowa.</h2>
+          <h2>Own the <em>land</em> conversation in Southeast Iowa.</h2>
           <p>Every agency in the area sells houses. Far fewer can speak credibly about ag land — valuation, tillable acres, CSR2, farm sales, 1031 exchanges, the things a landowner actually cares about. You already do this. Almost none of it shows up online, where the search traffic and the out-of-area buyers are.</p>
           <p>If we did nothing else, making Robertson the obvious online authority on Southeast Iowa land would likely be the highest-return move on this whole page. It's a moat you already own and just haven't planted a flag on yet.</p>
 
@@ -662,7 +763,7 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       <section>
         <div class="close-block">
           <div class="sec-eyebrow">A Starting Point</div>
-          <h2>This is the opening of a conversation.</h2>
+          <h2>This is the opening of a <em>conversation</em>.</h2>
           <p class="muted">Jay, everything above is my read from the outside. You know your business, your customers, and this market far better than I do — so treat this as a starting point, not a pitch to accept or decline.</p>
           <p class="muted">When we meet, the most useful thing you can tell me is what's actually been nagging at you — where you feel you're losing time, or losing clients, or wishing the website did more. We build from <em>there</em>. If a piece here doesn't fit how you work, we drop it. If there's something not here that you've wanted, that's exactly what I want to hear.</p>
           <p class="muted" style="margin-bottom:0;">I'm genuinely excited about the possibility of working together. Let's find the version of this that's right for Robertson.</p>
