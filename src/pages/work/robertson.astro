@@ -275,11 +275,18 @@ if (Astro.url.searchParams.get('k') !== VIEW_KEY) {
       .fold-cb { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
       .fold-toggle {
         display: none;                 /* label appears only at the phone breakpoint */
-        align-items: center; gap: 7px; cursor: pointer; margin: 4px 0 0; padding: 4px 0;
+        align-items: center; gap: 8px; cursor: pointer; margin: 20px 0 0; padding: 8px 15px;
+        border: 1px solid rgba(158, 43, 43, 0.26); border-radius: 999px;
+        background: rgba(158, 43, 43, 0.055);
         font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--red-deep);
         -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
       }
+      .fold-toggle:active { background: rgba(158, 43, 43, 0.12); }
       .fold-toggle::after { content: '▾'; font-size: .7rem; color: var(--red); transition: transform .2s ease; }
+      /* Dark-panel variant (the green "Angle" highlight) — light gold so it stays legible */
+      .highlight .fold-toggle { color: #e7d7a8; border-color: rgba(231, 215, 168, 0.42); background: rgba(255, 255, 255, 0.06); }
+      .highlight .fold-toggle:active { background: rgba(255, 255, 255, 0.12); }
+      .highlight .fold-toggle::after { color: #e7d7a8; }
       .fold-cb:checked ~ .fold-toggle::after { transform: rotate(180deg); }
       @media (max-width: 720px) {
         .fold-toggle { display: inline-flex; }
