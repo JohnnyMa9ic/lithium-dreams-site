@@ -104,7 +104,10 @@ async function notifyOperator(intakeEnv: IntakeEnv, brief: MissionBrief, key: st
     ].join('\r\n');
     await mailer.send(new EmailMessage(NOTIFY_FROM, NOTIFY_TO, raw));
   } catch (err) {
-    console.error('Intake notify failed', err);
+    // Inline the reason: an object passed as a second console arg is dropped
+    // by Workers observability, leaving a reasonless stack trace.
+    const reason = err instanceof Error ? err.message : String(err);
+    console.error(`Intake notify failed: ${reason}`);
   }
 }
 
