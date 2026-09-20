@@ -1124,9 +1124,10 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     .wizard-layout {
       grid-template-columns: 1fr;
     }
+    /* below the form, not ahead of it — a 480px card of "Not provided"
+       placeholders before step 1 buried the form on small screens */
     .wizard-tracker {
       position: static;
-      order: -1;
     }
     .tracker-ring-wrap { display: none; }
   }
