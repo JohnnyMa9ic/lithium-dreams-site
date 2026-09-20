@@ -7,9 +7,9 @@ interface Props {
 }
 
 const {
-  title = 'LDI Glasshouse — Operational Systems Design',
-  description = 'Lithium Dreams Industries designs practical operational systems for people and organizations who need clarity without complexity.',
-  ogImage = '/studio-hero.png',
+  title = 'Glasshouse Systems Studio — Systems & Automation for Small Business',
+  description = "Systems and automation for people who'd rather run their business than wrestle their tools. Glasshouse Systems Studio, Iowa.",
+  ogImage = '/gh-hero-conservatory.jpg',
   activePage = '',
 } = Astro.props;
 
@@ -18,9 +18,8 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
 
 const navLinks = [
   { href: '/work', label: 'Overview' },
-  { href: '/work/intake', label: 'Mission Intake' },
-  { href: '/work/case-files', label: 'Case Files' },
-  { href: '/about', label: 'About' },
+  { href: '/work/intake', label: 'Start a Project' },
+  { href: '/work/about', label: 'About' },
 ];
 ---
 
@@ -31,7 +30,7 @@ const navLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL.toString()} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/gh-medallion-64.png" type="image/png" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -39,7 +38,7 @@ const navLinks = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteURL}${ogImage}`} />
-    <meta property="og:site_name" content="Lithium Dreams Industries" />
+    <meta property="og:site_name" content="Glasshouse Systems Studio" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -50,202 +49,380 @@ const navLinks = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Lithium Dreams Industries",
-      "url": siteURL,
-      "logo": `${siteURL}/favicon.svg`,
-      "description": "Operational systems design studio. Practical infrastructure for people and organizations who need clarity without complexity.",
+      "@type": "ProfessionalService",
+      "name": "Glasshouse Systems Studio",
+      "url": `${siteURL}/work`,
+      "logo": `${siteURL}/gh-medallion-256.png`,
+      "description": "Systems and automation design studio for small and medium businesses. Research, workflow automation, dashboards, and knowledge systems.",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Lithium Dreams Industries",
+        "url": siteURL,
+      },
+      "areaServed": "United States",
     })} />
   </head>
   <body class="gh-body">
-    <nav class="gh-nav">
-      <a href="/work" class="gh-logo" aria-label="LDI Work">
-        <span class="gh-logo-mark">LDI</span>
-        <span class="gh-logo-name">Lithium Dreams Industries</span>
+    <a href="#gh-main" class="gh-skip">Skip to content</a>
+
+    <nav class="gh-nav" aria-label="Glasshouse Systems Studio">
+      <a href="/work" class="gh-logo">
+        <img src="/gh-medallion-64.png" alt="" width="30" height="30" class="gh-logo-mark" />
+        <span class="gh-wordmark">Glasshouse <span class="gh-wordmark-sub">Systems Studio</span></span>
       </a>
       <div class="gh-nav-links">
         {navLinks.map(link => (
           <a
             href={link.href}
             class={activePage === link.href ? 'active' : ''}
+            aria-current={activePage === link.href ? 'page' : undefined}
           >
             {link.label}
           </a>
         ))}
       </div>
-      <a href="/attraction" class="gh-nav-escape">← The Attraction</a>
     </nav>
 
-    <main class="gh-content">
+    <main id="gh-main" class="gh-content">
       <slot />
     </main>
 
-    <footer class="gh-footer">
+    <footer class="gh-footer stratum stratum--dark">
       <div class="gh-footer-inner">
-        <span class="gh-footer-brand">Lithium Dreams Industries</span>
-        <span class="gh-footer-tag">Operating Systems Design</span>
-        <a href="/about" class="gh-footer-about">About</a>
-        <a href="/attraction" class="gh-footer-link">Visit the Attraction →</a>
+        <img
+          src="/card/brand-lockup.webp"
+          alt="Glasshouse Systems Studio — Think, Design, Build, Observe, Grow"
+          class="gh-footer-lockup"
+          width="340"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="gh-footer-motto">Nature · Infrastructure · People · In Harmony</p>
+        <div class="gh-rule gh-footer-rule" aria-hidden="true"><span></span></div>
+        <div class="gh-footer-links">
+          <a href="/work/about">About the studio</a>
+          <a href="/work/intake">Start a project</a>
+          <a href="/card/">The card</a>
+        </div>
+        <p class="gh-footer-parent">A Lithium Dreams studio · Iowa</p>
+        <p class="gh-footer-door">
+          The studio also maintains a roadside attraction at the edge of the universe.
+          Visitors welcome. <a href="/attraction">The Attraction →</a>
+        </p>
       </div>
     </footer>
-
   </body>
 </html>
 
-<style>
+<style is:global>
   :root {
-    --gh-bg: #eef1ec;
-    --gh-glass: rgba(255, 255, 255, 0.70);
-    --gh-text: #1a1d1a;
-    --gh-muted: #5a5f58;
-    --gh-faint: #8a8f88;
-    --gh-blue: #3d7fbd;
-    --gh-brass: #c99d4c;
-    --gh-walnut: #8b6547;
-    --gh-green: #9cad8d;
-    --gh-silver: #9ba8b2;
-    --gh-border: rgba(0, 0, 0, 0.10);
-    --gh-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-    --gh-radius: 18px;
-    --gh-max: 1180px;
-    --gh-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --gh-serif: ui-serif, Georgia, 'Times New Roman', serif;
+    /* Glasshouse v3 brand tokens */
+    --gh-teal: #3F7F7A;
+    --gh-teal-ink: #2C5A56;      /* derived: small text / links on cream */
+    --gh-brass: #B08D57;
+    --gh-brass-bright: #C9A468;  /* derived: plaque gradient top */
+    --gh-brass-edge: #8A6C3F;    /* derived: plaque bevel edge */
+    --gh-blue: #8ECBD1;          /* stained glass — light on dark only */
+    --gh-cream: #E9DFCB;
+    --gh-paper: #F2EBDB;         /* derived: raised paper panels on cream */
+    --gh-charcoal: #1B1E2E;
+    --gh-charcoal-lift: #232738; /* derived: raised panels on charcoal */
+    --gh-ink: #1B1E2E;
+    --gh-ink-soft: rgba(27, 30, 46, 0.74);
+    --gh-cream-soft: rgba(233, 223, 203, 0.82);
+    --gh-hairline-dark: rgba(27, 30, 46, 0.28);
+    --gh-hairline-light: rgba(233, 223, 203, 0.28);
+    --gh-max: 72rem;
+    --gh-gutter: 1.25rem;
+    --gh-display: 'Cinzel', 'Trajan Pro', serif;
+    --gh-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
     --gh-mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    --gh-focus: var(--gh-teal-ink);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html { scroll-behavior: smooth; }
+
   .gh-body {
-    background: #F5F3EE;
-    color: var(--gh-text);
-    font-family: var(--gh-sans);
-    font-size: 1rem;
-    line-height: 1.6;
+    background: var(--gh-cream);
+    color: var(--gh-ink);
+    font-family: var(--gh-serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
+
+  .gh-content { flex: 1; width: 100%; }
+
+  /* ── Strata: full-bleed bands, centered text measure ── */
+  .stratum {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--gh-gutter), 1fr)
+      [content-start] minmax(0, var(--gh-max))
+      [content-end] minmax(var(--gh-gutter), 1fr)
+      [full-end];
+  }
+  .stratum > * { grid-column: content; }
+  .stratum > .full-bleed { grid-column: full; }
+
+  .stratum--cream { background: var(--gh-cream); }
+  .stratum--dark {
+    background: var(--gh-charcoal);
+    color: var(--gh-cream);
+    --gh-focus: var(--gh-blue);
+  }
+
+  /* Boxed utility for legacy pages that expect the old contained frame */
+  .gh-boxed {
+    max-width: var(--gh-max);
+    margin-inline: auto;
+    padding: 3rem var(--gh-gutter);
+    width: 100%;
+  }
+
+  /* ── Shared brand furniture ── */
+  .gh-eyebrow {
+    font-family: var(--gh-display);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gh-teal-ink);
+  }
+  .stratum--dark .gh-eyebrow { color: var(--gh-brass); }
+
+  .gh-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--gh-brass);
+  }
+  .gh-rule::before,
+  .gh-rule::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: currentColor;
+    opacity: 0.55;
+  }
+  .gh-rule span {
+    width: 7px;
+    height: 7px;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .btn-plaque {
+    display: inline-block;
+    padding: 0.95rem 2.1rem;
+    background: linear-gradient(180deg, var(--gh-brass-bright), var(--gh-brass));
+    color: var(--gh-charcoal);
+    font-family: var(--gh-display);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--gh-brass-edge);
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 10px rgba(0, 0, 0, 0.22);
+    transition: filter 0.15s ease;
+  }
+  .btn-plaque:hover { filter: brightness(1.07); }
+
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.95rem 2.1rem;
+    background: transparent;
+    color: var(--gh-cream);
+    font-family: var(--gh-display);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--gh-cream-soft);
+    border-radius: 2px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-ghost:hover {
+    background: rgba(233, 223, 203, 0.12);
+    border-color: var(--gh-cream);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--gh-focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+<style>
+  .gh-skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 200;
+    background: var(--gh-charcoal);
+    color: var(--gh-cream);
+    padding: 0.75rem 1.25rem;
+    font-family: var(--gh-serif);
+    text-decoration: none;
+  }
+  .gh-skip:focus-visible { left: 0; }
 
   /* ── Nav ── */
   .gh-nav {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    padding: 0.875rem 2rem;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--gh-border);
+    padding: 0.75rem 1.5rem;
+    background: rgba(27, 30, 46, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(176, 141, 87, 0.4);
     position: sticky;
     top: 0;
     z-index: 100;
+    --gh-focus: var(--gh-blue);
   }
 
   .gh-logo {
     display: flex;
-    align-items: baseline;
-    gap: 0.625rem;
+    align-items: center;
+    gap: 0.7rem;
     text-decoration: none;
+    padding: 0.25rem 0;
   }
-  .gh-logo-mark {
-    background: var(--gh-brass);
-    color: #fff;
-    font-family: var(--gh-mono);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    padding: 0.35em 0.55em;
-    line-height: 1;
-    border-radius: 4px;
+  .gh-logo-mark { display: block; }
+  .gh-wordmark {
+    font-family: var(--gh-display);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gh-cream);
+    white-space: nowrap;
   }
-  .gh-logo-name {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    color: var(--gh-muted);
+  .gh-wordmark-sub {
+    font-weight: 400;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--gh-cream-soft);
   }
 
   .gh-nav-links {
     display: flex;
-    gap: 1.5rem;
-    margin-left: 1rem;
+    gap: 0.5rem;
+    margin-left: auto;
   }
   .gh-nav-links a {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--gh-muted);
+    font-family: var(--gh-serif);
+    font-size: 0.875rem;
+    color: var(--gh-cream-soft);
     text-decoration: none;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 2px solid transparent;
     transition: color 0.15s ease;
   }
-  .gh-nav-links a:hover { color: var(--gh-text); }
-  .gh-nav-links a.active { color: var(--gh-blue); }
-
-  .gh-nav-escape {
-    margin-left: auto;
-    font-size: 0.72rem;
-    color: var(--gh-faint);
-    text-decoration: none;
-    transition: color 0.15s ease;
-    font-family: var(--gh-mono);
-    letter-spacing: 0.04em;
-  }
-  .gh-nav-escape:hover { color: var(--gh-muted); }
-
-  /* ── Content ── */
-  .gh-content {
-    flex: 1;
-    max-width: var(--gh-max);
-    margin: 0 auto;
-    padding: 3rem 2rem;
-    width: 100%;
+  .gh-nav-links a:hover { color: var(--gh-cream); }
+  .gh-nav-links a.active {
+    color: var(--gh-blue);
+    border-bottom-color: var(--gh-blue);
   }
 
   /* ── Footer ── */
   .gh-footer {
-    border-top: 1px solid var(--gh-border);
-    background: #ffffff;
-    padding: 1.5rem 2rem;
+    border-top: 4px solid var(--gh-brass);
+    background:
+      linear-gradient(180deg, rgba(27, 30, 46, 0.86) 0%, rgba(27, 30, 46, 0.94) 100%),
+      url('/gh-footer-conservatory.jpg') center / cover no-repeat,
+      var(--gh-charcoal);
   }
   .gh-footer-inner {
-    max-width: var(--gh-max);
-    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    font-size: 0.75rem;
+    text-align: center;
+    gap: 1.1rem;
+    padding: 3.5rem 0 2.75rem;
   }
-  .gh-footer-brand { font-weight: 600; color: var(--gh-text); }
-  .gh-footer-tag { color: var(--gh-faint); }
-  .gh-footer-about {
-    color: var(--gh-faint);
+  .gh-footer-lockup {
+    max-width: min(340px, 78vw);
+    height: auto;
+  }
+  .gh-footer-motto {
+    font-family: var(--gh-display);
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gh-brass);
+  }
+  .gh-footer-rule { width: min(22rem, 70vw); }
+  .gh-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 2rem;
+  }
+  .gh-footer-links a {
+    font-size: 0.9rem;
+    color: var(--gh-cream);
     text-decoration: none;
-    transition: color 0.15s ease;
+    border-bottom: 1px solid rgba(233, 223, 203, 0.35);
+    padding: 0.35rem 0;
+    transition: border-color 0.15s ease;
   }
-  .gh-footer-about:hover { color: var(--gh-muted); }
-  .gh-footer-link {
-    margin-left: auto;
-    color: var(--gh-faint);
+  .gh-footer-links a:hover { border-bottom-color: var(--gh-blue); }
+  .gh-footer-parent {
+    font-size: 0.8rem;
+    color: var(--gh-cream-soft);
+  }
+  .gh-footer-door {
+    max-width: 44ch;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: rgba(233, 223, 203, 0.68);
+    margin-top: 0.75rem;
+  }
+  .gh-footer-door a {
+    color: var(--gh-blue);
     text-decoration: none;
-    font-family: var(--gh-mono);
-    letter-spacing: 0.04em;
-    transition: color 0.15s ease;
+    font-style: normal;
   }
-  .gh-footer-link:hover { color: var(--gh-muted); }
+  .gh-footer-door a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
-    .gh-nav { padding: 0.875rem 1rem; flex-wrap: wrap; gap: 0.75rem; }
-    .gh-nav-links { margin-left: 0; gap: 1rem; }
-    .gh-nav-escape { display: none; }
-    .gh-content { padding: 2rem 1rem; }
-    .gh-footer { padding: 1.25rem 1rem; }
-    .gh-footer-link { display: none; }
+    .gh-nav { flex-wrap: wrap; gap: 0.4rem 1rem; padding: 0.75rem 1rem; }
+    .gh-nav-links { margin-left: 0; width: 100%; justify-content: flex-start; gap: 0.25rem; }
+    .gh-nav-links a { padding: 0.6rem 0.6rem; }
+    .gh-wordmark-sub { display: none; }
+    .gh-footer-inner { padding: 2.75rem 0 2.25rem; }
   }
 </style>
