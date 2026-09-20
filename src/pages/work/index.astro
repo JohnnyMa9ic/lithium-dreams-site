@@ -31,6 +31,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
         <h3 class="ledger-title">Leads slip through the cracks.</h3>
         <div class="ledger-body">
           <p>Lead capture, response workflows, qualification, scheduling, and follow-up. AI where it earns its place — not everywhere.</p>
+          <p class="ledger-nouns">Forms &amp; approvals · CRM &amp; operations · email &amp; scheduling · integrations</p>
           <div class="ledger-tag">Automation Systems</div>
         </div>
       </article>
@@ -39,6 +40,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
         <h3 class="ledger-title">You're the bottleneck for everything.</h3>
         <div class="ledger-body">
           <p>Inbox, calendar, meeting prep, and metrics for the solo operator. Systems built around how you actually work.</p>
+          <p class="ledger-nouns">Dashboards · reporting · alerts &amp; metrics · mission control</p>
           <div class="ledger-tag">Operator Dashboards</div>
         </div>
       </article>
@@ -46,7 +48,8 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
         <div class="ledger-num" aria-hidden="true">03</div>
         <h3 class="ledger-title">You can never find what you already know.</h3>
         <div class="ledger-body">
-          <p>Ongoing monitoring, synthesis, and brief generation. Second brains, documentation, institutional memory, and search that works.</p>
+          <p>Ongoing monitoring, synthesis, and brief generation. Everything your business knows, organized so you can actually find it.</p>
+          <p class="ledger-nouns">Second brain · documentation · institutional memory · AI search</p>
           <div class="ledger-tag">Knowledge Systems</div>
         </div>
       </article>
@@ -54,7 +57,8 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
         <div class="ledger-num" aria-hidden="true">04</div>
         <h3 class="ledger-title">Publishing eats your week.</h3>
         <div class="ledger-body">
-          <p>Brand knowledge infrastructure, content pipelines, and long-form to short-form repurposing. Less manual assembly, more signal.</p>
+          <p>One pipeline from idea to published — and a brand that remembers what it has already made. Less manual assembly, more signal.</p>
+          <p class="ledger-nouns">Content operations · brand memory · creative archives · repurposing</p>
           <div class="ledger-tag">Creative Systems</div>
         </div>
       </article>
@@ -125,11 +129,12 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
       <div class="operator-copy">
         <p class="gh-eyebrow">The Operator</p>
         <h2 class="sec-headline" id="operator-h">Built by an operator, not an AI&nbsp;tourist.</h2>
-        <p>Glasshouse Systems Studio is a systems design practice. AI is one of our tools — not our product and not our identity. We design practical operational systems for people who need clarity about how their work actually happens, and want infrastructure that scales without becoming their full-time job.</p>
+        <p>Glasshouse Systems Studio is a systems design practice. AI is one of our tools — not our product and not our identity. Technology is just the tool; clarity is the product. We design practical operational systems for people who need to see how their work actually happens, and want infrastructure that scales without becoming their full-time job.</p>
         <p>Every client system we pitch, we've already run internally. Nothing runs that you can't see and stop — you approve everything.</p>
         <a href="/work/about" class="operator-link">Meet the operator →</a>
       </div>
       <div class="operator-cta">
+        <p class="operator-invite">Every engagement starts with a conversation. Tell us about your mission, and we'll recommend the right first&nbsp;step.</p>
         <a href="/work/intake" class="btn-plaque">Start your brief</a>
         <p class="operator-note">A 10-minute structured brief that replaces the vague discovery call. No commitment — just clarity.</p>
       </div>
@@ -282,6 +287,15 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     line-height: 1.65;
     color: var(--gh-ink-soft);
     max-width: 58ch;
+  }
+  .ledger-body .ledger-nouns {
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gh-ink-soft);
+    line-height: 1.9;
+    max-width: none;
+    margin-top: -0.25rem;
   }
   .ledger-tag {
     font-family: var(--gh-display);
@@ -452,6 +466,14 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     border: 1px solid var(--gh-hairline-dark);
     border-top: 3px solid var(--gh-brass);
     padding: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .operator-invite {
+    font-family: var(--gh-serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.55;
+    max-width: 30ch;
+    text-wrap: balance;
   }
   .operator-note {
     font-size: 0.9rem;

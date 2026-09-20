@@ -57,7 +57,8 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     <div class="tenets-inner">
       <header class="tenets-opening">
         <p class="gh-eyebrow">How the Studio Thinks</p>
-        <h2 id="tenets-h">Three tenets. Every engagement.</h2>
+        <h2 id="tenets-h">Four tenets. Every engagement.</h2>
+        <p class="tenets-motto">Systems over software. Clarity over chaos.</p>
       </header>
       <div class="tenet-row">
         <article class="tenet">
@@ -74,6 +75,11 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
           <p class="tenet-num" aria-hidden="true">III</p>
           <h3>Human in the loop</h3>
           <p>Nothing runs that you can't see and stop. Automation earns autonomy gradually — it is never granted on faith.</p>
+        </article>
+        <article class="tenet">
+          <p class="tenet-num" aria-hidden="true">IV</p>
+          <h3>Protect what matters</h3>
+          <p>Your data is your business. Access stays scoped to the job, nothing gets locked in, and you keep the keys to everything we build.</p>
         </article>
       </div>
     </div>
@@ -158,11 +164,18 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     font-size: clamp(1.6rem, 2.4vw, 2.3rem);
     font-weight: 600;
     letter-spacing: 0.02em;
-    margin: 1rem 0 2.5rem;
+    margin: 1rem 0 0.75rem;
+  }
+  .tenets-motto {
+    font-family: var(--gh-serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--gh-cream-soft);
+    margin-bottom: 2.5rem;
   }
   .tenet-row {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(1.5rem, 3vw, 3rem);
   }
   .tenet {
@@ -220,6 +233,9 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   }
   .studio-footnote a:hover { text-decoration: underline; }
 
+  @media (max-width: 1100px) {
+    .tenet-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 820px) {
     .bio-inner { grid-template-columns: 1fr; }
     .bio-portrait { max-width: 300px; }
