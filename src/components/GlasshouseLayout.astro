@@ -1,4 +1,6 @@
 ---
+import { CF_ANALYTICS_TOKEN } from '../config/site';
+
 interface Props {
   title?: string;
   description?: string;
@@ -9,7 +11,7 @@ interface Props {
 const {
   title = 'Glasshouse Systems Studio — Systems & Automation for Small Business',
   description = "Systems and automation for people who'd rather run their business than wrestle their tools. Glasshouse Systems Studio, Iowa.",
-  ogImage = '/footer-conservatory.jpg',
+  ogImage = '/og-work.png',
   activePage = '',
 } = Astro.props;
 
@@ -68,6 +70,15 @@ const navLinks = [
       },
       "areaServed": "United States",
     })} />
+
+    {CF_ANALYTICS_TOKEN && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+      ></script>
+    )}
   </head>
   <body class="gh-body">
     <a href="#gh-main" class="gh-skip">Skip to content</a>

@@ -1,0 +1,123 @@
+---
+import Layout from '../components/Layout.astro';
+import MaintenanceTag from '../components/MaintenanceTag.astro';
+import TicketButton from '../components/TicketButton.astro';
+---
+
+<Layout
+  title="Lost on the Midway — Lithium Dreams Industries"
+  description="This door isn't on the map. Return to the front gate of the Last Roadside Attraction."
+>
+  <div class="lost-page">
+    <div class="lost-card">
+      <div class="lost-header">
+        <span class="lost-eyebrow mono">ERROR 404 — VISITOR SERVICES</span>
+        <MaintenanceTag status="UNSTABLE" size="md" />
+      </div>
+
+      <h1 class="lost-title">You've Wandered Off the Midway</h1>
+
+      <p class="lost-body">
+        This door isn't on the map. It may have moved, it may have been retired,
+        or it may never have existed. The grounds shift a little after closing time.
+      </p>
+
+      <p class="lost-note mono">
+        Per Employee Safety Bulletin, Rule 4: if you find a door that was not there
+        yesterday, report it. Do not enter it.
+      </p>
+
+      <div class="lost-actions">
+        <TicketButton href="/" label="Return to the Front Gate" />
+        <nav class="lost-links" aria-label="Suggested destinations">
+          <a href="/attraction" class="mono">The Midway</a>
+          <a href="/museum" class="mono">Museum</a>
+          <a href="/work" class="mono">Operator Notes</a>
+        </nav>
+      </div>
+
+      <p class="lost-footer mono">Your current location: unlisted. Management has been notified. Management notices everything.</p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .lost-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) var(--content-pad, var(--space-md));
+  }
+  .lost-card {
+    max-width: 34rem;
+    border: 1px solid var(--rain-slate);
+    background: var(--road-asphalt);
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .lost-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+  .lost-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(232, 222, 200, 0.62);
+    text-transform: uppercase;
+  }
+  .lost-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: var(--paper);
+    line-height: 1.05;
+  }
+  .lost-body {
+    font-size: 0.9rem;
+    color: rgba(232, 222, 200, 0.78);
+    line-height: 1.7;
+  }
+  .lost-note {
+    font-size: 0.7rem;
+    color: rgba(232, 222, 200, 0.62);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    border-left: 2px solid var(--neon-amber);
+    padding-left: var(--space-sm);
+  }
+  .lost-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+  .lost-links {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .lost-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232, 222, 200, 0.62);
+    text-decoration: none;
+    display: inline-block;
+    padding-block: 0.35rem; /* 24px+ tap target */
+    transition: color 0.15s;
+  }
+  .lost-links a:hover,
+  .lost-links a:focus-visible { color: var(--neon-amber); }
+  .lost-footer {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: rgba(232, 222, 200, 0.56);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding-top: var(--space-sm);
+  }
+</style>

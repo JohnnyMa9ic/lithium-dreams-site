@@ -1,17 +1,23 @@
 ---
 import '../styles/global.css';
+import { CF_ANALYTICS_TOKEN } from '../config/site';
 
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
   activePage?: string;
 }
 
 const {
   title = 'Lithium Dreams Industries',
   description = 'Operating Systems Design Company. We design systems that remove friction between people and meaningful work.',
+  ogImage = '/og-work.png',
   activePage = '',
 } = Astro.props;
+
+const siteURL = 'https://lithium-dreams.com';
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
 
 const navLinks = [
   { href: '/work', label: 'Overview' },
@@ -26,7 +32,23 @@ const navLinks = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.toString()} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteURL}${ogImage}`} />
+    <meta property="og:site_name" content="Lithium Dreams Industries" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteURL}${ogImage}`} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,6 +56,15 @@ const navLinks = [
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    {CF_ANALYTICS_TOKEN && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+      ></script>
+    )}
   </head>
   <body class="work-body">
     <nav class="work-nav">

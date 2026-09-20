@@ -12,6 +12,13 @@ interface MissionBrief {
   [key: string]: unknown;
 }
 
+interface IntakeEnv {
+  MISSION_INTAKE?: KVNamespace;
+  TELEGRAM_BOT_TOKEN?: string;
+  TELEGRAM_CHAT_ID?: string;
+  INTAKE_ADMIN_KEY?: string;
+}
+
 const MAX_BODY_BYTES = 32_768;
 
 export const POST: APIRoute = async ({ request }) => {
@@ -31,7 +38,8 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: 'Select a track before submitting.' }, 422);
   }
 
-  const kv = (env as unknown as { MISSION_INTAKE?: KVNamespace }).MISSION_INTAKE;
+  const intakeEnv = env as unknown as IntakeEnv;
+  const kv = intakeEnv.MISSION_INTAKE;
   if (!kv) {
     // Fail loudly server-side — do not tell the visitor it worked if it didn't.
     console.error('MISSION_INTAKE KV binding missing');
@@ -47,8 +55,89 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: 'Could not store the brief. Please email us directly.' }, 500);
   }
 
+  // Notify the operator. The KV write above is the source of truth — a notify
+  // failure must never fail the submission, so this path only logs.
+  await notifyOperator(intakeEnv, brief, key);
+
   return json({ ok: true, reference: brief.reference ?? null });
 };
+
+async function notifyOperator(intakeEnv: IntakeEnv, brief: MissionBrief, key: string): Promise<void> {
+  const token = intakeEnv.TELEGRAM_BOT_TOKEN;
+  const chatId = intakeEnv.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) {
+    console.warn('Intake notify skipped: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not configured');
+    return;
+  }
+
+  const lines = [
+    'New mission brief — lithium-dreams.com/work/intake',
+    `Track: ${brief.track ?? '—'}`,
+    `Org: ${brief.organization ?? '—'}`,
+    `Contact: ${brief.contact ?? '—'} <${brief.email ?? '—'}>`,
+    `Ref: ${brief.reference ?? '—'}`,
+    `KV key: ${key}`,
+  ];
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: lines.join('\n') }),
+      signal: AbortSignal.timeout(5_000),
+    });
+    if (!res.ok) {
+      console.error('Intake notify failed', res.status, await res.text());
+    }
+  } catch (err) {
+    console.error('Intake notify failed', err);
+  }
+}
+
+// Operator backstop: GET /api/intake?key=<INTAKE_ADMIN_KEY> lists stored briefs.
+// Answers 404 unless the key secret is configured AND matches — the endpoint
+// is invisible without both.
+export const GET: APIRoute = async ({ url }) => {
+  const intakeEnv = env as unknown as IntakeEnv;
+  const adminKey = intakeEnv.INTAKE_ADMIN_KEY;
+  const given = url.searchParams.get('key') ?? '';
+  if (!adminKey || !timingSafeEqual(given, adminKey)) {
+    return new Response('Not found', { status: 404 });
+  }
+
+  const kv = intakeEnv.MISSION_INTAKE;
+  if (!kv) {
+    return json({ ok: false, error: 'MISSION_INTAKE KV binding missing' }, 500);
+  }
+
+  const listing = await kv.list({ limit: 100 });
+  const briefs = await Promise.all(
+    listing.keys.map(async (k) => {
+      const raw = await kv.get(k.name);
+      let value: unknown = raw;
+      try {
+        value = raw ? JSON.parse(raw) : null;
+      } catch {
+        /* leave raw */
+      }
+      return { key: k.name, value };
+    }),
+  );
+  // Keys start with an ISO timestamp, so lexicographic order is chronological.
+  briefs.sort((a, b) => (a.key < b.key ? 1 : -1));
+
+  return json({ ok: true, count: briefs.length, complete: listing.list_complete, briefs }, 200);
+};
+
+function timingSafeEqual(a: string, b: string): boolean {
+  const enc = new TextEncoder();
+  const ab = enc.encode(a);
+  const bb = enc.encode(b);
+  if (ab.length !== bb.length) return false;
+  let diff = 0;
+  for (let i = 0; i < ab.length; i++) diff |= ab[i] ^ bb[i];
+  return diff === 0;
+}
 
 function json(body: Record<string, unknown>, status: number): Response {
   return new Response(JSON.stringify(body), {

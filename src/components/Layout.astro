@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { CF_ANALYTICS_TOKEN } from '../config/site';
 
 interface Props {
   title?: string;
@@ -72,6 +73,15 @@ const navLinks = [
       "logo": `${siteURL}/favicon.svg`,
       "description": "Operational systems design studio, creative laboratory, and last roadside attraction at the edge of the universe.",
     })} />
+
+    {CF_ANALYTICS_TOKEN && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+      ></script>
+    )}
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
