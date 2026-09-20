@@ -14,8 +14,6 @@ interface MissionBrief {
 
 interface IntakeEnv {
   MISSION_INTAKE?: KVNamespace;
-  TELEGRAM_BOT_TOKEN?: string;
-  TELEGRAM_CHAT_ID?: string;
   INTAKE_ADMIN_KEY?: string;
 }
 
@@ -55,44 +53,14 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: 'Could not store the brief. Please email us directly.' }, 500);
   }
 
-  // Notify the operator. The KV write above is the source of truth — a notify
-  // failure must never fail the submission, so this path only logs.
-  await notifyOperator(intakeEnv, brief, key);
+  // Operator notification: planned as a Cloudflare Email Routing send_email
+  // binding to John's verified address (no secrets, no third party). Blocked
+  // until Email Routing is enabled on the zone — adding the binding before
+  // that would fail the deploy. Until then the admin GET below is the
+  // pickup path; the KV write above is always the source of truth.
 
   return json({ ok: true, reference: brief.reference ?? null });
 };
-
-async function notifyOperator(intakeEnv: IntakeEnv, brief: MissionBrief, key: string): Promise<void> {
-  const token = intakeEnv.TELEGRAM_BOT_TOKEN;
-  const chatId = intakeEnv.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) {
-    console.warn('Intake notify skipped: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not configured');
-    return;
-  }
-
-  const lines = [
-    'New mission brief — lithium-dreams.com/work/intake',
-    `Track: ${brief.track ?? '—'}`,
-    `Org: ${brief.organization ?? '—'}`,
-    `Contact: ${brief.contact ?? '—'} <${brief.email ?? '—'}>`,
-    `Ref: ${brief.reference ?? '—'}`,
-    `KV key: ${key}`,
-  ];
-
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, text: lines.join('\n') }),
-      signal: AbortSignal.timeout(5_000),
-    });
-    if (!res.ok) {
-      console.error('Intake notify failed', res.status, await res.text());
-    }
-  } catch (err) {
-    console.error('Intake notify failed', err);
-  }
-}
 
 // Operator backstop: GET /api/intake?key=<INTAKE_ADMIN_KEY> lists stored briefs.
 // Answers 404 unless the key secret is configured AND matches — the endpoint
