@@ -98,31 +98,22 @@ const navLinks = [
 
     <footer class="gh-footer stratum stratum--dark">
       <div class="gh-footer-inner">
-        <div class="gh-footer-brand">
+        <a href="/work" class="gh-footer-brand" aria-label="Glasshouse Systems Studio">
           <img
             src="/card/brand-lockup.webp"
             alt="Glasshouse Systems Studio — Think, Design, Build, Observe, Grow"
             class="gh-footer-lockup"
-            width="300"
+            width="180"
             loading="lazy"
             decoding="async"
           />
-          <p class="gh-footer-motto">Nature · Infrastructure · People · In Harmony</p>
-        </div>
-        <div class="gh-footer-side">
-          <div class="gh-footer-links">
-            <a href="/work/about">About the studio</a>
-            <a href="/work/intake">Start a project</a>
-            <a href="/card/">The card</a>
-          </div>
-          <p class="gh-footer-parent">A Lithium Dreams studio · Iowa</p>
-        </div>
-      </div>
-      <div class="gh-footer-doorline">
-        <p class="gh-footer-door">
-          The studio also maintains a roadside attraction at the edge of the universe.
-          Visitors welcome. <a href="/attraction">The Attraction →</a>
-        </p>
+        </a>
+        <nav class="gh-footer-links" aria-label="Studio links">
+          <a href="/work/about">About the studio</a>
+          <a href="/work/intake">Start a project</a>
+          <a href="/card/">The card</a>
+        </nav>
+        <p class="gh-footer-parent">A Lithium Dreams studio · Iowa</p>
       </div>
     </footer>
   </body>
@@ -392,40 +383,21 @@ const navLinks = [
   }
   .gh-footer-inner {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    gap: 2.5rem;
-    padding: clamp(3rem, 6vh, 4.5rem) 0 2.25rem;
+    flex-wrap: wrap;
+    gap: 1.25rem 2.5rem;
+    padding: 1.5rem 0;
   }
-  .gh-footer-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+  .gh-footer-brand { display: block; line-height: 0; }
   .gh-footer-lockup {
-    max-width: min(300px, 72vw);
+    width: min(180px, 48vw);
     height: auto;
-  }
-  .gh-footer-motto {
-    font-family: var(--gh-display);
-    font-weight: 400;
-    font-size: 0.7rem;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: var(--gh-brass);
-  }
-  .gh-footer-side {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1.25rem;
-    text-align: right;
   }
   .gh-footer-links {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.65rem;
+    align-items: center;
+    gap: 1.75rem;
   }
   .gh-footer-links a {
     font-size: 0.95rem;
@@ -440,21 +412,6 @@ const navLinks = [
     font-size: 0.8rem;
     color: var(--gh-cream-soft);
   }
-  .gh-footer-doorline {
-    border-top: 1px solid var(--gh-hairline-light);
-    padding: 1.25rem 0 1.5rem;
-  }
-  .gh-footer-door {
-    font-size: 0.8rem;
-    font-style: italic;
-    color: rgba(233, 223, 203, 0.68);
-  }
-  .gh-footer-door a {
-    color: var(--gh-glass);
-    text-decoration: none;
-    font-style: normal;
-  }
-  .gh-footer-door a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
     .gh-nav-inner { flex-wrap: wrap; gap: 0.4rem 1rem; }
@@ -464,10 +421,8 @@ const navLinks = [
     .gh-footer-inner {
       flex-direction: column;
       align-items: flex-start;
-      gap: 2rem;
-      padding: 2.75rem 0 2rem;
+      gap: 1.25rem;
+      padding: 1.5rem 0 1.75rem;
     }
-    .gh-footer-side { align-items: flex-start; text-align: left; }
-    .gh-footer-links { align-items: flex-start; }
   }
 </style>
