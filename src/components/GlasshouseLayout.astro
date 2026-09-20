@@ -9,7 +9,7 @@ interface Props {
 const {
   title = 'Glasshouse Systems Studio — Systems & Automation for Small Business',
   description = "Systems and automation for people who'd rather run their business than wrestle their tools. Glasshouse Systems Studio, Iowa.",
-  ogImage = '/gh-hero-conservatory.jpg',
+  ogImage = '/footer-conservatory.jpg',
   activePage = '',
 } = Astro.props;
 
@@ -73,20 +73,22 @@ const navLinks = [
     <a href="#gh-main" class="gh-skip">Skip to content</a>
 
     <nav class="gh-nav" aria-label="Glasshouse Systems Studio">
-      <a href="/work" class="gh-logo">
-        <img src="/gh-medallion-64.png" alt="" width="30" height="30" class="gh-logo-mark" />
-        <span class="gh-wordmark">Glasshouse <span class="gh-wordmark-sub">Systems Studio</span></span>
-      </a>
-      <div class="gh-nav-links">
-        {navLinks.map(link => (
-          <a
-            href={link.href}
-            class={activePage === link.href ? 'active' : ''}
-            aria-current={activePage === link.href ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        ))}
+      <div class="gh-nav-inner">
+        <a href="/work" class="gh-logo">
+          <img src="/gh-medallion-64.png" alt="" width="30" height="30" class="gh-logo-mark" />
+          <span class="gh-wordmark">Glasshouse <span class="gh-wordmark-sub">Systems Studio</span></span>
+        </a>
+        <div class="gh-nav-links">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class={activePage === link.href ? 'active' : ''}
+              aria-current={activePage === link.href ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
 
@@ -96,22 +98,27 @@ const navLinks = [
 
     <footer class="gh-footer stratum stratum--dark">
       <div class="gh-footer-inner">
-        <img
-          src="/card/brand-lockup.webp"
-          alt="Glasshouse Systems Studio — Think, Design, Build, Observe, Grow"
-          class="gh-footer-lockup"
-          width="340"
-          loading="lazy"
-          decoding="async"
-        />
-        <p class="gh-footer-motto">Nature · Infrastructure · People · In Harmony</p>
-        <div class="gh-rule gh-footer-rule" aria-hidden="true"><span></span></div>
-        <div class="gh-footer-links">
-          <a href="/work/about">About the studio</a>
-          <a href="/work/intake">Start a project</a>
-          <a href="/card/">The card</a>
+        <div class="gh-footer-brand">
+          <img
+            src="/card/brand-lockup.webp"
+            alt="Glasshouse Systems Studio — Think, Design, Build, Observe, Grow"
+            class="gh-footer-lockup"
+            width="300"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="gh-footer-motto">Nature · Infrastructure · People · In Harmony</p>
         </div>
-        <p class="gh-footer-parent">A Lithium Dreams studio · Iowa</p>
+        <div class="gh-footer-side">
+          <div class="gh-footer-links">
+            <a href="/work/about">About the studio</a>
+            <a href="/work/intake">Start a project</a>
+            <a href="/card/">The card</a>
+          </div>
+          <p class="gh-footer-parent">A Lithium Dreams studio · Iowa</p>
+        </div>
+      </div>
+      <div class="gh-footer-doorline">
         <p class="gh-footer-door">
           The studio also maintains a roadside attraction at the edge of the universe.
           Visitors welcome. <a href="/attraction">The Attraction →</a>
@@ -129,7 +136,7 @@ const navLinks = [
     --gh-brass: #B08D57;
     --gh-brass-bright: #C9A468;  /* derived: plaque gradient top */
     --gh-brass-edge: #8A6C3F;    /* derived: plaque bevel edge */
-    --gh-blue: #8ECBD1;          /* stained glass — light on dark only */
+    --gh-glass: #8ECBD1;         /* stained glass — light on dark only */
     --gh-cream: #E9DFCB;
     --gh-paper: #F2EBDB;         /* derived: raised paper panels on cream */
     --gh-charcoal: #1B1E2E;
@@ -139,17 +146,27 @@ const navLinks = [
     --gh-cream-soft: rgba(233, 223, 203, 0.82);
     --gh-hairline-dark: rgba(27, 30, 46, 0.28);
     --gh-hairline-light: rgba(233, 223, 203, 0.28);
-    --gh-max: 72rem;
-    --gh-gutter: 1.25rem;
+    --gh-max: 96rem;
+    --gh-gutter: clamp(1.25rem, 4vw, 4.5rem);
+    --gh-sec-pad: clamp(4rem, 9vh, 7rem);
     --gh-display: 'Cinzel', 'Trajan Pro', serif;
     --gh-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
     --gh-mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
     --gh-focus: var(--gh-teal-ink);
+
+    /* Legacy aliases — /work/intake and other un-reskinned pages consume these.
+       Do not remove until every page under GlasshouseLayout is on the v3 names. */
+    --gh-text: var(--gh-ink);
+    --gh-muted: rgba(27, 30, 46, 0.62);
+    --gh-silver: rgba(27, 30, 46, 0.3);
+    --gh-blue: var(--gh-teal-ink);
+    --gh-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: 5rem; }
 
   .gh-body {
     background: var(--gh-cream);
@@ -164,7 +181,7 @@ const navLinks = [
 
   .gh-content { flex: 1; width: 100%; }
 
-  /* ── Strata: full-bleed bands, centered text measure ── */
+  /* ── Strata: full-bleed bands, wide aligned content column ── */
   .stratum {
     display: grid;
     grid-template-columns:
@@ -180,14 +197,14 @@ const navLinks = [
   .stratum--dark {
     background: var(--gh-charcoal);
     color: var(--gh-cream);
-    --gh-focus: var(--gh-blue);
+    --gh-focus: var(--gh-glass);
   }
 
   /* Boxed utility for legacy pages that expect the old contained frame */
   .gh-boxed {
-    max-width: var(--gh-max);
+    max-width: 72rem;
     margin-inline: auto;
-    padding: 3rem var(--gh-gutter);
+    padding: 3rem 1.25rem;
     width: 100%;
   }
 
@@ -296,12 +313,14 @@ const navLinks = [
   }
   .gh-skip:focus-visible { left: 0; }
 
-  /* ── Nav ── */
+  /* ── Nav — aligned to the same content grid as the page ── */
   .gh-nav {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 0.75rem 1.5rem;
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--gh-gutter), 1fr)
+      [content-start] minmax(0, var(--gh-max))
+      [content-end] minmax(var(--gh-gutter), 1fr)
+      [full-end];
     background: rgba(27, 30, 46, 0.92);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -309,7 +328,14 @@ const navLinks = [
     position: sticky;
     top: 0;
     z-index: 100;
-    --gh-focus: var(--gh-blue);
+    --gh-focus: var(--gh-glass);
+  }
+  .gh-nav-inner {
+    grid-column: content;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 0;
   }
 
   .gh-logo {
@@ -352,77 +378,96 @@ const navLinks = [
   }
   .gh-nav-links a:hover { color: var(--gh-cream); }
   .gh-nav-links a.active {
-    color: var(--gh-blue);
-    border-bottom-color: var(--gh-blue);
+    color: var(--gh-glass);
+    border-bottom-color: var(--gh-glass);
   }
 
-  /* ── Footer ── */
+  /* ── Footer — brand left, wayfinding right, one quiet door ── */
   .gh-footer {
     border-top: 4px solid var(--gh-brass);
     background:
-      linear-gradient(180deg, rgba(27, 30, 46, 0.86) 0%, rgba(27, 30, 46, 0.94) 100%),
+      linear-gradient(180deg, rgba(27, 30, 46, 0.88) 0%, rgba(27, 30, 46, 0.95) 100%),
       url('/gh-footer-conservatory.jpg') center / cover no-repeat,
       var(--gh-charcoal);
   }
   .gh-footer-inner {
     display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2.5rem;
+    padding: clamp(3rem, 6vh, 4.5rem) 0 2.25rem;
+  }
+  .gh-footer-brand {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.1rem;
-    padding: 3.5rem 0 2.75rem;
+    gap: 1rem;
   }
   .gh-footer-lockup {
-    max-width: min(340px, 78vw);
+    max-width: min(300px, 72vw);
     height: auto;
   }
   .gh-footer-motto {
     font-family: var(--gh-display);
     font-weight: 400;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--gh-brass);
   }
-  .gh-footer-rule { width: min(22rem, 70vw); }
+  .gh-footer-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.25rem;
+    text-align: right;
+  }
   .gh-footer-links {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem 2rem;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.65rem;
   }
   .gh-footer-links a {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--gh-cream);
     text-decoration: none;
     border-bottom: 1px solid rgba(233, 223, 203, 0.35);
-    padding: 0.35rem 0;
+    padding-bottom: 0.2rem;
     transition: border-color 0.15s ease;
   }
-  .gh-footer-links a:hover { border-bottom-color: var(--gh-blue); }
+  .gh-footer-links a:hover { border-bottom-color: var(--gh-glass); }
   .gh-footer-parent {
     font-size: 0.8rem;
     color: var(--gh-cream-soft);
   }
+  .gh-footer-doorline {
+    border-top: 1px solid var(--gh-hairline-light);
+    padding: 1.25rem 0 1.5rem;
+  }
   .gh-footer-door {
-    max-width: 44ch;
     font-size: 0.8rem;
     font-style: italic;
     color: rgba(233, 223, 203, 0.68);
-    margin-top: 0.75rem;
   }
   .gh-footer-door a {
-    color: var(--gh-blue);
+    color: var(--gh-glass);
     text-decoration: none;
     font-style: normal;
   }
   .gh-footer-door a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
-    .gh-nav { flex-wrap: wrap; gap: 0.4rem 1rem; padding: 0.75rem 1rem; }
+    .gh-nav-inner { flex-wrap: wrap; gap: 0.4rem 1rem; }
     .gh-nav-links { margin-left: 0; width: 100%; justify-content: flex-start; gap: 0.25rem; }
     .gh-nav-links a { padding: 0.6rem 0.6rem; }
     .gh-wordmark-sub { display: none; }
-    .gh-footer-inner { padding: 2.75rem 0 2.25rem; }
+    .gh-footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 2.75rem 0 2rem;
+    }
+    .gh-footer-side { align-items: flex-start; text-align: left; }
+    .gh-footer-links { align-items: flex-start; }
   }
 </style>

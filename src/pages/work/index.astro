@@ -4,10 +4,10 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 
 <GlasshouseLayout activePage="/work">
 
-  <!-- Hero — the conservatory at dusk -->
+  <!-- Hero — the conservatory at dusk, composed left -->
   <section class="stratum hero">
     <div class="hero-inner">
-      <img src="/gh-medallion-256.png" alt="" width="84" height="84" class="hero-mark" fetchpriority="high" />
+      <img src="/gh-medallion-256.png" alt="" width="56" height="56" class="hero-mark" fetchpriority="high" />
       <p class="gh-eyebrow hero-eyebrow">Glasshouse Systems Studio</p>
       <h1 class="hero-headline">You run the business. The&nbsp;systems should run themselves.</h1>
       <p class="hero-offer">Systems and automation for people who'd rather run their business than wrestle their tools.</p>
@@ -19,47 +19,55 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     </div>
   </section>
 
-  <!-- Commissioned works — the problems, as museum plaques -->
+  <!-- Commissioned works — the problems, as a full-width ledger -->
   <section class="stratum stratum--cream sec" id="commissions" aria-labelledby="commissions-h">
     <header class="sec-head">
       <p class="gh-eyebrow">Commissioned Works</p>
-      <h2 class="sec-headline" id="commissions-h">The problems we take off your plate.</h2>
-      <div class="gh-rule sec-rule" aria-hidden="true"><span></span></div>
+      <h2 class="sec-headline" id="commissions-h">The problems we take off your&nbsp;plate.</h2>
     </header>
-    <div class="plaques">
-      <article class="plaque">
-        <img src="/gh-roundel-automation.svg" alt="" width="56" height="56" class="plaque-roundel" loading="lazy" />
-        <h3>Leads slip through the cracks.</h3>
-        <p>Lead capture, response workflows, qualification, scheduling, and follow-up. AI where it earns its place — not everywhere.</p>
-        <div class="plaque-tag">Automation Systems</div>
+    <div class="ledger">
+      <article class="ledger-row">
+        <div class="ledger-num" aria-hidden="true">01</div>
+        <h3 class="ledger-title">Leads slip through the cracks.</h3>
+        <div class="ledger-body">
+          <p>Lead capture, response workflows, qualification, scheduling, and follow-up. AI where it earns its place — not everywhere.</p>
+          <div class="ledger-tag">Automation Systems</div>
+        </div>
       </article>
-      <article class="plaque">
-        <img src="/gh-roundel-dashboard.svg" alt="" width="56" height="56" class="plaque-roundel" loading="lazy" />
-        <h3>You're the bottleneck for everything.</h3>
-        <p>Inbox, calendar, meeting prep, and metrics for the solo operator. Systems built around how you actually work.</p>
-        <div class="plaque-tag">Operator Dashboards</div>
+      <article class="ledger-row">
+        <div class="ledger-num" aria-hidden="true">02</div>
+        <h3 class="ledger-title">You're the bottleneck for everything.</h3>
+        <div class="ledger-body">
+          <p>Inbox, calendar, meeting prep, and metrics for the solo operator. Systems built around how you actually work.</p>
+          <div class="ledger-tag">Operator Dashboards</div>
+        </div>
       </article>
-      <article class="plaque">
-        <img src="/gh-roundel-knowledge.svg" alt="" width="56" height="56" class="plaque-roundel" loading="lazy" />
-        <h3>You can never find what you already know.</h3>
-        <p>Ongoing monitoring, synthesis, and brief generation. Second brains, documentation, institutional memory, and search that works.</p>
-        <div class="plaque-tag">Knowledge Systems</div>
+      <article class="ledger-row">
+        <div class="ledger-num" aria-hidden="true">03</div>
+        <h3 class="ledger-title">You can never find what you already know.</h3>
+        <div class="ledger-body">
+          <p>Ongoing monitoring, synthesis, and brief generation. Second brains, documentation, institutional memory, and search that works.</p>
+          <div class="ledger-tag">Knowledge Systems</div>
+        </div>
       </article>
-      <article class="plaque">
-        <img src="/gh-roundel-creative.svg" alt="" width="56" height="56" class="plaque-roundel" loading="lazy" />
-        <h3>Publishing eats your week.</h3>
-        <p>Brand knowledge infrastructure, content pipelines, and long-form to short-form repurposing. Less manual assembly, more signal.</p>
-        <div class="plaque-tag">Creative Systems</div>
+      <article class="ledger-row">
+        <div class="ledger-num" aria-hidden="true">04</div>
+        <h3 class="ledger-title">Publishing eats your week.</h3>
+        <div class="ledger-body">
+          <p>Brand knowledge infrastructure, content pipelines, and long-form to short-form repurposing. Less manual assembly, more signal.</p>
+          <div class="ledger-tag">Creative Systems</div>
+        </div>
       </article>
     </div>
   </section>
 
   <!-- The method — materials cabinet, four stages fused with four materials -->
   <section class="stratum stratum--dark sec" id="method" aria-labelledby="method-h">
-    <header class="sec-head">
-      <p class="gh-eyebrow">The Method</p>
-      <h2 class="sec-headline sec-headline--display" id="method-h">Four stages. No&nbsp;shortcuts.</h2>
-      <div class="gh-rule sec-rule" aria-hidden="true"><span></span></div>
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="gh-eyebrow">The Method</p>
+        <h2 class="sec-headline sec-headline--display" id="method-h">Four stages. No&nbsp;shortcuts.</h2>
+      </div>
       <p class="sec-sub">Four materials in the studio's cabinet — each one a stage of the work.</p>
     </header>
     <div class="plates">
@@ -100,17 +108,18 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 
   <!-- Proof — the studio runs on its own systems -->
   <section class="stratum stratum--cream sec" id="proof" aria-labelledby="proof-h">
-    <header class="sec-head">
-      <p class="gh-eyebrow">Proof</p>
-      <h2 class="sec-headline" id="proof-h">Every system we sell, we run first.</h2>
-      <div class="gh-rule sec-rule" aria-hidden="true"><span></span></div>
-    </header>
-    <ul class="proof-ledger">
-      <li>The research and monitoring stack that briefs the studio every morning — the same knowledge systems we build for clients.</li>
-      <li>The content pipeline behind the studio's own channel and this site — the creative systems track, running in production.</li>
-      <li>The project brief on this site fed our first client engagement end to end — a structured brief in, a finished proposal out, for a real-estate office in eastern Iowa.</li>
-    </ul>
-    <p class="proof-note">If a system doesn't survive contact with real operations, we don't sell it.</p>
+    <div class="proof-grid">
+      <header class="proof-head">
+        <p class="gh-eyebrow">Proof</p>
+        <h2 class="sec-headline" id="proof-h">Every system we sell, we run&nbsp;first.</h2>
+        <p class="proof-note">If a system doesn't survive contact with real operations, we don't sell it.</p>
+      </header>
+      <ul class="proof-ledger">
+        <li>The research and monitoring stack that briefs the studio every morning — the same knowledge systems we build for clients.</li>
+        <li>The content pipeline behind the studio's own channel and this site — the creative systems track, running in production.</li>
+        <li>The project brief on this site fed our first client engagement end to end — a structured brief in, a finished proposal out, for a real-estate office in eastern Iowa.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- The operator + close -->
@@ -136,133 +145,152 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 <style>
   /* ── Hero ── */
   .hero {
-    min-height: 88vh;
-    min-height: 88svh;
+    min-height: 90vh;
+    min-height: 90svh;
     align-content: center;
     background:
-      linear-gradient(180deg, rgba(27, 30, 46, 0.52) 0%, rgba(27, 30, 46, 0.66) 55%, #1B1E2E 100%),
-      url('/gh-hero-conservatory.jpg') center / cover no-repeat,
+      linear-gradient(105deg, rgba(27, 30, 46, 0.85) 0%, rgba(27, 30, 46, 0.52) 48%, rgba(27, 30, 46, 0.18) 100%),
+      linear-gradient(180deg, rgba(27, 30, 46, 0.3) 0%, rgba(27, 30, 46, 0.12) 60%, #1B1E2E 100%),
+      url('/footer-conservatory.jpg') 62% center / cover no-repeat,
       var(--gh-charcoal);
     color: var(--gh-cream);
-    --gh-focus: var(--gh-blue);
+    --gh-focus: var(--gh-glass);
   }
   .hero-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.35rem;
-    padding: 5rem 0 6rem;
-    max-width: 50rem;
-    margin-inline: auto;
+    align-items: flex-start;
+    gap: 1.4rem;
+    padding: clamp(4rem, 10vh, 7rem) 0;
+    max-width: 62rem;
   }
   .hero-mark {
     filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.45));
+    margin-bottom: 0.25rem;
   }
   .hero-eyebrow { color: var(--gh-brass-bright); }
   .hero-headline {
     font-family: var(--gh-serif);
     font-weight: 600;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    line-height: 1.14;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.5rem, 4.8vw, 4.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.012em;
     text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
-    max-width: 18ch;
+    max-width: 20ch;
     text-wrap: balance;
   }
   .hero-offer {
-    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
     line-height: 1.6;
     color: var(--gh-cream);
     opacity: 0.92;
-    max-width: 44ch;
+    max-width: 46ch;
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
   }
   .hero-actions {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 0.75rem;
+    margin-top: 0.9rem;
   }
   .hero-avail {
     font-size: 0.85rem;
     font-style: italic;
     color: rgba(233, 223, 203, 0.72);
+    border-top: 1px solid var(--gh-hairline-light);
+    padding-top: 1.1rem;
+    margin-top: 1.4rem;
   }
 
-  /* ── Section chrome ── */
-  .sec { padding-block: 5rem; }
+  /* ── Section chrome — editorial, left-composed ── */
+  .sec { padding-block: var(--gh-sec-pad); }
   .sec-head {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
     gap: 0.9rem;
-    margin-bottom: 3rem;
+    margin-bottom: clamp(2.5rem, 5vh, 4rem);
+  }
+  .sec-head--split {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .sec-head--split > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
   }
   .sec-headline {
     font-family: var(--gh-serif);
     font-weight: 600;
-    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
-    line-height: 1.2;
-    letter-spacing: -0.005em;
-    max-width: 26ch;
+    font-size: clamp(2rem, 3.4vw, 3.3rem);
+    line-height: 1.12;
+    letter-spacing: -0.008em;
+    max-width: 22ch;
     text-wrap: balance;
   }
   .sec-headline--display {
     font-family: var(--gh-display);
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
+    font-size: clamp(1.8rem, 2.9vw, 2.8rem);
   }
-  .sec-rule { width: min(16rem, 60vw); }
   .sec-sub {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-style: italic;
     opacity: 0.8;
-    max-width: 48ch;
+    max-width: 34ch;
+    padding-bottom: 0.4rem;
   }
 
-  /* ── Museum plaques ── */
-  .plaques {
+  /* ── The ledger — four problems, full width ── */
+  .ledger {
+    border-top: 1px solid var(--gh-hairline-dark);
+  }
+  .ledger-row {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: minmax(3.5rem, 0.4fr) 1.4fr 1.6fr;
+    gap: clamp(1.25rem, 3vw, 4rem);
+    align-items: start;
+    padding-block: clamp(1.75rem, 3.5vh, 2.75rem);
+    border-bottom: 1px solid var(--gh-hairline-dark);
   }
-  .plaque {
-    background: var(--gh-paper);
-    border: 1px solid rgba(27, 30, 46, 0.38);
-    box-shadow:
-      inset 0 0 0 4px var(--gh-paper),
-      inset 0 0 0 5px rgba(27, 30, 46, 0.22);
-    clip-path: polygon(
-      10px 0, calc(100% - 10px) 0, 100% 10px,
-      100% calc(100% - 10px), calc(100% - 10px) 100%,
-      10px 100%, 0 calc(100% - 10px), 0 10px
-    );
-    padding: 2rem 2rem 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+  .ledger-num {
+    font-family: var(--gh-display);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 2.4vw, 2.5rem);
+    line-height: 1;
+    color: var(--gh-brass);
+    padding-top: 0.2rem;
   }
-  .plaque-roundel { margin-bottom: 0.25rem; }
-  .plaque h3 {
+  .ledger-title {
     font-family: var(--gh-serif);
     font-weight: 600;
-    font-size: 1.2rem;
-    line-height: 1.3;
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    max-width: 18ch;
+    text-wrap: balance;
   }
-  .plaque p {
-    font-size: 0.92rem;
-    line-height: 1.6;
+  .ledger-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .ledger-body p {
+    font-size: 1.02rem;
+    line-height: 1.65;
     color: var(--gh-ink-soft);
-    flex: 1;
+    max-width: 58ch;
   }
-  .plaque-tag {
-    align-self: flex-start;
+  .ledger-tag {
     font-family: var(--gh-display);
     font-weight: 600;
-    font-size: 0.6rem;
+    font-size: 0.62rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #3B2E17;
@@ -276,13 +304,13 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   .plates {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
+    gap: clamp(1.25rem, 2vw, 2rem);
   }
   .plate {
     background: var(--gh-charcoal-lift);
-    border: 2px solid var(--gh-brass);
+    border: 1px solid var(--gh-brass);
     box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1),
       0 4px 20px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
@@ -314,131 +342,151 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
       url('/swatch-living-botanicals.png');
   }
   .plate-name {
-    padding: 1.15rem 1.15rem 1.3rem;
+    padding: 1.25rem 1.25rem 1.4rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
     border-top: 1px solid rgba(176, 141, 87, 0.5);
+    flex: 1;
   }
   .plate-stage {
     font-family: var(--gh-display);
     font-weight: 600;
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--gh-brass-bright);
   }
   .plate-material {
     font-family: var(--gh-display);
-    font-size: 0.6rem;
+    font-size: 0.62rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--gh-blue);
+    color: var(--gh-glass);
   }
   .plate-name p {
-    font-size: 0.88rem;
-    line-height: 1.6;
+    font-size: 0.92rem;
+    line-height: 1.62;
     color: var(--gh-cream-soft);
   }
 
-  /* ── Proof ledger ── */
-  .proof-ledger {
-    list-style: none;
-    max-width: 44rem;
-    margin-inline: auto;
+  /* ── Proof — statement left, ledger right ── */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: clamp(2.5rem, 5vw, 6rem);
+    align-items: start;
+  }
+  .proof-head {
     display: flex;
     flex-direction: column;
-    gap: 1.35rem;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+  .proof-note {
+    font-style: italic;
+    color: var(--gh-teal-ink);
+    font-size: 1.02rem;
+    margin-top: 1rem;
+    max-width: 34ch;
+  }
+  .proof-ledger {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
   }
   .proof-ledger li {
     position: relative;
-    padding-left: 1.75rem;
-    font-size: 1.02rem;
+    padding: 1.5rem 0 1.5rem 2rem;
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
     line-height: 1.65;
+    border-top: 1px solid var(--gh-hairline-dark);
   }
+  .proof-ledger li:last-child { border-bottom: 1px solid var(--gh-hairline-dark); }
   .proof-ledger li::before {
     content: '';
     position: absolute;
     left: 0.25rem;
-    top: 0.62em;
+    top: 2.15rem;
     width: 7px;
     height: 7px;
     border: 1px solid var(--gh-brass);
     background: rgba(176, 141, 87, 0.25);
     transform: rotate(45deg);
   }
-  .proof-note {
-    text-align: center;
-    font-style: italic;
-    color: var(--gh-teal-ink);
-    margin-top: 2.5rem;
-    font-size: 1rem;
-  }
 
   /* ── Operator + close ── */
-  .sec--operator { padding-block: 0 5.5rem; }
+  .sec--operator { padding-block: 0 var(--gh-sec-pad); }
   .operator-rule {
-    width: min(28rem, 80vw);
-    margin: 0 auto 4rem;
+    margin: 0 0 clamp(3rem, 6vh, 4.5rem);
   }
   .operator-grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 3.5rem;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2.5rem, 5vw, 6rem);
     align-items: center;
-    max-width: 58rem;
-    margin-inline: auto;
   }
   .operator-copy {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
   }
-  .operator-copy .sec-headline { max-width: none; }
   .operator-copy p {
-    font-size: 0.97rem;
+    font-size: 1.02rem;
     line-height: 1.7;
     color: var(--gh-ink-soft);
-    max-width: 54ch;
+    max-width: 58ch;
   }
   .operator-link {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 600;
     color: var(--gh-teal-ink);
     text-decoration: none;
     border-bottom: 1px solid rgba(44, 90, 86, 0.4);
-    align-self: flex-start;
     padding-bottom: 0.1rem;
   }
   .operator-link:hover { border-bottom-color: var(--gh-teal-ink); }
   .operator-cta {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.1rem;
     align-items: flex-start;
+    background: var(--gh-paper);
+    border: 1px solid var(--gh-hairline-dark);
+    border-top: 3px solid var(--gh-brass);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
   }
   .operator-note {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: var(--gh-ink-soft);
-    max-width: 26ch;
+    max-width: 30ch;
   }
 
   /* ── Responsive ── */
   @media (max-width: 980px) {
+    .ledger-row {
+      grid-template-columns: minmax(2.75rem, auto) 1fr;
+      grid-template-rows: auto auto;
+    }
+    .ledger-title { grid-column: 2; }
+    .ledger-body { grid-column: 2; }
     .plates { grid-template-columns: repeat(2, 1fr); }
+    .proof-grid { grid-template-columns: 1fr; gap: 2rem; }
     .operator-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .operator-cta { align-items: stretch; }
     .operator-cta .btn-plaque { text-align: center; }
   }
   @media (max-width: 680px) {
-    .hero-inner { padding: 4rem 0 5rem; }
-    .sec { padding-block: 3.5rem; }
-    .sec-head { margin-bottom: 2.25rem; }
-    .plaques { grid-template-columns: 1fr; }
-    .plaque { padding: 1.6rem 1.4rem 1.5rem; }
+    .hero { min-height: 82svh; }
+    .hero-inner { padding: 3.5rem 0 4rem; }
+    .sec-head--split { flex-direction: column; align-items: flex-start; }
+    .ledger-row { grid-template-columns: 1fr; gap: 0.75rem; }
+    .ledger-num { padding-top: 0; }
+    .ledger-title { grid-column: 1; max-width: none; }
+    .ledger-body { grid-column: 1; }
     .plates { grid-template-columns: 1fr; }
     .plate-texture { aspect-ratio: 5 / 2; }
-    .proof-ledger li { font-size: 0.97rem; }
   }
 </style>
