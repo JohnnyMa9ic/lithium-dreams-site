@@ -6,7 +6,7 @@
 <title>John L Burroughs — Glasshouse Systems Studio</title>
 <meta name="description" content="John L Burroughs — Systems Builder · Founder of Lithium Dreams & Glasshouse Systems Studio. Save my contact or follow along." />
 <link rel="canonical" href="https://lithium-dreams.com/card/" />
-<meta name="theme-color" content="#0b1f1c" />
+<meta name="theme-color" content="#10131d" />
 
 <!-- Open Graph: controls the preview when the link is shared / tapped -->
 <meta property="og:title" content="John L Burroughs" />
@@ -48,12 +48,14 @@
 
   *{ box-sizing:border-box; }
   html,body{ margin:0; }
+  /* Paint the root so iOS overscroll bounce matches the page instead of flashing white */
+  html{ background:var(--ink); }
   body{
     min-height:100svh;
     font-family:var(--sans);
     color:var(--cream);
     background:
-      radial-gradient(120% 80% at 50% -10%, var(--teal-2) 0%, var(--teal) 38%, var(--ink) 78%) fixed;
+      radial-gradient(120% 80% at 50% -10%, var(--teal-2) 0%, var(--teal) 38%, var(--ink) 78%) var(--ink) fixed;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
     display:flex;
