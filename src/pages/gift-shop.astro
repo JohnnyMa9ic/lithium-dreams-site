@@ -6,13 +6,14 @@ import EmployeeNotice from '../components/EmployeeNotice.astro';
 ---
 
 <Layout title="Gift Shop — Lithium Dreams Industries" activePage="/gift-shop">
+  <h1 class="visually-hidden">Gift Shop</h1>
   <div class="district-page">
     <div class="district-header">
       <a href="/attraction" class="back-link mono">← Back to Midway</a>
       <MaintenanceTag status="OPEN" size="md" />
     </div>
 
-    <MuseumPlaque accession="GS-001" title="Gift Shop" subtitle="Souvenirs, field notes, stickers, and objects we are legally allowed to sell." />
+    <MuseumPlaque headingLevel={2} accession="GS-001" title="Gift Shop" subtitle="Souvenirs, field notes, stickers, and objects we are legally allowed to sell." />
 
     <div class="district-content">
       <EmployeeNotice heading="Notice to Visitors">
@@ -59,9 +60,11 @@ import EmployeeNotice from '../components/EmployeeNotice.astro';
     justify-content: space-between;
   }
   .back-link {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
     font-size: 0.75rem;
     letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.4);
+    color: rgba(232, 222, 200, 0.56);
   }
   .back-link:hover { color: var(--paper); }
   .district-content {
@@ -80,7 +83,7 @@ import EmployeeNotice from '../components/EmployeeNotice.astro';
   .shop-grid { display: flex; flex-direction: column; gap: var(--space-md); }
   .shop-item { position: relative; padding: var(--space-md); border: 1px solid var(--ldi-border, rgba(255,255,255,0.06)); display: flex; flex-direction: column; gap: 0.3rem; }
   .item-badge { font-size: 0.6rem; letter-spacing: 0.15em; display: inline-block; padding: 0.15rem 0.5rem; margin-bottom: 0.25rem; }
-  .item-badge--soldout { color: var(--ldi-crimson, #c0281a); border: 1px solid var(--ldi-crimson, #c0281a); opacity: 0.7; }
+  .item-badge--soldout { color: rgb(207, 102, 83); border: 1px solid var(--ldi-crimson, #c0281a); }
   .item-name { font-family: var(--font-display, var(--ldi-font-display)); font-size: var(--ldi-text-lg, 1.25rem); letter-spacing: 0.05em; color: var(--paper, var(--ldi-text-primary)); }
   .item-desc { font-size: 0.68rem; letter-spacing: 0.08em; }
   .item-price { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--ldi-amber, #d4820a); }

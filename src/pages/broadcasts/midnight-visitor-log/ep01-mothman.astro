@@ -20,6 +20,7 @@ const episode = {
 ---
 
 <Layout title={`${episode.title} — Midnight Visitor Log — Lithium Dreams Industries`} activePage="/broadcasts">
+  <h1 class="visually-hidden">{episode.title} — Midnight Visitor Log</h1>
   <div class="page-hero broadcast-hero">
     <div class="page-hero-fade"></div>
     <div class="broadcast-hero-label mono" aria-hidden="true">
@@ -40,6 +41,7 @@ const episode = {
     </div>
 
     <MuseumPlaque
+      headingLevel={2}
       accession={episode.accession}
       title={episode.title}
       subtitle={episode.subtitle}
@@ -276,7 +278,6 @@ const episode = {
     font-size: 0.8rem;
     letter-spacing: 0.08em;
     text-align: center;
-    opacity: 0.5;
   }
 
   /* CASE STATUS GRID */

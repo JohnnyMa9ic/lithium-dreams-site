@@ -27,7 +27,7 @@
   /* === TEXT === */
   --ldi-text-primary:      #e8dcc0;   /* Main body — warm off-white */
   --ldi-text-secondary:    #a89870;   /* Secondary — muted gold */
-  --ldi-text-dim:          #5a5040;   /* Dim — breadcrumbs, labels */
+  --ldi-text-dim:          #8e877c;   /* Dim — breadcrumbs, labels (AA on every dark surface) */
   --ldi-text-ghost:        #302820;   /* Near-invisible — texture text */
   --ldi-text-parchment:    #2a1f0a;   /* Dark ink on parchment */
 

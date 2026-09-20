@@ -6,6 +6,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 
 <Layout title="Museum — Lithium Dreams Industries" activePage="/museum">
+  <h1 class="visually-hidden">The Museum</h1>
   <div class="page-hero" style="background-image: url('/museum-hero.png')">
     <div class="page-hero-fade"></div>
   </div>
@@ -19,7 +20,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
       <MaintenanceTag status="OPEN" size="md" />
     </div>
 
-    <MuseumPlaque accession="MUS-001" title="Museum of Ongoing Events" subtitle="Curated case files, lore fragments, and a timeline we are still reconstructing." />
+    <MuseumPlaque headingLevel={2} accession="MUS-001" title="Museum of Ongoing Events" subtitle="Curated case files, lore fragments, and a timeline we are still reconstructing." />
 
     <div class="velvet-rope-notice mono text-dim">
       — Please do not tap the glass. The glass is aware of you. —
@@ -126,7 +127,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .back-link {
     font-size: 0.75rem;
     letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.4);
+    color: rgba(232, 222, 200, 0.56);
   }
   .back-link:hover { color: var(--paper); }
   .velvet-rope-notice {
@@ -159,18 +160,18 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   }
   .case-note {
     font-size: 0.65rem;
-    color: rgba(232,222,200,0.4);
+    color: rgba(232, 222, 200, 0.56);
     line-height: 1.7;
     letter-spacing: 0.03em;
     padding-left: var(--space-md);
   }
   .note-label {
-    color: rgba(194, 59, 34, 0.6);
+    color: rgb(207, 102, 83);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-size: 0.6rem;
   }
-  .case-status--warn { color: rgba(194, 59, 34, 0.5); }
+  .case-status--warn { color: rgb(207, 102, 83); }
 
   /* Timeline */
   .timeline-section {
@@ -184,7 +185,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .timeline-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.25);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .timeline-note {
@@ -206,7 +207,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .timeline-label {
     font-size: 0.68rem;
     letter-spacing: 0.12em;
-    color: rgba(232,222,200,0.5);
+    color: rgba(232, 222, 200, 0.56);
     padding: 0.8rem var(--space-md);
     cursor: pointer;
     list-style: none;
@@ -233,7 +234,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .timeline-body p {
     font-family: var(--font-mono);
     font-size: 0.68rem;
-    color: rgba(232,222,200,0.4);
+    color: rgba(232, 222, 200, 0.56);
     line-height: 1.7;
     letter-spacing: 0.03em;
   }

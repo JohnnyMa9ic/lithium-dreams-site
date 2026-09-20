@@ -161,7 +161,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .hero-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.25em;
-    color: rgba(232,164,32,0.5);
+    color: rgba(232, 164, 32, 0.71);
     text-transform: uppercase;
   }
   .hero-title {
@@ -174,7 +174,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.06em;
-    color: rgba(232,222,200,0.35);
+    color: rgba(232, 222, 200, 0.56);
     max-width: 480px;
     line-height: 1.6;
   }
@@ -201,7 +201,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .section-mark {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,164,32,0.4);
+    color: rgba(232, 164, 32, 0.71);
     text-transform: uppercase;
   }
   .section-note { font-size: 0.68rem; letter-spacing: 0.06em; }
@@ -279,7 +279,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     border-color: var(--neon-amber);
   }
   .cta--dim {
-    color: rgba(232,222,200,0.3);
+    color: rgba(232, 222, 200, 0.56);
     border-color: rgba(232,222,200,0.1);
   }
   .cta--dim:hover {
@@ -317,14 +317,14 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .pillar-label {
     font-size: 0.65rem;
     letter-spacing: 0.15em;
-    color: rgba(232,164,32,0.6);
+    color: rgba(232, 164, 32, 0.71);
     text-transform: uppercase;
   }
   .pillar-body {
     font-family: var(--font-body);
     font-size: 0.78rem;
     line-height: 1.7;
-    color: rgba(232,222,200,0.5);
+    color: rgba(232, 222, 200, 0.56);
   }
 
   /* ── Agents grid ── */
@@ -365,18 +365,18 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   .agent-role {
     font-size: 0.6rem;
     letter-spacing: 0.12em;
-    color: rgba(232,222,200,0.3);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .agent-desc {
     font-family: var(--font-body);
     font-size: 0.75rem;
     line-height: 1.7;
-    color: rgba(232,222,200,0.5);
+    color: rgba(232, 222, 200, 0.56);
     flex: 1;
   }
   .agent-footer { border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-sm); }
-  .agent-loc { font-size: 0.58rem; letter-spacing: 0.1em; text-decoration: none; }
+  .agent-loc { display: inline-block; padding-block: 0.25rem; /* 24px+ tap target */ font-size: 0.58rem; letter-spacing: 0.1em; text-decoration: none; }
   a.agent-loc:hover { color: var(--ghost-blue); }
 
   /* ── Attraction section ── */
@@ -396,7 +396,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     font-family: var(--font-body);
     font-size: 0.82rem;
     line-height: 1.75;
-    color: rgba(232,222,200,0.55);
+    color: rgba(232, 222, 200, 0.56);
     letter-spacing: 0.02em;
   }
   .attraction-links {
@@ -405,15 +405,17 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     padding-top: var(--space-sm);
   }
   .att-link {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
     font-size: 0.65rem;
     letter-spacing: 0.12em;
     text-decoration: none;
     text-transform: uppercase;
-    color: rgba(232,164,32,0.6);
+    color: rgba(232, 164, 32, 0.71);
     transition: color 0.15s;
   }
   .att-link:hover { color: var(--neon-amber); }
-  .att-link--corp { color: rgba(232,222,200,0.25); }
+  .att-link--corp { color: rgba(232, 222, 200, 0.56); }
   .att-link--corp:hover { color: rgba(232,222,200,0.6); }
 
   /* ── Responsive ── */

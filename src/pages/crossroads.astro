@@ -20,6 +20,7 @@ import EmployeeNotice from '../components/EmployeeNotice.astro';
     </div>
 
     <MuseumPlaque
+      headingLevel={2}
       accession="LDI-DEEP-001"
       title="The Crossroads"
       subtitle="Deeper Lore Hub — Access Pending"
@@ -57,9 +58,11 @@ import EmployeeNotice from '../components/EmployeeNotice.astro';
     justify-content: space-between;
   }
   .back-link {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
     font-size: 0.75rem;
     letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.4);
+    color: rgba(232, 222, 200, 0.56);
   }
   .back-link:hover { color: var(--paper); }
   .crossroads-intro {

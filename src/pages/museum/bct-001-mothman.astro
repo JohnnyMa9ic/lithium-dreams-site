@@ -22,6 +22,7 @@ const exhibit = {
 ---
 
 <Layout title={`${exhibit.title} — Museum — Lithium Dreams Industries`} activePage="/museum">
+  <h1 class="visually-hidden">{exhibit.title}</h1>
   <div class="page-hero exhibit-hero">
     <div class="page-hero-fade"></div>
     <div class="exhibit-hero-label mono" aria-hidden="true">
@@ -41,6 +42,7 @@ const exhibit = {
     </div>
 
     <MuseumPlaque
+      headingLevel={2}
       accession={exhibit.accession}
       title={exhibit.title}
       subtitle={exhibit.subtitle}
@@ -325,7 +327,7 @@ const exhibit = {
     left: var(--content-pad, 1.5rem);
     font-size: 0.6rem;
     letter-spacing: 0.18em;
-    color: rgba(255, 160, 0, 0.3);
+    color: rgba(255, 160, 0, 0.69);
     z-index: 1;
   }
 
@@ -357,14 +359,14 @@ const exhibit = {
   @media (max-width: 600px) {
     .placard-row { grid-template-columns: 1fr; gap: 0.15rem; }
   }
-  .placard-key { font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); }
+  .placard-key { font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.47); }
   .placard-val { font-size: 0.78rem; letter-spacing: 0.05em; color: var(--ldi-text, #d4cfc8); }
   .placard-val--active { color: var(--ldi-teal, #00e5cc); }
-  .placard-val--redacted { color: rgba(255,255,255,0.2); font-style: italic; }
+  .placard-val--redacted { color: rgba(255, 255, 255, 0.47); font-style: italic; }
 
   /* Exhibit body */
   .exhibit-body { display: flex; flex-direction: column; gap: 0.75rem; max-width: 780px; }
-  .exhibit-divider { font-size: 0.7rem; color: rgba(255,255,255,0.1); overflow: hidden; }
+  .exhibit-divider { font-size: 0.7rem; color: rgba(255, 255, 255, 0.47); overflow: hidden; }
   .exhibit-text { display: flex; flex-direction: column; gap: 1.1rem; padding: 0.5rem 0; max-width: 680px; }
   .exhibit-text p { font-size: 0.9rem; line-height: 1.85; color: var(--ldi-text, #d4cfc8); letter-spacing: 0.015em; }
   .exhibit-note { font-size: 0.72rem !important; letter-spacing: 0.04em; line-height: 1.6 !important; }
@@ -384,7 +386,7 @@ const exhibit = {
   .witness-row:last-child { border-bottom: none; }
   .witness-row--header {
     background: rgba(255,255,255,0.03);
-    color: rgba(255,255,255,0.35);
+    color: rgba(255, 255, 255, 0.47);
     font-size: 0.62rem;
     letter-spacing: 0.1em;
   }
@@ -419,8 +421,10 @@ const exhibit = {
   /* Nav */
   .exhibit-nav { padding-top: 0.5rem; }
   .exhibit-nav-link {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
     font-size: 0.75rem; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.3); text-decoration: none;
+    color: rgba(255, 255, 255, 0.47); text-decoration: none;
     transition: color 0.2s;
   }
   .exhibit-nav-link:hover { color: var(--ldi-text, #d4cfc8); }

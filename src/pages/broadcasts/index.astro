@@ -32,6 +32,7 @@ const episodes: {
 ---
 
 <Layout title="Broadcasts — Lithium Dreams Industries" activePage="/broadcasts">
+  <h1 class="visually-hidden">Broadcasts</h1>
   <div class="page-hero broadcasts-hero">
     <div class="page-hero-fade"></div>
     <div class="hero-signal-bars" aria-hidden="true">
@@ -50,6 +51,7 @@ const episodes: {
     </div>
 
     <MuseumPlaque
+      headingLevel={2}
       accession="BCT-000"
       title="Lithium Dreams Broadcast Tower"
       subtitle="Transmissions from the Crossroads. Irregular schedule. Confirmed reception area: Earth."
@@ -278,7 +280,7 @@ const episodes: {
     font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--ldi-dim, #555);
+    color: rgba(232, 222, 200, 0.56);
     margin-bottom: var(--space-sm);
   }
 
@@ -307,7 +309,7 @@ const episodes: {
     align-items: center;
   }
 
-  .episode-id { font-size: 0.75rem; color: var(--ldi-dim, #555); }
+  .episode-id { font-size: 0.75rem; color: rgba(232, 222, 200, 0.56); }
   .episode-title { font-size: 1.1rem; margin: 0; }
   .episode-subtitle { font-size: 0.9rem; margin: 0; }
   .episode-meta { font-size: 0.75rem; }
@@ -353,7 +355,7 @@ const episodes: {
   .about-card-label {
     font-size: 0.7rem;
     letter-spacing: 0.12em;
-    color: var(--ldi-dim, #555);
+    color: rgba(232, 222, 200, 0.56);
     margin: 0;
   }
 
@@ -387,7 +389,7 @@ const episodes: {
   .platform-name { font-size: 0.9rem; }
 
   .platform-status { font-size: 0.75rem; letter-spacing: 0.08em; }
-  .platform-item--pending .platform-status { color: var(--ldi-dim, #555); }
+  .platform-item--pending .platform-status { color: rgba(232, 222, 200, 0.56); }
   .platform-item--live .platform-status { color: var(--ldi-green, #39ff14); }
 
   /* Witness Registry CTA */

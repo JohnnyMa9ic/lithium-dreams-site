@@ -7,6 +7,7 @@ const midwayDistricts = districts;
 ---
 
 <Layout title="Main Midway — Lithium Dreams Industries" activePage="/attraction">
+  <h1 class="visually-hidden">The Main Midway</h1>
 
   <!-- Panoramic Midway scene — each sign is a hotspot link -->
   <section class="midway-panorama" aria-label="Midway district map">
@@ -228,7 +229,7 @@ const midwayDistricts = districts;
   }
 
   .hotspot--locked:hover .hotspot-label {
-    color: rgba(232, 222, 200, 0.4);
+    color: rgba(232, 222, 200, 0.56);
   }
 
   /* YOU ARE HERE floor text */
@@ -240,7 +241,7 @@ const midwayDistricts = districts;
     font-family: var(--font-mono);
     font-size: clamp(0.5rem, 1vw, 0.75rem);
     letter-spacing: 0.4em;
-    color: rgba(232, 164, 32, 0.25);
+    color: rgba(232, 164, 32, 0.71);
     pointer-events: none;
     white-space: nowrap;
   }
@@ -314,7 +315,7 @@ const midwayDistricts = districts;
   .ticker-msg {
     font-size: 0.65rem;
     letter-spacing: 0.06em;
-    color: rgba(232,222,200,0.45);
+    color: rgba(232, 222, 200, 0.56);
     white-space: nowrap;
     padding-right: 0;
   }
@@ -337,7 +338,7 @@ const midwayDistricts = districts;
   .status-panel-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.25);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
     margin-bottom: 0.25rem;
   }
@@ -354,7 +355,7 @@ const midwayDistricts = districts;
   .sdot--restricted { background: rgba(194,59,34,0.6); }
   .sdot--offline { background: rgba(255,255,255,0.12); }
   @keyframes flick { 0%,100%{opacity:1} 50%{opacity:0.2} }
-  .sname { font-size: 0.68rem; letter-spacing: 0.08em; color: rgba(232,222,200,0.5); }
+  .sname { font-size: 0.68rem; letter-spacing: 0.08em; color: rgba(232, 222, 200, 0.56); }
   .sname-note { font-size: 0.55rem; letter-spacing: 0.12em; margin-left: 0.25rem; }
 
   /* Ticket card */
@@ -373,7 +374,7 @@ const midwayDistricts = districts;
   .ticket-kicker {
     font-size: 0.55rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.3);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .ticket-price {
@@ -385,7 +386,7 @@ const midwayDistricts = districts;
   .ticket-copy {
     font-family: var(--font-mono);
     font-size: 0.68rem;
-    color: rgba(232,222,200,0.5);
+    color: rgba(232, 222, 200, 0.56);
     line-height: 1.6;
     letter-spacing: 0.03em;
     padding: 0 var(--space-md) var(--space-sm);
@@ -415,7 +416,7 @@ const midwayDistricts = districts;
     padding: var(--space-sm) var(--space-md);
     border-top: none;
   }
-  .stub-label { font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(232,164,32,0.4); text-transform: uppercase; }
+  .stub-label { font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(232, 164, 32, 0.71); text-transform: uppercase; }
   .stub-text { font-size: 0.6rem; letter-spacing: 0.15em; }
 
   /* ── Lore log ── */
@@ -431,7 +432,7 @@ const midwayDistricts = districts;
   .lore-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.2);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
     margin-bottom: var(--space-xs);
   }
@@ -446,7 +447,7 @@ const midwayDistricts = districts;
   }
   .lore-entry:last-child { border-bottom: none; }
   .lore-time { font-size: 0.6rem; letter-spacing: 0.1em; }
-  .lore-body { font-size: 0.68rem; color: rgba(232,222,200,0.4); line-height: 1.6; letter-spacing: 0.03em; }
+  .lore-body { font-size: 0.68rem; color: rgba(232, 222, 200, 0.56); line-height: 1.6; letter-spacing: 0.03em; }
 
   @media (max-width: 700px) {
     .midway-status-section { grid-template-columns: 1fr; }
@@ -457,6 +458,6 @@ const midwayDistricts = districts;
     .midway-grid { grid-template-columns: 1fr; }
     .midway-status-section { padding: var(--space-md); }
     .lore-log-section { padding: var(--space-md); }
-    .hotspot-label { color: rgba(232, 164, 32, 0.4); }
+    .hotspot-label { color: rgba(232, 164, 32, 0.71); }
   }
 </style>

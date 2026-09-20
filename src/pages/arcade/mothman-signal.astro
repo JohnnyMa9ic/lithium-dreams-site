@@ -23,6 +23,7 @@ const cabinet = {
 ---
 
 <Layout title="Mothman Signal — Arcade — Lithium Dreams Industries" activePage="/arcade">
+  <h1 class="visually-hidden">Mothman Signal</h1>
   <div class="page-hero cabinet-hero">
     <div class="page-hero-fade"></div>
     <div class="cabinet-hero-scan" aria-hidden="true"></div>
@@ -44,6 +45,7 @@ const cabinet = {
     </div>
 
     <MuseumPlaque
+      headingLevel={2}
       accession={cabinet.id}
       title={cabinet.name}
       subtitle={cabinet.tagline}
@@ -203,7 +205,7 @@ const cabinet = {
     left: var(--content-pad, 1.5rem);
     font-size: 0.6rem;
     letter-spacing: 0.18em;
-    color: rgba(255, 50, 50, 0.4);
+    color: rgba(255, 50, 50, 0.99);
     z-index: 1;
   }
 
@@ -219,7 +221,7 @@ const cabinet = {
 
   /* Status block */
   .status-block { display: flex; flex-direction: column; gap: 0.4rem; }
-  .status-key { color: rgba(255,255,255,0.35); font-size: 0.68rem; letter-spacing: 0.1em; }
+  .status-key { color: rgba(255, 255, 255, 0.47); font-size: 0.68rem; letter-spacing: 0.1em; }
   .status-pending { color: var(--ldi-amber, #ffa000); }
 
   /* Game brief */
@@ -245,7 +247,7 @@ const cabinet = {
 
   .spec-row:last-child { border-bottom: none; }
 
-  .spec-key { font-size: 0.62rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); }
+  .spec-key { font-size: 0.62rem; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.47); }
   .spec-val { font-size: 0.75rem; letter-spacing: 0.04em; color: var(--ldi-text, #d4cfc8); }
 
   @media (max-width: 600px) {
@@ -256,6 +258,8 @@ const cabinet = {
   .comeback-block { display: flex; flex-direction: column; gap: 0.6rem; }
   .comeback-links { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.25rem; }
   .comeback-link {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
     font-size: 0.78rem; letter-spacing: 0.06em;
     color: var(--ldi-amber, #ffa000); text-decoration: none;
     transition: color 0.2s;
@@ -305,7 +309,7 @@ const cabinet = {
   .placeholder-title {
     font-size: 1.1rem;
     letter-spacing: 0.25em;
-    color: rgba(255, 50, 50, 0.5);
+    color: rgba(255, 50, 50, 0.99);
   }
 
   .placeholder-eyes {
@@ -322,8 +326,10 @@ const cabinet = {
   /* Nav */
   .exhibit-nav { padding-top: 0.5rem; }
   .exhibit-nav-link {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
     font-size: 0.75rem; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.3); text-decoration: none;
+    color: rgba(255, 255, 255, 0.47); text-decoration: none;
     transition: color 0.2s;
   }
   .exhibit-nav-link:hover { color: var(--ldi-text, #d4cfc8); }

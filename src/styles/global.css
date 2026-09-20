@@ -9,9 +9,12 @@
 }
 
 html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+  font-size: 100%; /* honor the user's browser font-size preference (16px default) */
   -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
@@ -168,7 +171,28 @@ h1, h2, h3, h4, h5 {
 .text-amber { color: var(--neon-amber); }
 .text-ghost { color: var(--ghost-blue); }
 .text-teal  { color: var(--warden-teal); }
-.text-dim   { color: rgba(232, 222, 200, 0.45); }
+.text-dim   { color: rgba(232, 222, 200, 0.56); }
+
+/* ─── Accessibility accommodations ──────────────────────────────────────── */
+
+/* Vestibular safety: kill decorative motion for people who ask for it. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Low vision: lift every dim tier to full-strength text when the OS asks. */
+@media (prefers-contrast: more) {
+  :root {
+    --ldi-text-dim: var(--ldi-text-secondary);
+    --ldi-text-secondary: var(--ldi-text-primary);
+  }
+  .text-dim { color: var(--ldi-text-primary); }
+}
 
 /* ─── Skip link ──────────────────────────────────────────────────────────── */
 

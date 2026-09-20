@@ -18,7 +18,7 @@ const {
     <p class="fortune-text">{fortune}</p>
   </div>
   <div class="fortune-footer">
-    <span class="mono text-dim" style="font-size:0.6rem;">BOB'S FORTUNE EMPORIUM — EST. PROBABLY</span>
+    <span class="mono footer-line" style="font-size:0.6rem;">BOB'S FORTUNE EMPORIUM — EST. PROBABLY</span>
   </div>
 </div>
 
@@ -61,7 +61,7 @@ const {
   .fortune-number {
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    color: rgba(10,10,12,0.6);
+    color: rgba(10, 10, 12, 0.85);
   }
   .fortune-body {
     padding: 1rem 0.75rem;
@@ -73,6 +73,7 @@ const {
     font-style: italic;
     text-align: center;
   }
+  .fortune-footer .footer-line { color: #5f5030; } /* ink on cream, 4.5:1+ (text-dim is for dark surfaces) */
   .fortune-footer {
     padding: 0.4rem 0.75rem;
     border-top: 1px dashed var(--paper-dark);

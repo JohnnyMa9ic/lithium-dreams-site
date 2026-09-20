@@ -45,11 +45,13 @@ const { items } = Astro.props;
     text-transform: uppercase;
   }
   .breadcrumb-link {
-    color: rgba(232, 222, 200, 0.35);
+    color: rgba(232, 222, 200, 0.56);
     text-decoration: none;
     transition: color 0.2s;
+    display: inline-block;
+    padding-block: 0.35rem; /* 24px+ tap target */
   }
   .breadcrumb-link:hover { color: var(--paper); }
-  .breadcrumb-current { color: rgba(232, 222, 200, 0.55); }
-  .breadcrumb-sep { font-size: 0.55rem; color: rgba(232, 222, 200, 0.2); }
+  .breadcrumb-current { color: rgba(232, 222, 200, 0.56); }
+  .breadcrumb-sep { font-size: 0.55rem; color: rgba(232, 222, 200, 0.56); }
 </style>

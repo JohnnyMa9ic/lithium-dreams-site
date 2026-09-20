@@ -25,7 +25,7 @@ import CRTFrame from '../../components/CRTFrame.astro';
         background-image: url('/cathedral-hero.png');
         background-size: cover;
         background-position: center;
-        color: rgba(77, 184, 212, 0.7);
+        color: rgba(77, 184, 212, 0.76);
         font-family: 'IBM Plex Mono', monospace;
         min-height: 100vh;
         display: flex;
@@ -94,7 +94,7 @@ import CRTFrame from '../../components/CRTFrame.astro';
       .cath-label {
         font-size: 0.6rem;
         letter-spacing: 0.4em;
-        color: rgba(194, 59, 34, 0.7);
+        color: rgb(207, 102, 83);
         text-transform: uppercase;
         border: 1px solid rgba(194,59,34,0.3);
         padding: 0.3em 0.8em;
@@ -103,7 +103,7 @@ import CRTFrame from '../../components/CRTFrame.astro';
       .cath-title {
         font-family: 'Bebas Neue', sans-serif;
         font-size: clamp(3rem, 8vw, 6rem);
-        color: rgba(77, 184, 212, 0.25);
+        color: rgba(77, 184, 212, 0.76);
         letter-spacing: 0.08em;
         line-height: 1;
         /* Glitch layers */
@@ -120,11 +120,11 @@ import CRTFrame from '../../components/CRTFrame.astro';
         letter-spacing: inherit;
       }
       .cath-title::before {
-        color: rgba(194, 59, 34, 0.3);
+        color: rgb(207, 102, 83);
         animation: glitch-a 3s infinite;
       }
       .cath-title::after {
-        color: rgba(77, 184, 212, 0.2);
+        color: rgba(77, 184, 212, 0.76);
         animation: glitch-b 4s infinite;
       }
 
@@ -144,14 +144,16 @@ import CRTFrame from '../../components/CRTFrame.astro';
       .cath-desc {
         font-size: 0.82rem;
         line-height: 1.8;
-        color: rgba(77, 184, 212, 0.45);
+        color: rgba(77, 184, 212, 0.76);
         max-width: 420px;
       }
 
       .cath-exit {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
         font-size: 0.65rem;
         letter-spacing: 0.2em;
-        color: rgba(77, 184, 212, 0.25);
+        color: rgba(77, 184, 212, 0.76);
         text-decoration: none;
         text-transform: uppercase;
         border-bottom: 1px solid rgba(77, 184, 212, 0.15);
@@ -159,7 +161,7 @@ import CRTFrame from '../../components/CRTFrame.astro';
         transition: color 0.15s, border-color 0.15s;
       }
       .cath-exit:hover {
-        color: rgba(77, 184, 212, 0.7);
+        color: rgba(77, 184, 212, 0.76);
         border-color: rgba(77, 184, 212, 0.4);
       }
 
@@ -182,7 +184,7 @@ import CRTFrame from '../../components/CRTFrame.astro';
       .cath-divider {
         font-size: 0.55rem;
         letter-spacing: 0.3em;
-        color: rgba(77, 184, 212, 0.15);
+        color: rgba(77, 184, 212, 0.76);
         text-align: center;
         padding: 0.5rem 0;
       }
@@ -206,7 +208,7 @@ import CRTFrame from '../../components/CRTFrame.astro';
     <div class="tape-h tape-bottom" aria-hidden="true"></div>
     <div class="shards" id="shards" aria-hidden="true"></div>
 
-    <div class="cathedral-content">
+    <main class="cathedral-content">
       <span class="cath-label">CONTAINMENT AREA — DO NOT ENTER</span>
 
       <h1 class="cath-title" data-text="Cathedral of Glitch">Cathedral of Glitch</h1>
@@ -238,7 +240,7 @@ import CRTFrame from '../../components/CRTFrame.astro';
         <a href="/chapel" class="cath-exit">← Return to the chapel</a>
         <a href="/deep-garden" class="cath-exit cath-exit--secondary">← Return to the garden</a>
       </nav>
-    </div>
+    </main>
 
     <script>
       // Generate floating glass-shard lines

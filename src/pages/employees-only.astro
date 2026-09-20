@@ -19,7 +19,7 @@ const accessLog = [
 ---
 
 <Layout title="Employees Only — Lithium Dreams Industries" activePage="/employees-only">
-  <div class="page-hero" style="background-image: url('/employees-hero.png')">
+  <div class="page-hero">
     <div class="hero-scan"></div>
     <div class="page-hero-fade"></div>
   </div>
@@ -64,7 +64,7 @@ const accessLog = [
     <!-- Access Log -->
     <div class="access-log">
       <p class="log-eyebrow mono">Today's Access Log</p>
-      <div class="log-table-wrap">
+      <div class="log-table-wrap" tabindex="0" role="region" aria-label="Access log">
         <table class="log-table">
           <thead>
             <tr>
@@ -100,9 +100,8 @@ const accessLog = [
 <style>
   .page-hero {
     width: 100%;
-    min-height: 55vh;
-    background-size: cover;
-    background-position: center;
+    min-height: 28vh; /* no hero art yet — keep the scan-line band, not a void */
+    background: linear-gradient(180deg, var(--ldi-void-lifted), var(--ldi-void));
     position: relative;
     overflow: hidden;
   }
@@ -167,7 +166,7 @@ const accessLog = [
   .poster-eyebrow {
     font-size: 0.55rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.2);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .poster-title {
@@ -187,7 +186,7 @@ const accessLog = [
   .safety-rules li {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    color: rgba(232,222,200,0.5);
+    color: rgba(232, 222, 200, 0.56);
     line-height: 1.7;
     letter-spacing: 0.03em;
   }
@@ -204,7 +203,7 @@ const accessLog = [
   .log-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.25);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .log-table-wrap { overflow-x: auto; }
@@ -218,7 +217,7 @@ const accessLog = [
     font-size: 0.55rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(232,222,200,0.2);
+    color: rgba(232, 222, 200, 0.56);
     padding: 0.3rem var(--space-sm) 0.5rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     white-space: nowrap;
@@ -229,13 +228,13 @@ const accessLog = [
     vertical-align: top;
     white-space: nowrap;
   }
-  .log-time { color: rgba(232,222,200,0.3); width: 4rem; }
-  .log-id { color: rgba(232,222,200,0.25); font-size: 0.6rem; letter-spacing: 0.1em; }
+  .log-time { color: rgba(232, 222, 200, 0.56); width: 4rem; }
+  .log-id { color: rgba(232, 222, 200, 0.56); font-size: 0.6rem; letter-spacing: 0.1em; }
   .log-name { font-family: var(--font-mono); color: rgba(232,222,200,0.6); }
   .log-note { font-size: 0.62rem; letter-spacing: 0.04em; white-space: normal; }
 
   .status--granted { color: var(--warden-teal); letter-spacing: 0.1em; }
-  .status--denied { color: var(--warning-red); letter-spacing: 0.1em; }
+  .status--denied { color: rgb(207, 102, 83); letter-spacing: 0.1em; }
   .status--pending { color: var(--neon-amber); letter-spacing: 0.1em; animation: blink 1.5s step-end infinite; }
   @keyframes blink {
     0%, 100% { opacity: 1; }

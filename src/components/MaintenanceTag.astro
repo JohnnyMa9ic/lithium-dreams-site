@@ -44,10 +44,10 @@ const statusClass: Record<StatusTag, string> = {
   .tag--open       { background: var(--warden-teal);  color: var(--ldi-black); }
   .tag--flickering { background: var(--neon-amber);   color: var(--ldi-black); }
   .tag--staff      { background: var(--rain-slate);   color: var(--paper); border: 1px solid rgba(255,255,255,0.2); }
-  .tag--repair     { background: var(--warning-red);  color: var(--paper); }
+  .tag--repair     { background: #a02c16;  color: var(--paper); } /* darkened red: 4.5:1+ under paper text */
   .tag--appt       { background: var(--brass);        color: var(--ldi-black); }
-  .tag--restricted { background: var(--ldi-black);    color: var(--warning-red); border: 1px solid var(--warning-red); }
-  .tag--soon       { background: var(--rain-slate);   color: rgba(232, 222, 200, 0.5); border: 1px solid rgba(255,255,255,0.1); }
-  .tag--archived   { background: var(--road-asphalt); color: rgba(232, 222, 200, 0.4); }
+  .tag--restricted { background: var(--ldi-black);    color: rgb(207, 102, 83); border: 1px solid var(--warning-red); }
+  .tag--soon       { background: var(--rain-slate);   color: rgba(232, 222, 200, 0.78); border: 1px solid rgba(255,255,255,0.1); }
+  .tag--archived   { background: var(--road-asphalt); color: rgba(232, 222, 200, 0.62); }
   .tag--unstable   { background: var(--ghost-blue);   color: var(--ldi-black); }
 </style>

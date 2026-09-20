@@ -39,6 +39,7 @@ const incidentTypes = [
 ---
 
 <Layout title="Witness Registry — Lithium Dreams Industries" activePage="/broadcasts">
+  <h1 class="visually-hidden">Witness Registry</h1>
   <div class="page-hero witness-hero">
     <div class="page-hero-fade"></div>
     <div class="hero-eye" aria-hidden="true">
@@ -60,6 +61,7 @@ const incidentTypes = [
     </div>
 
     <MuseumPlaque
+      headingLevel={2}
       accession="WIT-REG"
       title="Witness Registry"
       subtitle="Field reports from the perimeter. Submitted by those who saw something and decided to say so."
@@ -92,8 +94,8 @@ const incidentTypes = [
         netlify-honeypot="bot-field"
       >
         <input type="hidden" name="form-name" value="witness-registry" />
-        <p class="sr-only" aria-hidden="true">
-          <label>Do not fill this out: <input name="bot-field" /></label>
+        <p class="visually-hidden" aria-hidden="true">
+          <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" class="visually-hidden" /></label>
         </p>
 
         <div class="form-row">
@@ -446,9 +448,16 @@ const incidentTypes = [
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding-block: 0.35rem; /* 24px+ tap target — the whole label is the control */
+    cursor: pointer;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     color: var(--ldi-text, #d4cfc8);
+  }
+  .radio-label input[type="radio"] {
+    width: 1.05rem;
+    height: 1.05rem;
+    accent-color: var(--ldi-amber, #e8a420);
     cursor: pointer;
   }
 
@@ -550,13 +559,13 @@ const incidentTypes = [
   }
 
   .meta-sep {
-    color: rgba(255,255,255,0.2);
+    color: rgba(255, 255, 255, 0.47);
   }
 
   .account-divider {
     font-family: var(--font-mono, monospace);
     font-size: 0.7rem;
-    color: rgba(255,255,255,0.15);
+    color: rgba(255, 255, 255, 0.47);
     letter-spacing: 0;
     overflow: hidden;
   }

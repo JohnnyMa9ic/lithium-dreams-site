@@ -7,6 +7,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 ---
 
 <Layout title="Wedding Chapel — Lithium Dreams Industries" activePage="/chapel">
+  <h1 class="visually-hidden">The Wedding Chapel</h1>
   <div class="page-hero" style="background-image: url('/chapel-hero.png')">
     <div class="page-hero-fade"></div>
   </div>
@@ -20,7 +21,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
       <MaintenanceTag status="BY APPOINTMENT" size="md" />
     </div>
 
-    <MuseumPlaque accession="CHPL-001" title="Roadside Wedding Chapel" subtitle="Open Tuesdays and Fridays. Do not ask about the back room." />
+    <MuseumPlaque headingLevel={2} accession="CHPL-001" title="Roadside Wedding Chapel" subtitle="Open Tuesdays and Fridays. Do not ask about the back room." />
 
     <div class="chapel-content">
       <EmployeeNotice heading="Ceremony Packages" variant="info">
@@ -156,7 +157,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
   .back-link {
     font-size: 0.75rem;
     letter-spacing: 0.1em;
-    color: rgba(232, 222, 200, 0.4);
+    color: rgba(232, 222, 200, 0.56);
   }
   .back-link:hover { color: var(--paper); }
   .chapel-content {
@@ -175,7 +176,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
   }
   /* Subtle deniable link to the Cathedral of Glitch */
   .backroom-link {
-    color: rgba(232, 222, 200, 0.35);
+    color: rgba(232, 222, 200, 0.56);
     text-decoration: none;
     border-bottom: 1px solid rgba(232, 222, 200, 0.1);
     transition: color 0.2s, border-color 0.2s;
@@ -195,7 +196,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
   .book-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.25);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .book-note { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.04em; }
@@ -224,7 +225,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
   .entry-note {
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    color: rgba(232,222,200,0.45);
+    color: rgba(232, 222, 200, 0.56);
     font-style: italic;
     line-height: 1.6;
     letter-spacing: 0.03em;
@@ -240,7 +241,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
   .rack-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.25);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .rack-note { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.04em; }
@@ -262,7 +263,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
   .item-name {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: rgba(232,222,200,0.55);
+    color: rgba(232, 222, 200, 0.56);
     line-height: 1.5;
     letter-spacing: 0.03em;
   }
@@ -301,7 +302,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
     font-size: 0.6rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(194, 59, 34, 0.6);
+    color: rgb(207, 102, 83);
   }
   .threshold-copy {
     font-size: 0.72rem;
@@ -309,15 +310,17 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
     letter-spacing: 0.04em;
   }
   .threshold-link {
+    display: inline-block;
+    padding-block: 0.3rem; /* 24px+ tap target */
     font-size: 0.65rem;
     letter-spacing: 0.15em;
-    color: rgba(194, 59, 34, 0.4);
+    color: rgb(207, 102, 83);
     text-decoration: none;
     margin-top: var(--space-sm);
     transition: color 0.2s;
     align-self: flex-start;
   }
-  .threshold-link:hover { color: rgba(194, 59, 34, 0.8); }
+  .threshold-link:hover { color: rgb(207, 102, 83); }
 
   @media (max-width: 600px) {
     .district-page { padding: var(--space-md); }

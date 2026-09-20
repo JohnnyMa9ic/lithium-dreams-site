@@ -151,7 +151,7 @@ const navLinks = [
   .nav-logo-sub {
     font-family: var(--font-mono);
     font-size: 0.6rem;
-    color: rgba(232, 222, 200, 0.4);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
     letter-spacing: 0.2em;
   }
@@ -195,14 +195,14 @@ const navLinks = [
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.1em;
-    color: rgba(232,222,200,0.4);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
   }
   .footer-tagline { font-size: 0.6rem; letter-spacing: 0.1em; }
   .footer-nav {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.1rem;
   }
   .footer-nav a {
     font-size: 0.65rem;
@@ -210,6 +210,7 @@ const navLinks = [
     text-decoration: none;
     transition: color 0.15s;
     text-transform: uppercase;
+    padding-block: 0.25rem; /* 24px+ tap target (WCAG 2.5.8) */
   }
   .footer-nav a:hover { color: var(--paper); }
   .footer-meta {
@@ -224,6 +225,7 @@ const navLinks = [
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.15s;
+    padding-block: 0.25rem; /* 24px+ tap target */
   }
   .footer-corp:hover { color: var(--neon-amber); }
   .footer-copy { font-size: 0.6rem; letter-spacing: 0.04em; line-height: 1.5; }
@@ -248,5 +250,13 @@ const navLinks = [
       hamburger?.setAttribute('aria-expanded', 'false');
       navLinks.classList.remove('nav-links--open');
     });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hamburger?.getAttribute('aria-expanded') === 'true') {
+      hamburger.setAttribute('aria-expanded', 'false');
+      navLinks?.classList.remove('nav-links--open');
+      hamburger.focus();
+    }
   });
 </script>

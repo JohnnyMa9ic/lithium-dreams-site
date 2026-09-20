@@ -143,7 +143,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gh-brass);
+    color: var(--gh-brass-ink);
     font-family: var(--gh-mono);
     margin-bottom: 0.75rem;
   }
@@ -171,6 +171,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   }
   .case-card {
     background: rgba(255, 255, 255, 0.68);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--gh-border);
     border-radius: var(--gh-radius);
@@ -205,7 +206,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   }
   .case-status--operational {
     background: rgba(76, 175, 110, 0.12);
-    color: #2e7d4f;
+    color: #286e45; /* 4.5:1 on the tinted chip */
   }
   .case-status--pilot {
     background: rgba(61, 127, 189, 0.12);
@@ -213,7 +214,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   }
   .case-status--dev {
     background: rgba(201, 157, 76, 0.12);
-    color: #8a6620;
+    color: #83601e;
   }
   .case-id {
     font-size: 0.58rem;
@@ -235,7 +236,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.08em;
-    color: var(--gh-brass);
+    color: var(--gh-brass-ink);
     font-family: var(--gh-mono);
   }
   .case-body {
@@ -277,6 +278,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
   /* ── CTA strip ── */
   .cta-strip {
     background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--gh-border);
     border-radius: var(--gh-radius);
@@ -297,7 +299,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gh-brass);
+    color: var(--gh-brass-ink);
     font-family: var(--gh-mono);
   }
   .cta-strip-copy p {

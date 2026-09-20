@@ -209,7 +209,7 @@ const symbols = [
   .fn-eyebrow {
     font-size: 0.58rem;
     letter-spacing: 0.22em;
-    color: rgba(232,164,32,0.45);
+    color: rgba(232, 164, 32, 0.71);
     text-transform: uppercase;
   }
   .fn-title {
@@ -222,7 +222,7 @@ const symbols = [
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.05em;
-    color: rgba(232,222,200,0.3);
+    color: rgba(232, 222, 200, 0.56);
     max-width: 420px;
     line-height: 1.65;
   }
@@ -247,7 +247,7 @@ const symbols = [
     font-family: var(--font-body);
     font-size: 0.85rem;
     line-height: 1.85;
-    color: rgba(232,222,200,0.5);
+    color: rgba(232, 222, 200, 0.56);
     letter-spacing: 0.02em;
   }
 
@@ -266,7 +266,7 @@ const symbols = [
   .group-label {
     font-size: 0.58rem;
     letter-spacing: 0.22em;
-    color: rgba(232,164,32,0.4);
+    color: rgba(232, 164, 32, 0.71);
     text-transform: uppercase;
     white-space: nowrap;
     flex-shrink: 0;
@@ -296,10 +296,10 @@ const symbols = [
   .symbol-glyph {
     width: 48px;
     height: 48px;
-    color: rgba(232,222,200,0.25);
+    color: rgba(232, 222, 200, 0.56);
     transition: color 0.15s;
   }
-  .symbol-card:hover .symbol-glyph { color: rgba(232,164,32,0.55); }
+  .symbol-card:hover .symbol-glyph { color: rgba(232, 164, 32, 0.71); }
   .symbol-glyph svg { width: 100%; height: 100%; }
 
   .symbol-body { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -320,14 +320,14 @@ const symbols = [
   .symbol-code {
     font-size: 0.55rem;
     letter-spacing: 0.15em;
-    color: rgba(232,164,32,0.35);
+    color: rgba(232, 164, 32, 0.71);
     flex-shrink: 0;
   }
   .symbol-meaning {
     font-family: var(--font-mono);
     font-size: 0.65rem;
     line-height: 1.65;
-    color: rgba(232,222,200,0.4);
+    color: rgba(232, 222, 200, 0.56);
     letter-spacing: 0.03em;
   }
 
@@ -343,14 +343,14 @@ const symbols = [
   .note-eyebrow {
     font-size: 0.58rem;
     letter-spacing: 0.2em;
-    color: rgba(232,164,32,0.35);
+    color: rgba(232, 164, 32, 0.71);
     text-transform: uppercase;
   }
   .note-body {
     font-family: var(--font-body);
     font-size: 0.78rem;
     line-height: 1.75;
-    color: rgba(232,222,200,0.4);
+    color: rgba(232, 222, 200, 0.56);
   }
 
   .fn-footer-nav {
@@ -360,10 +360,12 @@ const symbols = [
     border-top: 1px solid rgba(255,255,255,0.04);
   }
   .fn-nav-link {
+    display: inline-block;
+    padding-block: 0.35rem; /* 24px+ tap target */
     font-size: 0.62rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(232,222,200,0.25);
+    color: rgba(232, 222, 200, 0.56);
     text-decoration: none;
     transition: color 0.15s;
   }

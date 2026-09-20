@@ -3,6 +3,7 @@ import Layout from '../components/Layout.astro';
 ---
 
 <Layout title="LDI — Yasuragi / Deep Garden" description="A quiet place behind the noise. Yasuragi Garden above, Deep Garden below." activePage="/deep-garden">
+  <h1 class="visually-hidden">Yasuragi Garden and the Deep Garden</h1>
 
   <!-- Depth marker -->
   <aside class="depth-marker" aria-label="Garden depth position">
@@ -426,6 +427,7 @@ import Layout from '../components/Layout.astro';
     padding: 1.1rem;
     border: 1px solid var(--g-teal-dim);
     background: rgba(8, 19, 17, 0.78);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.35);
     display: flex;
@@ -690,6 +692,7 @@ import Layout from '../components/Layout.astro';
     padding: 1.25rem 1.5rem;
     background: rgba(5, 8, 7, 0.58);
     border: 1px solid rgba(54, 213, 205, 0.2);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     opacity: 0;
     transform: translateY(20px);
@@ -794,7 +797,7 @@ import Layout from '../components/Layout.astro';
   .confirm-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.25em;
-    color: rgba(0, 229, 204, 0.6);
+    color: rgba(0, 229, 204, 0.62);
     text-transform: uppercase;
   }
   .confirm-divider {
@@ -805,13 +808,13 @@ import Layout from '../components/Layout.astro';
     font-family: var(--font-mono, monospace);
     font-size: 0.78rem;
     line-height: 1.7;
-    color: rgba(232, 222, 200, 0.5);
+    color: rgba(232, 222, 200, 0.56);
   }
-  .confirm-line--dim { color: rgba(232, 222, 200, 0.3); }
+  .confirm-line--dim { color: rgba(232, 222, 200, 0.56); }
   .confirm-accession {
     font-size: 0.6rem;
     letter-spacing: 0.15em;
-    color: rgba(0, 229, 204, 0.35);
+    color: rgba(0, 229, 204, 0.62);
   }
   .confirm-actions {
     display: flex;
@@ -823,7 +826,7 @@ import Layout from '../components/Layout.astro';
     letter-spacing: 0.2em;
     text-transform: uppercase;
     text-decoration: none;
-    color: rgba(0, 229, 204, 0.5);
+    color: rgba(0, 229, 204, 0.62);
     border: 1px solid rgba(0, 229, 204, 0.2);
     padding: 0.5rem 1rem;
     text-align: center;
@@ -833,7 +836,7 @@ import Layout from '../components/Layout.astro';
     transition: color 0.15s, border-color 0.15s;
   }
   .confirm-btn:hover { color: rgba(0, 229, 204, 0.9); border-color: rgba(0, 229, 204, 0.5); }
-  .confirm-btn--ghost { border-color: rgba(255,255,255,0.08); color: rgba(232,222,200,0.3); }
+  .confirm-btn--ghost { border-color: rgba(255,255,255,0.08); color: rgba(232, 222, 200, 0.56); }
   .confirm-btn--ghost:hover { color: rgba(232,222,200,0.6); border-color: rgba(255,255,255,0.2); }
 
   .planting-station {
@@ -913,7 +916,7 @@ import Layout from '../components/Layout.astro';
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: #594523;
+    color: #91846e;
     margin-bottom: 0.5rem;
   }
   .seed-packet h3 {
@@ -934,7 +937,7 @@ import Layout from '../components/Layout.astro';
     margin: 1rem 0;
     border: 1px solid rgba(70,48,21,0.22);
     font-size: 4rem;
-    color: #5d7a45;
+    color: #748d5f;
   }
   .packet-data {
     display: grid;
@@ -949,7 +952,7 @@ import Layout from '../components/Layout.astro';
     font-size: 0.62rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #6c552e;
+    color: #948366;
     margin-bottom: 0.15rem;
   }
   .packet-row dd {
@@ -962,7 +965,7 @@ import Layout from '../components/Layout.astro';
     font-family: var(--g-display);
     font-style: italic;
     font-size: 1rem;
-    color: #594523;
+    color: #91846e;
     margin-top: auto;
     padding-top: 1.25rem;
     border-top: 1px solid rgba(70,48,21,0.18);

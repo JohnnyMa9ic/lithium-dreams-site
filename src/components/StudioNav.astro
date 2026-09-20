@@ -35,19 +35,20 @@ const { active } = Astro.props;
     padding: 0.6rem var(--space-xl);
     border-bottom: 1px solid rgba(255,255,255,0.04);
     background: rgba(10,10,12,0.85);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
   .studio-back {
     font-size: 0.58rem;
     letter-spacing: 0.18em;
-    color: rgba(232,222,200,0.2);
+    color: rgba(232, 222, 200, 0.56);
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.15s;
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .studio-back:hover { color: rgba(232,222,200,0.55); }
+  .studio-back:hover { color: rgba(232, 222, 200, 0.56); }
   .studio-links {
     display: flex;
     gap: var(--space-lg);
@@ -55,10 +56,11 @@ const { active } = Astro.props;
   }
   .studio-link {
     display: flex;
+    padding-block: 0.3rem; /* 24px+ tap target */
     align-items: baseline;
     gap: 0.4rem;
     text-decoration: none;
-    color: rgba(232,222,200,0.3);
+    color: rgba(232, 222, 200, 0.56);
     font-family: var(--font-body);
     font-size: 0.72rem;
     white-space: nowrap;
@@ -74,7 +76,6 @@ const { active } = Astro.props;
   .link-num {
     font-size: 0.5rem;
     letter-spacing: 0.12em;
-    opacity: 0.5;
   }
   @media (max-width: 600px) {
     .studio-nav { padding: 0.5rem var(--space-md); gap: var(--space-md); }

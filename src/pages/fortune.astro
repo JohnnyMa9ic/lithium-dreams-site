@@ -80,7 +80,7 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
         <p class="ask-eyebrow mono">Ask Bob</p>
         <p class="ask-note text-dim">Bob will probably make fun of it. That's part of the service.</p>
         <div class="bob-form">
-          <textarea id="bobQuestion" placeholder="Type your question here..." rows="3"></textarea>
+          <textarea id="bobQuestion" aria-label="Your question for Bob" placeholder="Type your question here..." rows="3"></textarea>
           <button id="askBobBtn" class="bob-submit mono">Submit Question</button>
         </div>
         <div id="bobAnswer" class="bob-answer" aria-live="polite"></div>
@@ -199,7 +199,7 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
   .rules-list li {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    color: rgba(232,222,200,0.5);
+    color: rgba(232, 222, 200, 0.56);
     line-height: 1.6;
     letter-spacing: 0.04em;
   }
@@ -278,7 +278,7 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
   .recent-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.3);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
     margin-bottom: var(--space-xs);
   }
@@ -294,10 +294,7 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     text-decoration: none;
-    opacity: 0.4;
-    transition: opacity 0.15s;
   }
-  .archive-link:hover { opacity: 0.7; }
 
   /* Maintenance notes */
   .maint-notes {
@@ -310,7 +307,7 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
   .notes-eyebrow {
     font-size: 0.55rem;
     letter-spacing: 0.2em;
-    color: rgba(232,222,200,0.2);
+    color: rgba(232, 222, 200, 0.56);
     text-transform: uppercase;
     margin-bottom: 0.3rem;
   }
@@ -322,5 +319,5 @@ const fortuneNumber = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'
     .bottom-section { grid-template-columns: 1fr; }
   }
   .archive-placeholder { cursor: default; }
-  .archive-note { opacity: 0.5; margin-left: 0.5rem; }
+  .archive-note { margin-left: 0.5rem; }
 </style>

@@ -3,13 +3,16 @@ interface Props {
   accession?: string;
   title: string;
   subtitle?: string;
+  headingLevel?: 2 | 3;
 }
-const { accession, title, subtitle } = Astro.props;
+const { accession, title, subtitle, headingLevel = 3 } = Astro.props;
 ---
 
 <div class="museum-plaque">
   {accession && <span class="plaque-accession">ACC. {accession}</span>}
-  <h3 class="plaque-title">{title}</h3>
+  {headingLevel === 2
+    ? <h2 class="plaque-title">{title}</h2>
+    : <h3 class="plaque-title">{title}</h3>}
   {subtitle && <p class="plaque-subtitle">{subtitle}</p>}
   <slot />
 </div>
@@ -40,7 +43,7 @@ const { accession, title, subtitle } = Astro.props;
   .plaque-subtitle {
     font-family: var(--font-body);
     font-size: 0.8rem;
-    color: rgba(232, 222, 200, 0.55);
+    color: rgba(232, 222, 200, 0.56);
     font-style: italic;
   }
 </style>
