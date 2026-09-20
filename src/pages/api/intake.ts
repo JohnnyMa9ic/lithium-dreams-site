@@ -14,6 +14,7 @@ interface MissionBrief {
 
 interface IntakeEnv {
   MISSION_INTAKE?: KVNamespace;
+  INTAKE_MAIL?: { send(message: unknown): Promise<void> };
   INTAKE_ADMIN_KEY?: string;
 }
 
@@ -53,14 +54,59 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: 'Could not store the brief. Please email us directly.' }, 500);
   }
 
-  // Operator notification: planned as a Cloudflare Email Routing send_email
-  // binding to John's verified address (no secrets, no third party). Blocked
-  // until Email Routing is enabled on the zone — adding the binding before
-  // that would fail the deploy. Until then the admin GET below is the
-  // pickup path; the KV write above is always the source of truth.
+  // Notify John by email via the zone's Email Routing send_email binding —
+  // no secrets, no third party. The KV write above is the source of truth;
+  // a notify failure must never fail the submission, so this only logs.
+  await notifyOperator(intakeEnv, brief, key);
 
   return json({ ok: true, reference: brief.reference ?? null });
 };
+
+const NOTIFY_FROM = 'intake@lithium-dreams.com';
+const NOTIFY_TO = 'john@lithium-dreams.com';
+
+// User-supplied values that end up in MIME headers must not smuggle CRLFs.
+function headerSafe(value: unknown): string {
+  return String(value ?? '—').replace(/[\r\n]+/g, ' ').slice(0, 200);
+}
+
+async function notifyOperator(intakeEnv: IntakeEnv, brief: MissionBrief, key: string): Promise<void> {
+  const mailer = intakeEnv.INTAKE_MAIL;
+  if (!mailer) {
+    console.warn('Intake notify skipped: INTAKE_MAIL send_email binding missing');
+    return;
+  }
+
+  try {
+    const { EmailMessage } = await import('cloudflare:email');
+    const subject = headerSafe(`Mission brief: ${brief.track ?? 'no track'} — ${brief.organization ?? brief.contact ?? 'unnamed'}`);
+    const body = [
+      'New mission brief — lithium-dreams.com/work/intake',
+      '',
+      `Track:        ${brief.track ?? '—'}`,
+      `Organization: ${brief.organization ?? '—'}`,
+      `Contact:      ${brief.contact ?? '—'} <${brief.email ?? '—'}>`,
+      `Reference:    ${brief.reference ?? '—'}`,
+      `KV key:       ${key}`,
+      '',
+      'Full brief is stored in the MISSION_INTAKE KV namespace under that key.',
+    ].join('\n');
+    const raw = [
+      `From: Glasshouse Intake <${NOTIFY_FROM}>`,
+      `To: <${NOTIFY_TO}>`,
+      `Subject: ${subject}`,
+      `Message-ID: <${crypto.randomUUID()}@lithium-dreams.com>`,
+      `Date: ${new Date().toUTCString()}`,
+      'MIME-Version: 1.0',
+      'Content-Type: text/plain; charset=utf-8',
+      '',
+      body,
+    ].join('\r\n');
+    await mailer.send(new EmailMessage(NOTIFY_FROM, NOTIFY_TO, raw));
+  } catch (err) {
+    console.error('Intake notify failed', err);
+  }
+}
 
 // Operator backstop: GET /api/intake?key=<INTAKE_ADMIN_KEY> lists stored briefs.
 // Answers 404 unless the key secret is configured AND matches — the endpoint

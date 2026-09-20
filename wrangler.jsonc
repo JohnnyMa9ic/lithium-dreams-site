@@ -8,6 +8,11 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	"send_email": [
+		{
+			"name": "INTAKE_MAIL"
+		}
+	],
 	"kv_namespaces": [
 		{
 			"binding": "MISSION_INTAKE",
