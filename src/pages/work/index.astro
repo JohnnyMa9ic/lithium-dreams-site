@@ -230,7 +230,6 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     font-size: clamp(2rem, 3.4vw, 3.3rem);
     line-height: 1.12;
     letter-spacing: -0.008em;
-    max-width: 22ch;
     text-wrap: balance;
   }
   .sec-headline--display {
@@ -238,6 +237,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     font-weight: 600;
     letter-spacing: 0.03em;
     font-size: clamp(1.8rem, 2.9vw, 2.8rem);
+    max-width: 22ch;
   }
   .sec-sub {
     font-size: 1rem;
@@ -398,7 +398,6 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     color: var(--gh-teal-ink);
     font-size: 1.02rem;
     margin-top: 1rem;
-    max-width: 34ch;
   }
   .proof-ledger {
     list-style: none;
@@ -493,8 +492,11 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     .plates { grid-template-columns: repeat(2, 1fr); }
     .proof-grid { grid-template-columns: 1fr; gap: 2rem; }
     .operator-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .operator-cta { align-items: stretch; }
+    /* full-width plaque: center the engraving instead of left-hugging the 30ch caps */
+    .operator-cta { align-items: stretch; text-align: center; }
     .operator-cta .btn-plaque { text-align: center; }
+    .operator-invite,
+    .operator-note { max-width: 46ch; margin-inline: auto; }
   }
   @media (max-width: 680px) {
     .hero { min-height: 82svh; }
