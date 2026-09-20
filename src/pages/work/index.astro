@@ -4,18 +4,31 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
 
 <GlasshouseLayout activePage="/work">
 
-  <!-- Hero — the conservatory at dusk, composed left -->
+  <!-- Hero — banner headline across, offer left, glass commissions pane right -->
   <section class="stratum hero">
     <div class="hero-inner">
       <img src="/gh-medallion-256.png" alt="" width="56" height="56" class="hero-mark" fetchpriority="high" />
       <p class="gh-eyebrow hero-eyebrow">Glasshouse Systems Studio</p>
-      <h1 class="hero-headline">You run the business. The&nbsp;systems should run themselves.</h1>
-      <p class="hero-offer">Systems and automation for people who'd rather run their business than wrestle their tools.</p>
-      <div class="hero-actions">
-        <a href="/work/intake" class="btn-plaque">Start your brief</a>
-        <a href="#method" class="btn-ghost">See how we work</a>
+      <h1 class="hero-headline">You run the business.<br />The&nbsp;systems should run themselves.</h1>
+      <div class="hero-lower">
+        <div class="hero-copy">
+          <p class="hero-offer">Systems and automation for people who'd rather run their business than wrestle their tools.</p>
+          <div class="hero-actions">
+            <a href="/work/intake" class="btn-plaque">Start your brief</a>
+            <a href="#method" class="btn-ghost">See how we work</a>
+          </div>
+          <p class="hero-avail">Taking new projects — fall 2026.</p>
+        </div>
+        <aside class="hero-pane" aria-label="Commissioned works">
+          <p class="hero-pane-title">Commissioned Works</p>
+          <ol class="hero-pane-list">
+            <li><a href="#commissions"><span aria-hidden="true">01</span>Automation Systems</a></li>
+            <li><a href="#commissions"><span aria-hidden="true">02</span>Operator Dashboards</a></li>
+            <li><a href="#commissions"><span aria-hidden="true">03</span>Knowledge Systems</a></li>
+            <li><a href="#commissions"><span aria-hidden="true">04</span>Creative Systems</a></li>
+          </ol>
+        </aside>
       </div>
-      <p class="hero-avail">Taking new projects — fall 2026.</p>
     </div>
   </section>
 
@@ -161,7 +174,20 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     align-items: flex-start;
     gap: 1.4rem;
     padding: clamp(3.5rem, 8vh, 5.5rem) 0;
-    max-width: 62rem;
+  }
+  .hero-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(270px, 330px);
+    gap: clamp(2.5rem, 6vw, 7rem);
+    align-items: center;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
   }
   .hero-mark {
     filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.45));
@@ -198,6 +224,50 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     border-top: 1px solid var(--gh-hairline-light);
     padding-top: 1.1rem;
     margin-top: 1.4rem;
+  }
+
+  /* ── The glass pane — frosted commissions index, right of the offer ── */
+  .hero-pane {
+    background: rgba(233, 223, 203, 0.05);
+    border: 1px solid rgba(233, 223, 203, 0.2);
+    border-top: 2px solid var(--gh-brass);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1.5rem 1.75rem 1.25rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+  .hero-pane-title {
+    font-family: var(--gh-display);
+    font-weight: 600;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gh-brass-bright);
+    margin-bottom: 0.6rem;
+  }
+  .hero-pane-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .hero-pane-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    padding: 0.72rem 0;
+    font-family: var(--gh-serif);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--gh-cream);
+    text-decoration: none;
+    border-top: 1px solid rgba(233, 223, 203, 0.14);
+  }
+  .hero-pane-list a:hover { color: var(--gh-brass-bright); }
+  .hero-pane-list a span {
+    font-family: var(--gh-display);
+    font-size: 0.78rem;
+    color: var(--gh-brass);
+    letter-spacing: 0.06em;
   }
 
   /* ── Section chrome — editorial, left-composed ── */
@@ -487,6 +557,9 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     .ledger-title { grid-column: 2; }
     .ledger-body { grid-column: 2; }
     .plates { grid-template-columns: repeat(2, 1fr); }
+    /* the ledger itself is one scroll below — no duplicate index on small screens */
+    .hero-lower { grid-template-columns: 1fr; }
+    .hero-pane { display: none; }
     .proof-grid { grid-template-columns: 1fr; gap: 2rem; }
     .operator-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     /* full-width plaque: center the engraving instead of left-hugging the 30ch caps */
