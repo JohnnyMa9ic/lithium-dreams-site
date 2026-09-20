@@ -1,0 +1,229 @@
+---
+import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
+---
+
+<GlasshouseLayout
+  title="About — Glasshouse Systems Studio"
+  description="The operator behind Glasshouse Systems Studio: twenty-five years of institutional-scale systems work, applied to small business."
+  activePage="/work/about"
+>
+  <section class="stratum stratum--cream opener" aria-labelledby="about-h">
+    <div class="opener-inner">
+      <p class="gh-eyebrow">The Operator</p>
+      <h1 id="about-h">One operator. Twenty‑five years of systems that had to work.</h1>
+    </div>
+  </section>
+
+  <section class="stratum stratum--cream bio" aria-label="Biography">
+    <div class="bio-inner">
+      <figure class="bio-portrait">
+        <img
+          src="/about-portrait.png"
+          alt="J. Burroughs — the operator, writing in a notebook"
+          width="360"
+          loading="eager"
+          decoding="async"
+        />
+        <figcaption>
+          <span class="bio-name">J. Burroughs</span>
+          <span class="bio-role">Founder · Operator</span>
+        </figcaption>
+      </figure>
+
+      <div class="bio-body">
+        <p>
+          Glasshouse Systems Studio is the working practice of J. Burroughs — a systems
+          designer with twenty-five years inside healthcare supply chain at an academic
+          medical center. High-stakes procurement, multi-vendor coordination, evidence-based
+          analysis for surgeons and clinical staff, and the specific discipline of keeping
+          systems functional under conditions they weren't designed for.
+        </p>
+        <p>
+          That work produced a method. Understand how the work actually flows before touching
+          any tools. Design for clarity. Automate second. Keep the human in the loop, always.
+          Glasshouse applies that method to small and medium businesses — environments where
+          the infrastructure has gotten ahead of the owner's ability to see it clearly.
+        </p>
+        <p>
+          The studio runs its own multi-machine research and automation stack, and every
+          system it offers a client has already earned its keep in daily production here.
+          That standard doesn't bend: if it wouldn't survive real operations, it isn't sold.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stratum stratum--dark tenets" aria-labelledby="tenets-h">
+    <div class="tenets-inner">
+      <header class="tenets-opening">
+        <p class="gh-eyebrow">How the Studio Thinks</p>
+        <h2 id="tenets-h">Three tenets. Every engagement.</h2>
+      </header>
+      <div class="tenet-row">
+        <article class="tenet">
+          <p class="tenet-num" aria-hidden="true">I</p>
+          <h3>Clarity before complexity</h3>
+          <p>You should be able to understand your own systems — trace them, question them, and correct them without calling anyone.</p>
+        </article>
+        <article class="tenet">
+          <p class="tenet-num" aria-hidden="true">II</p>
+          <h3>Structure before tools</h3>
+          <p>Tools change every season. The shape of your work is the asset — we design that first, then pick the tools that serve it.</p>
+        </article>
+        <article class="tenet">
+          <p class="tenet-num" aria-hidden="true">III</p>
+          <h3>Human in the loop</h3>
+          <p>Nothing runs that you can't see and stop. Automation earns autonomy gradually — it is never granted on faith.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="stratum stratum--cream studio" aria-labelledby="studio-h">
+    <div class="studio-inner">
+      <div class="studio-copy">
+        <p class="gh-eyebrow">The Studio</p>
+        <h2 id="studio-h">A small studio, on purpose.</h2>
+        <p>
+          Glasshouse is a studio of Lithium Dreams Industries, based in Iowa. It stays small
+          so the person who designs your system is the person who builds it, documents it,
+          and answers for it. No handoffs to a bench you never meet.
+        </p>
+        <a href="/work/intake/" class="btn-plaque">Start Your Brief</a>
+      </div>
+      <p class="studio-footnote">
+        Lithium Dreams also maintains a roadside attraction at the edge of the universe.
+        Visitors welcome. <a href="/attraction">The Attraction →</a>
+      </p>
+    </div>
+  </section>
+</GlasshouseLayout>
+
+<style>
+  .opener-inner {
+    padding: clamp(3.5rem, 8vh, 6rem) 0 clamp(2rem, 4vh, 3rem);
+  }
+  .opener-inner h1 {
+    max-width: 24ch;
+    font-family: var(--gh-serif);
+    font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-top: 1.25rem;
+    text-wrap: balance;
+  }
+
+  .bio-inner {
+    display: grid;
+    grid-template-columns: minmax(240px, 360px) minmax(0, 58ch);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+    padding-bottom: clamp(3.5rem, 8vh, 6rem);
+  }
+  .bio-portrait img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--gh-brass-edge);
+  }
+  .bio-portrait figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-top: 0.85rem;
+  }
+  .bio-name {
+    font-family: var(--gh-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .bio-role {
+    font-size: 0.8rem;
+    color: var(--gh-ink-soft);
+  }
+  .bio-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    font-size: clamp(1.05rem, 1rem + 0.2vw, 1.2rem);
+    line-height: 1.7;
+  }
+
+  .tenets-inner {
+    padding: clamp(3.5rem, 8vh, 5.5rem) 0;
+  }
+  .tenets-opening h2 {
+    font-family: var(--gh-display);
+    font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 1rem 0 2.5rem;
+  }
+  .tenet-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+  .tenet {
+    border-top: 1px solid var(--gh-hairline-light);
+    padding-top: 1.25rem;
+  }
+  .tenet-num {
+    font-family: var(--gh-display);
+    color: var(--gh-brass-bright);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+  .tenet h3 {
+    font-family: var(--gh-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.6rem 0 0.6rem;
+  }
+  .tenet p:last-child {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--gh-cream-soft);
+  }
+
+  .studio-inner {
+    padding: clamp(3.5rem, 8vh, 6rem) 0 clamp(2.5rem, 5vh, 4rem);
+  }
+  .studio-copy {
+    max-width: 58ch;
+  }
+  .studio-copy h2 {
+    font-family: var(--gh-serif);
+    font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 1rem 0 1.25rem;
+  }
+  .studio-copy p {
+    font-size: clamp(1.05rem, 1rem + 0.2vw, 1.2rem);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .studio-footnote {
+    border-top: 1px solid var(--gh-hairline-dark);
+    margin-top: clamp(3rem, 6vh, 4.5rem);
+    padding-top: 1.25rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--gh-ink-soft);
+  }
+  .studio-footnote a {
+    color: var(--gh-teal-ink);
+    font-style: normal;
+    text-decoration: none;
+  }
+  .studio-footnote a:hover { text-decoration: underline; }
+
+  @media (max-width: 820px) {
+    .bio-inner { grid-template-columns: 1fr; }
+    .bio-portrait { max-width: 300px; }
+    .tenet-row { grid-template-columns: 1fr; }
+  }
+</style>
