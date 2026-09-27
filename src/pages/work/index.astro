@@ -142,6 +142,7 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
       <div class="operator-copy">
         <p class="gh-eyebrow">The Operator</p>
         <h2 class="sec-headline" id="operator-h">Built by an operator, for&nbsp;operators.</h2>
+        <p class="operator-tagline">Your complexities are our specialties.</p>
         <p>Glasshouse Systems Studio is a systems design practice. AI is one of our tools — not our product and not our identity. Technology is just the tool; clarity is the product. We design practical operational systems for people who need to see how their work actually happens, and want infrastructure that scales without becoming their full-time job.</p>
         <p>Every client system we pitch, we've already run internally. Nothing runs that you can't see and stop — you approve everything.</p>
         <a href="/work/about" class="operator-link">Meet the operator →</a>
@@ -514,6 +515,14 @@ import GlasshouseLayout from '../../components/GlasshouseLayout.astro';
     line-height: 1.7;
     color: var(--gh-ink-soft);
     max-width: 58ch;
+  }
+  .operator-copy p.operator-tagline {
+    font-family: var(--gh-serif);
+    font-style: italic;
+    font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+    line-height: 1.35;
+    color: var(--gh-ink);
+    margin-top: -0.35rem;
   }
   .operator-link {
     font-size: 0.98rem;
